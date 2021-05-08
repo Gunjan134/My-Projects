@@ -1,0 +1,19 @@
+<div class="card profile-card">
+    <div class="profile">
+        <img src="{{thumbnail}}" class="thumbnail" [title]="name">
+        <div class="name" [title]="name">{{name}}</div>
+        <div class="title" [title]="title">{{title}}</div>
+        <hr class="line" />
+        <div class="subtitle" [title]="subTitle">
+            {{subTitle}}
+        </div>
+        <div class="description" [title]="description">
+            {{description}}
+        </div>
+        <div class="card-btn-block">
+            <button type="button" class="btn btn-primary card-btn" [title]="btnText">
+                {{btnText}}
+            </button>
+        </div>
+    </div>
+</div>

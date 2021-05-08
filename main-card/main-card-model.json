@@ -1,0 +1,8 @@
+{
+  "title": "Sample title",
+  "subTitle": "Sample subtitle",
+  "description": "Sample description goes here",
+  "bgImgPath": "assets/images/home1.jpg",
+  "icon": "play-circle-o",
+  "btnText": "Button text"
+}

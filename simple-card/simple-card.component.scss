@@ -1,0 +1,62 @@
+@import "../../utilities/styles";
+
+.simple-card {
+  // background: #5385c1;
+  background: $primary;
+  color: #bacee6;
+  text-align: center;
+  font-family: $font;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  .box {
+    border: solid 1px #dbdbdb;
+    padding: 1.5em;
+  }
+  .box.person {
+    border: solid 1px rgba(255, 255, 255, 0.25);
+    padding: 3em 1.5em;
+    h3 {
+      margin: 0;
+      font-weight: 300;
+      line-height: 1.5;
+      color: white;
+    }
+    .image {
+      margin-bottom: 1em;
+      border-radius: 0;
+      border: 0;
+      display: inline-block;
+      position: relative;
+      width: 10em;
+      height: 10em;
+      overflow: hidden;
+      border-radius: 50%;
+      img {
+        max-width: 100%;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    h3,
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  div,
+  h3 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+  }
+}
