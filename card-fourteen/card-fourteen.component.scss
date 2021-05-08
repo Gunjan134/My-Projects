@@ -1,0 +1,138 @@
+@import "../../utilities/styles";
+
+.card-14 {
+  height: 15em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 0.25em;
+  color: grey;
+  font-family: $font;
+  .header {
+    padding: 0 10px;
+    height: 3em;
+    line-height: 3em;
+    font-size: 13px;
+    .heading {
+      max-width: 75%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .circle-icon {
+      height: 2em;
+      width: 2em;
+      z-index: 1000;
+      position: absolute;
+      right: 0.5em;
+      top: 0.5em;
+      background-color: white;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+      line-height: 2em;
+      text-align: center;
+      color: black;
+    }
+  }
+  .card14-body {
+    text-align: center;
+    .sub-card-1 {
+      position: absolute;
+      width: 45%;
+      height: 35%;
+      left: 0.5em;
+      margin-top: 0.5em;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      .sub-card-1-body {
+        height: 100%;
+        padding: 10px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 25px;
+          height: 50%;
+        }
+        .text {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .sub-card-2 {
+      position: absolute;
+      width: 45%;
+      height: 35%;
+      right: 0.5em;
+      margin-top: 0.5em;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      .sub-card-2-body {
+        height: 100%;
+        padding: 10px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 25px;
+          height: 50%;
+        }
+        .text {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .sub-card-3 {
+      position: absolute;
+      width: 45%;
+      height: 35%;
+      left: 0.5em;
+      bottom: 1em;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      .sub-card-3-body {
+        height: 100%;
+        padding: 10px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 25px;
+          height: 50%;
+        }
+        .text {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+    .sub-card-4 {
+      position: absolute;
+      width: 45%;
+      height: 35%;
+      right: 0.5em;
+      bottom: 1em;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+      .sub-card-4-body {
+        height: 100%;
+        padding: 10px;
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        .icon {
+          font-size: 25px;
+          height: 50%;
+        }
+        .text {
+          font-size: 11px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

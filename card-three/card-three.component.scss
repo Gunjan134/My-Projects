@@ -1,0 +1,47 @@
+@import "../../utilities/styles";
+
+.card-3 {
+  height: 15em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: $font;
+  .upper-block {
+    padding: 12px;
+    .header,
+    .description {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .lower-block {
+    padding-left: 12px;
+    .block {
+      background-color: $primary;
+      height: 2em;
+      border-radius: 7px 0 0 7px;
+      margin-bottom: 0.5em;
+      color: white;
+      .icon {
+        width: 23%;
+        text-align: center;
+        height: 2em;
+        line-height: 2em;
+        .vertical-line {
+          border-left: 1px solid white;
+          height: 2em;
+          position: absolute;
+          left: 27%;
+        }
+        .text {
+          position: absolute;
+          left: 32%;
+          max-width: 68%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}

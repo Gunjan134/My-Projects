@@ -1,0 +1,41 @@
+@import "../../utilities/styles";
+
+.card-1 {
+  background-color: $primary;
+  height: 14em;
+  padding: 0.7em 0.7em 0 0.7em;
+  border-radius: 0.75em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: $font;
+  .header {
+    color: white;
+    padding: 5px 5px 5px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .inner-card {
+    height: 10em;
+    padding: 0.75em;
+    text-align: center;
+    overflow: hidden;
+    font-size: 0.75rem;
+    border-radius: 0.75em;
+    .description {
+      height: 9em;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+    }
+  }
+  .footer {
+    text-align: center;
+    color: white;
+    font-size: 0.7em;
+    height: 5em;
+    line-height: 5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
