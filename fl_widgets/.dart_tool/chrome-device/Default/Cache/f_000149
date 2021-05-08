@@ -1,0 +1,2796 @@
+define(['dart_sdk', 'packages/flutter/src/painting/placeholder_span.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/decoration.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/colors.dart', 'packages/html/src/query_selector.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/painting/decoration_image.dart', 'packages/flutter/src/painting/image_resolution.dart', 'packages/flutter_html/image_properties.dart'], (function load__packages__flutter_html__rich_text_parser_dart(dart_sdk, packages__flutter__src__painting__placeholder_span$46dart, packages__flutter__src__gestures__tap$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__decoration$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__colors$46dart, packages__html__src__query_selector$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__painting__decoration_image$46dart, packages__flutter__src__painting__image_resolution$46dart, packages__flutter_html__image_properties$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _interceptors = dart_sdk._interceptors;
+  const ui = dart_sdk.ui;
+  const convert = dart_sdk.convert;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const text_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__text_span;
+  const inline_span = packages__flutter__src__painting__placeholder_span$46dart.src__painting__inline_span;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const text$ = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const image = packages__flutter__src__widgets__widget_span$46dart.src__widgets__image;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const decoration = packages__flutter__src__painting__decoration$46dart.src__painting__decoration;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const colors$ = packages__flutter__src__painting__colors$46dart.src__painting__colors;
+  const dom = packages__html__src__query_selector$46dart.dom;
+  const parser = packages__html__src__query_selector$46dart.parser;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const divider = packages__flutter__src__material__icon_button$46dart.src__material__divider;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const _network_image_web = packages__flutter__src__painting___network_image_web$46dart.src__painting___network_image_web;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const decoration_image = packages__flutter__src__painting__decoration_image$46dart.src__painting__decoration_image;
+  const image_resolution = packages__flutter__src__painting__image_resolution$46dart.src__painting__image_resolution;
+  const image_properties = packages__flutter_html__image_properties$46dart.image_properties;
+  var rich_text_parser = Object.create(dart.library);
+  var $addAll = dartx.addAll;
+  var $contains = dartx.contains;
+  var $replaceAll = dartx.replaceAll;
+  var $isEmpty = dartx.isEmpty;
+  var $add = dartx.add;
+  var $forEach = dartx.forEach;
+  var $trim = dartx.trim;
+  var $indexOf = dartx.indexOf;
+  var $trimLeft = dartx.trimLeft;
+  var $endsWith = dartx.endsWith;
+  var $_get = dartx._get;
+  var $startsWith = dartx.startsWith;
+  var $split = dartx.split;
+  var $replaceFirst = dartx.replaceFirst;
+  var $toString = dartx.toString;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TextSpanL: () => (T.TextSpanL = dart.constFn(dart.legacy(text_span.TextSpan)))(),
+    JSArrayOfTextSpanL: () => (T.JSArrayOfTextSpanL = dart.constFn(_interceptors.JSArray$(T.TextSpanL())))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
+    ElementL: () => (T.ElementL = dart.constFn(dart.legacy(dom.Element)))(),
+    NodeL: () => (T.NodeL = dart.constFn(dart.legacy(dom.Node)))(),
+    NodeLToNull: () => (T.NodeLToNull = dart.constFn(dart.fnType(core.Null, [T.NodeL()])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    BlockTextL: () => (T.BlockTextL = dart.constFn(dart.legacy(rich_text_parser.BlockText)))(),
+    LinkBlockL: () => (T.LinkBlockL = dart.constFn(dart.legacy(rich_text_parser.LinkBlock)))(),
+    LinkTextSpanL: () => (T.LinkTextSpanL = dart.constFn(dart.legacy(rich_text_parser.LinkTextSpan)))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    TextL: () => (T.TextL = dart.constFn(dart.legacy(dom.Text)))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    JSArrayOfStringL: () => (T.JSArrayOfStringL = dart.constFn(_interceptors.JSArray$(T.StringL())))(),
+    TextStyleL: () => (T.TextStyleL = dart.constFn(dart.legacy(text_style.TextStyle)))(),
+    StringLTovoid: () => (T.StringLTovoid = dart.constFn(dart.fnType(dart.void, [T.StringL()])))(),
+    StringLToLvoid: () => (T.StringLToLvoid = dart.constFn(dart.legacy(T.StringLTovoid())))(),
+    ListOfWidgetL: () => (T.ListOfWidgetL = dart.constFn(core.List$(T.WidgetL())))(),
+    ListLOfWidgetL: () => (T.ListLOfWidgetL = dart.constFn(dart.legacy(T.ListOfWidgetL())))(),
+    InlineSpanL: () => (T.InlineSpanL = dart.constFn(dart.legacy(inline_span.InlineSpan)))(),
+    JSArrayOfInlineSpanL: () => (T.JSArrayOfInlineSpanL = dart.constFn(_interceptors.JSArray$(T.InlineSpanL())))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    ObjectL: () => (T.ObjectL = dart.constFn(dart.legacy(core.Object)))(),
+    StackTraceL: () => (T.StackTraceL = dart.constFn(dart.legacy(core.StackTrace)))(),
+    ObjectLAndStackTraceLToNull: () => (T.ObjectLAndStackTraceLToNull = dart.constFn(dart.fnType(core.Null, [T.ObjectL(), T.StackTraceL()])))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    BuildContextLAndWidgetLAndintL__ToWidgetL: () => (T.BuildContextLAndWidgetLAndintL__ToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.WidgetL(), T.intL(), T.boolL()])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 75,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 13,
+        [_Location_line]: 72,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.constList([C[5] || CT.C5, C[6] || CT.C6], T._LocationL());
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[4] || CT.C4,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 71,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 7,
+        [_Location_line]: 100,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 7,
+        [_Location_line]: 101,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 7,
+        [_Location_line]: 102,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 103,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 104,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9, C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 99,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4286755327.0
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282682111.0
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280908287.0
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280902399.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.constMap(T.intL(), T.ColorL(), [100, C[17] || CT.C17, 200, C[18] || CT.C18, 400, C[19] || CT.C19, 700, C[20] || CT.C20]);
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: colors.MaterialAccentColor.prototype,
+        [Color_value]: 4282682111.0,
+        [ColorSwatch__swatch]: C[16] || CT.C16
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: ui.TextDecoration.prototype,
+        [TextDecoration__mask]: 1
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: C[15] || CT.C15,
+        [TextStyle_decoration]: C[21] || CT.C21,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: null,
+        [TextStyle_fontSize]: null,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: C[15] || CT.C15,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 336,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24], T._LocationL());
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 335,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 15,
+        [_Location_line]: 431,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 15,
+        [_Location_line]: 432,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[26] || CT.C26,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 430,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 13,
+        [_Location_line]: 423,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 13,
+        [_Location_line]: 424,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 13,
+        [_Location_line]: 428,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 13,
+        [_Location_line]: 429,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 430,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31, C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 33,
+        [_Location_line]: 422,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 29,
+        [_Location_line]: 438,
+        [_Location_file]: null
+      });
+    },
+    get C37() {
+      return C[37] = dart.constList([C[38] || CT.C38], T._LocationL());
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[37] || CT.C37,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 438,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 13,
+        [_Location_line]: 438,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 13,
+        [_Location_line]: 439,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.constList([C[41] || CT.C41, C[42] || CT.C42], T._LocationL());
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[40] || CT.C40,
+        [_Location_name]: null,
+        [_Location_column]: 43,
+        [_Location_line]: 437,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "url",
+        [_Location_column]: 17,
+        [_Location_line]: 586,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 17,
+        [_Location_line]: 587,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onLinkTap",
+        [_Location_column]: 17,
+        [_Location_line]: 589,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 590,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 41,
+        [_Location_line]: 585,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 35,
+        [_Location_line]: 610,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.constList([C[51] || CT.C51], T._LocationL());
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[50] || CT.C50,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 610,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 19,
+        [_Location_line]: 607,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 19,
+        [_Location_line]: 608,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 610,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.constList([C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56], T._LocationL());
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[53] || CT.C53,
+        [_Location_name]: null,
+        [_Location_column]: 42,
+        [_Location_line]: 606,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C59() {
+      return C[59] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 15,
+        [_Location_line]: 632,
+        [_Location_file]: null
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 633,
+        [_Location_file]: null
+      });
+    },
+    get C58() {
+      return C[58] = dart.constList([C[59] || CT.C59, C[60] || CT.C60], T._LocationL());
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[58] || CT.C58,
+        [_Location_name]: null,
+        [_Location_column]: 41,
+        [_Location_line]: 631,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 17,
+        [_Location_line]: 636,
+        [_Location_file]: null
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 637,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.constList([C[63] || CT.C63, C[64] || CT.C64], T._LocationL());
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[62] || CT.C62,
+        [_Location_name]: null,
+        [_Location_column]: 44,
+        [_Location_line]: 635,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 26,
+        [_Location_line]: 657,
+        [_Location_file]: null
+      });
+    },
+    get C66() {
+      return C[66] = dart.constList([C[67] || CT.C67], T._LocationL());
+    },
+    get C65() {
+      return C[65] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[66] || CT.C66,
+        [_Location_name]: null,
+        [_Location_column]: 17,
+        [_Location_line]: 657,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C70() {
+      return C[70] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 32,
+        [_Location_line]: 660,
+        [_Location_file]: null
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 62,
+        [_Location_line]: 660,
+        [_Location_file]: null
+      });
+    },
+    get C69() {
+      return C[69] = dart.constList([C[70] || CT.C70, C[71] || CT.C71], T._LocationL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[69] || CT.C69,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 660,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "flex",
+        [_Location_column]: 15,
+        [_Location_line]: 659,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 660,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.constList([C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[73] || CT.C73,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 658,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 15,
+        [_Location_line]: 668,
+        [_Location_file]: null
+      });
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 669,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C[77] = dart.constList([C[78] || CT.C78, C[79] || CT.C79], T._LocationL());
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[77] || CT.C77,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 667,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 15,
+        [_Location_line]: 679,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 15,
+        [_Location_line]: 680,
+        [_Location_file]: null
+      });
+    },
+    get C81() {
+      return C[81] = dart.constList([C[82] || CT.C82, C[83] || CT.C83], T._LocationL());
+    },
+    get C80() {
+      return C[80] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[81] || CT.C81,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 678,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 17,
+        [_Location_line]: 685,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textScaleFactor",
+        [_Location_column]: 17,
+        [_Location_line]: 686,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 17,
+        [_Location_line]: 687,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.constList([C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88], T._LocationL());
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[85] || CT.C85,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 684,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 32,
+        [_Location_line]: 689,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 62,
+        [_Location_line]: 689,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.constList([C[91] || CT.C91, C[92] || CT.C92], T._LocationL());
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[90] || CT.C90,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 689,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 689,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.constList([C[95] || CT.C95], T._LocationL());
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[94] || CT.C94,
+        [_Location_name]: null,
+        [_Location_column]: 29,
+        [_Location_line]: 688,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 30,
+        [_Location_line]: 736,
+        [_Location_file]: null
+      });
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 43,
+        [_Location_line]: 736,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.constList([C[98] || CT.C98, C[99] || CT.C99], T._LocationL());
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[97] || CT.C97,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 736,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "bytes",
+        [_Location_column]: 30,
+        [_Location_line]: 763,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 23,
+        [_Location_line]: 765,
+        [_Location_file]: null
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 23,
+        [_Location_line]: 766,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 23,
+        [_Location_line]: 767,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "matchTextDirection",
+        [_Location_column]: 23,
+        [_Location_line]: 768,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "centerSlice",
+        [_Location_column]: 23,
+        [_Location_line]: 770,
+        [_Location_file]: null
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filterQuality",
+        [_Location_column]: 23,
+        [_Location_line]: 771,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 23,
+        [_Location_line]: 773,
+        [_Location_file]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "colorBlendMode",
+        [_Location_column]: 23,
+        [_Location_line]: 774,
+        [_Location_file]: null
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 23,
+        [_Location_line]: 775,
+        [_Location_file]: null
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 23,
+        [_Location_line]: 776,
+        [_Location_file]: null
+      });
+    },
+    get C113() {
+      return C[113] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "repeat",
+        [_Location_column]: 23,
+        [_Location_line]: 777,
+        [_Location_file]: null
+      });
+    },
+    get C114() {
+      return C[114] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticLabel",
+        [_Location_column]: 23,
+        [_Location_line]: 778,
+        [_Location_file]: null
+      });
+    },
+    get C115() {
+      return C[115] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "excludeFromSemantics",
+        [_Location_column]: 23,
+        [_Location_line]: 779,
+        [_Location_file]: null
+      });
+    },
+    get C101() {
+      return C[101] = dart.constList([C[102] || CT.C102, C[103] || CT.C103, C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106, C[107] || CT.C107, C[108] || CT.C108, C[109] || CT.C109, C[110] || CT.C110, C[111] || CT.C111, C[112] || CT.C112, C[113] || CT.C113, C[114] || CT.C114, C[115] || CT.C115], T._LocationL());
+    },
+    get C100() {
+      return C[100] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[101] || CT.C101,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 762,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C118() {
+      return C[118] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 762,
+        [_Location_file]: null
+      });
+    },
+    get C119() {
+      return C[119] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 21,
+        [_Location_line]: 784,
+        [_Location_file]: null
+      });
+    },
+    get C117() {
+      return C[117] = dart.constList([C[118] || CT.C118, C[119] || CT.C119], T._LocationL());
+    },
+    get C116() {
+      return C[116] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[117] || CT.C117,
+        [_Location_name]: null,
+        [_Location_column]: 51,
+        [_Location_line]: 761,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C122() {
+      return C[122] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 31,
+        [_Location_line]: 804,
+        [_Location_file]: null
+      });
+    },
+    get C123() {
+      return C[123] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 31,
+        [_Location_line]: 805,
+        [_Location_file]: null
+      });
+    },
+    get C121() {
+      return C[121] = dart.constList([C[122] || CT.C122, C[123] || CT.C123], T._LocationL());
+    },
+    get C120() {
+      return C[120] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[121] || CT.C121,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 803,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C126() {
+      return C[126] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 29,
+        [_Location_line]: 803,
+        [_Location_file]: null
+      });
+    },
+    get C127() {
+      return C[127] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 29,
+        [_Location_line]: 810,
+        [_Location_file]: null
+      });
+    },
+    get C125() {
+      return C[125] = dart.constList([C[126] || CT.C126, C[127] || CT.C127], T._LocationL());
+    },
+    get C124() {
+      return C[124] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[125] || CT.C125,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 802,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C129() {
+      return C[129] = dart.constList([], T._LocationL());
+    },
+    get C128() {
+      return C[128] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[129] || CT.C129,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 816,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C132() {
+      return C[132] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "name",
+        [_Location_column]: 23,
+        [_Location_line]: 799,
+        [_Location_file]: null
+      });
+    },
+    get C133() {
+      return C[133] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "frameBuilder",
+        [_Location_column]: 23,
+        [_Location_line]: 800,
+        [_Location_file]: null
+      });
+    },
+    get C134() {
+      return C[134] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 23,
+        [_Location_line]: 818,
+        [_Location_file]: null
+      });
+    },
+    get C135() {
+      return C[135] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 23,
+        [_Location_line]: 819,
+        [_Location_file]: null
+      });
+    },
+    get C136() {
+      return C[136] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 23,
+        [_Location_line]: 820,
+        [_Location_file]: null
+      });
+    },
+    get C137() {
+      return C[137] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "matchTextDirection",
+        [_Location_column]: 23,
+        [_Location_line]: 821,
+        [_Location_file]: null
+      });
+    },
+    get C138() {
+      return C[138] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "centerSlice",
+        [_Location_column]: 23,
+        [_Location_line]: 823,
+        [_Location_file]: null
+      });
+    },
+    get C139() {
+      return C[139] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filterQuality",
+        [_Location_column]: 23,
+        [_Location_line]: 824,
+        [_Location_file]: null
+      });
+    },
+    get C140() {
+      return C[140] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 23,
+        [_Location_line]: 826,
+        [_Location_file]: null
+      });
+    },
+    get C141() {
+      return C[141] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "colorBlendMode",
+        [_Location_column]: 23,
+        [_Location_line]: 827,
+        [_Location_file]: null
+      });
+    },
+    get C142() {
+      return C[142] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 23,
+        [_Location_line]: 828,
+        [_Location_file]: null
+      });
+    },
+    get C143() {
+      return C[143] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 23,
+        [_Location_line]: 829,
+        [_Location_file]: null
+      });
+    },
+    get C144() {
+      return C[144] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "repeat",
+        [_Location_column]: 23,
+        [_Location_line]: 830,
+        [_Location_file]: null
+      });
+    },
+    get C145() {
+      return C[145] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticLabel",
+        [_Location_column]: 23,
+        [_Location_line]: 831,
+        [_Location_file]: null
+      });
+    },
+    get C146() {
+      return C[146] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "excludeFromSemantics",
+        [_Location_column]: 23,
+        [_Location_line]: 832,
+        [_Location_file]: null
+      });
+    },
+    get C131() {
+      return C[131] = dart.constList([C[132] || CT.C132, C[133] || CT.C133, C[134] || CT.C134, C[135] || CT.C135, C[136] || CT.C136, C[137] || CT.C137, C[138] || CT.C138, C[139] || CT.C139, C[140] || CT.C140, C[141] || CT.C141, C[142] || CT.C142, C[143] || CT.C143, C[144] || CT.C144, C[145] || CT.C145, C[146] || CT.C146], T._LocationL());
+    },
+    get C130() {
+      return C[130] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[131] || CT.C131,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 798,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C149() {
+      return C[149] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 798,
+        [_Location_file]: null
+      });
+    },
+    get C150() {
+      return C[150] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 21,
+        [_Location_line]: 837,
+        [_Location_file]: null
+      });
+    },
+    get C148() {
+      return C[148] = dart.constList([C[149] || CT.C149, C[150] || CT.C150], T._LocationL());
+    },
+    get C147() {
+      return C[147] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[148] || CT.C148,
+        [_Location_name]: null,
+        [_Location_column]: 51,
+        [_Location_line]: 797,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C153() {
+      return C[153] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 31,
+        [_Location_line]: 856,
+        [_Location_file]: null
+      });
+    },
+    get C154() {
+      return C[154] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 31,
+        [_Location_line]: 857,
+        [_Location_file]: null
+      });
+    },
+    get C152() {
+      return C[152] = dart.constList([C[153] || CT.C153, C[154] || CT.C154], T._LocationL());
+    },
+    get C151() {
+      return C[151] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[152] || CT.C152,
+        [_Location_name]: null,
+        [_Location_column]: 36,
+        [_Location_line]: 855,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C157() {
+      return C[157] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 29,
+        [_Location_line]: 855,
+        [_Location_file]: null
+      });
+    },
+    get C158() {
+      return C[158] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 29,
+        [_Location_line]: 862,
+        [_Location_file]: null
+      });
+    },
+    get C156() {
+      return C[156] = dart.constList([C[157] || CT.C157, C[158] || CT.C158], T._LocationL());
+    },
+    get C155() {
+      return C[155] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[156] || CT.C156,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 854,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C159() {
+      return C[159] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[129] || CT.C129,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 868,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C162() {
+      return C[162] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "src",
+        [_Location_column]: 38,
+        [_Location_line]: 851,
+        [_Location_file]: null
+      });
+    },
+    get C163() {
+      return C[163] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "frameBuilder",
+        [_Location_column]: 23,
+        [_Location_line]: 852,
+        [_Location_file]: null
+      });
+    },
+    get C164() {
+      return C[164] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 23,
+        [_Location_line]: 870,
+        [_Location_file]: null
+      });
+    },
+    get C165() {
+      return C[165] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 23,
+        [_Location_line]: 871,
+        [_Location_file]: null
+      });
+    },
+    get C166() {
+      return C[166] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scale",
+        [_Location_column]: 23,
+        [_Location_line]: 872,
+        [_Location_file]: null
+      });
+    },
+    get C167() {
+      return C[167] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "matchTextDirection",
+        [_Location_column]: 23,
+        [_Location_line]: 873,
+        [_Location_file]: null
+      });
+    },
+    get C168() {
+      return C[168] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "centerSlice",
+        [_Location_column]: 23,
+        [_Location_line]: 875,
+        [_Location_file]: null
+      });
+    },
+    get C169() {
+      return C[169] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "filterQuality",
+        [_Location_column]: 23,
+        [_Location_line]: 876,
+        [_Location_file]: null
+      });
+    },
+    get C170() {
+      return C[170] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 23,
+        [_Location_line]: 878,
+        [_Location_file]: null
+      });
+    },
+    get C171() {
+      return C[171] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "colorBlendMode",
+        [_Location_column]: 23,
+        [_Location_line]: 879,
+        [_Location_file]: null
+      });
+    },
+    get C172() {
+      return C[172] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fit",
+        [_Location_column]: 23,
+        [_Location_line]: 880,
+        [_Location_file]: null
+      });
+    },
+    get C173() {
+      return C[173] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 23,
+        [_Location_line]: 881,
+        [_Location_file]: null
+      });
+    },
+    get C174() {
+      return C[174] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "repeat",
+        [_Location_column]: 23,
+        [_Location_line]: 882,
+        [_Location_file]: null
+      });
+    },
+    get C175() {
+      return C[175] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticLabel",
+        [_Location_column]: 23,
+        [_Location_line]: 883,
+        [_Location_file]: null
+      });
+    },
+    get C176() {
+      return C[176] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "excludeFromSemantics",
+        [_Location_column]: 23,
+        [_Location_line]: 884,
+        [_Location_file]: null
+      });
+    },
+    get C161() {
+      return C[161] = dart.constList([C[162] || CT.C162, C[163] || CT.C163, C[164] || CT.C164, C[165] || CT.C165, C[166] || CT.C166, C[167] || CT.C167, C[168] || CT.C168, C[169] || CT.C169, C[170] || CT.C170, C[171] || CT.C171, C[172] || CT.C172, C[173] || CT.C173, C[174] || CT.C174, C[175] || CT.C175, C[176] || CT.C176], T._LocationL());
+    },
+    get C160() {
+      return C[160] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[161] || CT.C161,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 850,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C179() {
+      return C[179] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 850,
+        [_Location_file]: null
+      });
+    },
+    get C180() {
+      return C[180] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 21,
+        [_Location_line]: 889,
+        [_Location_file]: null
+      });
+    },
+    get C178() {
+      return C[178] = dart.constList([C[179] || CT.C179, C[180] || CT.C180], T._LocationL());
+    },
+    get C177() {
+      return C[177] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[178] || CT.C178,
+        [_Location_name]: null,
+        [_Location_column]: 51,
+        [_Location_line]: 849,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C183() {
+      return C[183] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 17,
+        [_Location_line]: 912,
+        [_Location_file]: null
+      });
+    },
+    get C182() {
+      return C[182] = dart.constList([C[183] || CT.C183], T._LocationL());
+    },
+    get C181() {
+      return C[181] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[182] || CT.C182,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 911,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C186() {
+      return C[186] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 15,
+        [_Location_line]: 908,
+        [_Location_file]: null
+      });
+    },
+    get C187() {
+      return C[187] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 15,
+        [_Location_line]: 909,
+        [_Location_file]: null
+      });
+    },
+    get C188() {
+      return C[188] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 911,
+        [_Location_file]: null
+      });
+    },
+    get C185() {
+      return C[185] = dart.constList([C[186] || CT.C186, C[187] || CT.C187, C[188] || CT.C188], T._LocationL());
+    },
+    get C184() {
+      return C[184] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[185] || CT.C185,
+        [_Location_name]: null,
+        [_Location_column]: 35,
+        [_Location_line]: 907,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C191() {
+      return C[191] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 17,
+        [_Location_line]: 991,
+        [_Location_file]: null
+      });
+    },
+    get C192() {
+      return C[192] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "text",
+        [_Location_column]: 17,
+        [_Location_line]: 992,
+        [_Location_file]: null
+      });
+    },
+    get C190() {
+      return C[190] = dart.constList([C[191] || CT.C191, C[192] || CT.C192], T._LocationL());
+    },
+    get C189() {
+      return C[189] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[190] || CT.C190,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 990,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C195() {
+      return C[195] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shrinkToFit",
+        [_Location_column]: 15,
+        [_Location_line]: 980,
+        [_Location_file]: null
+      });
+    },
+    get C196() {
+      return C[196] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 15,
+        [_Location_line]: 981,
+        [_Location_file]: null
+      });
+    },
+    get C197() {
+      return C[197] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 15,
+        [_Location_line]: 988,
+        [_Location_file]: null
+      });
+    },
+    get C198() {
+      return C[198] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 15,
+        [_Location_line]: 989,
+        [_Location_file]: null
+      });
+    },
+    get C199() {
+      return C[199] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 990,
+        [_Location_file]: null
+      });
+    },
+    get C194() {
+      return C[194] = dart.constList([C[195] || CT.C195, C[196] || CT.C196, C[197] || CT.C197, C[198] || CT.C198, C[199] || CT.C199], T._LocationL());
+    },
+    get C193() {
+      return C[193] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[194] || CT.C194,
+        [_Location_name]: null,
+        [_Location_column]: 35,
+        [_Location_line]: 979,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_html-0.11.1/lib/rich_text_parser.dart"
+      });
+    },
+    get C200() {
+      return C[200] = dart.constList(["b", "i", "address", "cite", "var", "em", "strong", "kbd", "samp", "tt", "code", "ins", "u", "small", "abbr", "acronym", "mark", "ol", "ul", "blockquote", "del", "s", "strike", "ruby", "rp", "rt", "bdi", "data", "time", "span", "big", "sub"], T.StringL());
+    },
+    get C201() {
+      return C[201] = dart.constList(["a", "br", "table", "tbody", "caption", "td", "tfoot", "th", "thead", "tr", "q"], T.StringL());
+    },
+    get C202() {
+      return C[202] = dart.constList(["article", "aside", "body", "center", "dd", "dfn", "div", "dl", "dt", "figcaption", "figure", "footer", "h1", "h2", "h3", "h4", "h5", "h6", "header", "hr", "img", "li", "main", "nav", "noscript", "p", "pre", "section"], T.StringL());
+    }
+  }, false);
+  var C = Array(203).fill(void 0);
+  var I = ["package:flutter_html/rich_text_parser.dart"];
+  var url$ = dart.privateName(rich_text_parser, "LinkTextSpan.url");
+  rich_text_parser.LinkTextSpan = class LinkTextSpan extends text_span.TextSpan {
+    get url() {
+      return this[url$];
+    }
+    set url(value) {
+      super.url = value;
+    }
+  };
+  (rich_text_parser.LinkTextSpan.new = function(opts) {
+    let t0, t0$;
+    let style = opts && 'style' in opts ? opts.style : null;
+    let url = opts && 'url' in opts ? opts.url : null;
+    let text = opts && 'text' in opts ? opts.text : null;
+    let onLinkTap = opts && 'onLinkTap' in opts ? opts.onLinkTap : null;
+    let children = opts && 'children' in opts ? opts.children : null;
+    this[url$] = url;
+    rich_text_parser.LinkTextSpan.__proto__.new.call(this, {style: style, text: text, children: (t0 = children, t0 == null ? T.JSArrayOfTextSpanL().of([]) : t0), recognizer: (t0$ = new tap.TapGestureRecognizer.new(), (() => {
+        t0$.onTap = dart.fn(() => {
+          let t1;
+          t1 = onLinkTap;
+          t1 == null ? null : t1(url);
+        }, T.VoidToNull());
+        return t0$;
+      })())});
+    ;
+  }).prototype = rich_text_parser.LinkTextSpan.prototype;
+  dart.addTypeTests(rich_text_parser.LinkTextSpan);
+  dart.addTypeCaches(rich_text_parser.LinkTextSpan);
+  dart.setLibraryUri(rich_text_parser.LinkTextSpan, I[0]);
+  dart.setFieldSignature(rich_text_parser.LinkTextSpan, () => ({
+    __proto__: dart.getFields(rich_text_parser.LinkTextSpan.__proto__),
+    url: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  var children$ = dart.privateName(rich_text_parser, "LinkBlock.children");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  rich_text_parser.LinkBlock = class LinkBlock extends container.Container {
+    get children() {
+      return this[children$];
+    }
+    set children(value) {
+      super.children = value;
+    }
+  };
+  (rich_text_parser.LinkBlock.new = function(opts) {
+    let url = opts && 'url' in opts ? opts.url : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let onLinkTap = opts && 'onLinkTap' in opts ? opts.onLinkTap : null;
+    let children = opts && 'children' in opts ? opts.children : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[children$] = children;
+    rich_text_parser.LinkBlock.__proto__.new.call(this, {padding: padding, margin: margin, child: new gesture_detector.GestureDetector.new({onTap: dart.fn(() => {
+          onLinkTap(url);
+        }, T.VoidToNull()), child: new basic.Column.new({children: children, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[3] || CT.C3}), $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = rich_text_parser.LinkBlock.prototype;
+  dart.addTypeTests(rich_text_parser.LinkBlock);
+  dart.addTypeCaches(rich_text_parser.LinkBlock);
+  dart.setLibraryUri(rich_text_parser.LinkBlock, I[0]);
+  dart.setFieldSignature(rich_text_parser.LinkBlock, () => ({
+    __proto__: dart.getFields(rich_text_parser.LinkBlock.__proto__),
+    children: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(framework.Widget))))
+  }));
+  var child$ = dart.privateName(rich_text_parser, "BlockText.child");
+  var padding$ = dart.privateName(rich_text_parser, "BlockText.padding");
+  var margin$ = dart.privateName(rich_text_parser, "BlockText.margin");
+  var decoration$ = dart.privateName(rich_text_parser, "BlockText.decoration");
+  var shrinkToFit$ = dart.privateName(rich_text_parser, "BlockText.shrinkToFit");
+  rich_text_parser.BlockText = class BlockText extends framework.StatelessWidget {
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get padding() {
+      return this[padding$];
+    }
+    set padding(value) {
+      super.padding = value;
+    }
+    get margin() {
+      return this[margin$];
+    }
+    set margin(value) {
+      super.margin = value;
+    }
+    get decoration() {
+      return this[decoration$];
+    }
+    set decoration(value) {
+      super.decoration = value;
+    }
+    get shrinkToFit() {
+      return this[shrinkToFit$];
+    }
+    set shrinkToFit(value) {
+      super.shrinkToFit = value;
+    }
+    build(context) {
+      return new container.Container.new({width: dart.test(this.shrinkToFit) ? null : 1 / 0, padding: this.padding, margin: this.margin, decoration: this.decoration, child: this.child, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7});
+    }
+  };
+  (rich_text_parser.BlockText.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let shrinkToFit = opts && 'shrinkToFit' in opts ? opts.shrinkToFit : null;
+    let padding = opts && 'padding' in opts ? opts.padding : null;
+    let margin = opts && 'margin' in opts ? opts.margin : null;
+    let decoration = opts && 'decoration' in opts ? opts.decoration : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$] = child;
+    this[shrinkToFit$] = shrinkToFit;
+    this[padding$] = padding;
+    this[margin$] = margin;
+    this[decoration$] = decoration;
+    rich_text_parser.BlockText.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = rich_text_parser.BlockText.prototype;
+  dart.addTypeTests(rich_text_parser.BlockText);
+  dart.addTypeCaches(rich_text_parser.BlockText);
+  dart.setMethodSignature(rich_text_parser.BlockText, () => ({
+    __proto__: dart.getMethods(rich_text_parser.BlockText.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(rich_text_parser.BlockText, I[0]);
+  dart.setFieldSignature(rich_text_parser.BlockText, () => ({
+    __proto__: dart.getFields(rich_text_parser.BlockText.__proto__),
+    child: dart.finalFieldType(dart.legacy(basic.RichText)),
+    padding: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsets)),
+    margin: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsets)),
+    decoration: dart.finalFieldType(dart.legacy(decoration.Decoration)),
+    shrinkToFit: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  var rootWidgetList$ = dart.privateName(rich_text_parser, "ParseContext.rootWidgetList");
+  var parentElement$ = dart.privateName(rich_text_parser, "ParseContext.parentElement");
+  var indentLevel$ = dart.privateName(rich_text_parser, "ParseContext.indentLevel");
+  var listCount$ = dart.privateName(rich_text_parser, "ParseContext.listCount");
+  var listChar$ = dart.privateName(rich_text_parser, "ParseContext.listChar");
+  var blockType$ = dart.privateName(rich_text_parser, "ParseContext.blockType");
+  var condenseWhitespace$ = dart.privateName(rich_text_parser, "ParseContext.condenseWhitespace");
+  var spansOnly$ = dart.privateName(rich_text_parser, "ParseContext.spansOnly");
+  var inBlock$ = dart.privateName(rich_text_parser, "ParseContext.inBlock");
+  var childStyle$ = dart.privateName(rich_text_parser, "ParseContext.childStyle");
+  rich_text_parser.ParseContext = class ParseContext extends core.Object {
+    get rootWidgetList() {
+      return this[rootWidgetList$];
+    }
+    set rootWidgetList(value) {
+      this[rootWidgetList$] = value;
+    }
+    get parentElement() {
+      return this[parentElement$];
+    }
+    set parentElement(value) {
+      this[parentElement$] = value;
+    }
+    get indentLevel() {
+      return this[indentLevel$];
+    }
+    set indentLevel(value) {
+      this[indentLevel$] = value;
+    }
+    get listCount() {
+      return this[listCount$];
+    }
+    set listCount(value) {
+      this[listCount$] = value;
+    }
+    get listChar() {
+      return this[listChar$];
+    }
+    set listChar(value) {
+      this[listChar$] = value;
+    }
+    get blockType() {
+      return this[blockType$];
+    }
+    set blockType(value) {
+      this[blockType$] = value;
+    }
+    get condenseWhitespace() {
+      return this[condenseWhitespace$];
+    }
+    set condenseWhitespace(value) {
+      this[condenseWhitespace$] = value;
+    }
+    get spansOnly() {
+      return this[spansOnly$];
+    }
+    set spansOnly(value) {
+      this[spansOnly$] = value;
+    }
+    get inBlock() {
+      return this[inBlock$];
+    }
+    set inBlock(value) {
+      this[inBlock$] = value;
+    }
+    get childStyle() {
+      return this[childStyle$];
+    }
+    set childStyle(value) {
+      this[childStyle$] = value;
+    }
+  };
+  (rich_text_parser.ParseContext.new = function(opts) {
+    let t0;
+    let rootWidgetList = opts && 'rootWidgetList' in opts ? opts.rootWidgetList : null;
+    let parentElement = opts && 'parentElement' in opts ? opts.parentElement : null;
+    let indentLevel = opts && 'indentLevel' in opts ? opts.indentLevel : 0;
+    let listCount = opts && 'listCount' in opts ? opts.listCount : 0;
+    let listChar = opts && 'listChar' in opts ? opts.listChar : "•";
+    let blockType = opts && 'blockType' in opts ? opts.blockType : null;
+    let condenseWhitespace = opts && 'condenseWhitespace' in opts ? opts.condenseWhitespace : true;
+    let spansOnly = opts && 'spansOnly' in opts ? opts.spansOnly : false;
+    let inBlock = opts && 'inBlock' in opts ? opts.inBlock : false;
+    let childStyle = opts && 'childStyle' in opts ? opts.childStyle : null;
+    this[indentLevel$] = 0;
+    this[listCount$] = 0;
+    this[listChar$] = "•";
+    this[condenseWhitespace$] = true;
+    this[spansOnly$] = false;
+    this[inBlock$] = false;
+    this[rootWidgetList$] = rootWidgetList;
+    this[parentElement$] = parentElement;
+    this[indentLevel$] = indentLevel;
+    this[listCount$] = listCount;
+    this[listChar$] = listChar;
+    this[blockType$] = blockType;
+    this[condenseWhitespace$] = condenseWhitespace;
+    this[spansOnly$] = spansOnly;
+    this[inBlock$] = inBlock;
+    this[childStyle$] = childStyle;
+    this.childStyle = (t0 = this.childStyle, t0 == null ? new text_style.TextStyle.new() : t0);
+  }).prototype = rich_text_parser.ParseContext.prototype;
+  (rich_text_parser.ParseContext.fromContext = function(parseContext) {
+    let t0;
+    this[indentLevel$] = 0;
+    this[listCount$] = 0;
+    this[listChar$] = "•";
+    this[condenseWhitespace$] = true;
+    this[spansOnly$] = false;
+    this[inBlock$] = false;
+    this[childStyle$] = null;
+    this[blockType$] = null;
+    this[parentElement$] = null;
+    this[rootWidgetList$] = null;
+    this.rootWidgetList = parseContext.rootWidgetList;
+    this.parentElement = parseContext.parentElement;
+    this.indentLevel = parseContext.indentLevel;
+    this.listCount = parseContext.listCount;
+    this.listChar = parseContext.listChar;
+    this.blockType = parseContext.blockType;
+    this.condenseWhitespace = parseContext.condenseWhitespace;
+    this.spansOnly = parseContext.spansOnly;
+    this.inBlock = parseContext.inBlock;
+    this.childStyle = (t0 = parseContext.childStyle, t0 == null ? new text_style.TextStyle.new() : t0);
+  }).prototype = rich_text_parser.ParseContext.prototype;
+  dart.addTypeTests(rich_text_parser.ParseContext);
+  dart.addTypeCaches(rich_text_parser.ParseContext);
+  dart.setLibraryUri(rich_text_parser.ParseContext, I[0]);
+  dart.setFieldSignature(rich_text_parser.ParseContext, () => ({
+    __proto__: dart.getFields(rich_text_parser.ParseContext.__proto__),
+    rootWidgetList: dart.fieldType(dart.legacy(core.List$(dart.legacy(framework.Widget)))),
+    parentElement: dart.fieldType(dart.dynamic),
+    indentLevel: dart.fieldType(dart.legacy(core.int)),
+    listCount: dart.fieldType(dart.legacy(core.int)),
+    listChar: dart.fieldType(dart.legacy(core.String)),
+    blockType: dart.fieldType(dart.legacy(core.String)),
+    condenseWhitespace: dart.fieldType(dart.legacy(core.bool)),
+    spansOnly: dart.fieldType(dart.legacy(core.bool)),
+    inBlock: dart.fieldType(dart.legacy(core.bool)),
+    childStyle: dart.fieldType(dart.legacy(text_style.TextStyle))
+  }));
+  var indentSize = dart.privateName(rich_text_parser, "HtmlRichTextParser.indentSize");
+  var shrinkToFit$0 = dart.privateName(rich_text_parser, "HtmlRichTextParser.shrinkToFit");
+  var onLinkTap$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.onLinkTap");
+  var renderNewlines$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.renderNewlines");
+  var html$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.html");
+  var customEdgeInsets$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.customEdgeInsets");
+  var customTextStyle$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.customTextStyle");
+  var customTextAlign$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.customTextAlign");
+  var onImageError$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.onImageError");
+  var linkStyle$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.linkStyle");
+  var imageProperties$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.imageProperties");
+  var onImageTap$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.onImageTap");
+  var showImages$ = dart.privateName(rich_text_parser, "HtmlRichTextParser.showImages");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var ColorSwatch__swatch = dart.privateName(colors$, "ColorSwatch._swatch");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextDecoration__mask = dart.privateName(ui, "TextDecoration._mask");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var _hasBlockChild = dart.privateName(rich_text_parser, "_hasBlockChild");
+  var _parseNode = dart.privateName(rich_text_parser, "_parseNode");
+  rich_text_parser.HtmlRichTextParser = class HtmlRichTextParser extends framework.StatelessWidget {
+    get indentSize() {
+      return this[indentSize];
+    }
+    set indentSize(value) {
+      super.indentSize = value;
+    }
+    get shrinkToFit() {
+      return this[shrinkToFit$0];
+    }
+    set shrinkToFit(value) {
+      super.shrinkToFit = value;
+    }
+    get onLinkTap() {
+      return this[onLinkTap$];
+    }
+    set onLinkTap(value) {
+      super.onLinkTap = value;
+    }
+    get renderNewlines() {
+      return this[renderNewlines$];
+    }
+    set renderNewlines(value) {
+      super.renderNewlines = value;
+    }
+    get html() {
+      return this[html$];
+    }
+    set html(value) {
+      super.html = value;
+    }
+    get customEdgeInsets() {
+      return this[customEdgeInsets$];
+    }
+    set customEdgeInsets(value) {
+      super.customEdgeInsets = value;
+    }
+    get customTextStyle() {
+      return this[customTextStyle$];
+    }
+    set customTextStyle(value) {
+      super.customTextStyle = value;
+    }
+    get customTextAlign() {
+      return this[customTextAlign$];
+    }
+    set customTextAlign(value) {
+      super.customTextAlign = value;
+    }
+    get onImageError() {
+      return this[onImageError$];
+    }
+    set onImageError(value) {
+      super.onImageError = value;
+    }
+    get linkStyle() {
+      return this[linkStyle$];
+    }
+    set linkStyle(value) {
+      super.linkStyle = value;
+    }
+    get imageProperties() {
+      return this[imageProperties$];
+    }
+    set imageProperties(value) {
+      super.imageProperties = value;
+    }
+    get onImageTap() {
+      return this[onImageTap$];
+    }
+    set onImageTap(value) {
+      super.onImageTap = value;
+    }
+    get showImages() {
+      return this[showImages$];
+    }
+    set showImages(value) {
+      super.showImages = value;
+    }
+    static get _supportedElements() {
+      let t0;
+      t0 = [];
+      return (() => {
+        t0[$addAll](rich_text_parser.HtmlRichTextParser._supportedStyleElements);
+        t0[$addAll](rich_text_parser.HtmlRichTextParser._supportedSpecialtyElements);
+        t0[$addAll](rich_text_parser.HtmlRichTextParser._supportedBlockElements);
+        return t0;
+      })();
+    }
+    [_hasBlockChild](node, opts) {
+      let ignoreSelf = opts && 'ignoreSelf' in opts ? opts.ignoreSelf : true;
+      let retval = false;
+      if (T.ElementL().is(node)) {
+        if (dart.test(rich_text_parser.HtmlRichTextParser._supportedBlockElements[$contains](node.localName)) && !dart.test(ignoreSelf)) return true;
+        node.nodes.forEach(dart.fn(node => {
+          if (dart.test(this[_hasBlockChild](node, {ignoreSelf: false}))) retval = true;
+        }, T.NodeLToNull()));
+      }
+      return retval;
+    }
+    build(context) {
+      let data = this.html;
+      if (dart.test(this.renderNewlines)) {
+        data = data[$replaceAll]("\n", "<br />");
+      }
+      let document = parser.parse(data);
+      let body = document.body;
+      let widgetList = T.JSArrayOfWidgetL().of([]);
+      let parseContext = new rich_text_parser.ParseContext.new({rootWidgetList: widgetList, childStyle: text$.DefaultTextStyle.of(context).style});
+      this[_parseNode](body, parseContext, context);
+      let children = T.JSArrayOfWidgetL().of([]);
+      widgetList[$forEach](dart.fn(w => {
+        if (T.BlockTextL().is(w)) {
+          if (w.child.text == null) return;
+          let childTextSpan = T.TextSpanL().as(w.child.text);
+          if ((childTextSpan.text == null || childTextSpan.text[$isEmpty]) && (childTextSpan.children == null || dart.test(childTextSpan.children[$isEmpty]))) return;
+        } else if (T.LinkBlockL().is(w)) {
+          if (dart.test(w.children[$isEmpty])) return;
+        } else if (T.LinkTextSpanL().is(w)) {
+          if (w.text[$isEmpty] && dart.test(w.children[$isEmpty])) return;
+        }
+        children[$add](T.WidgetL().as(w));
+      }, T.dynamicToNull()));
+      return new basic.Column.new({children: children, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22});
+    }
+    [_parseNode](node, parseContext, buildContext) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3, t1, t0$4, t0$5, t1$, t0$6, t0$7, t0$8, t0$9, t0$10, t0$11, t0$12, t0$13, t0$14, t0$15, t0$16, t0$17, t0$18, t0$19, t0$20, t0$21, t0$22, t0$23, t0$24, t0$25, t0$26, t0$27, t0$28, t0$29, t0$30, t0$31, t0$32, t0$33, t0$34, t0$35, t0$36, t0$37, t0$38, t0$39, t0$40, t0$41, t0$42, t0$43, t0$44, t0$45, t0$46, t0$47, t0$48, t0$49, t0$50, t0$51, t0$52, t0$53, t0$54, t0$55, t0$56, t0$57, t0$58, t0$59, t0$60, t0$61, t0$62, t0$63, t0$64, t0$65, t0$66, t0$67, t0$68, t0$69, t0$70, t0$71, t0$72, t1$0, t0$73;
+      if (T.TextL().is(node)) {
+        if (node.text[$trim]() === "" && node.text[$indexOf](" ") === -1) {
+          return;
+        }
+        let finalText = node.text;
+        if (dart.test(parseContext.condenseWhitespace)) {
+          finalText = this.condenseHtmlWhitespace(node.text);
+          if (parseContext.parentElement == null)
+            finalText = finalText[$trimLeft]();
+          else if (T.TextSpanL().is(parseContext.parentElement) || T.LinkTextSpanL().is(parseContext.parentElement)) {
+            let lastString = T.StringL().as((t0 = dart.dload(parseContext.parentElement, 'text'), t0 == null ? "" : t0));
+            if (!dart.dtest(dart.dload(dart.dload(parseContext.parentElement, 'children'), 'isEmpty'))) {
+              lastString = T.StringL().as((t0$ = dart.dload(dart.dload(dart.dload(parseContext.parentElement, 'children'), 'last'), 'text'), t0$ == null ? "" : t0$));
+            }
+            if (lastString[$endsWith](" ") || lastString[$endsWith]("\n")) {
+              finalText = finalText[$trimLeft]();
+            }
+          }
+        }
+        if (finalText[$trim]()[$isEmpty] && finalText !== " ") return;
+        let span = new text_span.TextSpan.new({text: finalText, children: T.JSArrayOfTextSpanL().of([]), style: parseContext.childStyle});
+        let treatLikeBlock = T.JSArrayOfStringL().of(["blockquote", "ul", "ol"])[$indexOf](parseContext.blockType) !== -1;
+        if (parseContext.parentElement == null) {
+          if (treatLikeBlock) {
+            let decoration = null;
+            if (parseContext.blockType === "blockquote") {
+              decoration = new box_decoration.BoxDecoration.new({border: new box_border.Border.new({left: new borders.BorderSide.new({color: colors.Colors.black38, width: 2.0})})});
+              parseContext.childStyle = parseContext.childStyle.merge(new text_style.TextStyle.new({fontStyle: ui.FontStyle.italic}));
+            }
+            let blockText = new rich_text_parser.BlockText.new({shrinkToFit: this.shrinkToFit, margin: new edge_insets.EdgeInsets.only({top: 8.0, bottom: 8.0, left: dart.notNull(parseContext.indentLevel) * dart.notNull(this.indentSize)}), padding: new edge_insets.EdgeInsets.all(2.0), decoration: decoration, child: new basic.RichText.new({textAlign: ui.TextAlign.left, text: span, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29});
+            parseContext.rootWidgetList[$add](blockText);
+          } else {
+            parseContext.rootWidgetList[$add](new rich_text_parser.BlockText.new({child: new basic.RichText.new({text: span, $creationLocationd_0dea112b090073317d4: C[36] || CT.C36}), shrinkToFit: this.shrinkToFit, $creationLocationd_0dea112b090073317d4: C[39] || CT.C39}));
+          }
+          parseContext.parentElement = span;
+        } else if (T.LinkTextSpanL().is(parseContext.parentElement)) {
+          dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [new rich_text_parser.LinkTextSpan.new({style: T.TextStyleL().as(dart.dsend(dart.dload(parseContext.parentElement, 'style'), 'merge', [parseContext.childStyle])), url: T.StringL().as(dart.dload(parseContext.parentElement, 'url')), text: finalText, onLinkTap: T.StringLToLvoid().as(this.onLinkTap)})]);
+        } else if (!T.ListLOfWidgetL().is(dart.dload(parseContext.parentElement, 'children'))) {
+          dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [span]);
+        } else {
+        }
+        return;
+      } else if (T.ElementL().is(node)) {
+        if (!dart.dtest(dart.dsend(rich_text_parser.HtmlRichTextParser._supportedElements, 'contains', [node.localName]))) {
+          return;
+        }
+        let nextContext = new rich_text_parser.ParseContext.fromContext(parseContext);
+        if (dart.test(rich_text_parser.HtmlRichTextParser._supportedStyleElements[$contains](node.localName))) {
+          let childStyle = (t0$0 = parseContext.childStyle, t0$0 == null ? new text_style.TextStyle.new() : t0$0);
+          switch (node.localName) {
+            case "b":
+            case "strong":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontWeight: ui.FontWeight.bold}));
+              break;
+            }
+            case "i":
+            case "address":
+            case "cite":
+            case "var":
+            case "em":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontStyle: ui.FontStyle.italic}));
+              break;
+            }
+            case "kbd":
+            case "samp":
+            case "tt":
+            case "code":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontFamily: "monospace"}));
+              break;
+            }
+            case "ins":
+            case "u":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({decoration: ui.TextDecoration.underline}));
+              break;
+            }
+            case "abbr":
+            case "acronym":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({decoration: ui.TextDecoration.underline, decorationStyle: ui.TextDecorationStyle.dotted}));
+              break;
+            }
+            case "big":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontSize: 20.0}));
+              break;
+            }
+            case "small":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontSize: 10.0}));
+              break;
+            }
+            case "mark":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({backgroundColor: colors.Colors.yellow, color: colors.Colors.black}));
+              break;
+            }
+            case "sub":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({fontSize: dart.notNull(childStyle.fontSize) * 0.7}));
+              break;
+            }
+            case "del":
+            case "s":
+            case "strike":
+            {
+              childStyle = childStyle.merge(new text_style.TextStyle.new({decoration: ui.TextDecoration.lineThrough}));
+              break;
+            }
+            case "ol":
+            {
+              t0$1 = nextContext;
+              t0$1.indentLevel = dart.notNull(t0$1.indentLevel) + 1;
+              nextContext.listChar = "#";
+              nextContext.listCount = 0;
+              nextContext.blockType = "ol";
+              break;
+            }
+            case "ul":
+            {
+              t0$2 = nextContext;
+              t0$2.indentLevel = dart.notNull(t0$2.indentLevel) + 1;
+              nextContext.listChar = "•";
+              nextContext.listCount = 0;
+              nextContext.blockType = "ul";
+              break;
+            }
+            case "blockquote":
+            {
+              t0$3 = nextContext;
+              t0$3.indentLevel = dart.notNull(t0$3.indentLevel) + 1;
+              nextContext.blockType = "blockquote";
+              break;
+            }
+            case "ruby":
+            case "rt":
+            case "rp":
+            case "bdi":
+            case "data":
+            case "time":
+            case "span":
+            {
+              break;
+            }
+          }
+          if (this.customTextStyle != null) {
+            let customStyle = (t0$4 = node, t1 = childStyle, this.customTextStyle(t0$4, t1));
+            if (customStyle != null) {
+              childStyle = customStyle;
+            }
+          }
+          nextContext.childStyle = childStyle;
+        } else if (dart.test(rich_text_parser.HtmlRichTextParser._supportedSpecialtyElements[$contains](node.localName))) {
+          switch (node.localName) {
+            case "a":
+            {
+              let url = (t0$5 = node.attributes[$_get]("href"), t0$5 == null ? null : t0$5);
+              if (dart.test(this[_hasBlockChild](node))) {
+                let linkContainer = new rich_text_parser.LinkBlock.new({url: url, margin: new edge_insets.EdgeInsets.only({left: dart.notNull(parseContext.indentLevel) * dart.notNull(this.indentSize)}), onLinkTap: T.StringLToLvoid().as(this.onLinkTap), children: T.JSArrayOfWidgetL().of([]), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+                nextContext.parentElement = linkContainer;
+                nextContext.rootWidgetList[$add](linkContainer);
+              } else {
+                let _linkStyle = parseContext.childStyle.merge(this.linkStyle);
+                let span = new rich_text_parser.LinkTextSpan.new({style: _linkStyle, url: url, onLinkTap: T.StringLToLvoid().as(this.onLinkTap), children: T.JSArrayOfTextSpanL().of([])});
+                if (T.TextSpanL().is(parseContext.parentElement)) {
+                  dart.dsend(dart.dload(nextContext.parentElement, 'children'), 'add', [span]);
+                } else {
+                  let blockElement = new rich_text_parser.BlockText.new({shrinkToFit: this.shrinkToFit, margin: new edge_insets.EdgeInsets.only({left: dart.notNull(parseContext.indentLevel) * dart.notNull(this.indentSize), top: 10.0}), child: new basic.RichText.new({text: span, $creationLocationd_0dea112b090073317d4: C[49] || CT.C49}), $creationLocationd_0dea112b090073317d4: C[52] || CT.C52});
+                  parseContext.rootWidgetList[$add](blockElement);
+                  nextContext.inBlock = true;
+                }
+                nextContext.childStyle = this.linkStyle;
+                nextContext.parentElement = span;
+              }
+              break;
+            }
+            case "br":
+            {
+              if (parseContext.parentElement != null && T.TextSpanL().is(parseContext.parentElement)) {
+                dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [new text_span.TextSpan.new({text: "\n", children: T.JSArrayOfInlineSpanL().of([])})]);
+              }
+              break;
+            }
+            case "table":
+            {
+              parseContext.parentElement = null;
+              nextContext.parentElement = new basic.Column.new({crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([]), $creationLocationd_0dea112b090073317d4: C[57] || CT.C57});
+              nextContext.rootWidgetList[$add](new container.Container.new({margin: new edge_insets.EdgeInsets.symmetric({vertical: 12.0}), child: T.WidgetN().as(nextContext.parentElement), $creationLocationd_0dea112b090073317d4: C[61] || CT.C61}));
+              break;
+            }
+            case "tbody":
+            case "thead":
+            case "tfoot":
+            {
+              break;
+            }
+            case "td":
+            case "th":
+            {
+              let colspan = 1;
+              if (node.attributes[$_get]("colspan") != null) {
+                colspan = core.int.tryParse(node.attributes[$_get]("colspan"));
+              }
+              nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontWeight: node.localName === "th" ? ui.FontWeight.bold : ui.FontWeight.normal}));
+              let text = new basic.RichText.new({text: new text_span.TextSpan.new({text: "", children: T.JSArrayOfTextSpanL().of([])}), $creationLocationd_0dea112b090073317d4: C[65] || CT.C65});
+              let cell = new basic.Expanded.new({flex: colspan, child: new container.Container.new({padding: new edge_insets.EdgeInsets.all(1.0), child: text, $creationLocationd_0dea112b090073317d4: C[68] || CT.C68}), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72});
+              dart.dsend(dart.dload(nextContext.parentElement, 'children'), 'add', [cell]);
+              nextContext.parentElement = text.text;
+              break;
+            }
+            case "tr":
+            {
+              let row = new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.center, children: T.JSArrayOfWidgetL().of([]), $creationLocationd_0dea112b090073317d4: C[76] || CT.C76});
+              dart.dsend(dart.dload(nextContext.parentElement, 'children'), 'add', [row]);
+              nextContext.parentElement = row;
+              break;
+            }
+            case "caption":
+            {
+              let row = new basic.Row.new({crossAxisAlignment: flex.CrossAxisAlignment.center, children: T.JSArrayOfWidgetL().of([]), $creationLocationd_0dea112b090073317d4: C[80] || CT.C80});
+              let text = new basic.RichText.new({textAlign: ui.TextAlign.center, textScaleFactor: 1.2, text: new text_span.TextSpan.new({text: "", children: T.JSArrayOfTextSpanL().of([])}), $creationLocationd_0dea112b090073317d4: C[84] || CT.C84});
+              let cell = new basic.Expanded.new({child: new container.Container.new({padding: new edge_insets.EdgeInsets.all(2.0), child: text, $creationLocationd_0dea112b090073317d4: C[89] || CT.C89}), $creationLocationd_0dea112b090073317d4: C[93] || CT.C93});
+              row.children[$add](cell);
+              dart.dsend(dart.dload(nextContext.parentElement, 'children'), 'add', [row]);
+              nextContext.parentElement = text.text;
+              break;
+            }
+            case "q":
+            {
+              if (parseContext.parentElement != null && T.TextSpanL().is(parseContext.parentElement)) {
+                dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [new text_span.TextSpan.new({text: "\"", children: T.JSArrayOfInlineSpanL().of([])})]);
+                let content = new text_span.TextSpan.new({text: "", children: T.JSArrayOfInlineSpanL().of([])});
+                dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [content]);
+                dart.dsend(dart.dload(parseContext.parentElement, 'children'), 'add', [new text_span.TextSpan.new({text: "\"", children: T.JSArrayOfInlineSpanL().of([])})]);
+                nextContext.parentElement = content;
+              }
+              break;
+            }
+          }
+          if (this.customTextStyle != null) {
+            let customStyle = (t0$6 = node, t1$ = nextContext.childStyle, this.customTextStyle(t0$6, t1$));
+            if (customStyle != null) {
+              nextContext.childStyle = customStyle;
+            }
+          }
+        } else if (dart.test(rich_text_parser.HtmlRichTextParser._supportedBlockElements[$contains](node.localName))) {
+          parseContext.parentElement = null;
+          let textAlign = ui.TextAlign.left;
+          if (this.customTextAlign != null) {
+            textAlign = (t0$8 = (t0$7 = node, this.customTextAlign(t0$7)), t0$8 == null ? textAlign : t0$8);
+          }
+          let _customEdgeInsets = null;
+          if (this.customEdgeInsets != null) {
+            _customEdgeInsets = (t0$9 = node, this.customEdgeInsets(t0$9));
+          }
+          let labelState = node.localName;
+          SL0:
+            while (true) {
+              switch (labelState) {
+                case "hr":
+                {
+                  parseContext.rootWidgetList[$add](new divider.Divider.new({height: 1.0, color: colors.Colors.black38, $creationLocationd_0dea112b090073317d4: C[96] || CT.C96}));
+                  break SL0;
+                }
+                case "img":
+                {
+                  if (dart.test(this.showImages)) {
+                    if (node.attributes[$_get]("src") != null) {
+                      let width = (t0$11 = (t0$10 = this.imageProperties, t0$10 == null ? null : t0$10.width), t0$11 == null ? node.attributes[$_get]("width") != null ? core.double.tryParse(node.attributes[$_get]("width")) : null : t0$11);
+                      let height = (t0$13 = (t0$12 = this.imageProperties, t0$12 == null ? null : t0$12.height), t0$13 == null ? node.attributes[$_get]("height") != null ? core.double.tryParse(node.attributes[$_get]("height")) : null : t0$13);
+                      if (node.attributes[$_get]("src")[$startsWith]("data:image") && node.attributes[$_get]("src")[$contains]("base64,")) {
+                        image.precacheImage(new image_provider.MemoryImage.new(convert.base64.decode(node.attributes[$_get]("src")[$split]("base64,")[$_get](1)[$trim]())), buildContext, {onError: (t0$14 = this.onImageError, t0$14 == null ? dart.fn((_, __) => {
+                          }, T.ObjectLAndStackTraceLToNull()) : t0$14)});
+                        parseContext.rootWidgetList[$add](new gesture_detector.GestureDetector.new({child: new image.Image.memory(convert.base64.decode(node.attributes[$_get]("src")[$split]("base64,")[$_get](1)[$trim]()), {width: dart.notNull((t0$15 = width, t0$15 == null ? -1.0 : t0$15)) > 0 ? width : null, height: dart.notNull((t0$16 = height, t0$16 == null ? -1.0 : t0$16)) > 0 ? width : null, scale: (t0$18 = (t0$17 = this.imageProperties, t0$17 == null ? null : t0$17.scale), t0$18 == null ? 1.0 : t0$18), matchTextDirection: (t0$20 = (t0$19 = this.imageProperties, t0$19 == null ? null : t0$19.matchTextDirection), t0$20 == null ? false : t0$20), centerSlice: (t0$21 = this.imageProperties, t0$21 == null ? null : t0$21.centerSlice), filterQuality: (t0$23 = (t0$22 = this.imageProperties, t0$22 == null ? null : t0$22.filterQuality), t0$23 == null ? ui.FilterQuality.low : t0$23), alignment: (t0$25 = (t0$24 = this.imageProperties, t0$24 == null ? null : t0$24.alignment), t0$25 == null ? alignment.Alignment.center : t0$25), colorBlendMode: (t0$26 = this.imageProperties, t0$26 == null ? null : t0$26.colorBlendMode), fit: (t0$27 = this.imageProperties, t0$27 == null ? null : t0$27.fit), color: (t0$28 = this.imageProperties, t0$28 == null ? null : t0$28.color), repeat: (t0$30 = (t0$29 = this.imageProperties, t0$29 == null ? null : t0$29.repeat), t0$30 == null ? decoration_image.ImageRepeat.noRepeat : t0$30), semanticLabel: (t0$31 = this.imageProperties, t0$31 == null ? null : t0$31.semanticLabel), excludeFromSemantics: (t0$32 = this.imageProperties, t0$32 == null ? null : t0$32.semanticLabel) == null ? true : false, $creationLocationd_0dea112b090073317d4: C[100] || CT.C100}), onTap: dart.fn(() => {
+                            let t0;
+                            if (this.onImageTap != null) {
+                              t0 = node.attributes[$_get]("src");
+                              this.onImageTap(t0);
+                            }
+                          }, T.VoidToNull()), $creationLocationd_0dea112b090073317d4: C[116] || CT.C116}));
+                      } else if (node.attributes[$_get]("src")[$startsWith]("asset:")) {
+                        let assetPath = node.attributes[$_get]("src")[$replaceFirst]("asset:", "");
+                        image.precacheImage(new image_resolution.AssetImage.new(assetPath), buildContext, {onError: (t0$33 = this.onImageError, t0$33 == null ? dart.fn((_, __) => {
+                          }, T.ObjectLAndStackTraceLToNull()) : t0$33)});
+                        parseContext.rootWidgetList[$add](new gesture_detector.GestureDetector.new({child: new image.Image.asset(assetPath, {frameBuilder: dart.fn((context, child, frame, _) => {
+                              if (node.attributes[$_get]("alt") != null && frame == null) {
+                                return new rich_text_parser.BlockText.new({child: new basic.RichText.new({textAlign: ui.TextAlign.center, text: new text_span.TextSpan.new({text: node.attributes[$_get]("alt"), style: nextContext.childStyle}), $creationLocationd_0dea112b090073317d4: C[120] || CT.C120}), shrinkToFit: this.shrinkToFit, $creationLocationd_0dea112b090073317d4: C[124] || CT.C124});
+                              }
+                              if (frame != null) {
+                                return child;
+                              }
+                              return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[128] || CT.C128});
+                            }, T.BuildContextLAndWidgetLAndintL__ToWidgetL()), width: dart.notNull((t0$34 = width, t0$34 == null ? -1.0 : t0$34)) > 0 ? width : null, height: dart.notNull((t0$35 = height, t0$35 == null ? -1.0 : t0$35)) > 0 ? height : null, scale: (t0$37 = (t0$36 = this.imageProperties, t0$36 == null ? null : t0$36.scale), t0$37 == null ? 1.0 : t0$37), matchTextDirection: (t0$39 = (t0$38 = this.imageProperties, t0$38 == null ? null : t0$38.matchTextDirection), t0$39 == null ? false : t0$39), centerSlice: (t0$40 = this.imageProperties, t0$40 == null ? null : t0$40.centerSlice), filterQuality: (t0$42 = (t0$41 = this.imageProperties, t0$41 == null ? null : t0$41.filterQuality), t0$42 == null ? ui.FilterQuality.low : t0$42), alignment: (t0$44 = (t0$43 = this.imageProperties, t0$43 == null ? null : t0$43.alignment), t0$44 == null ? alignment.Alignment.center : t0$44), colorBlendMode: (t0$45 = this.imageProperties, t0$45 == null ? null : t0$45.colorBlendMode), fit: (t0$46 = this.imageProperties, t0$46 == null ? null : t0$46.fit), color: (t0$47 = this.imageProperties, t0$47 == null ? null : t0$47.color), repeat: (t0$49 = (t0$48 = this.imageProperties, t0$48 == null ? null : t0$48.repeat), t0$49 == null ? decoration_image.ImageRepeat.noRepeat : t0$49), semanticLabel: (t0$50 = this.imageProperties, t0$50 == null ? null : t0$50.semanticLabel), excludeFromSemantics: (t0$51 = this.imageProperties, t0$51 == null ? null : t0$51.semanticLabel) == null ? true : false, $creationLocationd_0dea112b090073317d4: C[130] || CT.C130}), onTap: dart.fn(() => {
+                            let t0;
+                            if (this.onImageTap != null) {
+                              t0 = node.attributes[$_get]("src");
+                              this.onImageTap(t0);
+                            }
+                          }, T.VoidToNull()), $creationLocationd_0dea112b090073317d4: C[147] || CT.C147}));
+                      } else {
+                        image.precacheImage(new _network_image_web.NetworkImage.new(node.attributes[$_get]("src")), buildContext, {onError: (t0$52 = this.onImageError, t0$52 == null ? dart.fn((_, __) => {
+                          }, T.ObjectLAndStackTraceLToNull()) : t0$52)});
+                        parseContext.rootWidgetList[$add](new gesture_detector.GestureDetector.new({child: new image.Image.network(node.attributes[$_get]("src"), {frameBuilder: dart.fn((context, child, frame, _) => {
+                              if (node.attributes[$_get]("alt") != null && frame == null) {
+                                return new rich_text_parser.BlockText.new({child: new basic.RichText.new({textAlign: ui.TextAlign.center, text: new text_span.TextSpan.new({text: node.attributes[$_get]("alt"), style: nextContext.childStyle}), $creationLocationd_0dea112b090073317d4: C[151] || CT.C151}), shrinkToFit: this.shrinkToFit, $creationLocationd_0dea112b090073317d4: C[155] || CT.C155});
+                              }
+                              if (frame != null) {
+                                return child;
+                              }
+                              return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[159] || CT.C159});
+                            }, T.BuildContextLAndWidgetLAndintL__ToWidgetL()), width: dart.notNull((t0$53 = width, t0$53 == null ? -1.0 : t0$53)) > 0 ? width : null, height: dart.notNull((t0$54 = height, t0$54 == null ? -1.0 : t0$54)) > 0 ? height : null, scale: (t0$56 = (t0$55 = this.imageProperties, t0$55 == null ? null : t0$55.scale), t0$56 == null ? 1.0 : t0$56), matchTextDirection: (t0$58 = (t0$57 = this.imageProperties, t0$57 == null ? null : t0$57.matchTextDirection), t0$58 == null ? false : t0$58), centerSlice: (t0$59 = this.imageProperties, t0$59 == null ? null : t0$59.centerSlice), filterQuality: (t0$61 = (t0$60 = this.imageProperties, t0$60 == null ? null : t0$60.filterQuality), t0$61 == null ? ui.FilterQuality.low : t0$61), alignment: (t0$63 = (t0$62 = this.imageProperties, t0$62 == null ? null : t0$62.alignment), t0$63 == null ? alignment.Alignment.center : t0$63), colorBlendMode: (t0$64 = this.imageProperties, t0$64 == null ? null : t0$64.colorBlendMode), fit: (t0$65 = this.imageProperties, t0$65 == null ? null : t0$65.fit), color: (t0$66 = this.imageProperties, t0$66 == null ? null : t0$66.color), repeat: (t0$68 = (t0$67 = this.imageProperties, t0$67 == null ? null : t0$67.repeat), t0$68 == null ? decoration_image.ImageRepeat.noRepeat : t0$68), semanticLabel: (t0$69 = this.imageProperties, t0$69 == null ? null : t0$69.semanticLabel), excludeFromSemantics: (t0$70 = this.imageProperties, t0$70 == null ? null : t0$70.semanticLabel) == null ? true : false, $creationLocationd_0dea112b090073317d4: C[160] || CT.C160}), onTap: dart.fn(() => {
+                            let t0;
+                            if (this.onImageTap != null) {
+                              t0 = node.attributes[$_get]("src");
+                              this.onImageTap(t0);
+                            }
+                          }, T.VoidToNull()), $creationLocationd_0dea112b090073317d4: C[177] || CT.C177}));
+                      }
+                    }
+                  }
+                  break SL0;
+                }
+                case "li":
+                {
+                  let leadingChar = parseContext.listChar;
+                  if (parseContext.blockType === "ol") {
+                    t0$71 = parseContext;
+                    t0$71.listCount = dart.notNull(t0$71.listCount) + 1;
+                    leadingChar = dart.toString(parseContext.listCount) + ".";
+                  }
+                  let blockText = new rich_text_parser.BlockText.new({shrinkToFit: this.shrinkToFit, margin: new edge_insets.EdgeInsets.only({left: dart.notNull(parseContext.indentLevel) * dart.notNull(this.indentSize), top: 3.0}), child: new basic.RichText.new({text: new text_span.TextSpan.new({text: dart.str(leadingChar) + "  ", style: text$.DefaultTextStyle.of(buildContext).style, children: T.JSArrayOfTextSpanL().of([new text_span.TextSpan.new({text: "", style: nextContext.childStyle})])}), $creationLocationd_0dea112b090073317d4: C[181] || CT.C181}), $creationLocationd_0dea112b090073317d4: C[184] || CT.C184});
+                  parseContext.rootWidgetList[$add](blockText);
+                  nextContext.parentElement = blockText.child.text;
+                  nextContext.spansOnly = true;
+                  nextContext.inBlock = true;
+                  break SL0;
+                }
+                case "h1":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 26.0, fontWeight: ui.FontWeight.bold}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "h2":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 24.0, fontWeight: ui.FontWeight.bold}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "h3":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 22.0, fontWeight: ui.FontWeight.bold}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "h4":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 20.0, fontWeight: ui.FontWeight.w100}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "h5":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 18.0, fontWeight: ui.FontWeight.bold}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "h6":
+                {
+                  nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontSize: 18.0, fontWeight: ui.FontWeight.w100}));
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "pre":
+                {
+                  nextContext.condenseWhitespace = false;
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                case "center":
+                {
+                  textAlign = ui.TextAlign.center;
+                  labelState = Symbol('_default');
+                  continue SL0;
+                }
+                default:
+                {
+                  let decoration = null;
+                  if (parseContext.blockType === "blockquote") {
+                    decoration = new box_decoration.BoxDecoration.new({border: new box_border.Border.new({left: new borders.BorderSide.new({color: colors.Colors.black38, width: 2.0})})});
+                    nextContext.childStyle = nextContext.childStyle.merge(new text_style.TextStyle.new({fontStyle: ui.FontStyle.italic}));
+                  }
+                  let blockText = new rich_text_parser.BlockText.new({shrinkToFit: this.shrinkToFit, margin: node.localName !== "body" ? (t0$72 = _customEdgeInsets, t0$72 == null ? new edge_insets.EdgeInsets.only({top: 8.0, bottom: 8.0, left: dart.notNull(parseContext.indentLevel) * dart.notNull(this.indentSize)}) : t0$72) : edge_insets.EdgeInsets.zero, padding: new edge_insets.EdgeInsets.all(2.0), decoration: decoration, child: new basic.RichText.new({textAlign: textAlign, text: new text_span.TextSpan.new({text: "", style: nextContext.childStyle, children: T.JSArrayOfTextSpanL().of([])}), $creationLocationd_0dea112b090073317d4: C[189] || CT.C189}), $creationLocationd_0dea112b090073317d4: C[193] || CT.C193});
+                  parseContext.rootWidgetList[$add](blockText);
+                  nextContext.parentElement = blockText.child.text;
+                  nextContext.spansOnly = true;
+                  nextContext.inBlock = true;
+                  break SL0;
+                }
+              }
+              break;
+            }
+          if (this.customTextStyle != null) {
+            let customStyle = (t0$73 = node, t1$0 = nextContext.childStyle, this.customTextStyle(t0$73, t1$0));
+            if (customStyle != null) {
+              nextContext.childStyle = customStyle;
+            }
+          }
+        }
+        node.nodes.forEach(dart.fn(childNode => {
+          this[_parseNode](childNode, nextContext, buildContext);
+        }, T.NodeLToNull()));
+      }
+    }
+    condenseHtmlWhitespace(stringToTrim) {
+      stringToTrim = stringToTrim[$replaceAll]("\n", " ");
+      while (stringToTrim[$indexOf]("  ") !== -1) {
+        stringToTrim = stringToTrim[$replaceAll]("  ", " ");
+      }
+      return stringToTrim;
+    }
+  };
+  (rich_text_parser.HtmlRichTextParser.new = function(opts) {
+    let shrinkToFit = opts && 'shrinkToFit' in opts ? opts.shrinkToFit : null;
+    let onLinkTap = opts && 'onLinkTap' in opts ? opts.onLinkTap : null;
+    let renderNewlines = opts && 'renderNewlines' in opts ? opts.renderNewlines : false;
+    let html = opts && 'html' in opts ? opts.html : null;
+    let customEdgeInsets = opts && 'customEdgeInsets' in opts ? opts.customEdgeInsets : null;
+    let customTextStyle = opts && 'customTextStyle' in opts ? opts.customTextStyle : null;
+    let customTextAlign = opts && 'customTextAlign' in opts ? opts.customTextAlign : null;
+    let onImageError = opts && 'onImageError' in opts ? opts.onImageError : null;
+    let linkStyle = opts && 'linkStyle' in opts ? opts.linkStyle : C[14] || CT.C14;
+    let imageProperties = opts && 'imageProperties' in opts ? opts.imageProperties : null;
+    let onImageTap = opts && 'onImageTap' in opts ? opts.onImageTap : null;
+    let showImages = opts && 'showImages' in opts ? opts.showImages : true;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[indentSize] = 10.0;
+    this[shrinkToFit$0] = shrinkToFit;
+    this[onLinkTap$] = onLinkTap;
+    this[renderNewlines$] = renderNewlines;
+    this[html$] = html;
+    this[customEdgeInsets$] = customEdgeInsets;
+    this[customTextStyle$] = customTextStyle;
+    this[customTextAlign$] = customTextAlign;
+    this[onImageError$] = onImageError;
+    this[linkStyle$] = linkStyle;
+    this[imageProperties$] = imageProperties;
+    this[onImageTap$] = onImageTap;
+    this[showImages$] = showImages;
+    rich_text_parser.HtmlRichTextParser.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = rich_text_parser.HtmlRichTextParser.prototype;
+  dart.addTypeTests(rich_text_parser.HtmlRichTextParser);
+  dart.addTypeCaches(rich_text_parser.HtmlRichTextParser);
+  dart.setMethodSignature(rich_text_parser.HtmlRichTextParser, () => ({
+    __proto__: dart.getMethods(rich_text_parser.HtmlRichTextParser.__proto__),
+    [_hasBlockChild]: dart.fnType(dart.legacy(core.bool), [dart.legacy(dom.Node)], {ignoreSelf: dart.legacy(core.bool)}, {}),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    [_parseNode]: dart.fnType(dart.void, [dart.legacy(dom.Node), dart.legacy(rich_text_parser.ParseContext), dart.legacy(framework.BuildContext)]),
+    condenseHtmlWhitespace: dart.fnType(dart.legacy(core.String), [dart.legacy(core.String)])
+  }));
+  dart.setLibraryUri(rich_text_parser.HtmlRichTextParser, I[0]);
+  dart.setFieldSignature(rich_text_parser.HtmlRichTextParser, () => ({
+    __proto__: dart.getFields(rich_text_parser.HtmlRichTextParser.__proto__),
+    indentSize: dart.finalFieldType(dart.legacy(core.double)),
+    shrinkToFit: dart.finalFieldType(dart.legacy(core.bool)),
+    onLinkTap: dart.finalFieldType(dart.dynamic),
+    renderNewlines: dart.finalFieldType(dart.legacy(core.bool)),
+    html: dart.finalFieldType(dart.legacy(core.String)),
+    customEdgeInsets: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(edge_insets.EdgeInsets), [dart.legacy(dom.Node)]))),
+    customTextStyle: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(text_style.TextStyle), [dart.legacy(dom.Node), dart.legacy(text_style.TextStyle)]))),
+    customTextAlign: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(ui.TextAlign), [dart.legacy(dom.Element)]))),
+    onImageError: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.Object), dart.legacy(core.StackTrace)]))),
+    linkStyle: dart.finalFieldType(dart.legacy(text_style.TextStyle)),
+    imageProperties: dart.finalFieldType(dart.legacy(image_properties.ImageProperties)),
+    onImageTap: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.String)]))),
+    showImages: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  dart.defineLazy(rich_text_parser.HtmlRichTextParser, {
+    /*rich_text_parser.HtmlRichTextParser._supportedStyleElements*/get _supportedStyleElements() {
+      return C[200] || CT.C200;
+    },
+    /*rich_text_parser.HtmlRichTextParser._supportedSpecialtyElements*/get _supportedSpecialtyElements() {
+      return C[201] || CT.C201;
+    },
+    /*rich_text_parser.HtmlRichTextParser._supportedBlockElements*/get _supportedBlockElements() {
+      return C[202] || CT.C202;
+    }
+  }, true);
+  dart.defineLazy(rich_text_parser, {
+    /*rich_text_parser.OFFSET_TAGS_FONT_SIZE_FACTOR*/get OFFSET_TAGS_FONT_SIZE_FACTOR() {
+      return 0.7;
+    }
+  }, true);
+  dart.trackLibraries("packages/flutter_html/rich_text_parser.dart", {
+    "package:flutter_html/rich_text_parser.dart": rich_text_parser
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["rich_text_parser.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;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","file":"../../../../../../packages/flutter_html/rich_text_parser.dart.lib.js"}');
+  // Exports:
+  return {
+    rich_text_parser: rich_text_parser
+  };
+}));
+
+//# sourceMappingURL=rich_text_parser.dart.lib.js.map

@@ -1,0 +1,848 @@
+define(['dart_sdk', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/gestures/drag_details.dart'], (function load__packages__carousel_slider__carousel_slider_dart(dart_sdk, packages__flutter__src__animation__curves$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__widgets__page_view$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__gestures__drag_details$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const scroll_physics = packages__flutter__src__widgets__widget_span$46dart.src__widgets__scroll_physics;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const media_query = packages__flutter__src__widgets__widget_span$46dart.src__widgets__media_query;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  var carousel_slider = Object.create(dart.library);
+  var $length = dartx.length;
+  var $toInt = dartx.toInt;
+  var $_get = dartx._get;
+  var $abs = dartx.abs;
+  var $clamp = dartx.clamp;
+  var $modulo = dartx['%'];
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TimerL: () => (T.TimerL = dart.constFn(dart.legacy(async.Timer)))(),
+    TimerLToNull: () => (T.TimerLToNull = dart.constFn(dart.fnType(core.Null, [T.TimerL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    DragDownDetailsL: () => (T.DragDownDetailsL = dart.constFn(dart.legacy(drag_details.DragDownDetails)))(),
+    DragDownDetailsLTovoid: () => (T.DragDownDetailsLTovoid = dart.constFn(dart.fnType(dart.void, [T.DragDownDetailsL()])))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    intLToNull: () => (T.intLToNull = dart.constFn(dart.fnType(core.Null, [T.intL()])))(),
+    FutureOfNull: () => (T.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndWidgetLToWidgetL: () => (T.BuildContextLAndWidgetLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.WidgetL()])))(),
+    AnimatedBuilderL: () => (T.AnimatedBuilderL = dart.constFn(dart.legacy(transitions.AnimatedBuilder)))(),
+    BuildContextLAndintLToAnimatedBuilderL: () => (T.BuildContextLAndintLToAnimatedBuilderL = dart.constFn(dart.fnType(T.AnimatedBuilderL(), [T.BuildContextL(), T.intL()])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 4000000
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 800000
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: curves.Cubic.prototype,
+        [Cubic_d]: 1,
+        [Cubic_c]: 0.2,
+        [Cubic_b]: 0,
+        [Cubic_a]: 0.4
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: basic_types.Axis.prototype,
+        [_name]: "Axis.horizontal",
+        index: 0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 40,
+        [_Location_line]: 240,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 63,
+        [_Location_line]: 240,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 240,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "aspectRatio",
+        [_Location_column]: 23,
+        [_Location_line]: 246,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 56,
+        [_Location_line]: 246,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 246,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPanDown",
+        [_Location_column]: 23,
+        [_Location_line]: 254,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 57,
+        [_Location_line]: 254,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.constList([C[14] || CT.C14, C[15] || CT.C15], T._LocationL());
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[13] || CT.C13,
+        [_Location_name]: null,
+        [_Location_column]: 7,
+        [_Location_line]: 254,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.constList([], T._LocationL());
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[17] || CT.C17,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 296,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 32,
+        [_Location_line]: 310,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 66,
+        [_Location_line]: 310,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 310,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 309,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24], T._LocationL());
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 308,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 23,
+        [_Location_line]: 314,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 316,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[26] || CT.C26,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 313,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 313,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 312,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 11,
+        [_Location_line]: 282,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 283,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 11,
+        [_Location_line]: 286,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.constList([C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[33] || CT.C33,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 281,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "physics",
+        [_Location_column]: 7,
+        [_Location_line]: 265,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 7,
+        [_Location_line]: 266,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 7,
+        [_Location_line]: 267,
+        [_Location_file]: null
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "reverse",
+        [_Location_column]: 7,
+        [_Location_line]: 268,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 7,
+        [_Location_line]: 269,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPageChanged",
+        [_Location_column]: 7,
+        [_Location_line]: 270,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 7,
+        [_Location_line]: 277,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41, C[42] || CT.C42, C[43] || CT.C43, C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 32,
+        [_Location_line]: 264,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/carousel_slider-1.4.1/lib/carousel_slider.dart"
+      });
+    }
+  }, false);
+  var C = Array(46).fill(void 0);
+  var I = ["package:carousel_slider/carousel_slider.dart"];
+  var items$ = dart.privateName(carousel_slider, "CarouselSlider.items");
+  var itemBuilder$ = dart.privateName(carousel_slider, "CarouselSlider.itemBuilder");
+  var itemCount$ = dart.privateName(carousel_slider, "CarouselSlider.itemCount");
+  var height$ = dart.privateName(carousel_slider, "CarouselSlider.height");
+  var aspectRatio$ = dart.privateName(carousel_slider, "CarouselSlider.aspectRatio");
+  var viewportFraction$ = dart.privateName(carousel_slider, "CarouselSlider.viewportFraction");
+  var initialPage$ = dart.privateName(carousel_slider, "CarouselSlider.initialPage");
+  var realPage$ = dart.privateName(carousel_slider, "CarouselSlider.realPage");
+  var enableInfiniteScroll$ = dart.privateName(carousel_slider, "CarouselSlider.enableInfiniteScroll");
+  var reverse$ = dart.privateName(carousel_slider, "CarouselSlider.reverse");
+  var autoPlay$ = dart.privateName(carousel_slider, "CarouselSlider.autoPlay");
+  var autoPlayInterval$ = dart.privateName(carousel_slider, "CarouselSlider.autoPlayInterval");
+  var autoPlayAnimationDuration$ = dart.privateName(carousel_slider, "CarouselSlider.autoPlayAnimationDuration");
+  var autoPlayCurve$ = dart.privateName(carousel_slider, "CarouselSlider.autoPlayCurve");
+  var pauseAutoPlayOnTouch$ = dart.privateName(carousel_slider, "CarouselSlider.pauseAutoPlayOnTouch");
+  var enlargeCenterPage$ = dart.privateName(carousel_slider, "CarouselSlider.enlargeCenterPage");
+  var scrollDirection$ = dart.privateName(carousel_slider, "CarouselSlider.scrollDirection");
+  var onPageChanged$ = dart.privateName(carousel_slider, "CarouselSlider.onPageChanged");
+  var scrollPhysics$ = dart.privateName(carousel_slider, "CarouselSlider.scrollPhysics");
+  var pageController = dart.privateName(carousel_slider, "CarouselSlider.pageController");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var Cubic_d = dart.privateName(curves, "Cubic.d");
+  var Cubic_c = dart.privateName(curves, "Cubic.c");
+  var Cubic_b = dart.privateName(curves, "Cubic.b");
+  var Cubic_a = dart.privateName(curves, "Cubic.a");
+  var _name = dart.privateName(basic_types, "_name");
+  carousel_slider.CarouselSlider = class CarouselSlider extends framework.StatefulWidget {
+    get items() {
+      return this[items$];
+    }
+    set items(value) {
+      super.items = value;
+    }
+    get itemBuilder() {
+      return this[itemBuilder$];
+    }
+    set itemBuilder(value) {
+      super.itemBuilder = value;
+    }
+    get itemCount() {
+      return this[itemCount$];
+    }
+    set itemCount(value) {
+      super.itemCount = value;
+    }
+    get height() {
+      return this[height$];
+    }
+    set height(value) {
+      super.height = value;
+    }
+    get aspectRatio() {
+      return this[aspectRatio$];
+    }
+    set aspectRatio(value) {
+      super.aspectRatio = value;
+    }
+    get viewportFraction() {
+      return this[viewportFraction$];
+    }
+    set viewportFraction(value) {
+      super.viewportFraction = value;
+    }
+    get initialPage() {
+      return this[initialPage$];
+    }
+    set initialPage(value) {
+      super.initialPage = value;
+    }
+    get realPage() {
+      return this[realPage$];
+    }
+    set realPage(value) {
+      super.realPage = value;
+    }
+    get enableInfiniteScroll() {
+      return this[enableInfiniteScroll$];
+    }
+    set enableInfiniteScroll(value) {
+      super.enableInfiniteScroll = value;
+    }
+    get reverse() {
+      return this[reverse$];
+    }
+    set reverse(value) {
+      super.reverse = value;
+    }
+    get autoPlay() {
+      return this[autoPlay$];
+    }
+    set autoPlay(value) {
+      super.autoPlay = value;
+    }
+    get autoPlayInterval() {
+      return this[autoPlayInterval$];
+    }
+    set autoPlayInterval(value) {
+      super.autoPlayInterval = value;
+    }
+    get autoPlayAnimationDuration() {
+      return this[autoPlayAnimationDuration$];
+    }
+    set autoPlayAnimationDuration(value) {
+      super.autoPlayAnimationDuration = value;
+    }
+    get autoPlayCurve() {
+      return this[autoPlayCurve$];
+    }
+    set autoPlayCurve(value) {
+      super.autoPlayCurve = value;
+    }
+    get pauseAutoPlayOnTouch() {
+      return this[pauseAutoPlayOnTouch$];
+    }
+    set pauseAutoPlayOnTouch(value) {
+      super.pauseAutoPlayOnTouch = value;
+    }
+    get enlargeCenterPage() {
+      return this[enlargeCenterPage$];
+    }
+    set enlargeCenterPage(value) {
+      super.enlargeCenterPage = value;
+    }
+    get scrollDirection() {
+      return this[scrollDirection$];
+    }
+    set scrollDirection(value) {
+      super.scrollDirection = value;
+    }
+    get onPageChanged() {
+      return this[onPageChanged$];
+    }
+    set onPageChanged(value) {
+      super.onPageChanged = value;
+    }
+    get scrollPhysics() {
+      return this[scrollPhysics$];
+    }
+    set scrollPhysics(value) {
+      super.scrollPhysics = value;
+    }
+    get pageController() {
+      return this[pageController];
+    }
+    set pageController(value) {
+      super.pageController = value;
+    }
+    nextPage(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : null;
+      return this.pageController.nextPage({duration: duration, curve: curve});
+    }
+    previousPage(opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : null;
+      return this.pageController.previousPage({duration: duration, curve: curve});
+    }
+    jumpToPage(page) {
+      let index = carousel_slider._getRealIndex(this.pageController.page[$toInt](), dart.asNullableInt(dart.notNull(this.realPage) - dart.notNull(this.initialPage)), this.itemCount);
+      return this.pageController.jumpToPage(this.pageController.page[$toInt]() + dart.notNull(page) - dart.notNull(index));
+    }
+    animateToPage(page, opts) {
+      let duration = opts && 'duration' in opts ? opts.duration : null;
+      let curve = opts && 'curve' in opts ? opts.curve : null;
+      let index = carousel_slider._getRealIndex(this.pageController.page[$toInt](), dart.asNullableInt(dart.notNull(this.realPage) - dart.notNull(this.initialPage)), this.itemCount);
+      return this.pageController.animateToPage(this.pageController.page[$toInt]() + dart.notNull(page) - dart.notNull(index), {duration: duration, curve: curve});
+    }
+    createState() {
+      return new carousel_slider._CarouselSliderState.new();
+    }
+  };
+  (carousel_slider.CarouselSlider.new = function(opts) {
+    let items = opts && 'items' in opts ? opts.items : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let aspectRatio = opts && 'aspectRatio' in opts ? opts.aspectRatio : 1.7777777777777777;
+    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 0.8;
+    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
+    let realPage = opts && 'realPage' in opts ? opts.realPage : 10000;
+    let enableInfiniteScroll = opts && 'enableInfiniteScroll' in opts ? opts.enableInfiniteScroll : true;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    let autoPlay = opts && 'autoPlay' in opts ? opts.autoPlay : false;
+    let autoPlayInterval = opts && 'autoPlayInterval' in opts ? opts.autoPlayInterval : C[0] || CT.C0;
+    let autoPlayAnimationDuration = opts && 'autoPlayAnimationDuration' in opts ? opts.autoPlayAnimationDuration : C[1] || CT.C1;
+    let autoPlayCurve = opts && 'autoPlayCurve' in opts ? opts.autoPlayCurve : C[2] || CT.C2;
+    let pauseAutoPlayOnTouch = opts && 'pauseAutoPlayOnTouch' in opts ? opts.pauseAutoPlayOnTouch : null;
+    let enlargeCenterPage = opts && 'enlargeCenterPage' in opts ? opts.enlargeCenterPage : false;
+    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
+    let scrollPhysics = opts && 'scrollPhysics' in opts ? opts.scrollPhysics : null;
+    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[3] || CT.C3;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[items$] = items;
+    this[height$] = height;
+    this[aspectRatio$] = aspectRatio;
+    this[viewportFraction$] = viewportFraction;
+    this[initialPage$] = initialPage;
+    this[enableInfiniteScroll$] = enableInfiniteScroll;
+    this[reverse$] = reverse;
+    this[autoPlay$] = autoPlay;
+    this[autoPlayInterval$] = autoPlayInterval;
+    this[autoPlayAnimationDuration$] = autoPlayAnimationDuration;
+    this[autoPlayCurve$] = autoPlayCurve;
+    this[pauseAutoPlayOnTouch$] = pauseAutoPlayOnTouch;
+    this[enlargeCenterPage$] = enlargeCenterPage;
+    this[onPageChanged$] = onPageChanged;
+    this[scrollPhysics$] = scrollPhysics;
+    this[scrollDirection$] = scrollDirection;
+    this[realPage$] = dart.test(enableInfiniteScroll) ? dart.notNull(realPage) + dart.notNull(initialPage) : initialPage;
+    this[itemCount$] = items[$length];
+    this[itemBuilder$] = null;
+    this[pageController] = new page_view.PageController.new({viewportFraction: dart.nullCast(viewportFraction, core.double), initialPage: dart.asInt(dart.test(enableInfiniteScroll) ? dart.notNull(realPage) + dart.notNull(initialPage) : initialPage)});
+    carousel_slider.CarouselSlider.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = carousel_slider.CarouselSlider.prototype;
+  (carousel_slider.CarouselSlider.builder = function(opts) {
+    let itemCount = opts && 'itemCount' in opts ? opts.itemCount : null;
+    let itemBuilder = opts && 'itemBuilder' in opts ? opts.itemBuilder : null;
+    let height = opts && 'height' in opts ? opts.height : null;
+    let aspectRatio = opts && 'aspectRatio' in opts ? opts.aspectRatio : 1.7777777777777777;
+    let viewportFraction = opts && 'viewportFraction' in opts ? opts.viewportFraction : 0.8;
+    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
+    let realPage = opts && 'realPage' in opts ? opts.realPage : 10000;
+    let enableInfiniteScroll = opts && 'enableInfiniteScroll' in opts ? opts.enableInfiniteScroll : true;
+    let reverse = opts && 'reverse' in opts ? opts.reverse : false;
+    let autoPlay = opts && 'autoPlay' in opts ? opts.autoPlay : false;
+    let autoPlayInterval = opts && 'autoPlayInterval' in opts ? opts.autoPlayInterval : C[0] || CT.C0;
+    let autoPlayAnimationDuration = opts && 'autoPlayAnimationDuration' in opts ? opts.autoPlayAnimationDuration : C[1] || CT.C1;
+    let autoPlayCurve = opts && 'autoPlayCurve' in opts ? opts.autoPlayCurve : C[2] || CT.C2;
+    let pauseAutoPlayOnTouch = opts && 'pauseAutoPlayOnTouch' in opts ? opts.pauseAutoPlayOnTouch : null;
+    let enlargeCenterPage = opts && 'enlargeCenterPage' in opts ? opts.enlargeCenterPage : false;
+    let onPageChanged = opts && 'onPageChanged' in opts ? opts.onPageChanged : null;
+    let scrollPhysics = opts && 'scrollPhysics' in opts ? opts.scrollPhysics : null;
+    let scrollDirection = opts && 'scrollDirection' in opts ? opts.scrollDirection : C[3] || CT.C3;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[itemCount$] = itemCount;
+    this[itemBuilder$] = itemBuilder;
+    this[height$] = height;
+    this[aspectRatio$] = aspectRatio;
+    this[viewportFraction$] = viewportFraction;
+    this[initialPage$] = initialPage;
+    this[enableInfiniteScroll$] = enableInfiniteScroll;
+    this[reverse$] = reverse;
+    this[autoPlay$] = autoPlay;
+    this[autoPlayInterval$] = autoPlayInterval;
+    this[autoPlayAnimationDuration$] = autoPlayAnimationDuration;
+    this[autoPlayCurve$] = autoPlayCurve;
+    this[pauseAutoPlayOnTouch$] = pauseAutoPlayOnTouch;
+    this[enlargeCenterPage$] = enlargeCenterPage;
+    this[onPageChanged$] = onPageChanged;
+    this[scrollPhysics$] = scrollPhysics;
+    this[scrollDirection$] = scrollDirection;
+    this[realPage$] = dart.test(enableInfiniteScroll) ? dart.notNull(realPage) + dart.notNull(initialPage) : initialPage;
+    this[items$] = null;
+    this[pageController] = new page_view.PageController.new({viewportFraction: dart.nullCast(viewportFraction, core.double), initialPage: dart.asInt(dart.test(enableInfiniteScroll) ? dart.notNull(realPage) + dart.notNull(initialPage) : initialPage)});
+    carousel_slider.CarouselSlider.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = carousel_slider.CarouselSlider.prototype;
+  dart.addTypeTests(carousel_slider.CarouselSlider);
+  dart.addTypeCaches(carousel_slider.CarouselSlider);
+  dart.setMethodSignature(carousel_slider.CarouselSlider, () => ({
+    __proto__: dart.getMethods(carousel_slider.CarouselSlider.__proto__),
+    nextPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    previousPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    jumpToPage: dart.fnType(dart.void, [dart.legacy(core.int)]),
+    animateToPage: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(core.int)], {curve: dart.legacy(curves.Curve), duration: dart.legacy(core.Duration)}, {}),
+    createState: dart.fnType(dart.legacy(carousel_slider._CarouselSliderState), [])
+  }));
+  dart.setLibraryUri(carousel_slider.CarouselSlider, I[0]);
+  dart.setFieldSignature(carousel_slider.CarouselSlider, () => ({
+    __proto__: dart.getFields(carousel_slider.CarouselSlider.__proto__),
+    items: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(framework.Widget)))),
+    itemBuilder: dart.finalFieldType(dart.legacy(dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(core.int)]))),
+    itemCount: dart.finalFieldType(dart.legacy(core.int)),
+    height: dart.finalFieldType(dart.legacy(core.double)),
+    aspectRatio: dart.finalFieldType(dart.legacy(core.double)),
+    viewportFraction: dart.finalFieldType(dart.legacy(core.num)),
+    initialPage: dart.finalFieldType(dart.legacy(core.num)),
+    realPage: dart.finalFieldType(dart.legacy(core.num)),
+    enableInfiniteScroll: dart.finalFieldType(dart.legacy(core.bool)),
+    reverse: dart.finalFieldType(dart.legacy(core.bool)),
+    autoPlay: dart.finalFieldType(dart.legacy(core.bool)),
+    autoPlayInterval: dart.finalFieldType(dart.legacy(core.Duration)),
+    autoPlayAnimationDuration: dart.finalFieldType(dart.legacy(core.Duration)),
+    autoPlayCurve: dart.finalFieldType(dart.legacy(curves.Curve)),
+    pauseAutoPlayOnTouch: dart.finalFieldType(dart.legacy(core.Duration)),
+    enlargeCenterPage: dart.finalFieldType(dart.legacy(core.bool)),
+    scrollDirection: dart.finalFieldType(dart.legacy(basic_types.Axis)),
+    onPageChanged: dart.finalFieldType(dart.legacy(dart.fnType(dart.dynamic, [dart.legacy(core.int)]))),
+    scrollPhysics: dart.finalFieldType(dart.legacy(scroll_physics.ScrollPhysics)),
+    pageController: dart.finalFieldType(dart.legacy(page_view.PageController))
+  }));
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(dart.legacy(carousel_slider.CarouselSlider)) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(dart.legacy(carousel_slider.CarouselSlider))[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(dart.legacy(carousel_slider.CarouselSlider)));
+  carousel_slider._CarouselSliderState = class _CarouselSliderState extends State_TickerProviderStateMixin$36 {
+    initState() {
+      super.initState();
+      this.timer = this.getTimer();
+    }
+    getTimer() {
+      return dart.test(this.widget.autoPlay) ? async.Timer.periodic(this.widget.autoPlayInterval, dart.fn(_ => {
+        this.widget.pageController.nextPage({duration: this.widget.autoPlayAnimationDuration, curve: this.widget.autoPlayCurve});
+      }, T.TimerLToNull())) : null;
+    }
+    pauseOnTouch() {
+      this.timer.cancel();
+      this.timer = async.Timer.new(this.widget.pauseAutoPlayOnTouch, dart.fn(() => {
+        this.timer = this.getTimer();
+      }, T.VoidToNull()));
+    }
+    getWrapper(child) {
+      if (this.widget.height != null) {
+        let wrapper = new container.Container.new({height: this.widget.height, child: child, $creationLocationd_0dea112b090073317d4: C[4] || CT.C4});
+        return dart.test(this.widget.autoPlay) && this.widget.pauseAutoPlayOnTouch != null ? this.addGestureDetection(wrapper) : wrapper;
+      } else {
+        let wrapper = new basic.AspectRatio.new({aspectRatio: this.widget.aspectRatio, child: child, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+        return dart.test(this.widget.autoPlay) && this.widget.pauseAutoPlayOnTouch != null ? this.addGestureDetection(wrapper) : wrapper;
+      }
+    }
+    addGestureDetection(child) {
+      return new gesture_detector.GestureDetector.new({onPanDown: dart.fn(_ => this.pauseOnTouch(), T.DragDownDetailsLTovoid()), child: child, $creationLocationd_0dea112b090073317d4: C[12] || CT.C12});
+    }
+    dispose() {
+      let t0;
+      super.dispose();
+      t0 = this.timer;
+      t0 == null ? null : t0.cancel();
+    }
+    build(context) {
+      return this.getWrapper(new page_view.PageView.builder({physics: this.widget.scrollPhysics, scrollDirection: this.widget.scrollDirection, controller: this.widget.pageController, reverse: this.widget.reverse, itemCount: dart.test(this.widget.enableInfiniteScroll) ? null : this.widget.itemCount, onPageChanged: dart.fn(index => {
+          let t1, t0;
+          let currentPage = carousel_slider._getRealIndex(dart.asNullableInt(dart.notNull(index) + dart.notNull(this.widget.initialPage)), dart.asNullableInt(this.widget.realPage), this.widget.itemCount);
+          if (this.widget.onPageChanged != null) {
+            t0 = this.widget;
+            t1 = currentPage;
+            t0.onPageChanged(t1);
+          }
+        }, T.intLToNull()), itemBuilder: dart.fn((context, i) => {
+          let t2, t1, t0;
+          let index = carousel_slider._getRealIndex(dart.asNullableInt(dart.notNull(i) + dart.notNull(this.widget.initialPage)), dart.asNullableInt(this.widget.realPage), this.widget.itemCount);
+          return new transitions.AnimatedBuilder.new({animation: this.widget.pageController, child: this.widget.items != null ? this.widget.items[$_get](index) : (t0 = this.widget, t1 = context, t2 = index, t0.itemBuilder(t1, t2)), builder: dart.fn((context, child) => {
+              let t0;
+              if (this.widget.pageController.position.minScrollExtent == null || this.widget.pageController.position.maxScrollExtent == null) {
+                T.FutureOfNull().delayed(new core.Duration.new({microseconds: 1}), dart.fn(() => {
+                  if (dart.test(this.mounted)) {
+                    this.setState(dart.fn(() => {
+                    }, T.VoidToNull()));
+                  }
+                }, T.VoidToNull()));
+                return new container.Container.new({$creationLocationd_0dea112b090073317d4: C[16] || CT.C16});
+              }
+              let value = dart.notNull(this.widget.pageController.page) - dart.notNull(i);
+              value = (1 - value[$abs]() * 0.3)[$clamp](0.0, 1.0);
+              let height = (t0 = this.widget.height, t0 == null ? dart.notNull(media_query.MediaQuery.of(context).size.width) * (1 / dart.notNull(this.widget.aspectRatio)) : t0);
+              let distortionValue = dart.test(this.widget.enlargeCenterPage) ? curves.Curves.easeOut.transform(value) : 1.0;
+              if (this.widget.scrollDirection == basic_types.Axis.horizontal) {
+                return new basic.Center.new({child: new basic.SizedBox.new({height: dart.notNull(distortionValue) * dart.notNull(height), child: child, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[22] || CT.C22});
+              } else {
+                return new basic.Center.new({child: new basic.SizedBox.new({width: dart.notNull(distortionValue) * dart.notNull(media_query.MediaQuery.of(context).size.width), child: child, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29});
+              }
+            }, T.BuildContextLAndWidgetLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[32] || CT.C32});
+        }, T.BuildContextLAndintLToAnimatedBuilderL()), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37}));
+    }
+  };
+  (carousel_slider._CarouselSliderState.new = function() {
+    this.timer = null;
+    carousel_slider._CarouselSliderState.__proto__.new.call(this);
+    ;
+  }).prototype = carousel_slider._CarouselSliderState.prototype;
+  dart.addTypeTests(carousel_slider._CarouselSliderState);
+  dart.addTypeCaches(carousel_slider._CarouselSliderState);
+  dart.setMethodSignature(carousel_slider._CarouselSliderState, () => ({
+    __proto__: dart.getMethods(carousel_slider._CarouselSliderState.__proto__),
+    getTimer: dart.fnType(dart.legacy(async.Timer), []),
+    pauseOnTouch: dart.fnType(dart.void, []),
+    getWrapper: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget)]),
+    addGestureDetection: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.Widget)]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(carousel_slider._CarouselSliderState, I[0]);
+  dart.setFieldSignature(carousel_slider._CarouselSliderState, () => ({
+    __proto__: dart.getFields(carousel_slider._CarouselSliderState.__proto__),
+    timer: dart.fieldType(dart.legacy(async.Timer))
+  }));
+  carousel_slider._getRealIndex = function _getRealIndex(position, base, length) {
+    let offset = dart.notNull(position) - dart.notNull(base);
+    return carousel_slider._remainder(offset, length);
+  };
+  carousel_slider._remainder = function _remainder(input, source) {
+    if (source === 0) return 0;
+    let result = input[$modulo](source);
+    return result < 0 ? dart.notNull(source) + result : result;
+  };
+  dart.trackLibraries("packages/carousel_slider/carousel_slider.dart", {
+    "package:carousel_slider/carousel_slider.dart": carousel_slider
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["carousel_slider.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/carousel_slider/carousel_slider.dart.lib.js"}');
+  // Exports:
+  return {
+    carousel_slider: carousel_slider
+  };
+}));
+
+//# sourceMappingURL=carousel_slider.dart.lib.js.map

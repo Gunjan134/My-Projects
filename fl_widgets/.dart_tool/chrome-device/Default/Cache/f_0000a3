@@ -1,0 +1,550 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/intl/src/intl_helpers.dart', 'packages/flutter/src/material/date_picker.dart', 'packages/flutter/src/material/time_picker.dart', 'packages/flutter/src/material/card.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/font_awesome_flutter/src/fa_icon.dart', 'packages/flutter/src/material/colors.dart'], (function load__packages__fl_widgets__widgets__date_picker_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__material__icon_button$46dart, packages__intl__src__intl_helpers$46dart, packages__flutter__src__material__date_picker$46dart, packages__flutter__src__material__time_picker$46dart, packages__flutter__src__material__card$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__widgets__icon$46dart, packages__font_awesome_flutter__src__fa_icon$46dart, packages__flutter__src__material__colors$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const async = dart_sdk.async;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const time = packages__flutter__src__material__icon_button$46dart.src__material__time;
+  const material_localizations = packages__flutter__src__material__icon_button$46dart.src__material__material_localizations;
+  const list_tile = packages__flutter__src__material__icon_button$46dart.src__material__list_tile;
+  const flat_button = packages__flutter__src__material__icon_button$46dart.src__material__flat_button;
+  const intl = packages__intl__src__intl_helpers$46dart.intl;
+  const date_picker = packages__flutter__src__material__date_picker$46dart.src__material__date_picker;
+  const time_picker = packages__flutter__src__material__time_picker$46dart.src__material__time_picker;
+  const card = packages__flutter__src__material__card$46dart.src__material__card;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const font_awesome_flutter = packages__font_awesome_flutter__src__fa_icon$46dart.font_awesome_flutter;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  var date_picker$ = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    FutureOfNull: () => (T.FutureOfNull = dart.constFn(async.Future$(core.Null)))(),
+    FutureLOfNull: () => (T.FutureLOfNull = dart.constFn(dart.legacy(T.FutureOfNull())))(),
+    VoidToFutureLOfNull: () => (T.VoidToFutureLOfNull = dart.constFn(dart.fnType(T.FutureLOfNull(), [])))(),
+    FutureOfvoid: () => (T.FutureOfvoid = dart.constFn(async.Future$(dart.void)))(),
+    FutureLOfvoid: () => (T.FutureLOfvoid = dart.constFn(dart.legacy(T.FutureOfvoid())))(),
+    VoidToFutureLOfvoid: () => (T.VoidToFutureLOfvoid = dart.constFn(dart.fnType(T.FutureLOfvoid(), [])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 6
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[1] || CT.C1,
+        [TextStyle_fontSize]: 17,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: null,
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 15,
+        [_Location_line]: 59,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 15,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[4] || CT.C4, C[5] || CT.C5], T._LocationL());
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[3] || CT.C3,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 58,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 34,
+        [_Location_line]: 68,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 67,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 15,
+        [_Location_line]: 66,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 67,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 65,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 13,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "trailing",
+        [_Location_column]: 13,
+        [_Location_line]: 65,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.constList([C[16] || CT.C16, C[17] || CT.C17], T._LocationL());
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[15] || CT.C15,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 57,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 56,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 15,
+        [_Location_line]: 77,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 15,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.constList([C[23] || CT.C23, C[24] || CT.C24], T._LocationL());
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[22] || CT.C22,
+        [_Location_name]: null,
+        [_Location_column]: 20,
+        [_Location_line]: 76,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 34,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 17,
+        [_Location_line]: 87,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.constList([C[27] || CT.C27, C[28] || CT.C28], T._LocationL());
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[26] || CT.C26,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 85,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 15,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.constList([C[31] || CT.C31, C[32] || CT.C32], T._LocationL());
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[30] || CT.C30,
+        [_Location_name]: null,
+        [_Location_column]: 23,
+        [_Location_line]: 83,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "title",
+        [_Location_column]: 13,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "trailing",
+        [_Location_column]: 13,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 75,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 9,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 7,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42], T._LocationL());
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 54,
+        [_Location_file]: "file:///D:/Projects/fl_widgets/lib/widgets/date_picker.dart"
+      });
+    }
+  }, false);
+  var C = Array(43).fill(void 0);
+  var I = ["package:fl_widgets/widgets/date_picker.dart"];
+  var title$ = dart.privateName(date_picker$, "DatePicker.title");
+  date_picker$.DatePicker = class DatePicker extends framework.StatefulWidget {
+    get title() {
+      return this[title$];
+    }
+    set title(value) {
+      super.title = value;
+    }
+    createState() {
+      return new date_picker$._DatePickerState.new();
+    }
+  };
+  (date_picker$.DatePicker.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let title = opts && 'title' in opts ? opts.title : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[title$] = title;
+    date_picker$.DatePicker.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = date_picker$.DatePicker.prototype;
+  dart.addTypeTests(date_picker$.DatePicker);
+  dart.addTypeCaches(date_picker$.DatePicker);
+  dart.setMethodSignature(date_picker$.DatePicker, () => ({
+    __proto__: dart.getMethods(date_picker$.DatePicker.__proto__),
+    createState: dart.fnType(dart.legacy(date_picker$._DatePickerState), [])
+  }));
+  dart.setLibraryUri(date_picker$.DatePicker, I[0]);
+  dart.setFieldSignature(date_picker$.DatePicker, () => ({
+    __proto__: dart.getFields(date_picker$.DatePicker.__proto__),
+    title: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  var _selectDate = dart.privateName(date_picker$, "_selectDate");
+  var _selectTime = dart.privateName(date_picker$, "_selectTime");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  date_picker$._DatePickerState = class _DatePickerState extends framework.State$(dart.legacy(date_picker$.DatePicker)) {
+    formatTime(context, timeOfDay) {
+      let localizations = material_localizations.MaterialLocalizations.of(context);
+      return localizations.formatTimeOfDay(timeOfDay);
+    }
+    formatDate(date) {
+      return new intl.DateFormat.new("EEEE MMM d , yyyy").format(date);
+    }
+    [_selectDate](context) {
+      return async.async(core.Null, (function* _selectDate() {
+        let picked = (yield date_picker.showDatePicker({context: context, initialDate: this.selectedDate, firstDate: new core.DateTime.new(2015, 8), lastDate: new core.DateTime.new(2101)}));
+        if (picked != null && !dart.equals(picked, this.selectedDate)) {
+          this.setState(dart.fn(() => {
+            this.selectedDate = picked;
+          }, T.VoidToNull()));
+        } else {
+          core.print("date is not picked : " + dart.str(this.selectedDate));
+        }
+      }).bind(this));
+    }
+    [_selectTime](context) {
+      return async.async(dart.void, (function* _selectTime() {
+        let picked = (yield time_picker.showTimePicker({context: context, initialTime: this.selectedTime}));
+        if (picked != null && !dart.equals(picked, this.selectedTime)) {
+          this.setState(dart.fn(() => {
+            this.selectedTime = picked;
+          }, T.VoidToNull()));
+        }
+      }).bind(this));
+    }
+    build(context) {
+      return new basic.Column.new({children: T.JSArrayOfWidgetL().of([new card.Card.new({child: new list_tile.ListTile.new({title: new text.Text.new(this.formatDate(this.selectedDate), {style: C[0] || CT.C0, $creationLocationd_0dea112b090073317d4: C[2] || CT.C2}), trailing: new flat_button.FlatButton.new({onPressed: dart.fn(() => this[_selectDate](context), T.VoidToFutureLOfNull()), child: new icon.Icon.new(font_awesome_flutter.FontAwesomeIcons.calendarAlt, {color: colors.Colors.blue, $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[14] || CT.C14}), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), new card.Card.new({child: new list_tile.ListTile.new({title: new text.Text.new(this.formatTime(context, this.selectedTime), {style: C[0] || CT.C0, $creationLocationd_0dea112b090073317d4: C[21] || CT.C21}), trailing: new flat_button.FlatButton.new({onPressed: dart.fn(() => this[_selectTime](context), T.VoidToFutureLOfvoid()), child: new icon.Icon.new(font_awesome_flutter.FontAwesomeIcons.clock, {color: colors.Colors.blue, $creationLocationd_0dea112b090073317d4: C[25] || CT.C25}), $creationLocationd_0dea112b090073317d4: C[29] || CT.C29}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33}), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37})]), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40});
+    }
+  };
+  (date_picker$._DatePickerState.new = function() {
+    this.selectedDate = new core.DateTime.now();
+    this.selectedTime = time.TimeOfDay.now();
+    date_picker$._DatePickerState.__proto__.new.call(this);
+    ;
+  }).prototype = date_picker$._DatePickerState.prototype;
+  dart.addTypeTests(date_picker$._DatePickerState);
+  dart.addTypeCaches(date_picker$._DatePickerState);
+  dart.setMethodSignature(date_picker$._DatePickerState, () => ({
+    __proto__: dart.getMethods(date_picker$._DatePickerState.__proto__),
+    formatTime: dart.fnType(dart.legacy(core.String), [dart.legacy(framework.BuildContext), dart.legacy(time.TimeOfDay)]),
+    formatDate: dart.fnType(dart.legacy(core.String), [dart.legacy(core.DateTime)]),
+    [_selectDate]: dart.fnType(dart.legacy(async.Future$(core.Null)), [dart.legacy(framework.BuildContext)]),
+    [_selectTime]: dart.fnType(dart.legacy(async.Future$(dart.void)), [dart.legacy(framework.BuildContext)]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(date_picker$._DatePickerState, I[0]);
+  dart.setFieldSignature(date_picker$._DatePickerState, () => ({
+    __proto__: dart.getFields(date_picker$._DatePickerState.__proto__),
+    selectedDate: dart.fieldType(dart.legacy(core.DateTime)),
+    selectedTime: dart.fieldType(dart.legacy(time.TimeOfDay))
+  }));
+  dart.trackLibraries("packages/fl_widgets/widgets/date_picker.dart", {
+    "package:fl_widgets/widgets/date_picker.dart": date_picker$
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["date_picker.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAOe;;;;;;;AAEqB;IAAkB;;;QAHpC;QAAU;;;AAAU,2DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;eAUpB,SAAmB;AACpB,0BACF,gDAAG,OAAO;AACpC,YAAO,AAAc,cAAD,iBAAiB,SAAS;IAChD;eAE2B;AACvB,YAAA,AAAgC,yBAArB,4BAA4B,IAAI;IAAC;kBAEV;AAAd;AACP,sBAAS,MAAM,qCACnB,OAAO,eACH,8BACF,sBAAS,MAAM,cAChB,sBAAS;AAErB,YAAI,AAAO,MAAD,YAAmB,aAAP,MAAM,EAAI;AAG5B,UAFF,cAAS;AACc,YAArB,oBAAe,MAAM;;;AAGoB,UAA3C,WAAM,AAAoC,mCAAb;;MAEjC;;kBAEsC;AAAd;AACN,sBACZ,MAAM,qCAAwB,OAAO,eAAe;AACxD,YAAI,AAAO,MAAD,YAAmB,aAAP,MAAM,EAAI;AAG5B,UAFF,cAAS;AACc,YAArB,oBAAe,MAAM;;;MAG3B;;UAG0B;AACxB,YAAO,iCACa,yBAChB,0BACS,mCACE,kBACL,gBAAW,8GAMH,2CACG,cAAM,kBAAY,OAAO,oCAC7B,kBACY,2DACH,8PAKtB,0BACS,mCACE,kBACL,gBAAW,OAAO,EAAE,gHAMZ,2CACG,cAAM,kBAAY,OAAO,oCAC7B,kBACY,qDACH;IAO5B;;;IAhFS,oBAAwB;IACvB,oBAAyB;;;EAgFrC","file":"../../../../packages/fl_widgets/widgets/date_picker.dart.lib.js"}');
+  // Exports:
+  return {
+    widgets__date_picker: date_picker$
+  };
+}));
+
+//# sourceMappingURL=date_picker.dart.lib.js.map

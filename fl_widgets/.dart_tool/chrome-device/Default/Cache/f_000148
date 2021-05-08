@@ -1,0 +1,547 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/page_view.dart', 'packages/flutter/src/painting/basic_types.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/rendering/flex.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/painting/fractional_offset.dart', 'packages/flutter/src/material/colors.dart'], (function load__packages__flutter_multi_carousel__src__carousel__multi_axis_carousel_dart(dart_sdk, packages__flutter__src__widgets__page_view$46dart, packages__flutter__src__painting__basic_types$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__rendering__flex$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__painting__fractional_offset$46dart, packages__flutter__src__material__colors$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const page_view = packages__flutter__src__widgets__page_view$46dart.src__widgets__page_view;
+  const basic_types = packages__flutter__src__painting__basic_types$46dart.src__painting__basic_types;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const flex = packages__flutter__src__rendering__flex$46dart.src__rendering__flex;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const fractional_offset = packages__flutter__src__painting__fractional_offset$46dart.src__painting__fractional_offset;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  var multi_axis_carousel = Object.create(dart.library);
+  var $abs = dartx.abs;
+  var $clamp = dartx.clamp;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    PageControllerN: () => (T.PageControllerN = dart.constFn(dart.nullable(page_view.PageController)))(),
+    intLToNull: () => (T.intLToNull = dart.constFn(dart.fnType(core.Null, [T.intL()])))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndintLToWidgetL: () => (T.BuildContextLAndintLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.intL()])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    doubleN: () => (T.doubleN = dart.constFn(dart.nullable(core.double)))(),
+    Matrix4L: () => (T.Matrix4L = dart.constFn(dart.legacy(vector_math_64.Matrix4)))(),
+    numL: () => (T.numL = dart.constFn(dart.legacy(core.num)))(),
+    numLToMatrix4L: () => (T.numLToMatrix4L = dart.constFn(dart.fnType(T.Matrix4L(), [T.numL()])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    AlwaysStoppedAnimationOfdoubleL: () => (T.AlwaysStoppedAnimationOfdoubleL = dart.constFn(animations.AlwaysStoppedAnimation$(T.doubleL())))(),
+    WidgetN: () => (T.WidgetN = dart.constFn(dart.nullable(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    ColumnL: () => (T.ColumnL = dart.constFn(dart.legacy(basic.Column)))(),
+    BuildContextLAndWidgetLToColumnL: () => (T.BuildContextLAndWidgetLToColumnL = dart.constFn(dart.fnType(T.ColumnL(), [T.BuildContextL(), T.WidgetL()])))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "controller",
+        [_Location_column]: 9,
+        [_Location_line]: 24,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "scrollDirection",
+        [_Location_column]: 9,
+        [_Location_line]: 25,
+        [_Location_file]: null
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemCount",
+        [_Location_column]: 9,
+        [_Location_line]: 26,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPageChanged",
+        [_Location_column]: 9,
+        [_Location_line]: 27,
+        [_Location_file]: null
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "itemBuilder",
+        [_Location_column]: 9,
+        [_Location_line]: 34,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4, C[5] || CT.C5, C[6] || CT.C6], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 23,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C8() {
+      return C[8] = dart.constList([C[9] || CT.C9], T._LocationL());
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[8] || CT.C8,
+        [_Location_name]: null,
+        [_Location_column]: 15,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 9,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 9,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 36,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.constList([C[17] || CT.C17], T._LocationL());
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[16] || CT.C16,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 35,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 21,
+        [_Location_line]: 83,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "height",
+        [_Location_column]: 21,
+        [_Location_line]: 84,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "width",
+        [_Location_column]: 21,
+        [_Location_line]: 85,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 21,
+        [_Location_line]: 86,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 26,
+        [_Location_line]: 82,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 19,
+        [_Location_line]: 81,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 19,
+        [_Location_line]: 82,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.constList([C[26] || CT.C26, C[27] || CT.C27], T._LocationL());
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[25] || CT.C25,
+        [_Location_name]: null,
+        [_Location_column]: 24,
+        [_Location_line]: 80,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 17,
+        [_Location_line]: 75,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "transform",
+        [_Location_column]: 17,
+        [_Location_line]: 76,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 80,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.constList([C[30] || CT.C30, C[31] || CT.C31, C[32] || CT.C32], T._LocationL());
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[29] || CT.C29,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 74,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "turns",
+        [_Location_column]: 15,
+        [_Location_line]: 73,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 74,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.constList([C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[34] || CT.C34,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 72,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "mainAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 69,
+        [_Location_file]: null
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "crossAxisAlignment",
+        [_Location_column]: 11,
+        [_Location_line]: 70,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 71,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39, C[40] || CT.C40, C[41] || CT.C41], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 68,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 7,
+        [_Location_line]: 60,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 61,
+        [_Location_file]: null
+      });
+    },
+    get C43() {
+      return C[43] = dart.constList([C[44] || CT.C44, C[45] || CT.C45], T._LocationL());
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[43] || CT.C43,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 59,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_multi_carousel-1.0.3/lib/src/carousel/multi_axis_carousel.dart"
+      });
+    }
+  }, false);
+  var C = Array(46).fill(void 0);
+  var I = ["package:flutter_multi_carousel/src/carousel/multi_axis_carousel.dart"];
+  var currentPage = dart.privateName(multi_axis_carousel, "MultiAxisCarouselState.currentPage");
+  var initial = dart.privateName(multi_axis_carousel, "MultiAxisCarouselState.initial");
+  var props$ = dart.privateName(multi_axis_carousel, "MultiAxisCarouselState.props");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  multi_axis_carousel.MultiAxisCarouselState = class MultiAxisCarouselState extends framework.StatelessWidget {
+    get currentPage() {
+      return this[currentPage];
+    }
+    set currentPage(value) {
+      this[currentPage] = value;
+    }
+    get initial() {
+      return this[initial];
+    }
+    set initial(value) {
+      this[initial] = value;
+    }
+    get props() {
+      return this[props$];
+    }
+    set props(value) {
+      super.props = value;
+    }
+    initiate(index) {
+      let value = null;
+      if (dart.equals(index, this.currentPage) && dart.test(this.initial)) value = 0.0;
+      this.initial = false;
+      return value;
+    }
+    build(context) {
+      let count = T.intL().as(dart.dload(dart.dload(this.props, 'children'), 'length'));
+      let carouselBuilder = new page_view.PageView.builder({controller: T.PageControllerN().as(dart.dload(this.props, 'controller')), scrollDirection: basic_types.Axis.as(dart.dload(this.props, 'axis')), itemCount: count, onPageChanged: dart.fn(i => {
+          dart.dsend(this.props, 'updatePositionCallBack', [i]);
+          this.currentPage = i;
+          if (dart.dload(this.props, 'onPageChange') != null) {
+            dart.dsend(this.props, 'onPageChange', [i]);
+          }
+        }, T.intLToNull()), itemBuilder: dart.fn((context, index) => T.WidgetL().as(this.builder(index, dart.dload(this.props, 'controller'))), T.BuildContextLAndintLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[0] || CT.C0});
+      return new basic.Center.new({child: new container.Container.new({height: T.doubleN().as(dart.dload(this.props, 'height')), width: T.doubleN().as(dart.dload(this.props, 'width')), child: dart.equals(dart.dload(this.props, 'axis'), basic_types.Axis.horizontal) ? carouselBuilder : new container.Container.new({child: carouselBuilder, $creationLocationd_0dea112b090073317d4: C[7] || CT.C7}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10}), $creationLocationd_0dea112b090073317d4: C[15] || CT.C15});
+    }
+    builder(index, controller1) {
+      function _pmat(pv) {
+        return vector_math_64.Matrix4.new(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, dart.nullCast(dart.notNull(pv) * 0.001, core.double), 0.0, 0.0, 0.0, 1.0);
+      }
+      dart.fn(_pmat, T.numLToMatrix4L());
+      let perspective = _pmat(1.0);
+      return new transitions.AnimatedBuilder.new({animation: change_notifier.Listenable.as(controller1), builder: dart.fn((context, child) => {
+          let t0, t0$;
+          let value = 1.0;
+          value = T.doubleL().as(dart.test(this.initial) ? (t0 = this.initiate(index), t0 == null ? 0.0 : t0) : value = T.doubleL().as(dart.dsend(dart.dload(controller1, 'page'), '-', [index])));
+          value = (1 - value[$abs]() * 0.2)[$clamp](0.0, 1.0);
+          return new basic.Column.new({mainAxisAlignment: flex.MainAxisAlignment.center, crossAxisAlignment: flex.CrossAxisAlignment.start, children: T.JSArrayOfWidgetL().of([new transitions.RotationTransition.new({turns: new (T.AlwaysStoppedAnimationOfdoubleL()).new(1800 * dart.notNull(value) / 360), child: new basic.Transform.new({alignment: fractional_offset.FractionalOffset.center, transform: (t0$ = perspective.scaled(1.0, 1.0, 1.0), (() => {
+                    t0$.rotateX(0.0);
+                    t0$.rotateY(dart.notNull(value) * 3393 / 90);
+                    t0$.rotateZ(0.0);
+                    return t0$;
+                  })()), child: new basic.Opacity.new({opacity: math.pow(value, 4), child: new container.Container.new({color: colors.Colors.green, height: T.doubleN().as(dart.dsend(dart.dload(this.props, 'height'), '*', [value])), width: T.doubleN().as(dart.dsend(dart.dload(this.props, 'width'), '*', [value])), child: T.WidgetN().as(dart.dsend(dart.dload(this.props, 'children'), '_get', [index])), $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[24] || CT.C24}), $creationLocationd_0dea112b090073317d4: C[28] || CT.C28}), $creationLocationd_0dea112b090073317d4: C[33] || CT.C33})]), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+        }, T.BuildContextLAndWidgetLToColumnL()), $creationLocationd_0dea112b090073317d4: C[42] || CT.C42});
+    }
+  };
+  (multi_axis_carousel.MultiAxisCarouselState.new = function(props, opts) {
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[currentPage] = null;
+    this[initial] = true;
+    this[props$] = props;
+    multi_axis_carousel.MultiAxisCarouselState.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    this.currentPage = 0;
+  }).prototype = multi_axis_carousel.MultiAxisCarouselState.prototype;
+  dart.addTypeTests(multi_axis_carousel.MultiAxisCarouselState);
+  dart.addTypeCaches(multi_axis_carousel.MultiAxisCarouselState);
+  dart.setMethodSignature(multi_axis_carousel.MultiAxisCarouselState, () => ({
+    __proto__: dart.getMethods(multi_axis_carousel.MultiAxisCarouselState.__proto__),
+    initiate: dart.fnType(dart.dynamic, [dart.dynamic]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)]),
+    builder: dart.fnType(dart.dynamic, [dart.legacy(core.int), dart.dynamic])
+  }));
+  dart.setLibraryUri(multi_axis_carousel.MultiAxisCarouselState, I[0]);
+  dart.setFieldSignature(multi_axis_carousel.MultiAxisCarouselState, () => ({
+    __proto__: dart.getFields(multi_axis_carousel.MultiAxisCarouselState.__proto__),
+    currentPage: dart.fieldType(dart.legacy(core.int)),
+    initial: dart.fieldType(dart.legacy(core.bool)),
+    props: dart.finalFieldType(dart.dynamic)
+  }));
+  dart.trackLibraries("packages/flutter_multi_carousel/src/carousel/multi_axis_carousel.dart", {
+    "package:flutter_multi_carousel/src/carousel/multi_axis_carousel.dart": multi_axis_carousel
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["multi_axis_carousel.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IAIM;;;;;;IACC;;;;;;IACS;;;;;;aAML;AACA;AACP,UAAU,YAAN,KAAK,EAAI,+BAAe,eAAS,AAAW,QAAH;AAC9B,MAAf,eAAU;AACV,YAAO,MAAK;IACd;UAG0B;AACpB,8BAAuB,WAAT,WAAN;AACL,4BAAsB,mEACP,WAAN,iEACW,WAAN,iCACN,KAAK,iBACD,QAAC;AACiB,UAAzB,WAAN,uCAA6B,CAAC;AACf,UAAf,mBAAc,CAAC;AACf,cAAU,AAAa,WAAnB;AACmB,YAAf,WAAN,6BAAmB,CAAC;;yCAGX,SAAC,SAAS,yBAAU,aAAQ,KAAK,EAAQ,WAAN;AACpD,YAAO,8BACE,oDACS,WAAN,8CACK,WAAN,8BACW,YAAL,WAAN,qBAAmB,+BACpB,eAAe,GACf,oCACS,eAAe;IAIpC;YAEY,OAAO;AACjB,eAAQ,MAAU;AAChB,cAAO,4BACL,KAAK,KAAK,KAAK,KACf,KAAK,KAAK,KAAK,KACf,KAAK,KAAK,mBAAQ,aAAH,EAAE,IAAG,qBACpB,KAAK,KAAK,KAAK;;;AAIX,wBAAc,KAAK,CAAC;AAC5B,YAAO,+EACM,WAAW,YACb,SAAC,SAAS;;AACV,sBAAQ;AAIuB,kBAHtC,yBAAQ,iBACc,KAAhB,cAAS,KAAK,GAAd,aAAmB,oBAEnB,eAAyB,WAAL,WAAZ,WAAW,iBAAQ,KAAK;AACW,UAAjD,QAAkC,CAAzB,AAAE,IAAG,AAAM,AAAM,KAAP,WAAS,aAAY,KAAK;AAC7C,gBAAO,0CACgC,mDACE,yCACrB,yBAChB,+CACS,8CAAuB,AAAK,AAAU,oBAAP,KAAK,IAAI,aACxC,oCACuB,6DACjB,AAAY,WAAD,QAAQ,KAAK,KAAK,MAAjB;AACnB,gCAAQ;AACR,gCAAiB,AAAQ,aAAf,KAAK,IAAI,OAAQ;AAC3B,gCAAQ;;gCACL,gCACI,SAAS,KAAK,EAAE,WAClB,oCACS,4CACO,WAAP,WAAN,6BAAe,KAAK,2BACT,WAAN,WAAN,4BAAc,KAAK,2BACL,WAAR,WAAN,kCAAe,KAAK;;IAS7C;;6DAtF4B;;IAJxB;IACC,gBAAU;IAGa;AAA5B;AACiB,IAAf,mBAAc;EAChB","file":"../../../../../../../../packages/flutter_multi_carousel/src/carousel/multi_axis_carousel.dart.lib.js"}');
+  // Exports:
+  return {
+    src__carousel__multi_axis_carousel: multi_axis_carousel
+  };
+}));
+
+//# sourceMappingURL=multi_axis_carousel.dart.lib.js.map

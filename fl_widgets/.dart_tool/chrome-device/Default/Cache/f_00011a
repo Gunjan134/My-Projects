@@ -1,0 +1,1528 @@
+define(['dart_sdk', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/painting/_network_image_web.dart', 'packages/flutter/src/painting/image_stream.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/widgets/layout_builder.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/gestures/scale.dart', 'packages/flutter/src/rendering/custom_paint.dart', 'packages/flutter/src/services/system_channels.dart'], (function load__packages__flutter_earth__flutter_earth_dart(dart_sdk, packages__vector_math__vector_math_64$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__painting___network_image_web$46dart, packages__flutter__src__painting__image_stream$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__widgets__layout_builder$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__gestures__scale$46dart, packages__flutter__src__rendering__custom_paint$46dart, packages__flutter__src__services__system_channels$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const typed_data = dart_sdk.typed_data;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const _js_helper = dart_sdk._js_helper;
+  const collection = dart_sdk.collection;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const _network_image_web = packages__flutter__src__painting___network_image_web$46dart.src__painting___network_image_web;
+  const image_provider = packages__flutter__src__painting___network_image_web$46dart.src__painting__image_provider;
+  const image_stream = packages__flutter__src__painting__image_stream$46dart.src__painting__image_stream;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const layout_builder = packages__flutter__src__widgets__layout_builder$46dart.src__widgets__layout_builder;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const scale = packages__flutter__src__gestures__scale$46dart.src__gestures__scale;
+  const custom_paint = packages__flutter__src__rendering__custom_paint$46dart.src__rendering__custom_paint;
+  const asset_bundle = packages__flutter__src__services__system_channels$46dart.src__services__asset_bundle;
+  var flutter_earth = Object.create(dart.library);
+  var $toStringAsFixed = dartx.toStringAsFixed;
+  var $toString = dartx.toString;
+  var $round = dartx.round;
+  var $clamp = dartx.clamp;
+  var $length = dartx.length;
+  var $values = dartx.values;
+  var $_get = dartx._get;
+  var $replaceAll = dartx.replaceAll;
+  var $leftShift = dartx['<<'];
+  var $_set = dartx._set;
+  var $toInt = dartx.toInt;
+  var $truncate = dartx.truncate;
+  var $containsKey = dartx.containsKey;
+  var $truncateToDouble = dartx.truncateToDouble;
+  var $add = dartx.add;
+  var $sort = dartx.sort;
+  var $compareTo = dartx.compareTo;
+  var $abs = dartx.abs;
+  var $ceil = dartx.ceil;
+  var $buffer = dartx.buffer;
+  var $asUint8List = dartx.asUint8List;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    TileStatusL: () => (T.TileStatusL = dart.constFn(dart.legacy(flutter_earth.TileStatus)))(),
+    ImageL: () => (T.ImageL = dart.constFn(dart.legacy(ui.Image)))(),
+    CompleterOfImageL: () => (T.CompleterOfImageL = dart.constFn(async.Completer$(T.ImageL())))(),
+    ImageInfoL: () => (T.ImageInfoL = dart.constFn(dart.legacy(image_stream.ImageInfo)))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    ImageInfoLAndboolLToNull: () => (T.ImageInfoLAndboolLToNull = dart.constFn(dart.fnType(core.Null, [T.ImageInfoL(), T.boolL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    TileL: () => (T.TileL = dart.constFn(dart.legacy(flutter_earth.Tile)))(),
+    OffsetL: () => (T.OffsetL = dart.constFn(dart.legacy(ui.Offset)))(),
+    JSArrayOfOffsetL: () => (T.JSArrayOfOffsetL = dart.constFn(_interceptors.JSArray$(T.OffsetL())))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    IdentityMapOfintL$intL: () => (T.IdentityMapOfintL$intL = dart.constFn(_js_helper.IdentityMap$(T.intL(), T.intL())))(),
+    ListOfintL: () => (T.ListOfintL = dart.constFn(core.List$(T.intL())))(),
+    PolygonL: () => (T.PolygonL = dart.constFn(dart.legacy(flutter_earth.Polygon)))(),
+    ListOfPolygonL: () => (T.ListOfPolygonL = dart.constFn(core.List$(T.PolygonL())))(),
+    PolygonLAndPolygonLTointL: () => (T.PolygonLAndPolygonLTointL = dart.constFn(dart.fnType(T.intL(), [T.PolygonL(), T.PolygonL()])))(),
+    MeshL: () => (T.MeshL = dart.constFn(dart.legacy(flutter_earth.Mesh)))(),
+    JSArrayOfMeshL: () => (T.JSArrayOfMeshL = dart.constFn(_interceptors.JSArray$(T.MeshL())))(),
+    MeshLAndMeshLTointL: () => (T.MeshLAndMeshLTointL = dart.constFn(dart.fnType(T.intL(), [T.MeshL(), T.MeshL()])))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    TweenOfdoubleL: () => (T.TweenOfdoubleL = dart.constFn(tween.Tween$(T.doubleL())))(),
+    HashMapOfintL$TileL: () => (T.HashMapOfintL$TileL = dart.constFn(collection.HashMap$(T.intL(), T.TileL())))(),
+    HashMapLOfintL$TileL: () => (T.HashMapLOfintL$TileL = dart.constFn(dart.legacy(T.HashMapOfintL$TileL())))(),
+    ListOfHashMapLOfintL$TileL: () => (T.ListOfHashMapLOfintL$TileL = dart.constFn(core.List$(T.HashMapLOfintL$TileL())))(),
+    IdentityMapOfintL$TileL: () => (T.IdentityMapOfintL$TileL = dart.constFn(_js_helper.IdentityMap$(T.intL(), T.TileL())))(),
+    ImageLToImageL: () => (T.ImageLToImageL = dart.constFn(dart.fnType(T.ImageL(), [T.ImageL()])))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    GestureDetectorL: () => (T.GestureDetectorL = dart.constFn(dart.legacy(gesture_detector.GestureDetector)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BoxConstraintsL: () => (T.BoxConstraintsL = dart.constFn(dart.legacy(box.BoxConstraints)))(),
+    BuildContextLAndBoxConstraintsLToGestureDetectorL: () => (T.BuildContextLAndBoxConstraintsLToGestureDetectorL = dart.constFn(dart.fnType(T.GestureDetectorL(), [T.BuildContextL(), T.BoxConstraintsL()])))(),
+    SpherePainterL: () => (T.SpherePainterL = dart.constFn(dart.legacy(flutter_earth.SpherePainter)))(),
+    FrameInfoL: () => (T.FrameInfoL = dart.constFn(dart.legacy(ui.FrameInfo)))(),
+    FrameInfoLToNull: () => (T.FrameInfoLToNull = dart.constFn(dart.fnType(core.Null, [T.FrameInfoL()])))(),
+    CodecL: () => (T.CodecL = dart.constFn(dart.legacy(ui.Codec)))(),
+    CodecLToNull: () => (T.CodecLToNull = dart.constFn(dart.fnType(core.Null, [T.CodecL()])))(),
+    ByteDataL: () => (T.ByteDataL = dart.constFn(dart.legacy(typed_data.ByteData)))(),
+    ByteDataLToNull: () => (T.ByteDataLToNull = dart.constFn(dart.fnType(core.Null, [T.ByteDataL()])))(),
+    dynamicToNull: () => (T.dynamicToNull = dart.constFn(dart.fnType(core.Null, [dart.dynamic])))(),
+    numL: () => (T.numL = dart.constFn(dart.legacy(core.num)))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: flutter_earth.TileStatus.prototype,
+        [_name$]: "TileStatus.clear",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: flutter_earth.TileStatus.prototype,
+        [_name$]: "TileStatus.pending",
+        index: 1
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: flutter_earth.TileStatus.prototype,
+        [_name$]: "TileStatus.fetching",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: flutter_earth.TileStatus.prototype,
+        [_name$]: "TileStatus.ready",
+        index: 3
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: flutter_earth.TileStatus.prototype,
+        [_name$]: "TileStatus.error",
+        index: 4
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2, C[3] || CT.C3, C[4] || CT.C4], T.TileStatusL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "painter",
+        [_Location_column]: 13,
+        [_Location_line]: 771,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "size",
+        [_Location_column]: 13,
+        [_Location_line]: 772,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.constList([C[8] || CT.C8, C[9] || CT.C9], T._LocationL());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[7] || CT.C7,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 770,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_earth-0.0.4/lib/flutter_earth.dart"
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onScaleStart",
+        [_Location_column]: 11,
+        [_Location_line]: 766,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onScaleUpdate",
+        [_Location_column]: 11,
+        [_Location_line]: 767,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onScaleEnd",
+        [_Location_column]: 11,
+        [_Location_line]: 768,
+        [_Location_file]: null
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onDoubleTap",
+        [_Location_column]: 11,
+        [_Location_line]: 769,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 770,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.constList([C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14, C[15] || CT.C15, C[16] || CT.C16], T._LocationL());
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[11] || CT.C11,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 765,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_earth-0.0.4/lib/flutter_earth.dart"
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 762,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19], T._LocationL());
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 761,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_earth-0.0.4/lib/flutter_earth.dart"
+      });
+    }
+  }, false);
+  var C = Array(20).fill(void 0);
+  var I = ["package:flutter_earth/flutter_earth.dart"];
+  var yaw$ = dart.privateName(flutter_earth, "EulerAngles.yaw");
+  var pitch$ = dart.privateName(flutter_earth, "EulerAngles.pitch");
+  var roll$ = dart.privateName(flutter_earth, "EulerAngles.roll");
+  flutter_earth.EulerAngles = class EulerAngles extends core.Object {
+    get yaw() {
+      return this[yaw$];
+    }
+    set yaw(value) {
+      this[yaw$] = value;
+    }
+    get pitch() {
+      return this[pitch$];
+    }
+    set pitch(value) {
+      this[pitch$] = value;
+    }
+    get roll() {
+      return this[roll$];
+    }
+    set roll(value) {
+      this[roll$] = value;
+    }
+    clone() {
+      return new flutter_earth.EulerAngles.new(this.yaw, this.pitch, this.roll);
+    }
+    scale(arg) {
+      this.yaw = dart.notNull(this.yaw) * dart.notNull(arg);
+      this.pitch = dart.notNull(this.pitch) * dart.notNull(arg);
+      this.roll = dart.notNull(this.roll) * dart.notNull(arg);
+    }
+    inRadians() {
+      return new flutter_earth.EulerAngles.new(vector_math_64.radians(this.yaw), vector_math_64.radians(this.pitch), vector_math_64.radians(this.roll));
+    }
+    inDegrees() {
+      return new flutter_earth.EulerAngles.new(vector_math_64.degrees(this.yaw), vector_math_64.degrees(this.pitch), vector_math_64.degrees(this.roll));
+    }
+    toString() {
+      return "pitch:" + this.pitch[$toStringAsFixed](4) + ", yaw:" + this.yaw[$toStringAsFixed](4) + ", roll:" + this.roll[$toStringAsFixed](4);
+    }
+  };
+  (flutter_earth.EulerAngles.new = function(yaw, pitch, roll) {
+    this[yaw$] = yaw;
+    this[pitch$] = pitch;
+    this[roll$] = roll;
+    ;
+  }).prototype = flutter_earth.EulerAngles.prototype;
+  dart.addTypeTests(flutter_earth.EulerAngles);
+  dart.addTypeCaches(flutter_earth.EulerAngles);
+  dart.setMethodSignature(flutter_earth.EulerAngles, () => ({
+    __proto__: dart.getMethods(flutter_earth.EulerAngles.__proto__),
+    clone: dart.fnType(dart.legacy(flutter_earth.EulerAngles), []),
+    scale: dart.fnType(dart.void, [dart.legacy(core.double)]),
+    inRadians: dart.fnType(dart.legacy(flutter_earth.EulerAngles), []),
+    inDegrees: dart.fnType(dart.legacy(flutter_earth.EulerAngles), []),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(flutter_earth.EulerAngles, I[0]);
+  dart.setFieldSignature(flutter_earth.EulerAngles, () => ({
+    __proto__: dart.getFields(flutter_earth.EulerAngles.__proto__),
+    yaw: dart.fieldType(dart.legacy(core.double)),
+    pitch: dart.fieldType(dart.legacy(core.double)),
+    roll: dart.fieldType(dart.legacy(core.double))
+  }));
+  dart.defineExtensionMethods(flutter_earth.EulerAngles, ['toString']);
+  var latitude$ = dart.privateName(flutter_earth, "LatLon.latitude");
+  var longitude$ = dart.privateName(flutter_earth, "LatLon.longitude");
+  flutter_earth.LatLon = class LatLon extends core.Object {
+    get latitude() {
+      return this[latitude$];
+    }
+    set latitude(value) {
+      this[latitude$] = value;
+    }
+    get longitude() {
+      return this[longitude$];
+    }
+    set longitude(value) {
+      this[longitude$] = value;
+    }
+    inRadians() {
+      return new flutter_earth.LatLon.new(vector_math_64.radians(this.latitude), vector_math_64.radians(this.longitude));
+    }
+    inDegrees() {
+      return new flutter_earth.LatLon.new(vector_math_64.degrees(this.latitude), vector_math_64.degrees(this.longitude));
+    }
+    toString() {
+      let t0, t0$;
+      return "LatLon(" + vector_math_64.degrees((t0 = this.latitude, t0 == null ? 0.0 : t0))[$toStringAsFixed](2) + ", " + vector_math_64.degrees((t0$ = this.longitude, t0$ == null ? 0.0 : t0$))[$toStringAsFixed](2) + ")";
+    }
+  };
+  (flutter_earth.LatLon.new = function(latitude, longitude) {
+    this[latitude$] = latitude;
+    this[longitude$] = longitude;
+    ;
+  }).prototype = flutter_earth.LatLon.prototype;
+  dart.addTypeTests(flutter_earth.LatLon);
+  dart.addTypeCaches(flutter_earth.LatLon);
+  dart.setMethodSignature(flutter_earth.LatLon, () => ({
+    __proto__: dart.getMethods(flutter_earth.LatLon.__proto__),
+    inRadians: dart.fnType(dart.legacy(flutter_earth.LatLon), []),
+    inDegrees: dart.fnType(dart.legacy(flutter_earth.LatLon), []),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(flutter_earth.LatLon, I[0]);
+  dart.setFieldSignature(flutter_earth.LatLon, () => ({
+    __proto__: dart.getFields(flutter_earth.LatLon.__proto__),
+    latitude: dart.fieldType(dart.legacy(core.double)),
+    longitude: dart.fieldType(dart.legacy(core.double))
+  }));
+  dart.defineExtensionMethods(flutter_earth.LatLon, ['toString']);
+  var vertex0$ = dart.privateName(flutter_earth, "Polygon.vertex0");
+  var vertex1$ = dart.privateName(flutter_earth, "Polygon.vertex1");
+  var vertex2$ = dart.privateName(flutter_earth, "Polygon.vertex2");
+  var sumOfZ$ = dart.privateName(flutter_earth, "Polygon.sumOfZ");
+  flutter_earth.Polygon = class Polygon extends core.Object {
+    get vertex0() {
+      return this[vertex0$];
+    }
+    set vertex0(value) {
+      this[vertex0$] = value;
+    }
+    get vertex1() {
+      return this[vertex1$];
+    }
+    set vertex1(value) {
+      this[vertex1$] = value;
+    }
+    get vertex2() {
+      return this[vertex2$];
+    }
+    set vertex2(value) {
+      this[vertex2$] = value;
+    }
+    get sumOfZ() {
+      return this[sumOfZ$];
+    }
+    set sumOfZ(value) {
+      this[sumOfZ$] = value;
+    }
+  };
+  (flutter_earth.Polygon.new = function(vertex0, vertex1, vertex2, sumOfZ = 0) {
+    this[vertex0$] = vertex0;
+    this[vertex1$] = vertex1;
+    this[vertex2$] = vertex2;
+    this[sumOfZ$] = sumOfZ;
+    ;
+  }).prototype = flutter_earth.Polygon.prototype;
+  dart.addTypeTests(flutter_earth.Polygon);
+  dart.addTypeCaches(flutter_earth.Polygon);
+  dart.setLibraryUri(flutter_earth.Polygon, I[0]);
+  dart.setFieldSignature(flutter_earth.Polygon, () => ({
+    __proto__: dart.getFields(flutter_earth.Polygon.__proto__),
+    vertex0: dart.fieldType(dart.legacy(core.int)),
+    vertex1: dart.fieldType(dart.legacy(core.int)),
+    vertex2: dart.fieldType(dart.legacy(core.int)),
+    sumOfZ: dart.fieldType(dart.legacy(core.double))
+  }));
+  var positions = dart.privateName(flutter_earth, "Mesh.positions");
+  var positionsZ = dart.privateName(flutter_earth, "Mesh.positionsZ");
+  var texcoords = dart.privateName(flutter_earth, "Mesh.texcoords");
+  var colors = dart.privateName(flutter_earth, "Mesh.colors");
+  var indices = dart.privateName(flutter_earth, "Mesh.indices");
+  var vertexCount$ = dart.privateName(flutter_earth, "Mesh.vertexCount");
+  var indexCount = dart.privateName(flutter_earth, "Mesh.indexCount");
+  var texture = dart.privateName(flutter_earth, "Mesh.texture");
+  var x = dart.privateName(flutter_earth, "Mesh.x");
+  var y = dart.privateName(flutter_earth, "Mesh.y");
+  var z = dart.privateName(flutter_earth, "Mesh.z");
+  flutter_earth.Mesh = class Mesh extends core.Object {
+    get positions() {
+      return this[positions];
+    }
+    set positions(value) {
+      this[positions] = value;
+    }
+    get positionsZ() {
+      return this[positionsZ];
+    }
+    set positionsZ(value) {
+      this[positionsZ] = value;
+    }
+    get texcoords() {
+      return this[texcoords];
+    }
+    set texcoords(value) {
+      this[texcoords] = value;
+    }
+    get colors() {
+      return this[colors];
+    }
+    set colors(value) {
+      this[colors] = value;
+    }
+    get indices() {
+      return this[indices];
+    }
+    set indices(value) {
+      this[indices] = value;
+    }
+    get vertexCount() {
+      return this[vertexCount$];
+    }
+    set vertexCount(value) {
+      this[vertexCount$] = value;
+    }
+    get indexCount() {
+      return this[indexCount];
+    }
+    set indexCount(value) {
+      this[indexCount] = value;
+    }
+    get texture() {
+      return this[texture];
+    }
+    set texture(value) {
+      this[texture] = value;
+    }
+    get x() {
+      return this[x];
+    }
+    set x(value) {
+      this[x] = value;
+    }
+    get y() {
+      return this[y];
+    }
+    set y(value) {
+      this[y] = value;
+    }
+    get z() {
+      return this[z];
+    }
+    set z(value) {
+      this[z] = value;
+    }
+  };
+  (flutter_earth.Mesh.new = function(vertexCount, faceCount) {
+    this[positions] = null;
+    this[positionsZ] = null;
+    this[texcoords] = null;
+    this[colors] = null;
+    this[indices] = null;
+    this[vertexCount$] = null;
+    this[indexCount] = null;
+    this[texture] = null;
+    this[x] = null;
+    this[y] = null;
+    this[z] = null;
+    this.positions = _native_typed_data.NativeFloat32List.new(dart.notNull(vertexCount) * 2);
+    this.positionsZ = _native_typed_data.NativeFloat32List.new(vertexCount);
+    this.texcoords = _native_typed_data.NativeFloat32List.new(dart.notNull(vertexCount) * 2);
+    this.colors = _native_typed_data.NativeInt32List.new(vertexCount);
+    this.indices = _native_typed_data.NativeUint16List.new(dart.notNull(faceCount) * 3);
+    this.vertexCount = 0;
+    this.indexCount = 0;
+  }).prototype = flutter_earth.Mesh.prototype;
+  dart.addTypeTests(flutter_earth.Mesh);
+  dart.addTypeCaches(flutter_earth.Mesh);
+  dart.setLibraryUri(flutter_earth.Mesh, I[0]);
+  dart.setFieldSignature(flutter_earth.Mesh, () => ({
+    __proto__: dart.getFields(flutter_earth.Mesh.__proto__),
+    positions: dart.fieldType(dart.legacy(typed_data.Float32List)),
+    positionsZ: dart.fieldType(dart.legacy(typed_data.Float32List)),
+    texcoords: dart.fieldType(dart.legacy(typed_data.Float32List)),
+    colors: dart.fieldType(dart.legacy(typed_data.Int32List)),
+    indices: dart.fieldType(dart.legacy(typed_data.Uint16List)),
+    vertexCount: dart.fieldType(dart.legacy(core.int)),
+    indexCount: dart.fieldType(dart.legacy(core.int)),
+    texture: dart.fieldType(dart.legacy(ui.Image)),
+    x: dart.fieldType(dart.legacy(core.double)),
+    y: dart.fieldType(dart.legacy(core.double)),
+    z: dart.fieldType(dart.legacy(core.double))
+  }));
+  var _name$ = dart.privateName(flutter_earth, "_name");
+  flutter_earth.TileStatus = class TileStatus extends core.Object {
+    toString() {
+      return this[_name$];
+    }
+  };
+  (flutter_earth.TileStatus.new = function(index, _name) {
+    this.index = index;
+    this[_name$] = _name;
+    ;
+  }).prototype = flutter_earth.TileStatus.prototype;
+  dart.addTypeTests(flutter_earth.TileStatus);
+  dart.addTypeCaches(flutter_earth.TileStatus);
+  dart.setMethodSignature(flutter_earth.TileStatus, () => ({
+    __proto__: dart.getMethods(flutter_earth.TileStatus.__proto__),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setLibraryUri(flutter_earth.TileStatus, I[0]);
+  dart.setFieldSignature(flutter_earth.TileStatus, () => ({
+    __proto__: dart.getFields(flutter_earth.TileStatus.__proto__),
+    index: dart.finalFieldType(dart.legacy(core.int)),
+    [_name$]: dart.finalFieldType(dart.legacy(core.String))
+  }));
+  dart.defineExtensionMethods(flutter_earth.TileStatus, ['toString']);
+  flutter_earth.TileStatus.clear = C[0] || CT.C0;
+  flutter_earth.TileStatus.pending = C[1] || CT.C1;
+  flutter_earth.TileStatus.fetching = C[2] || CT.C2;
+  flutter_earth.TileStatus.ready = C[3] || CT.C3;
+  flutter_earth.TileStatus.error = C[4] || CT.C4;
+  flutter_earth.TileStatus.values = C[5] || CT.C5;
+  var x$ = dart.privateName(flutter_earth, "Tile.x");
+  var y$ = dart.privateName(flutter_earth, "Tile.y");
+  var z$ = dart.privateName(flutter_earth, "Tile.z");
+  var status = dart.privateName(flutter_earth, "Tile.status");
+  var image$ = dart.privateName(flutter_earth, "Tile.image");
+  var future$ = dart.privateName(flutter_earth, "Tile.future");
+  flutter_earth.Tile = class Tile extends core.Object {
+    get x() {
+      return this[x$];
+    }
+    set x(value) {
+      this[x$] = value;
+    }
+    get y() {
+      return this[y$];
+    }
+    set y(value) {
+      this[y$] = value;
+    }
+    get z() {
+      return this[z$];
+    }
+    set z(value) {
+      this[z$] = value;
+    }
+    get status() {
+      return this[status];
+    }
+    set status(value) {
+      this[status] = value;
+    }
+    get image() {
+      return this[image$];
+    }
+    set image(value) {
+      this[image$] = value;
+    }
+    get future() {
+      return this[future$];
+    }
+    set future(value) {
+      this[future$] = value;
+    }
+  };
+  (flutter_earth.Tile.new = function(x, y, z, opts) {
+    let image = opts && 'image' in opts ? opts.image : null;
+    let future = opts && 'future' in opts ? opts.future : null;
+    this[status] = flutter_earth.TileStatus.clear;
+    this[x$] = x;
+    this[y$] = y;
+    this[z$] = z;
+    this[image$] = image;
+    this[future$] = future;
+    ;
+  }).prototype = flutter_earth.Tile.prototype;
+  dart.addTypeTests(flutter_earth.Tile);
+  dart.addTypeCaches(flutter_earth.Tile);
+  dart.setLibraryUri(flutter_earth.Tile, I[0]);
+  dart.setFieldSignature(flutter_earth.Tile, () => ({
+    __proto__: dart.getFields(flutter_earth.Tile.__proto__),
+    x: dart.fieldType(dart.legacy(core.int)),
+    y: dart.fieldType(dart.legacy(core.int)),
+    z: dart.fieldType(dart.legacy(core.int)),
+    status: dart.fieldType(dart.legacy(flutter_earth.TileStatus)),
+    image: dart.fieldType(dart.legacy(ui.Image)),
+    future: dart.fieldType(dart.legacy(async.Future$(dart.legacy(ui.Image))))
+  }));
+  var url$ = dart.privateName(flutter_earth, "FlutterEarth.url");
+  var radius$ = dart.privateName(flutter_earth, "FlutterEarth.radius");
+  var maxVertexCount$ = dart.privateName(flutter_earth, "FlutterEarth.maxVertexCount");
+  var showPole$ = dart.privateName(flutter_earth, "FlutterEarth.showPole");
+  var onTileStart$ = dart.privateName(flutter_earth, "FlutterEarth.onTileStart");
+  var onTileEnd$ = dart.privateName(flutter_earth, "FlutterEarth.onTileEnd");
+  var onMapCreated$ = dart.privateName(flutter_earth, "FlutterEarth.onMapCreated");
+  var onCameraMove$ = dart.privateName(flutter_earth, "FlutterEarth.onCameraMove");
+  flutter_earth.FlutterEarth = class FlutterEarth extends framework.StatefulWidget {
+    get url() {
+      return this[url$];
+    }
+    set url(value) {
+      super.url = value;
+    }
+    get radius() {
+      return this[radius$];
+    }
+    set radius(value) {
+      super.radius = value;
+    }
+    get maxVertexCount() {
+      return this[maxVertexCount$];
+    }
+    set maxVertexCount(value) {
+      super.maxVertexCount = value;
+    }
+    get showPole() {
+      return this[showPole$];
+    }
+    set showPole(value) {
+      super.showPole = value;
+    }
+    get onTileStart() {
+      return this[onTileStart$];
+    }
+    set onTileStart(value) {
+      super.onTileStart = value;
+    }
+    get onTileEnd() {
+      return this[onTileEnd$];
+    }
+    set onTileEnd(value) {
+      super.onTileEnd = value;
+    }
+    get onMapCreated() {
+      return this[onMapCreated$];
+    }
+    set onMapCreated(value) {
+      super.onMapCreated = value;
+    }
+    get onCameraMove() {
+      return this[onCameraMove$];
+    }
+    set onCameraMove(value) {
+      super.onCameraMove = value;
+    }
+    createState() {
+      return new flutter_earth._FlutterEarthState.new();
+    }
+  };
+  (flutter_earth.FlutterEarth.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let url = opts && 'url' in opts ? opts.url : null;
+    let radius = opts && 'radius' in opts ? opts.radius : null;
+    let maxVertexCount = opts && 'maxVertexCount' in opts ? opts.maxVertexCount : 5000;
+    let showPole = opts && 'showPole' in opts ? opts.showPole : true;
+    let onMapCreated = opts && 'onMapCreated' in opts ? opts.onMapCreated : null;
+    let onCameraMove = opts && 'onCameraMove' in opts ? opts.onCameraMove : null;
+    let onTileStart = opts && 'onTileStart' in opts ? opts.onTileStart : null;
+    let onTileEnd = opts && 'onTileEnd' in opts ? opts.onTileEnd : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[url$] = url;
+    this[radius$] = radius;
+    this[maxVertexCount$] = maxVertexCount;
+    this[showPole$] = showPole;
+    this[onMapCreated$] = onMapCreated;
+    this[onCameraMove$] = onCameraMove;
+    this[onTileStart$] = onTileStart;
+    this[onTileEnd$] = onTileEnd;
+    flutter_earth.FlutterEarth.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = flutter_earth.FlutterEarth.prototype;
+  dart.addTypeTests(flutter_earth.FlutterEarth);
+  dart.addTypeCaches(flutter_earth.FlutterEarth);
+  dart.setMethodSignature(flutter_earth.FlutterEarth, () => ({
+    __proto__: dart.getMethods(flutter_earth.FlutterEarth.__proto__),
+    createState: dart.fnType(dart.legacy(flutter_earth._FlutterEarthState), [])
+  }));
+  dart.setLibraryUri(flutter_earth.FlutterEarth, I[0]);
+  dart.setFieldSignature(flutter_earth.FlutterEarth, () => ({
+    __proto__: dart.getFields(flutter_earth.FlutterEarth.__proto__),
+    url: dart.finalFieldType(dart.legacy(core.String)),
+    radius: dart.finalFieldType(dart.legacy(core.double)),
+    maxVertexCount: dart.finalFieldType(dart.legacy(core.int)),
+    showPole: dart.finalFieldType(dart.legacy(core.bool)),
+    onTileStart: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(flutter_earth.Tile)]))),
+    onTileEnd: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(flutter_earth.Tile)]))),
+    onMapCreated: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(flutter_earth.FlutterEarthController)]))),
+    onCameraMove: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(flutter_earth.LatLon), dart.legacy(core.double)])))
+  }));
+  var _controller = dart.privateName(flutter_earth, "_controller");
+  var _lastZoom = dart.privateName(flutter_earth, "_lastZoom");
+  var _lastFocalPoint = dart.privateName(flutter_earth, "_lastFocalPoint");
+  var _lastQuaternion = dart.privateName(flutter_earth, "_lastQuaternion");
+  var _lastRotationAxis = dart.privateName(flutter_earth, "_lastRotationAxis");
+  var _lastGestureScale = dart.privateName(flutter_earth, "_lastGestureScale");
+  var _lastGestureRatation = dart.privateName(flutter_earth, "_lastGestureRatation");
+  var _lastGestureTime = dart.privateName(flutter_earth, "_lastGestureTime");
+  var _radius = dart.privateName(flutter_earth, "_radius");
+  var _panCurveEnd = dart.privateName(flutter_earth, "_panCurveEnd");
+  var _handleScaleStart = dart.privateName(flutter_earth, "_handleScaleStart");
+  var _handleScaleUpdate = dart.privateName(flutter_earth, "_handleScaleUpdate");
+  var _handleScaleEnd = dart.privateName(flutter_earth, "_handleScaleEnd");
+  var _handleDoubleTap = dart.privateName(flutter_earth, "_handleDoubleTap");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(dart.legacy(flutter_earth.FlutterEarth)) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(dart.legacy(flutter_earth.FlutterEarth))[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(dart.legacy(flutter_earth.FlutterEarth)));
+  flutter_earth._FlutterEarthState = class _FlutterEarthState extends State_TickerProviderStateMixin$36 {
+    get radius() {
+      return dart.notNull(this[_radius]) * math.pow(2, this.zoom);
+    }
+    get zoomLevel() {
+      return dart.asNullableInt(this.zoom[$round]()[$clamp](this.minZoom, this.maxZoom));
+    }
+    get position() {
+      return flutter_earth.quaternionToLatLon(this.quaternion);
+    }
+    get eulerAngles() {
+      return flutter_earth.quaternionToEulerAngles(this.quaternion);
+    }
+    canvasPointToVector3(point) {
+      let x = dart.notNull(point.dx) - dart.notNull(this.width) / 2;
+      let y = dart.notNull(point.dy) - dart.notNull(this.height) / 2;
+      let z = dart.notNull(this.radius) * dart.notNull(this.radius) - x * x - y * y;
+      if (z < 0) z = 0.0;
+      z = -math.sqrt(z);
+      return vector_math_64.Vector3.new(x, y, z);
+    }
+    canvasVector3ToLatLon(v) {
+      let q = vector_math_64.Quaternion.new(-0.5, -0.5, 0.5, 0.5)['*'](this.quaternion);
+      q.inverted().rotate(v);
+      v.normalize();
+      return flutter_earth.vector3ToLatLon(v);
+    }
+    clearCache() {
+      return async.async(dart.void, (function* clearCache() {
+        let currentZoom = this.zoomLevel;
+        for (let z = 4; z < dart.notNull(this.tiles[$length]); z = z + 1) {
+          if (z !== currentZoom) {
+            let values = this.tiles[$_get](z)[$values];
+            for (let t of values) {
+              t.status = flutter_earth.TileStatus.clear;
+              t.image = null;
+              t.future = null;
+            }
+          }
+        }
+      }).bind(this));
+    }
+    loadTileImage(tile) {
+      return async.async(T.TileL(), (function* loadTileImage() {
+        let t1, t0, t1$, t0$;
+        tile.status = flutter_earth.TileStatus.pending;
+        if (this.widget.onTileStart != null) {
+          t0 = this.widget;
+          t1 = tile;
+          t0.onTileStart(t1);
+        }
+        if (tile.status == flutter_earth.TileStatus.ready) return tile;
+        tile.status = flutter_earth.TileStatus.fetching;
+        let c = T.CompleterOfImageL().new();
+        let url = this.widget.url[$replaceAll]("{z}", dart.str(tile.z))[$replaceAll]("{x}", dart.str(tile.x))[$replaceAll]("{y}", dart.str(tile.y));
+        let networkImage = new _network_image_web.NetworkImage.new(url);
+        let imageStream = networkImage.resolve(new image_provider.ImageConfiguration.new());
+        imageStream.addListener(new image_stream.ImageStreamListener.new(dart.fn((imageInfo, synchronousCall) => {
+          c.complete(imageInfo.image);
+        }, T.ImageInfoLAndboolLToNull())));
+        tile.image = (yield c.future);
+        tile.status = flutter_earth.TileStatus.ready;
+        if (this.widget.onTileEnd != null) {
+          t0$ = this.widget;
+          t1$ = tile;
+          t0$.onTileEnd(t1$);
+        }
+        this.setState(dart.fn(() => {
+        }, T.VoidToNull()));
+        return tile;
+      }).bind(this));
+    }
+    getTile(x, y, z) {
+      let t0;
+      let key = x[$leftShift](32) + dart.notNull(y);
+      let tile = this.tiles[$_get](z)[$_get](key);
+      if (tile == null) {
+        tile = new flutter_earth.Tile.new(x, y, z);
+        this.tiles[$_get](z)[$_set](key, tile);
+      }
+      if (tile.status == flutter_earth.TileStatus.clear) {
+        this.loadTileImage(tile);
+      }
+      if (tile.status != flutter_earth.TileStatus.ready) {
+        for (let i = z; dart.notNull(i) >= 0; i = dart.notNull(i) - 1) {
+          let x1 = (dart.notNull(x) * math.pow(2, dart.notNull(i) - dart.notNull(z)))[$toInt]();
+          let y1 = (dart.notNull(y) * math.pow(2, dart.notNull(i) - dart.notNull(z)))[$toInt]();
+          let key1 = x1[$leftShift](32) + y1;
+          let tile1 = this.tiles[$_get](i)[$_get](key1);
+          if ((t0 = tile1, t0 == null ? null : t0.status) == flutter_earth.TileStatus.ready) return tile1;
+        }
+      }
+      return tile;
+    }
+    clipTiles(clipRect, radius) {
+      let list = T.JSArrayOfOffsetL().of([]);
+      let scale = math.pow(2.0, this.zoomLevel);
+      let observed = new (T.IdentityMapOfintL$intL()).new();
+      let lastKeys = T.ListOfintL().new((dart.notNull(clipRect.width) / 10)[$truncate]() + 1);
+      for (let y = clipRect.top; dart.notNull(y) < dart.notNull(clipRect.bottom); y = dart.notNull(y) + 10.0) {
+        let i = 0;
+        for (let x = clipRect.left; dart.notNull(x) < dart.notNull(clipRect.right); x = dart.notNull(x) + 10.0) {
+          let v = this.canvasPointToVector3(new ui.Offset.new(x, y));
+          let latLon = this.canvasVector3ToLatLon(v);
+          let point = flutter_earth.latLonToPoint(latLon.latitude, latLon.longitude)['*'](scale);
+          if (dart.notNull(point.dx) >= scale || dart.notNull(point.dy) >= scale) continue;
+          let key = point.dx[$toInt]()[$leftShift](32) + point.dy[$toInt]();
+          if ((i === 0 || lastKeys[$_get](i - 1) !== key) && lastKeys[$_get](i) !== key && !dart.test(observed[$containsKey](key))) {
+            observed[$_set](key, 0);
+            list[$add](new ui.Offset.new(point.dx[$truncateToDouble](), point.dy[$truncateToDouble]()));
+          }
+          lastKeys[$_set](i, key);
+          i = i + 1;
+        }
+      }
+      return list;
+    }
+    initMeshTexture(mesh) {
+      let tile = this.getTile((dart.notNull(mesh.x) / dart.notNull(this.tileWidth))[$truncate](), (dart.notNull(mesh.y) / dart.notNull(this.tileHeight))[$truncate](), this.zoomLevel);
+      if (tile.status == flutter_earth.TileStatus.ready) {
+        if (tile.z != this.zoomLevel) {
+          let texcoords = mesh.texcoords;
+          let texcoordCount = texcoords[$length];
+          let scale = math.pow(2, dart.notNull(tile.z) - dart.notNull(this.zoomLevel));
+          for (let i = 0; i < dart.notNull(texcoordCount); i = i + 2) {
+            texcoords[$_set](i, (dart.notNull(mesh.x) + dart.notNull(texcoords[$_get](i))) * scale - dart.notNull(tile.x) * dart.notNull(this.tileWidth));
+            texcoords[$_set](i + 1, (dart.notNull(mesh.y) + dart.notNull(texcoords[$_get](i + 1))) * scale - dart.notNull(tile.y) * dart.notNull(this.tileHeight));
+          }
+        }
+        mesh.texture = tile.image;
+      }
+    }
+    initMeshFaces(mesh, subdivisionsX, subdivisionsY) {
+      let t0;
+      let faceCount = dart.notNull(subdivisionsX) * dart.notNull(subdivisionsY) * 2;
+      let faces = T.ListOfPolygonL().new(faceCount);
+      let positionsZ = mesh.positionsZ;
+      let indexOffset = mesh.indexCount;
+      let z = 0.0;
+      for (let j = 0; j < dart.notNull(subdivisionsY); j = j + 1) {
+        let k1 = j * (dart.notNull(subdivisionsX) + 1);
+        let k2 = k1 + dart.notNull(subdivisionsX) + 1;
+        for (let i = 0; i < dart.notNull(subdivisionsX); i = i + 1) {
+          let k3 = k1 + 1;
+          let k4 = k2 + 1;
+          let sumOfZ = dart.notNull(positionsZ[$_get](k1)) + dart.notNull(positionsZ[$_get](k2)) + dart.notNull(positionsZ[$_get](k3));
+          faces[$_set](indexOffset, new flutter_earth.Polygon.new(k1, k2, k3, sumOfZ));
+          z = z + sumOfZ;
+          sumOfZ = dart.notNull(positionsZ[$_get](k3)) + dart.notNull(positionsZ[$_get](k2)) + dart.notNull(positionsZ[$_get](k4));
+          faces[$_set](dart.notNull(indexOffset) + 1, new flutter_earth.Polygon.new(k3, k2, k4, sumOfZ));
+          z = z + sumOfZ;
+          indexOffset = dart.notNull(indexOffset) + 2;
+          k1 = k1 + 1;
+          k2 = k2 + 1;
+        }
+      }
+      t0 = mesh;
+      t0.indexCount = dart.notNull(t0.indexCount) + faceCount;
+      faces[$sort](dart.fn((a, b) => {
+        let az = a.sumOfZ;
+        let bz = b.sumOfZ;
+        if (dart.notNull(bz) > dart.notNull(az)) return 1;
+        if (dart.notNull(bz) < dart.notNull(az)) return -1;
+        return 0;
+      }, T.PolygonLAndPolygonLTointL()));
+      let indexCount = faces[$length];
+      let indices = mesh.indices;
+      for (let i = 0; i < dart.notNull(indexCount); i = i + 1) {
+        let index0 = i * 3;
+        let index1 = index0 + 1;
+        let index2 = index0 + 2;
+        let polygon = faces[$_get](i);
+        indices[$_set](index0, polygon.vertex0);
+        indices[$_set](index1, polygon.vertex1);
+        indices[$_set](index2, polygon.vertex2);
+      }
+      mesh.z = z;
+      return mesh;
+    }
+    buildPoleMesh(startLatitude, endLatitude, subdivisions, image) {
+      let t0, t0$, t0$0, t0$1, t0$2, t0$3;
+      let q = vector_math_64.Quaternion.new(-0.5, -0.5, 0.5, 0.5)['*'](this.quaternion);
+      let matrix = (t0 = q.asRotationMatrix(), (() => {
+        t0.invert();
+        return t0;
+      })());
+      let imageWidth = (t0$0 = (t0$ = image, t0$ == null ? null : t0$.width), t0$0 == null ? 1 : t0$0);
+      let imageHeight = (t0$2 = (t0$1 = image, t0$1 == null ? null : t0$1.height), t0$2 == null ? 1 : t0$2);
+      let subdivisionsX = dart.notNull(subdivisions) * (dart.notNull(imageWidth) / dart.notNull(imageHeight))[$truncate]();
+      let vertexCount = (dart.notNull(subdivisions) + 1) * (subdivisionsX + 1);
+      let faceCount = dart.notNull(subdivisions) * subdivisionsX * 2;
+      let mesh = new flutter_earth.Mesh.new(vertexCount, faceCount);
+      let texcoords = mesh.texcoords;
+      let positions = mesh.positions;
+      let positionsZ = mesh.positionsZ;
+      let vertexIndex = 0;
+      let vertexZIndex = 0;
+      let texcoordIndex = 0;
+      let stepOfLat = (dart.notNull(endLatitude) - dart.notNull(startLatitude)) / dart.notNull(subdivisions);
+      let stepOfLon = 2 * 3.141592653589793 / subdivisionsX;
+      for (let j = 0; j <= dart.notNull(subdivisions); j = j + 1) {
+        let y0 = dart.notNull(startLatitude) + stepOfLat * j;
+        for (let i = 0; i <= subdivisionsX; i = i + 1) {
+          let x0 = -3.141592653589793 + i * stepOfLon;
+          let v = (t0$3 = flutter_earth.latLonToVector3(new flutter_earth.LatLon.new(y0, x0)), (() => {
+            t0$3.scale(this.radius);
+            return t0$3;
+          })());
+          v.applyMatrix3(matrix);
+          let storage4 = v.storage;
+          positions[$_set](vertexIndex, storage4[$_get](0));
+          positions[$_set](vertexIndex + 1, storage4[$_get](1));
+          positionsZ[$_set](vertexZIndex, storage4[$_get](2));
+          vertexIndex = vertexIndex + 2;
+          vertexZIndex = vertexZIndex + 1;
+          texcoords[$_set](texcoordIndex, dart.notNull(imageWidth) * i / subdivisionsX);
+          texcoords[$_set](texcoordIndex + 1, dart.notNull(imageHeight) * j / dart.notNull(subdivisions));
+          texcoordIndex = texcoordIndex + 2;
+        }
+      }
+      mesh.vertexCount = dart.notNull(mesh.vertexCount) + vertexCount;
+      mesh.x = -1.0;
+      mesh.y = -1.0;
+      mesh.texture = image;
+      return this.initMeshFaces(mesh, subdivisionsX, subdivisions);
+    }
+    buildTileMesh(offsetX, offsetY, tileWidth, tileHeight, subdivisions, mapWidth, mapHeight, radius) {
+      let t0, t0$;
+      let q = vector_math_64.Quaternion.new(-0.5, -0.5, 0.5, 0.5)['*'](this.quaternion);
+      let matrix = (t0 = q.asRotationMatrix(), (() => {
+        t0.invert();
+        return t0;
+      })());
+      let vertexCount = (dart.notNull(subdivisions) + 1) * (dart.notNull(subdivisions) + 1);
+      let faceCount = dart.notNull(subdivisions) * dart.notNull(subdivisions) * 2;
+      let mesh = new flutter_earth.Mesh.new(vertexCount, faceCount);
+      let texcoords = mesh.texcoords;
+      let positions = mesh.positions;
+      let positionsZ = mesh.positionsZ;
+      let vertexIndex = 0;
+      let vertexZIndex = 0;
+      let texcoordIndex = 0;
+      for (let j = 0; j <= dart.notNull(subdivisions); j = j + 1) {
+        let y0 = (dart.notNull(offsetY) + dart.notNull(tileHeight) * j / dart.notNull(subdivisions)) / dart.notNull(mapHeight);
+        for (let i = 0; i <= dart.notNull(subdivisions); i = i + 1) {
+          let x0 = (dart.notNull(offsetX) + dart.notNull(tileWidth) * i / dart.notNull(subdivisions)) / dart.notNull(mapWidth);
+          let latLon = flutter_earth.pointToLatLon(x0, y0);
+          let v = (t0$ = flutter_earth.latLonToVector3(latLon), (() => {
+            t0$.scale(radius);
+            return t0$;
+          })());
+          v.applyMatrix3(matrix);
+          let storage4 = v.storage;
+          positions[$_set](vertexIndex, storage4[$_get](0));
+          positions[$_set](vertexIndex + 1, storage4[$_get](1));
+          positionsZ[$_set](vertexZIndex, storage4[$_get](2));
+          vertexIndex = vertexIndex + 2;
+          vertexZIndex = vertexZIndex + 1;
+          texcoords[$_set](texcoordIndex, dart.notNull(tileWidth) * i / dart.notNull(subdivisions));
+          texcoords[$_set](texcoordIndex + 1, dart.notNull(tileHeight) * j / dart.notNull(subdivisions));
+          texcoordIndex = texcoordIndex + 2;
+        }
+      }
+      mesh.vertexCount = dart.notNull(mesh.vertexCount) + vertexCount;
+      mesh.x = offsetX;
+      mesh.y = offsetY;
+      return this.initMeshFaces(mesh, subdivisions, subdivisions);
+    }
+    drawTiles(canvas, size) {
+      let t0;
+      let tiles = this.clipTiles(new ui.Rect.fromLTWH(0.0, 0.0, this.width, this.height), this.radius);
+      let meshList = T.JSArrayOfMeshL().of([]);
+      let maxWidth = dart.notNull(this.tileWidth) * (1)[$leftShift](this.zoomLevel);
+      let maxHeight = dart.notNull(this.tileHeight) * (1)[$leftShift](this.zoomLevel);
+      let tileCount = math.pow(math.pow(2, this.zoomLevel), 2);
+      let subdivisions = math.max(T.intL(), 2, math.sqrt(dart.notNull(this.widget.maxVertexCount) / tileCount)[$toInt]());
+      for (let t of tiles) {
+        let mesh = this.buildTileMesh(dart.notNull(t.dx) * dart.notNull(this.tileWidth), dart.notNull(t.dy) * dart.notNull(this.tileHeight), this.tileWidth, this.tileHeight, subdivisions, maxWidth, maxHeight, this.radius);
+        this.initMeshTexture(mesh);
+        meshList[$add](mesh);
+      }
+      if (dart.test(this.widget.showPole)) {
+        t0 = meshList;
+        (() => {
+          t0[$add](this.buildPoleMesh(3.141592653589793 / 2, vector_math_64.radians(84.0), 5, this.northPoleImage));
+          return t0;
+        })();
+        meshList[$add](this.buildPoleMesh(-dart.notNull(vector_math_64.radians(84.0)), -3.141592653589793 / 2, 5, this.southPoleImage));
+      }
+      meshList[$sort](dart.fn((a, b) => b.z[$compareTo](a.z), T.MeshLAndMeshLTointL()));
+      for (let mesh of meshList) {
+        let vertices = ui.Vertices.raw(ui.VertexMode.triangles, mesh.positions, {textureCoordinates: mesh.texcoords, indices: mesh.indices});
+        let paint = ui.Paint.new();
+        if (mesh.texture != null) {
+          let matrix4 = vector_math_64.Matrix4.identity().storage;
+          let shader = ui.ImageShader.new(mesh.texture, ui.TileMode.mirror, ui.TileMode.mirror, matrix4);
+          paint.shader = shader;
+        }
+        canvas.drawVertices(vertices, ui.BlendMode.src, paint);
+      }
+    }
+    [_handleScaleStart](details) {
+      this.animController.stop();
+      this[_lastZoom] = null;
+      this[_lastFocalPoint] = details.localFocalPoint;
+      this[_lastQuaternion] = this.quaternion;
+    }
+    [_handleScaleUpdate](details) {
+      let t2, t1, t0;
+      if (details.scale !== 1.0 || details.rotation !== 0.0) {
+        this[_lastGestureScale] = details.scale;
+        this[_lastGestureRatation] = details.rotation;
+        this[_lastGestureTime] = new core.DateTime.now().millisecondsSinceEpoch;
+      }
+      if (this[_lastZoom] == null) {
+        this[_lastZoom] = dart.notNull(this.zoom) - math.log(details.scale) / 0.6931471805599453;
+      } else {
+        this.zoom = dart.notNull(this[_lastZoom]) + math.log(details.scale) / 0.6931471805599453;
+      }
+      let oldCoord = this.canvasPointToVector3(this[_lastFocalPoint]);
+      let newCoord = this.canvasPointToVector3(details.localFocalPoint);
+      let q = flutter_earth.quaternionFromTwoVectors(newCoord, oldCoord);
+      let axis = flutter_earth.quaternionAxis(q);
+      if (axis.x !== 0 && axis.y !== 0 && axis.z !== 0) this[_lastRotationAxis] = axis;
+      q = q['*'](vector_math_64.Quaternion.axisAngle(vector_math_64.Vector3.new(0.0, 0.0, 1.0), -dart.notNull(details.rotation)));
+      this.quaternion = this[_lastQuaternion]['*'](q);
+      if (this.widget.onCameraMove != null) {
+        t0 = this.widget;
+        t1 = this.position;
+        t2 = this.zoom;
+        t0.onCameraMove(t1, t2);
+      }
+      this.setState(dart.fn(() => {
+      }, T.VoidToNull()));
+    }
+    [_handleScaleEnd](details) {
+      this[_lastQuaternion] = this.quaternion;
+      let distance = math.min(T.doubleL(), 4000, details.velocity.pixelsPerSecond.distance) / 4000;
+      if (distance === 0) return;
+      if (dart.notNull(new core.DateTime.now().millisecondsSinceEpoch) - dart.notNull(this[_lastGestureTime]) < 300) {
+        if (this[_lastGestureScale] !== 1.0 && (dart.notNull(this[_lastGestureScale]) - 1.0)[$abs]() > this[_lastGestureRatation][$abs]()) {
+          let radians = 3.0 * distance;
+          if (dart.notNull(this[_lastGestureScale]) < 1.0) radians = -radians;
+          this.animController.duration = new core.Duration.new({milliseconds: (1000)[$toInt]()});
+          this.zoomAnimation = new (T.TweenOfdoubleL()).new({begin: this.zoom, end: dart.notNull(this.zoom) + radians}).animate(new tween.CurveTween.new({curve: curves.Curves.decelerate}).animate(this.animController));
+          this.panAnimation = null;
+          this.riseAnimation = null;
+          this.animController.reset();
+          this.animController.forward();
+          return;
+        } else if (this[_lastGestureRatation] !== 0) {
+          let radians = 2.0 * 3.141592653589793 * distance;
+          if (dart.notNull(this[_lastGestureRatation]) > 0) radians = -radians;
+          this[_lastRotationAxis] = vector_math_64.Vector3.new(0.0, 0.0, 1.0);
+          this.animController.duration = new core.Duration.new({milliseconds: (1000)[$toInt]()});
+          this.panAnimation = new (T.TweenOfdoubleL()).new({begin: 0.0, end: radians}).animate(new tween.CurveTween.new({curve: curves.Curves.decelerate}).animate(this.animController));
+          this.riseAnimation = null;
+          this.zoomAnimation = null;
+          this.animController.reset();
+          this.animController.forward();
+          return;
+        }
+      }
+      let radians = 1000 * distance / dart.notNull(this.radius);
+      let center = new ui.Offset.new(dart.notNull(this.width) / 2, dart.notNull(this.height) / 2);
+      let oldCoord = this.canvasPointToVector3(center);
+      let newCoord = this.canvasPointToVector3(center['+'](details.velocity.pixelsPerSecond['/'](distance)));
+      let q = flutter_earth.quaternionFromTwoVectors(newCoord, oldCoord);
+      let axis = flutter_earth.quaternionAxis(q);
+      if (axis.x !== 0 && axis.y !== 0 && axis.z !== 0) this[_lastRotationAxis] = axis;
+      this.animController.duration = new core.Duration.new({milliseconds: (1000)[$toInt]()});
+      this.panAnimation = new (T.TweenOfdoubleL()).new({begin: 0.0, end: radians}).animate(new tween.CurveTween.new({curve: curves.Curves.decelerate}).animate(this.animController));
+      this.riseAnimation = null;
+      this.zoomAnimation = null;
+      this.animController.reset();
+      this.animController.forward();
+    }
+    [_handleDoubleTap]() {
+      this[_lastZoom] = this.zoom;
+      this.animController.duration = new core.Duration.new({milliseconds: 600});
+      this.zoomAnimation = new (T.TweenOfdoubleL()).new({begin: this.zoom, end: dart.notNull(this.zoom) + 1.0}).animate(new tween.CurveTween.new({curve: curves.Curves.decelerate}).animate(this.animController));
+      this.panAnimation = null;
+      this.riseAnimation = null;
+      this.animController.reset();
+      this.animController.forward();
+    }
+    animateCamera(opts) {
+      let newLatLon = opts && 'newLatLon' in opts ? opts.newLatLon : null;
+      let riseZoom = opts && 'riseZoom' in opts ? opts.riseZoom : null;
+      let fallZoom = opts && 'fallZoom' in opts ? opts.fallZoom : null;
+      let panSpeed = opts && 'panSpeed' in opts ? opts.panSpeed : 1000;
+      let riseSpeed = opts && 'riseSpeed' in opts ? opts.riseSpeed : 1;
+      let fallSpeed = opts && 'fallSpeed' in opts ? opts.fallSpeed : 1;
+      let panTime = 0.0;
+      let riseTime = 0.0;
+      let fallTime = 0.0;
+      if (riseZoom != null) riseTime = 1000 * (dart.notNull(riseZoom) - dart.notNull(this.zoom))[$abs]() / dart.notNull(riseSpeed);
+      riseZoom == null ? riseZoom = this.zoom : null;
+      if (fallZoom != null) fallTime = 1000 * (dart.notNull(fallZoom) - dart.notNull(riseZoom))[$abs]() / dart.notNull(fallSpeed);
+      fallZoom == null ? fallZoom = riseZoom : null;
+      let panRadians = null;
+      if (newLatLon != null) {
+        let oldEuler = flutter_earth.quaternionToEulerAngles(this.quaternion);
+        let newEuler = flutter_earth.latLonToEulerAngles(newLatLon);
+        if ((dart.notNull(oldEuler.yaw) - dart.notNull(newEuler.yaw))[$abs]() > 3.141592653589793) {
+          newEuler.yaw = dart.notNull(newEuler.yaw) - 3.141592653589793 * 2.0;
+        }
+        let q0 = flutter_earth.eulerAnglesToQuaternion(oldEuler);
+        let q2 = flutter_earth.eulerAnglesToQuaternion(newEuler);
+        let q1 = q0.inverted()['*'](q2);
+        this[_lastRotationAxis] = flutter_earth.quaternionAxis(q1);
+        this[_lastQuaternion] = q0;
+        panRadians = q1.radians;
+        panTime = 1000 * (dart.notNull(panRadians) * dart.notNull(this[_radius]) * math.pow(2, riseZoom))[$abs]() / dart.notNull(panSpeed);
+      }
+      let duration = (riseTime + panTime + fallTime)[$ceil]();
+      this.animController.duration = new core.Duration.new({milliseconds: duration});
+      let riseCurveEnd = riseTime / duration;
+      this.riseAnimation = new (T.TweenOfdoubleL()).new({begin: this.zoom, end: riseZoom}).animate(new tween.CurveTween.new({curve: new curves.Interval.new(0.0, riseCurveEnd, {curve: curves.Curves.ease})}).animate(this.animController));
+      let panCurveEnd = riseCurveEnd + panTime / duration;
+      this[_panCurveEnd] = panCurveEnd;
+      this.panAnimation = new (T.TweenOfdoubleL()).new({begin: 0.0, end: panRadians}).animate(new tween.CurveTween.new({curve: new curves.Interval.new(riseCurveEnd, panCurveEnd, {curve: curves.Curves.ease})}).animate(this.animController));
+      let fallCurveEnd = 1.0;
+      this.zoomAnimation = new (T.TweenOfdoubleL()).new({begin: riseZoom, end: fallZoom}).animate(new tween.CurveTween.new({curve: new curves.Interval.new(panCurveEnd, fallCurveEnd, {curve: curves.Curves.ease})}).animate(this.animController));
+      this.animController.reset();
+      this.animController.forward();
+    }
+    initState() {
+      let t0, t1, t0$;
+      super.initState();
+      this.tiles = T.ListOfHashMapLOfintL$TileL().new(dart.notNull(this.maxZoom) + 1);
+      for (let i = 0; i <= dart.notNull(this.maxZoom); i = i + 1)
+        this.tiles[$_set](i, new (T.IdentityMapOfintL$TileL()).new());
+      this.zoom = math.log(dart.notNull(this.widget.radius) / dart.notNull(this[_radius])) / 0.6931471805599453;
+      this[_lastRotationAxis] = vector_math_64.Vector3.new(0.0, 0.0, 1.0);
+      this.animController = (t0 = new animation_controller.AnimationController.new({vsync: this}), (() => {
+        t0.addListener(dart.fn(() => {
+          this.setState(dart.fn(() => {
+            let t3, t2, t1;
+            if (!dart.test(this.animController.isCompleted)) {
+              if (this.panAnimation != null) {
+                let q = vector_math_64.Quaternion.axisAngle(this[_lastRotationAxis], this.panAnimation.value);
+                this.quaternion = this[_lastQuaternion]['*'](q);
+              }
+              if (this.riseAnimation != null) {
+                if (dart.notNull(this.animController.value) < dart.notNull(this[_panCurveEnd])) this.zoom = this.riseAnimation.value;
+              }
+              if (this.zoomAnimation != null) {
+                if (dart.notNull(this.animController.value) >= dart.notNull(this[_panCurveEnd])) this.zoom = this.zoomAnimation.value;
+              }
+              if (this.widget.onCameraMove != null) {
+                t1 = this.widget;
+                t2 = this.position;
+                t3 = this.zoom;
+                t1.onCameraMove(t2, t3);
+              }
+            } else {
+              this[_panCurveEnd] = 0.0;
+            }
+          }, T.VoidToNull()));
+        }, T.VoidToNull()));
+        return t0;
+      })());
+      this[_controller] = new flutter_earth.FlutterEarthController.new(this);
+      if (this.widget.onMapCreated != null) {
+        t0$ = this.widget;
+        t1 = this[_controller];
+        t0$.onMapCreated(t1);
+      }
+      flutter_earth.loadImageFromAsset("packages/flutter_earth/assets/google_map_north_pole.png").then(T.ImageL(), dart.fn(value => this.northPoleImage = value, T.ImageLToImageL()));
+      flutter_earth.loadImageFromAsset("packages/flutter_earth/assets/google_map_south_pole.png").then(T.ImageL(), dart.fn(value => this.southPoleImage = value, T.ImageLToImageL()));
+    }
+    dispose() {
+      this.animController.dispose();
+      super.dispose();
+    }
+    build(context) {
+      return new layout_builder.LayoutBuilder.new({builder: dart.fn((context, constraints) => {
+          this.width = constraints.maxWidth;
+          this.height = constraints.maxHeight;
+          return new gesture_detector.GestureDetector.new({onScaleStart: dart.bind(this, _handleScaleStart), onScaleUpdate: dart.bind(this, _handleScaleUpdate), onScaleEnd: dart.bind(this, _handleScaleEnd), onDoubleTap: dart.bind(this, _handleDoubleTap), child: new basic.CustomPaint.new({painter: new flutter_earth.SpherePainter.new(this), size: new ui.Size.new(constraints.maxWidth, constraints.maxHeight), $creationLocationd_0dea112b090073317d4: C[6] || CT.C6}), $creationLocationd_0dea112b090073317d4: C[10] || CT.C10});
+        }, T.BuildContextLAndBoxConstraintsLToGestureDetectorL()), $creationLocationd_0dea112b090073317d4: C[17] || CT.C17});
+    }
+  };
+  (flutter_earth._FlutterEarthState.new = function() {
+    this[_controller] = null;
+    this.width = null;
+    this.height = null;
+    this.zoom = null;
+    this[_lastZoom] = null;
+    this[_lastFocalPoint] = null;
+    this[_lastQuaternion] = null;
+    this[_lastRotationAxis] = null;
+    this[_lastGestureScale] = null;
+    this[_lastGestureRatation] = null;
+    this[_lastGestureTime] = 0;
+    this[_radius] = 256 / (2 * 3.141592653589793);
+    this.quaternion = vector_math_64.Quaternion.identity();
+    this.animController = null;
+    this.panAnimation = null;
+    this.riseAnimation = null;
+    this.zoomAnimation = null;
+    this[_panCurveEnd] = 0.0;
+    this.tileWidth = 256.0;
+    this.tileHeight = 256.0;
+    this.minZoom = 2;
+    this.maxZoom = 21;
+    this.tiles = null;
+    this.northPoleImage = null;
+    this.southPoleImage = null;
+    flutter_earth._FlutterEarthState.__proto__.new.call(this);
+    ;
+  }).prototype = flutter_earth._FlutterEarthState.prototype;
+  dart.addTypeTests(flutter_earth._FlutterEarthState);
+  dart.addTypeCaches(flutter_earth._FlutterEarthState);
+  dart.setMethodSignature(flutter_earth._FlutterEarthState, () => ({
+    __proto__: dart.getMethods(flutter_earth._FlutterEarthState.__proto__),
+    canvasPointToVector3: dart.fnType(dart.legacy(vector_math_64.Vector3), [dart.legacy(ui.Offset)]),
+    canvasVector3ToLatLon: dart.fnType(dart.legacy(flutter_earth.LatLon), [dart.legacy(vector_math_64.Vector3)]),
+    clearCache: dart.fnType(dart.void, []),
+    loadTileImage: dart.fnType(dart.legacy(async.Future$(dart.legacy(flutter_earth.Tile))), [dart.legacy(flutter_earth.Tile)]),
+    getTile: dart.fnType(dart.legacy(flutter_earth.Tile), [dart.legacy(core.int), dart.legacy(core.int), dart.legacy(core.int)]),
+    clipTiles: dart.fnType(dart.legacy(core.List$(dart.legacy(ui.Offset))), [dart.legacy(ui.Rect), dart.legacy(core.double)]),
+    initMeshTexture: dart.fnType(dart.void, [dart.legacy(flutter_earth.Mesh)]),
+    initMeshFaces: dart.fnType(dart.legacy(flutter_earth.Mesh), [dart.legacy(flutter_earth.Mesh), dart.legacy(core.int), dart.legacy(core.int)]),
+    buildPoleMesh: dart.fnType(dart.legacy(flutter_earth.Mesh), [dart.legacy(core.double), dart.legacy(core.double), dart.legacy(core.int), dart.legacy(ui.Image)]),
+    buildTileMesh: dart.fnType(dart.legacy(flutter_earth.Mesh), [dart.legacy(core.double), dart.legacy(core.double), dart.legacy(core.double), dart.legacy(core.double), dart.legacy(core.int), dart.legacy(core.double), dart.legacy(core.double), dart.legacy(core.double)]),
+    drawTiles: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Size)]),
+    [_handleScaleStart]: dart.fnType(dart.void, [dart.legacy(scale.ScaleStartDetails)]),
+    [_handleScaleUpdate]: dart.fnType(dart.void, [dart.legacy(scale.ScaleUpdateDetails)]),
+    [_handleScaleEnd]: dart.fnType(dart.void, [dart.legacy(scale.ScaleEndDetails)]),
+    [_handleDoubleTap]: dart.fnType(dart.void, []),
+    animateCamera: dart.fnType(dart.void, [], {fallSpeed: dart.legacy(core.double), fallZoom: dart.legacy(core.double), newLatLon: dart.legacy(flutter_earth.LatLon), panSpeed: dart.legacy(core.double), riseSpeed: dart.legacy(core.double), riseZoom: dart.legacy(core.double)}, {}),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setGetterSignature(flutter_earth._FlutterEarthState, () => ({
+    __proto__: dart.getGetters(flutter_earth._FlutterEarthState.__proto__),
+    radius: dart.legacy(core.double),
+    zoomLevel: dart.legacy(core.int),
+    position: dart.legacy(flutter_earth.LatLon),
+    eulerAngles: dart.legacy(flutter_earth.EulerAngles)
+  }));
+  dart.setLibraryUri(flutter_earth._FlutterEarthState, I[0]);
+  dart.setFieldSignature(flutter_earth._FlutterEarthState, () => ({
+    __proto__: dart.getFields(flutter_earth._FlutterEarthState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(flutter_earth.FlutterEarthController)),
+    width: dart.fieldType(dart.legacy(core.double)),
+    height: dart.fieldType(dart.legacy(core.double)),
+    zoom: dart.fieldType(dart.legacy(core.double)),
+    [_lastZoom]: dart.fieldType(dart.legacy(core.double)),
+    [_lastFocalPoint]: dart.fieldType(dart.legacy(ui.Offset)),
+    [_lastQuaternion]: dart.fieldType(dart.legacy(vector_math_64.Quaternion)),
+    [_lastRotationAxis]: dart.fieldType(dart.legacy(vector_math_64.Vector3)),
+    [_lastGestureScale]: dart.fieldType(dart.legacy(core.double)),
+    [_lastGestureRatation]: dart.fieldType(dart.legacy(core.double)),
+    [_lastGestureTime]: dart.fieldType(dart.legacy(core.int)),
+    [_radius]: dart.finalFieldType(dart.legacy(core.double)),
+    quaternion: dart.fieldType(dart.legacy(vector_math_64.Quaternion)),
+    animController: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+    panAnimation: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(core.double)))),
+    riseAnimation: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(core.double)))),
+    zoomAnimation: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(core.double)))),
+    [_panCurveEnd]: dart.fieldType(dart.legacy(core.double)),
+    tileWidth: dart.finalFieldType(dart.legacy(core.double)),
+    tileHeight: dart.finalFieldType(dart.legacy(core.double)),
+    minZoom: dart.finalFieldType(dart.legacy(core.int)),
+    maxZoom: dart.finalFieldType(dart.legacy(core.int)),
+    tiles: dart.fieldType(dart.legacy(core.List$(dart.legacy(collection.HashMap$(dart.legacy(core.int), dart.legacy(flutter_earth.Tile)))))),
+    northPoleImage: dart.fieldType(dart.legacy(ui.Image)),
+    southPoleImage: dart.fieldType(dart.legacy(ui.Image))
+  }));
+  var state$ = dart.privateName(flutter_earth, "SpherePainter.state");
+  flutter_earth.SpherePainter = class SpherePainter extends custom_paint.CustomPainter {
+    get state() {
+      return this[state$];
+    }
+    set state(value) {
+      super.state = value;
+    }
+    paint(canvas, size) {
+      canvas.translate(dart.notNull(size.width) / 2, dart.notNull(size.height) / 2);
+      this.state.drawTiles(canvas, size);
+    }
+    shouldRepaint(oldDelegate) {
+      T.SpherePainterL().as(oldDelegate);
+      return true;
+    }
+  };
+  (flutter_earth.SpherePainter.new = function(state) {
+    this[state$] = state;
+    flutter_earth.SpherePainter.__proto__.new.call(this);
+    ;
+  }).prototype = flutter_earth.SpherePainter.prototype;
+  dart.addTypeTests(flutter_earth.SpherePainter);
+  dart.addTypeCaches(flutter_earth.SpherePainter);
+  dart.setMethodSignature(flutter_earth.SpherePainter, () => ({
+    __proto__: dart.getMethods(flutter_earth.SpherePainter.__proto__),
+    paint: dart.fnType(dart.void, [dart.legacy(ui.Canvas), dart.legacy(ui.Size)]),
+    shouldRepaint: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)])
+  }));
+  dart.setLibraryUri(flutter_earth.SpherePainter, I[0]);
+  dart.setFieldSignature(flutter_earth.SpherePainter, () => ({
+    __proto__: dart.getFields(flutter_earth.SpherePainter.__proto__),
+    state: dart.finalFieldType(dart.legacy(flutter_earth._FlutterEarthState))
+  }));
+  var _state$ = dart.privateName(flutter_earth, "_state");
+  flutter_earth.FlutterEarthController = class FlutterEarthController extends core.Object {
+    get quaternion() {
+      return this[_state$].quaternion;
+    }
+    get eulerAngles() {
+      return this[_state$].eulerAngles;
+    }
+    get position() {
+      return this[_state$].position;
+    }
+    get zoom() {
+      return this[_state$].zoom;
+    }
+    get isAnimating() {
+      return this[_state$].animController.isAnimating;
+    }
+    clearCache() {
+      return this[_state$].clearCache();
+    }
+    animateCamera(opts) {
+      let newLatLon = opts && 'newLatLon' in opts ? opts.newLatLon : null;
+      let riseZoom = opts && 'riseZoom' in opts ? opts.riseZoom : null;
+      let fallZoom = opts && 'fallZoom' in opts ? opts.fallZoom : null;
+      let panSpeed = opts && 'panSpeed' in opts ? opts.panSpeed : 10;
+      let riseSpeed = opts && 'riseSpeed' in opts ? opts.riseSpeed : 1;
+      let fallSpeed = opts && 'fallSpeed' in opts ? opts.fallSpeed : 1;
+      this[_state$].animateCamera({newLatLon: newLatLon, riseZoom: riseZoom, fallZoom: fallZoom, panSpeed: panSpeed, riseSpeed: riseSpeed, fallSpeed: fallSpeed});
+    }
+  };
+  (flutter_earth.FlutterEarthController.new = function(_state) {
+    this[_state$] = _state;
+    ;
+  }).prototype = flutter_earth.FlutterEarthController.prototype;
+  dart.addTypeTests(flutter_earth.FlutterEarthController);
+  dart.addTypeCaches(flutter_earth.FlutterEarthController);
+  dart.setMethodSignature(flutter_earth.FlutterEarthController, () => ({
+    __proto__: dart.getMethods(flutter_earth.FlutterEarthController.__proto__),
+    clearCache: dart.fnType(dart.void, []),
+    animateCamera: dart.fnType(dart.void, [], {fallSpeed: dart.legacy(core.double), fallZoom: dart.legacy(core.double), newLatLon: dart.legacy(flutter_earth.LatLon), panSpeed: dart.legacy(core.double), riseSpeed: dart.legacy(core.double), riseZoom: dart.legacy(core.double)}, {})
+  }));
+  dart.setGetterSignature(flutter_earth.FlutterEarthController, () => ({
+    __proto__: dart.getGetters(flutter_earth.FlutterEarthController.__proto__),
+    quaternion: dart.legacy(vector_math_64.Quaternion),
+    eulerAngles: dart.legacy(flutter_earth.EulerAngles),
+    position: dart.legacy(flutter_earth.LatLon),
+    zoom: dart.legacy(core.double),
+    isAnimating: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(flutter_earth.FlutterEarthController, I[0]);
+  dart.setFieldSignature(flutter_earth.FlutterEarthController, () => ({
+    __proto__: dart.getFields(flutter_earth.FlutterEarthController.__proto__),
+    [_state$]: dart.finalFieldType(dart.legacy(flutter_earth._FlutterEarthState))
+  }));
+  flutter_earth.loadImageFromAsset = function loadImageFromAsset(fileName) {
+    let c = T.CompleterOfImageL().new();
+    asset_bundle.rootBundle.load(fileName).then(core.Null, dart.fn(data => {
+      ui.instantiateImageCodec(data[$buffer][$asUint8List]()).then(core.Null, dart.fn(codec => {
+        codec.getNextFrame().then(core.Null, dart.fn(frameInfo => {
+          c.complete(frameInfo.image);
+        }, T.FrameInfoLToNull()));
+      }, T.CodecLToNull()));
+    }, T.ByteDataLToNull())).catchError(dart.fn(error => {
+      c.completeError(error);
+    }, T.dynamicToNull()));
+    return c.future;
+  };
+  flutter_earth.latLonToPoint = function latLonToPoint(latitude, longitude) {
+    let x = 0.5 + dart.notNull(longitude) / (2.0 * 3.141592653589793);
+    let y = null;
+    if (dart.notNull(latitude) > 1.4844222297453322 || dart.notNull(latitude) < -1.4844222297453322) {
+      y = 0.5 - dart.notNull(latitude) / 3.141592653589793;
+    } else {
+      let sinlat = math.sin(latitude);
+      y = 0.5 - math.log((1 + sinlat) / (1 - sinlat)) / (4.0 * 3.141592653589793);
+    }
+    return new ui.Offset.new(x, y);
+  };
+  flutter_earth.pointToLatLon = function pointToLatLon(x, y) {
+    let longitude = (dart.notNull(x) - 0.5) * (2.0 * 3.141592653589793);
+    let latitude = 2.0 * math.atan(math.exp(3.141592653589793 - 2.0 * 3.141592653589793 * dart.notNull(y))) - 3.141592653589793 / 2.0;
+    return new flutter_earth.LatLon.new(latitude, longitude);
+  };
+  flutter_earth.latLonToVector3 = function latLonToVector3(latLon) {
+    let cosLat = math.cos(latLon.latitude);
+    let x = cosLat * math.cos(latLon.longitude);
+    let y = cosLat * math.sin(latLon.longitude);
+    let z = math.sin(latLon.latitude);
+    return vector_math_64.Vector3.new(x, y, z);
+  };
+  flutter_earth.vector3ToLatLon = function vector3ToLatLon(v) {
+    let lat = math.asin(v.z);
+    let lon = math.atan2(v.y, v.x);
+    return new flutter_earth.LatLon.new(lat, lon);
+  };
+  flutter_earth.quaternionToLatLon = function quaternionToLatLon(q) {
+    let euler = flutter_earth.quaternionToEulerAngles(q);
+    return flutter_earth.eulerAnglesToLatLon(euler);
+  };
+  flutter_earth.latLonToQuaternion = function latLonToQuaternion(latLon) {
+    let euler = flutter_earth.latLonToEulerAngles(latLon);
+    return flutter_earth.eulerAnglesToQuaternion(euler);
+  };
+  flutter_earth.quaternionFromTwoVectors = function quaternionFromTwoVectors(a, b) {
+    let v1 = a.normalized();
+    let v2 = b.normalized();
+    let c = math.max(T.doubleL(), -1.0, math.min(T.doubleL(), 1.0, v1.dot(v2)));
+    let angle = math.acos(c);
+    let axis = v1.cross(v2);
+    if (axis.length === 0) axis = vector_math_64.Vector3.new(1.0, 0.0, 0.0);
+    return vector_math_64.Quaternion.axisAngle(axis, angle);
+  };
+  flutter_earth.quaternionAxis = function quaternionAxis(q) {
+    let _qStorage = q.storage;
+    let den = 1.0 - dart.notNull(_qStorage[$_get](3)) * dart.notNull(_qStorage[$_get](3));
+    if (den === 0) return vector_math_64.Vector3.new(1.0, 0.0, 0.0);
+    let scale = 1.0 / math.sqrt(den);
+    return vector_math_64.Vector3.new(dart.notNull(_qStorage[$_get](0)) * scale, dart.notNull(_qStorage[$_get](1)) * scale, dart.notNull(_qStorage[$_get](2)) * scale);
+  };
+  flutter_earth.quaternionToEulerAngles = function quaternionToEulerAngles(q) {
+    let _qStorage = q.storage;
+    let _x = _qStorage[$_get](0);
+    let _y = _qStorage[$_get](1);
+    let _z = _qStorage[$_get](2);
+    let _w = _qStorage[$_get](3);
+    let roll = math.atan2(2 * (dart.notNull(_w) * dart.notNull(_z) + dart.notNull(_x) * dart.notNull(_y)), 1 - 2 * (dart.notNull(_z) * dart.notNull(_z) + dart.notNull(_x) * dart.notNull(_x)));
+    let pitch = math.asin(math.max(T.numL(), -1, math.min(T.numL(), 1, 2 * (dart.notNull(_w) * dart.notNull(_x) - dart.notNull(_y) * dart.notNull(_z)))));
+    let yaw = math.atan2(2 * (dart.notNull(_w) * dart.notNull(_y) + dart.notNull(_z) * dart.notNull(_x)), 1 - 2 * (dart.notNull(_x) * dart.notNull(_x) + dart.notNull(_y) * dart.notNull(_y)));
+    return new flutter_earth.EulerAngles.new(yaw, pitch, roll);
+  };
+  flutter_earth.eulerAnglesToQuaternion = function eulerAnglesToQuaternion(euler) {
+    return vector_math_64.Quaternion.euler(euler.yaw, euler.pitch, euler.roll);
+  };
+  flutter_earth.eulerAnglesToLatLon = function eulerAnglesToLatLon(euler) {
+    return new flutter_earth.LatLon.new(-dart.notNull(euler.pitch), -dart.notNull(euler.yaw));
+  };
+  flutter_earth.latLonToEulerAngles = function latLonToEulerAngles(latLon) {
+    return new flutter_earth.EulerAngles.new(-dart.notNull(latLon.longitude), -dart.notNull(latLon.latitude), 0.0);
+  };
+  dart.defineLazy(flutter_earth, {
+    /*flutter_earth.maxLatitude*/get maxLatitude() {
+      return 1.4844222297453322;
+    }
+  }, true);
+  dart.trackLibraries("packages/flutter_earth/flutter_earth.dart", {
+    "package:flutter_earth/flutter_earth.dart": flutter_earth
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["flutter_earth.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/flutter_earth/flutter_earth.dart.lib.js"}');
+  // Exports:
+  return {
+    flutter_earth: flutter_earth
+  };
+}));
+
+//# sourceMappingURL=flutter_earth.dart.lib.js.map

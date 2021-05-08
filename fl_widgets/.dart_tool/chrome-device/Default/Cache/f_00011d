@@ -1,0 +1,1335 @@
+define(['dart_sdk', 'packages/flutter/src/widgets/widget_span.dart', 'packages/provider/src/provider.dart', 'packages/liquid_swipe/Helpers/Helpers.dart', 'packages/liquid_swipe/Helpers/slide_update.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/foundation/change_notifier.dart', 'packages/flutter/src/widgets/icon.dart', 'packages/flutter/src/widgets/icon_data.dart', 'packages/provider/src/listenable_provider.dart', 'packages/provider/src/selector.dart', 'packages/liquid_swipe/PageHelpers/page_reveal.dart'], (function load__packages__liquid_swipe__PageHelpers__page_dragger_dart(dart_sdk, packages__flutter__src__widgets__widget_span$46dart, packages__provider__src__provider$46dart, packages__liquid_swipe__Helpers__Helpers$46dart, packages__liquid_swipe__Helpers__slide_update$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__foundation__change_notifier$46dart, packages__flutter__src__widgets__icon$46dart, packages__flutter__src__widgets__icon_data$46dart, packages__provider__src__listenable_provider$46dart, packages__provider__src__selector$46dart, packages__liquid_swipe__PageHelpers__page_reveal$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const async = dart_sdk.async;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const provider = packages__provider__src__provider$46dart.src__provider;
+  const Helpers = packages__liquid_swipe__Helpers__Helpers$46dart.Helpers__Helpers;
+  const slide_update = packages__liquid_swipe__Helpers__slide_update$46dart.Helpers__slide_update;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const change_notifier = packages__flutter__src__foundation__change_notifier$46dart.src__foundation__change_notifier;
+  const icon = packages__flutter__src__widgets__icon$46dart.src__widgets__icon;
+  const icon_data = packages__flutter__src__widgets__icon_data$46dart.src__widgets__icon_data;
+  const change_notifier_provider = packages__provider__src__listenable_provider$46dart.src__change_notifier_provider;
+  const consumer = packages__provider__src__selector$46dart.src__consumer;
+  const page_reveal = packages__liquid_swipe__PageHelpers__page_reveal$46dart.PageHelpers__page_reveal;
+  var page_dragger = Object.create(dart.library);
+  var animated_page_dragger = Object.create(dart.library);
+  var iamariderprovider = Object.create(dart.library);
+  var LiquidController = Object.create(dart.library);
+  var liquid_swipe = Object.create(dart.library);
+  var $abs = dartx.abs;
+  var $clamp = dartx.clamp;
+  var $round = dartx.round;
+  var $truncate = dartx.truncate;
+  var $toStringAsExponential = dartx.toStringAsExponential;
+  var $length = dartx.length;
+  var $_get = dartx._get;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    IAmARiderProviderL: () => (T.IAmARiderProviderL = dart.constFn(dart.legacy(iamariderprovider.IAmARiderProvider)))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    AnimationStatusL: () => (T.AnimationStatusL = dart.constFn(dart.legacy(animation.AnimationStatus)))(),
+    AnimationStatusLToNull: () => (T.AnimationStatusLToNull = dart.constFn(dart.fnType(core.Null, [T.AnimationStatusL()])))(),
+    TimerL: () => (T.TimerL = dart.constFn(dart.legacy(async.Timer)))(),
+    TimerLToNull: () => (T.TimerLToNull = dart.constFn(dart.fnType(core.Null, [T.TimerL()])))(),
+    ChangeNotifierProviderOfIAmARiderProviderL: () => (T.ChangeNotifierProviderOfIAmARiderProviderL = dart.constFn(change_notifier_provider.ChangeNotifierProvider$(T.IAmARiderProviderL())))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLToIAmARiderProviderL: () => (T.BuildContextLToIAmARiderProviderL = dart.constFn(dart.fnType(T.IAmARiderProviderL(), [T.BuildContextL()])))(),
+    ConsumerOfIAmARiderProviderL: () => (T.ConsumerOfIAmARiderProviderL = dart.constFn(consumer.Consumer$(T.IAmARiderProviderL())))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))(),
+    StackL: () => (T.StackL = dart.constFn(dart.legacy(basic.Stack)))(),
+    BuildContextLAndIAmARiderProviderLAndWidgetLToStackL: () => (T.BuildContextLAndIAmARiderProviderLAndWidgetLToStackL = dart.constFn(dart.fnType(T.StackL(), [T.BuildContextL(), T.IAmARiderProviderL(), T.WidgetL()])))(),
+    _LiquidSwipeL: () => (T._LiquidSwipeL = dart.constFn(dart.legacy(liquid_swipe._LiquidSwipe)))(),
+    GlobalKeyOf_LiquidSwipeL: () => (T.GlobalKeyOf_LiquidSwipeL = dart.constFn(framework.GlobalKey$(T._LiquidSwipeL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 17,
+        [_Location_line]: 116,
+        [_Location_file]: null
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 17,
+        [_Location_line]: 117,
+        [_Location_file]: null
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T._LocationL());
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[1] || CT.C1,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 115,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/PageHelpers/page_dragger.dart"
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "alignment",
+        [_Location_column]: 15,
+        [_Location_line]: 111,
+        [_Location_file]: null
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 115,
+        [_Location_file]: null
+      });
+    },
+    get C5() {
+      return C[5] = dart.constList([C[6] || CT.C6, C[7] || CT.C7], T._LocationL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[5] || CT.C5,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/PageHelpers/page_dragger.dart"
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 105,
+        [_Location_file]: null
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragStart",
+        [_Location_column]: 7,
+        [_Location_line]: 106,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragUpdate",
+        [_Location_column]: 7,
+        [_Location_line]: 107,
+        [_Location_file]: null
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onHorizontalDragEnd",
+        [_Location_column]: 7,
+        [_Location_line]: 108,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 109,
+        [_Location_file]: null
+      });
+    },
+    get C9() {
+      return C[9] = dart.constList([C[10] || CT.C10, C[11] || CT.C11, C[12] || CT.C12, C[13] || CT.C13, C[14] || CT.C14], T._LocationL());
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[9] || CT.C9,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 104,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/PageHelpers/page_dragger.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1000
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "icon",
+        [_Location_column]: 45,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C18() {
+      return C[18] = dart.constList([C[19] || CT.C19], T._LocationL());
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[18] || CT.C18,
+        [_Location_name]: null,
+        [_Location_column]: 34,
+        [_Location_line]: 43,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: icon_data.IconData.prototype,
+        [IconData_matchTextDirection]: true,
+        [IconData_fontPackage]: null,
+        [IconData_fontFamily]: "MaterialIcons",
+        [IconData_codePoint]: 58792
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: icon.Icon.prototype,
+        [Widget__location]: C[17] || CT.C17,
+        [Widget_key]: null,
+        [Icon_textDirection]: null,
+        [Icon_semanticLabel]: null,
+        [Icon_color]: null,
+        [Icon_size]: null,
+        [Icon_icon]: C[20] || CT.C20
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: Helpers.WaveType.prototype,
+        [_name]: "WaveType.liquidReveal",
+        index: 1
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "revealPercent",
+        [_Location_column]: 15,
+        [_Location_line]: 101,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 102,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "slideDirection",
+        [_Location_column]: 15,
+        [_Location_line]: 105,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "iconPosition",
+        [_Location_column]: 15,
+        [_Location_line]: 106,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "waveType",
+        [_Location_column]: 15,
+        [_Location_line]: 107,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "vertReveal",
+        [_Location_column]: 15,
+        [_Location_line]: 108,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.constList([C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29], T._LocationL());
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[23] || CT.C23,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 99,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    },
+    get C32() {
+      return C[32] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fullTransitionPX",
+        [_Location_column]: 15,
+        [_Location_line]: 112,
+        [_Location_file]: null
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "enableSlideIcon",
+        [_Location_column]: 15,
+        [_Location_line]: 113,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "slideIconWidget",
+        [_Location_column]: 15,
+        [_Location_line]: 114,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "iconPosition",
+        [_Location_column]: 15,
+        [_Location_line]: 115,
+        [_Location_file]: null
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "ignoreUserGestureWhileAnimating",
+        [_Location_column]: 15,
+        [_Location_line]: 116,
+        [_Location_file]: null
+      });
+    },
+    get C31() {
+      return C[31] = dart.constList([C[32] || CT.C32, C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35, C[36] || CT.C36], T._LocationL());
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[31] || CT.C31,
+        [_Location_name]: null,
+        [_Location_column]: 13,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 11,
+        [_Location_line]: 94,
+        [_Location_file]: null
+      });
+    },
+    get C38() {
+      return C[38] = dart.constList([C[39] || CT.C39], T._LocationL());
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[38] || CT.C38,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 93,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 20,
+        [_Location_line]: 91,
+        [_Location_file]: null
+      });
+    },
+    get C41() {
+      return C[41] = dart.constList([C[42] || CT.C42], T._LocationL());
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[41] || CT.C41,
+        [_Location_name]: null,
+        [_Location_column]: 11,
+        [_Location_line]: 91,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    },
+    get C45() {
+      return C[45] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "create",
+        [_Location_column]: 7,
+        [_Location_line]: 78,
+        [_Location_file]: null
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 90,
+        [_Location_file]: null
+      });
+    },
+    get C44() {
+      return C[44] = dart.constList([C[45] || CT.C45, C[46] || CT.C46], T._LocationL());
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[44] || CT.C44,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 77,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart"
+      });
+    }
+  }, false);
+  var C = Array(47).fill(void 0);
+  var I = [
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/PageHelpers/page_dragger.dart",
+    "package:liquid_swipe/PageHelpers/page_dragger.dart",
+    "package:liquid_swipe/PageHelpers/animated_page_dragger.dart",
+    "package:liquid_swipe/Provider/iamariderprovider.dart",
+    "package:liquid_swipe/PageHelpers/LiquidController.dart",
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/liquid_swipe-1.5.0/lib/liquid_swipe.dart",
+    "package:liquid_swipe/liquid_swipe.dart"
+  ];
+  var fullTransitionPX$ = dart.privateName(page_dragger, "PageDragger.fullTransitionPX");
+  var enableSlideIcon$ = dart.privateName(page_dragger, "PageDragger.enableSlideIcon");
+  var slideIconWidget$ = dart.privateName(page_dragger, "PageDragger.slideIconWidget");
+  var iconPosition$ = dart.privateName(page_dragger, "PageDragger.iconPosition");
+  var ignoreUserGestureWhileAnimating$ = dart.privateName(page_dragger, "PageDragger.ignoreUserGestureWhileAnimating");
+  page_dragger.PageDragger = class PageDragger extends framework.StatefulWidget {
+    get fullTransitionPX() {
+      return this[fullTransitionPX$];
+    }
+    set fullTransitionPX(value) {
+      super.fullTransitionPX = value;
+    }
+    get enableSlideIcon() {
+      return this[enableSlideIcon$];
+    }
+    set enableSlideIcon(value) {
+      super.enableSlideIcon = value;
+    }
+    get slideIconWidget() {
+      return this[slideIconWidget$];
+    }
+    set slideIconWidget(value) {
+      super.slideIconWidget = value;
+    }
+    get iconPosition() {
+      return this[iconPosition$];
+    }
+    set iconPosition(value) {
+      super.iconPosition = value;
+    }
+    get ignoreUserGestureWhileAnimating() {
+      return this[ignoreUserGestureWhileAnimating$];
+    }
+    set ignoreUserGestureWhileAnimating(value) {
+      super.ignoreUserGestureWhileAnimating = value;
+    }
+    createState() {
+      return new page_dragger._PageDraggerState.new();
+    }
+  };
+  (page_dragger.PageDragger.new = function(opts) {
+    let fullTransitionPX = opts && 'fullTransitionPX' in opts ? opts.fullTransitionPX : 300;
+    let enableSlideIcon = opts && 'enableSlideIcon' in opts ? opts.enableSlideIcon : false;
+    let slideIconWidget = opts && 'slideIconWidget' in opts ? opts.slideIconWidget : null;
+    let iconPosition = opts && 'iconPosition' in opts ? opts.iconPosition : null;
+    let ignoreUserGestureWhileAnimating = opts && 'ignoreUserGestureWhileAnimating' in opts ? opts.ignoreUserGestureWhileAnimating : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[fullTransitionPX$] = fullTransitionPX;
+    this[enableSlideIcon$] = enableSlideIcon;
+    this[slideIconWidget$] = slideIconWidget;
+    this[iconPosition$] = iconPosition;
+    this[ignoreUserGestureWhileAnimating$] = ignoreUserGestureWhileAnimating;
+    if (!(fullTransitionPX != null)) dart.assertFailed(null, I[0], 24, 15, "fullTransitionPX != null");
+    page_dragger.PageDragger.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = page_dragger.PageDragger.prototype;
+  dart.addTypeTests(page_dragger.PageDragger);
+  dart.addTypeCaches(page_dragger.PageDragger);
+  dart.setMethodSignature(page_dragger.PageDragger, () => ({
+    __proto__: dart.getMethods(page_dragger.PageDragger.__proto__),
+    createState: dart.fnType(dart.legacy(page_dragger._PageDraggerState), [])
+  }));
+  dart.setLibraryUri(page_dragger.PageDragger, I[1]);
+  dart.setFieldSignature(page_dragger.PageDragger, () => ({
+    __proto__: dart.getFields(page_dragger.PageDragger.__proto__),
+    fullTransitionPX: dart.finalFieldType(dart.legacy(core.double)),
+    enableSlideIcon: dart.finalFieldType(dart.legacy(core.bool)),
+    slideIconWidget: dart.finalFieldType(dart.legacy(framework.Widget)),
+    iconPosition: dart.finalFieldType(dart.legacy(core.double)),
+    ignoreUserGestureWhileAnimating: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  page_dragger._PageDraggerState = class _PageDraggerState extends framework.State$(dart.legacy(page_dragger.PageDragger)) {
+    onDragStart(details) {
+      let model = provider.Provider.of(T.IAmARiderProviderL(), this.context, {listen: false});
+      if (dart.test(model.isAnimating) && dart.test(this.widget.ignoreUserGestureWhileAnimating) || dart.test(model.isUserGestureDisabled)) {
+        return;
+      }
+      this.dragStart = details.globalPosition;
+    }
+    onDragUpdate(details) {
+      if (this.dragStart != null) {
+        let newPosition = details.globalPosition;
+        let dx = dart.notNull(this.dragStart.dx) - dart.notNull(newPosition.dx);
+        let dy = newPosition.dy;
+        this.slideDirection = Helpers.SlideDirection.none;
+        if (dx > 0.0) {
+          this.slideDirection = Helpers.SlideDirection.rightToLeft;
+        } else if (dx < 0.0) {
+          this.slideDirection = Helpers.SlideDirection.leftToRight;
+        }
+        if (this.slideDirection != Helpers.SlideDirection.none) {
+          this.slidePercentHor = (dx / dart.notNull(this.widget.fullTransitionPX))[$abs]()[$clamp](0.0, 1.0);
+          this.slidePercentVer = (dart.notNull(dy) / 500)[$abs]()[$clamp](0.0, 1.25);
+        }
+        provider.Provider.of(T.IAmARiderProviderL(), this.context, {listen: false}).updateSlide(new slide_update.SlideUpdate.new(this.slideDirection, this.slidePercentHor, this.slidePercentVer, Helpers.UpdateType.dragging));
+      }
+    }
+    onDragEnd(details) {
+      provider.Provider.of(T.IAmARiderProviderL(), this.context, {listen: false}).updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.none, this.slidePercentHor, this.slidePercentVer, Helpers.UpdateType.doneDragging));
+      this.slidePercentHor = this.slidePercentVer = 0.0;
+      this.slideDirection = Helpers.SlideDirection.none;
+      this.dragStart = null;
+    }
+    build(context) {
+      let model = provider.Provider.of(T.IAmARiderProviderL(), context, {listen: false});
+      return new gesture_detector.GestureDetector.new({behavior: proxy_box.HitTestBehavior.translucent, onHorizontalDragStart: dart.test(model.isInProgress) ? null : dart.bind(this, 'onDragStart'), onHorizontalDragUpdate: dart.test(model.isInProgress) ? null : dart.bind(this, 'onDragUpdate'), onHorizontalDragEnd: dart.test(model.isInProgress) ? null : dart.bind(this, 'onDragEnd'), child: dart.test(this.widget.enableSlideIcon) ? new basic.Align.new({alignment: new alignment.Alignment.new(1 - dart.notNull(this.slidePercentHor) + 0.005, dart.notNull(this.widget.iconPosition) + dart.notNull(this.widget.iconPosition) / 10), child: new basic.Opacity.new({opacity: 1 - dart.notNull(this.slidePercentHor), child: this.slideDirection != Helpers.SlideDirection.leftToRight ? this.widget.slideIconWidget : null, $creationLocationd_0dea112b090073317d4: C[0] || CT.C0}), $creationLocationd_0dea112b090073317d4: C[4] || CT.C4}) : null, $creationLocationd_0dea112b090073317d4: C[8] || CT.C8});
+    }
+  };
+  (page_dragger._PageDraggerState.new = function() {
+    this.dragStart = null;
+    this.slideDirection = null;
+    this.slidePercentHor = 0.0;
+    this.slidePercentVer = 0.0;
+    page_dragger._PageDraggerState.__proto__.new.call(this);
+    ;
+  }).prototype = page_dragger._PageDraggerState.prototype;
+  dart.addTypeTests(page_dragger._PageDraggerState);
+  dart.addTypeCaches(page_dragger._PageDraggerState);
+  dart.setMethodSignature(page_dragger._PageDraggerState, () => ({
+    __proto__: dart.getMethods(page_dragger._PageDraggerState.__proto__),
+    onDragStart: dart.fnType(dart.dynamic, [dart.legacy(drag_details.DragStartDetails)]),
+    onDragUpdate: dart.fnType(dart.dynamic, [dart.legacy(drag_details.DragUpdateDetails)]),
+    onDragEnd: dart.fnType(dart.dynamic, [dart.legacy(drag_details.DragEndDetails)]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(page_dragger._PageDraggerState, I[1]);
+  dart.setFieldSignature(page_dragger._PageDraggerState, () => ({
+    __proto__: dart.getFields(page_dragger._PageDraggerState.__proto__),
+    dragStart: dart.fieldType(dart.legacy(ui.Offset)),
+    slideDirection: dart.fieldType(dart.legacy(Helpers.SlideDirection)),
+    slidePercentHor: dart.fieldType(dart.legacy(core.double)),
+    slidePercentVer: dart.fieldType(dart.legacy(core.double))
+  }));
+  var slideDirection$ = dart.privateName(animated_page_dragger, "AnimatedPageDragger.slideDirection");
+  var transitionGoal$ = dart.privateName(animated_page_dragger, "AnimatedPageDragger.transitionGoal");
+  var completionAnimationController = dart.privateName(animated_page_dragger, "AnimatedPageDragger.completionAnimationController");
+  animated_page_dragger.AnimatedPageDragger = class AnimatedPageDragger extends core.Object {
+    get slideDirection() {
+      return this[slideDirection$];
+    }
+    set slideDirection(value) {
+      super.slideDirection = value;
+    }
+    get transitionGoal() {
+      return this[transitionGoal$];
+    }
+    set transitionGoal(value) {
+      super.transitionGoal = value;
+    }
+    get completionAnimationController() {
+      return this[completionAnimationController];
+    }
+    set completionAnimationController(value) {
+      this[completionAnimationController] = value;
+    }
+    run() {
+      this.completionAnimationController.forward({from: 0.0});
+    }
+    dispose() {
+      this.completionAnimationController.dispose();
+    }
+  };
+  (animated_page_dragger.AnimatedPageDragger.new = function(opts) {
+    let t0;
+    let slideDirection = opts && 'slideDirection' in opts ? opts.slideDirection : null;
+    let transitionGoal = opts && 'transitionGoal' in opts ? opts.transitionGoal : null;
+    let slidePercentVer = opts && 'slidePercentVer' in opts ? opts.slidePercentVer : null;
+    let slidePercentHor = opts && 'slidePercentHor' in opts ? opts.slidePercentHor : null;
+    let slideUpdateStream = opts && 'slideUpdateStream' in opts ? opts.slideUpdateStream : null;
+    let vsync = opts && 'vsync' in opts ? opts.vsync : null;
+    this[completionAnimationController] = null;
+    this[slideDirection$] = slideDirection;
+    this[transitionGoal$] = transitionGoal;
+    let startSlidePercentHor = slidePercentHor;
+    let startSlidePercentVer = slidePercentVer;
+    let endSlidePercentHor = null;
+    let endSlidePercentVer = null;
+    let duration = null;
+    if (this.transitionGoal == Helpers.TransitionGoal.open) {
+      endSlidePercentHor = endSlidePercentVer = 1.0;
+      let slideRemaining = 1.0 - dart.notNull(slidePercentHor);
+      duration = new core.Duration.new({milliseconds: (slideRemaining / 0.00125)[$round]()});
+    } else {
+      endSlidePercentHor = endSlidePercentVer = 0.0;
+      duration = new core.Duration.new({milliseconds: (dart.notNull(slidePercentHor) / 0.00125)[$round]()});
+    }
+    this.completionAnimationController = (t0 = new animation_controller.AnimationController.new({duration: duration, vsync: vsync}), (() => {
+      t0.addListener(dart.fn(() => {
+        let slidePercent = ui.lerpDouble(startSlidePercentHor, endSlidePercentHor, this.completionAnimationController.value);
+        let slidePercentVer = ui.lerpDouble(startSlidePercentVer, endSlidePercentVer, this.completionAnimationController.value);
+        slideUpdateStream.updateSlide(new slide_update.SlideUpdate.new(this.slideDirection, slidePercent, slidePercentVer, Helpers.UpdateType.animating));
+      }, T.VoidToNull()));
+      t0.addStatusListener(dart.fn(status => {
+        if (status == animation.AnimationStatus.completed) {
+          slideUpdateStream.updateSlide(new slide_update.SlideUpdate.new(this.slideDirection, slidePercentHor, slidePercentVer, Helpers.UpdateType.doneAnimating));
+        }
+      }, T.AnimationStatusLToNull()));
+      return t0;
+    })());
+  }).prototype = animated_page_dragger.AnimatedPageDragger.prototype;
+  dart.addTypeTests(animated_page_dragger.AnimatedPageDragger);
+  dart.addTypeCaches(animated_page_dragger.AnimatedPageDragger);
+  dart.setMethodSignature(animated_page_dragger.AnimatedPageDragger, () => ({
+    __proto__: dart.getMethods(animated_page_dragger.AnimatedPageDragger.__proto__),
+    run: dart.fnType(dart.void, []),
+    dispose: dart.fnType(dart.void, [])
+  }));
+  dart.setLibraryUri(animated_page_dragger.AnimatedPageDragger, I[2]);
+  dart.setFieldSignature(animated_page_dragger.AnimatedPageDragger, () => ({
+    __proto__: dart.getFields(animated_page_dragger.AnimatedPageDragger.__proto__),
+    slideDirection: dart.finalFieldType(dart.legacy(Helpers.SlideDirection)),
+    transitionGoal: dart.finalFieldType(dart.legacy(Helpers.TransitionGoal)),
+    completionAnimationController: dart.fieldType(dart.legacy(animation_controller.AnimationController))
+  }));
+  var slideUpdate = dart.privateName(iamariderprovider, "IAmARiderProvider.slideUpdate");
+  var animatedPageDragger = dart.privateName(iamariderprovider, "IAmARiderProvider.animatedPageDragger");
+  var activePageIndex = dart.privateName(iamariderprovider, "IAmARiderProvider.activePageIndex");
+  var nextPageIndex = dart.privateName(iamariderprovider, "IAmARiderProvider.nextPageIndex");
+  var slideDirection = dart.privateName(iamariderprovider, "IAmARiderProvider.slideDirection");
+  var slidePercentHor = dart.privateName(iamariderprovider, "IAmARiderProvider.slidePercentHor");
+  var slidePercentVer = dart.privateName(iamariderprovider, "IAmARiderProvider.slidePercentVer");
+  var prevUpdate = dart.privateName(iamariderprovider, "IAmARiderProvider.prevUpdate");
+  var enableLoop = dart.privateName(iamariderprovider, "IAmARiderProvider.enableLoop");
+  var pagesLength = dart.privateName(iamariderprovider, "IAmARiderProvider.pagesLength");
+  var singleTickerProviderStateMixin = dart.privateName(iamariderprovider, "IAmARiderProvider.singleTickerProviderStateMixin");
+  var positionSlideIcon = dart.privateName(iamariderprovider, "IAmARiderProvider.positionSlideIcon");
+  var isInProgress = dart.privateName(iamariderprovider, "IAmARiderProvider.isInProgress");
+  var shouldDisableUserGesture = dart.privateName(iamariderprovider, "IAmARiderProvider.shouldDisableUserGesture");
+  var _onPageChangeCallback = dart.privateName(iamariderprovider, "_onPageChangeCallback");
+  var _currentUpdateTypeCallback = dart.privateName(iamariderprovider, "_currentUpdateTypeCallback");
+  var _slidePercentCallback = dart.privateName(iamariderprovider, "_slidePercentCallback");
+  var _isAnimating = dart.privateName(iamariderprovider, "_isAnimating");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  iamariderprovider.IAmARiderProvider = class IAmARiderProvider extends change_notifier.ChangeNotifier {
+    get slideUpdate() {
+      return this[slideUpdate];
+    }
+    set slideUpdate(value) {
+      this[slideUpdate] = value;
+    }
+    get animatedPageDragger() {
+      return this[animatedPageDragger];
+    }
+    set animatedPageDragger(value) {
+      this[animatedPageDragger] = value;
+    }
+    get activePageIndex() {
+      return this[activePageIndex];
+    }
+    set activePageIndex(value) {
+      this[activePageIndex] = value;
+    }
+    get nextPageIndex() {
+      return this[nextPageIndex];
+    }
+    set nextPageIndex(value) {
+      this[nextPageIndex] = value;
+    }
+    get slideDirection() {
+      return this[slideDirection];
+    }
+    set slideDirection(value) {
+      this[slideDirection] = value;
+    }
+    get slidePercentHor() {
+      return this[slidePercentHor];
+    }
+    set slidePercentHor(value) {
+      this[slidePercentHor] = value;
+    }
+    get slidePercentVer() {
+      return this[slidePercentVer];
+    }
+    set slidePercentVer(value) {
+      this[slidePercentVer] = value;
+    }
+    get prevUpdate() {
+      return this[prevUpdate];
+    }
+    set prevUpdate(value) {
+      this[prevUpdate] = value;
+    }
+    get enableLoop() {
+      return this[enableLoop];
+    }
+    set enableLoop(value) {
+      this[enableLoop] = value;
+    }
+    get pagesLength() {
+      return this[pagesLength];
+    }
+    set pagesLength(value) {
+      this[pagesLength] = value;
+    }
+    get singleTickerProviderStateMixin() {
+      return this[singleTickerProviderStateMixin];
+    }
+    set singleTickerProviderStateMixin(value) {
+      this[singleTickerProviderStateMixin] = value;
+    }
+    get positionSlideIcon() {
+      return this[positionSlideIcon];
+    }
+    set positionSlideIcon(value) {
+      this[positionSlideIcon] = value;
+    }
+    get isInProgress() {
+      return this[isInProgress];
+    }
+    set isInProgress(value) {
+      this[isInProgress] = value;
+    }
+    get shouldDisableUserGesture() {
+      return this[shouldDisableUserGesture];
+    }
+    set shouldDisableUserGesture(value) {
+      this[shouldDisableUserGesture] = value;
+    }
+    animateDirectlyToPage(page, duration) {
+      if (dart.test(this.isInProgress) || this.activePageIndex == page) return;
+      this.isInProgress = true;
+      this.activePageIndex = dart.notNull(page) - 1;
+      this.nextPageIndex = page;
+      if (dart.notNull(this.activePageIndex) < 0) {
+        this.activePageIndex = 0;
+        this.jumpToPage(page);
+        return;
+      }
+      async.Timer.periodic(C[15] || CT.C15, dart.fn(t => {
+        if (dart.notNull(t.tick) < dart.notNull(duration) / 2) {
+          this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, dart.notNull(t.tick) / dart.notNull(duration), 1.0, Helpers.UpdateType.dragging));
+        } else if (dart.notNull(t.tick) < dart.notNull(duration)) {
+          this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, dart.notNull(t.tick) / dart.notNull(duration), 1.0, Helpers.UpdateType.animating));
+        } else {
+          this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, 1.0, 1.0, Helpers.UpdateType.doneAnimating));
+          t.cancel();
+          this.isInProgress = false;
+        }
+      }, T.TimerLToNull()));
+    }
+    animateToPage(page, duration) {
+      if (dart.test(this.isInProgress) || this.activePageIndex == page) return;
+      this.isInProgress = true;
+      let diff = 0;
+      if (dart.notNull(this.activePageIndex) < dart.notNull(page)) {
+        diff = dart.notNull(page) - dart.notNull(this.activePageIndex);
+        let newDuration = (dart.notNull(duration) / diff)[$truncate]();
+        async.Timer.periodic(new core.Duration.new({milliseconds: newDuration}), dart.fn(callback => {
+          async.Timer.periodic(C[15] || CT.C15, dart.fn(t => {
+            if (dart.notNull(t.tick) < newDuration / 2) {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, dart.notNull(t.tick) / newDuration, 1.0, Helpers.UpdateType.dragging));
+            } else if (dart.notNull(t.tick) < newDuration) {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, dart.notNull(t.tick) / newDuration, 1.0, Helpers.UpdateType.animating));
+            } else {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, 1.0, 1.0, Helpers.UpdateType.doneAnimating));
+              t.cancel();
+            }
+          }, T.TimerLToNull()));
+          if (dart.notNull(callback.tick) >= diff) {
+            callback.cancel();
+            this.isInProgress = false;
+          }
+        }, T.TimerLToNull()));
+      } else {
+        diff = dart.notNull(this.activePageIndex) - dart.notNull(page);
+        let newDuration = (dart.notNull(duration) / diff)[$truncate]();
+        async.Timer.periodic(new core.Duration.new({milliseconds: newDuration}), dart.fn(callback => {
+          async.Timer.periodic(C[15] || CT.C15, dart.fn(t => {
+            if (dart.notNull(t.tick) < newDuration / 2) {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.leftToRight, dart.notNull(t.tick) / newDuration, 1.0, Helpers.UpdateType.dragging));
+            } else if (dart.notNull(t.tick) < newDuration) {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.leftToRight, dart.notNull(t.tick) / newDuration, 1.0, Helpers.UpdateType.animating));
+            } else {
+              this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.leftToRight, 1.0, 1.0, Helpers.UpdateType.doneAnimating));
+              t.cancel();
+            }
+          }, T.TimerLToNull()));
+          if (dart.notNull(callback.tick) >= diff) {
+            callback.cancel();
+            this.isInProgress = false;
+          }
+        }, T.TimerLToNull()));
+      }
+    }
+    jumpToPage(page) {
+      if (page == this.activePageIndex || dart.test(this.isInProgress)) return;
+      if (this.activePageIndex === dart.notNull(this.pagesLength) - 1 && !dart.test(this.enableLoop)) {
+        return;
+      }
+      this.isInProgress = true;
+      this.activePageIndex = dart.notNull(page) - 1;
+      this.nextPageIndex = page;
+      if (dart.notNull(this.nextPageIndex) >= dart.notNull(this.pagesLength)) this.nextPageIndex = 0;
+      this.updateSlide(new slide_update.SlideUpdate.new(Helpers.SlideDirection.rightToLeft, 1.0, 0.5, Helpers.UpdateType.doneAnimating));
+      this.isInProgress = false;
+    }
+    updateSlide(slidUpdate) {
+      this.slideUpdate = slidUpdate;
+      this.updateData(slidUpdate);
+      this.notifyListeners();
+    }
+    updateData(event) {
+      let t0, t1, t0$, t0$0;
+      if (this.prevUpdate != event.updateType && this[_currentUpdateTypeCallback] != null) {
+        t0 = event.updateType;
+        this[_currentUpdateTypeCallback](t0);
+      }
+      if (this[_slidePercentCallback] != null && event.updateType != Helpers.UpdateType.doneAnimating) {
+        let hor = (dart.notNull(event.slidePercentHor) * 100)[$toStringAsExponential](2);
+        let ver = (dart.notNull(event.slidePercentVer) * 100)[$toStringAsExponential](2);
+        t0$ = core.double.parse(hor);
+        t1 = dart.notNull(core.double.parse(ver)) * 100 / 125;
+        this[_slidePercentCallback](t0$, t1);
+      }
+      this.prevUpdate = event.updateType;
+      if (event.updateType == Helpers.UpdateType.dragging) {
+        this.slideDirection = event.direction;
+        this.slidePercentHor = event.slidePercentHor;
+        this.slidePercentVer = event.slidePercentVer;
+        this.nextPageIndex = this.activePageIndex;
+        if (dart.test(this.enableLoop)) {
+          if (this.slideDirection == Helpers.SlideDirection.leftToRight) {
+            this.nextPageIndex = dart.notNull(this.activePageIndex) - 1;
+          } else if (this.slideDirection == Helpers.SlideDirection.rightToLeft) {
+            this.nextPageIndex = dart.notNull(this.activePageIndex) + 1;
+          }
+          if (dart.notNull(this.nextPageIndex) > dart.notNull(this.pagesLength) - 1) {
+            this.nextPageIndex = 0;
+          } else if (dart.notNull(this.nextPageIndex) < 0) {
+            this.nextPageIndex = dart.notNull(this.pagesLength) - 1;
+          }
+          return;
+        }
+        if (this.slideDirection == Helpers.SlideDirection.leftToRight && this.activePageIndex !== 0) {
+          this.nextPageIndex = dart.notNull(this.activePageIndex) - 1;
+        } else if (this.slideDirection == Helpers.SlideDirection.rightToLeft && this.activePageIndex !== dart.notNull(this.pagesLength) - 1) {
+          this.nextPageIndex = dart.notNull(this.activePageIndex) + 1;
+        }
+        return;
+      } else if (event.updateType == Helpers.UpdateType.doneDragging) {
+        if (dart.notNull(this.slidePercentHor) > 0.2) {
+          this.isAnimating = true;
+          this.animatedPageDragger = new animated_page_dragger.AnimatedPageDragger.new({slideUpdateStream: this, slideDirection: this.slideDirection, transitionGoal: Helpers.TransitionGoal.open, slidePercentHor: this.slidePercentHor, slidePercentVer: this.slidePercentVer, vsync: this.singleTickerProviderStateMixin});
+        } else {
+          this.animatedPageDragger = new animated_page_dragger.AnimatedPageDragger.new({slideUpdateStream: this, slideDirection: this.slideDirection, transitionGoal: Helpers.TransitionGoal.close, slidePercentHor: this.slidePercentHor, slidePercentVer: this.slidePercentVer, vsync: this.singleTickerProviderStateMixin});
+          this.nextPageIndex = this.activePageIndex;
+        }
+        this.animatedPageDragger.run();
+        return;
+      } else if (event.updateType == Helpers.UpdateType.animating) {
+        this.slideDirection = event.direction;
+        this.slidePercentHor = event.slidePercentHor;
+        this.slidePercentVer = event.slidePercentVer;
+        return;
+      }
+      this.activePageIndex = this.nextPageIndex;
+      if (this[_onPageChangeCallback] != null) {
+        t0$0 = this.activePageIndex;
+        this[_onPageChangeCallback](t0$0);
+      }
+      this.slideDirection = Helpers.SlideDirection.none;
+      this.slidePercentHor = 0.0;
+      this.slidePercentVer = this.positionSlideIcon;
+      this.isAnimating = false;
+      return;
+    }
+    set isAnimating(newValue) {
+      this[_isAnimating] = newValue;
+      this.notifyListeners();
+    }
+    get isAnimating() {
+      return this[_isAnimating];
+    }
+    set setUserGesture(disable) {
+      this.shouldDisableUserGesture = disable;
+      this.notifyListeners();
+    }
+    get isUserGestureDisabled() {
+      return this.shouldDisableUserGesture;
+    }
+  };
+  (iamariderprovider.IAmARiderProvider.new = function(initialPage, loop, length, mixin, slideIcon, onPageChangeCallback, currentUpdateTypeCallback, slidePercentCallback, disableGesture) {
+    this[slideUpdate] = null;
+    this[animatedPageDragger] = null;
+    this[activePageIndex] = 0;
+    this[nextPageIndex] = 0;
+    this[slideDirection] = Helpers.SlideDirection.none;
+    this[slidePercentHor] = null;
+    this[slidePercentVer] = 0.0;
+    this[prevUpdate] = null;
+    this[enableLoop] = true;
+    this[pagesLength] = 0;
+    this[singleTickerProviderStateMixin] = null;
+    this[positionSlideIcon] = null;
+    this[_onPageChangeCallback] = null;
+    this[_currentUpdateTypeCallback] = null;
+    this[_slidePercentCallback] = null;
+    this[isInProgress] = false;
+    this[_isAnimating] = false;
+    this[shouldDisableUserGesture] = false;
+    iamariderprovider.IAmARiderProvider.__proto__.new.call(this);
+    this.slidePercentHor = this.slidePercentVer = 0.0;
+    this.activePageIndex = initialPage;
+    this.nextPageIndex = initialPage;
+    this.enableLoop = loop;
+    this.pagesLength = length;
+    this.singleTickerProviderStateMixin = mixin;
+    this.positionSlideIcon = slideIcon;
+    this[_currentUpdateTypeCallback] = currentUpdateTypeCallback;
+    this[_onPageChangeCallback] = onPageChangeCallback;
+    this[_slidePercentCallback] = slidePercentCallback;
+    this.shouldDisableUserGesture = disableGesture;
+  }).prototype = iamariderprovider.IAmARiderProvider.prototype;
+  dart.addTypeTests(iamariderprovider.IAmARiderProvider);
+  dart.addTypeCaches(iamariderprovider.IAmARiderProvider);
+  dart.setMethodSignature(iamariderprovider.IAmARiderProvider, () => ({
+    __proto__: dart.getMethods(iamariderprovider.IAmARiderProvider.__proto__),
+    animateDirectlyToPage: dart.fnType(dart.dynamic, [dart.legacy(core.int), dart.legacy(core.int)]),
+    animateToPage: dart.fnType(dart.dynamic, [dart.legacy(core.int), dart.legacy(core.int)]),
+    jumpToPage: dart.fnType(dart.dynamic, [dart.legacy(core.int)]),
+    updateSlide: dart.fnType(dart.dynamic, [dart.legacy(slide_update.SlideUpdate)]),
+    updateData: dart.fnType(dart.dynamic, [dart.legacy(slide_update.SlideUpdate)])
+  }));
+  dart.setGetterSignature(iamariderprovider.IAmARiderProvider, () => ({
+    __proto__: dart.getGetters(iamariderprovider.IAmARiderProvider.__proto__),
+    isAnimating: dart.legacy(core.bool),
+    isUserGestureDisabled: dart.legacy(core.bool)
+  }));
+  dart.setSetterSignature(iamariderprovider.IAmARiderProvider, () => ({
+    __proto__: dart.getSetters(iamariderprovider.IAmARiderProvider.__proto__),
+    isAnimating: dart.legacy(core.bool),
+    setUserGesture: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(iamariderprovider.IAmARiderProvider, I[3]);
+  dart.setFieldSignature(iamariderprovider.IAmARiderProvider, () => ({
+    __proto__: dart.getFields(iamariderprovider.IAmARiderProvider.__proto__),
+    slideUpdate: dart.fieldType(dart.legacy(slide_update.SlideUpdate)),
+    animatedPageDragger: dart.fieldType(dart.legacy(animated_page_dragger.AnimatedPageDragger)),
+    activePageIndex: dart.fieldType(dart.legacy(core.int)),
+    nextPageIndex: dart.fieldType(dart.legacy(core.int)),
+    slideDirection: dart.fieldType(dart.legacy(Helpers.SlideDirection)),
+    slidePercentHor: dart.fieldType(dart.legacy(core.double)),
+    slidePercentVer: dart.fieldType(dart.legacy(core.double)),
+    prevUpdate: dart.fieldType(dart.legacy(Helpers.UpdateType)),
+    enableLoop: dart.fieldType(dart.legacy(core.bool)),
+    pagesLength: dart.fieldType(dart.legacy(core.int)),
+    singleTickerProviderStateMixin: dart.fieldType(dart.legacy(ticker_provider.TickerProviderStateMixin$(dart.legacy(framework.StatefulWidget)))),
+    positionSlideIcon: dart.fieldType(dart.legacy(core.double)),
+    [_onPageChangeCallback]: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)]))),
+    [_currentUpdateTypeCallback]: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(Helpers.UpdateType)]))),
+    [_slidePercentCallback]: dart.fieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.double), dart.legacy(core.double)]))),
+    isInProgress: dart.fieldType(dart.legacy(core.bool)),
+    [_isAnimating]: dart.fieldType(dart.legacy(core.bool)),
+    shouldDisableUserGesture: dart.fieldType(dart.legacy(core.bool))
+  }));
+  var provider$ = dart.privateName(LiquidController, "LiquidController.provider");
+  LiquidController.LiquidController = class LiquidController extends core.Object {
+    get provider() {
+      return this[provider$];
+    }
+    set provider(value) {
+      this[provider$] = value;
+    }
+    setContext(context) {
+      this.provider = provider.Provider.of(T.IAmARiderProviderL(), context, {listen: false});
+    }
+    jumpToPage(opts) {
+      let page = opts && 'page' in opts ? opts.page : null;
+      this.provider.jumpToPage(page);
+    }
+    animateToPage(opts) {
+      let page = opts && 'page' in opts ? opts.page : null;
+      let duration = opts && 'duration' in opts ? opts.duration : 600;
+      this.provider.animateToPage(page, duration);
+    }
+    get currentPage() {
+      return this.provider.activePageIndex;
+    }
+    shouldDisableGestures(opts) {
+      let disable = opts && 'disable' in opts ? opts.disable : null;
+      this.provider.setUserGesture = disable;
+    }
+    get isUserGestureDisabled() {
+      return this.provider.isUserGestureDisabled;
+    }
+  };
+  (LiquidController.LiquidController.new = function() {
+    this[provider$] = null;
+    ;
+  }).prototype = LiquidController.LiquidController.prototype;
+  dart.addTypeTests(LiquidController.LiquidController);
+  dart.addTypeCaches(LiquidController.LiquidController);
+  dart.setMethodSignature(LiquidController.LiquidController, () => ({
+    __proto__: dart.getMethods(LiquidController.LiquidController.__proto__),
+    setContext: dart.fnType(dart.dynamic, [dart.legacy(framework.BuildContext)]),
+    jumpToPage: dart.fnType(dart.dynamic, [], {page: dart.legacy(core.int)}, {}),
+    animateToPage: dart.fnType(dart.dynamic, [], {duration: dart.legacy(core.int), page: dart.legacy(core.int)}, {}),
+    shouldDisableGestures: dart.fnType(dart.dynamic, [], {disable: dart.legacy(core.bool)}, {})
+  }));
+  dart.setGetterSignature(LiquidController.LiquidController, () => ({
+    __proto__: dart.getGetters(LiquidController.LiquidController.__proto__),
+    currentPage: dart.legacy(core.int),
+    isUserGestureDisabled: dart.legacy(core.bool)
+  }));
+  dart.setLibraryUri(LiquidController.LiquidController, I[4]);
+  dart.setFieldSignature(LiquidController.LiquidController, () => ({
+    __proto__: dart.getFields(LiquidController.LiquidController.__proto__),
+    provider: dart.fieldType(dart.legacy(iamariderprovider.IAmARiderProvider))
+  }));
+  var pages$ = dart.privateName(liquid_swipe, "LiquidSwipe.pages");
+  var fullTransitionValue$ = dart.privateName(liquid_swipe, "LiquidSwipe.fullTransitionValue");
+  var initialPage$ = dart.privateName(liquid_swipe, "LiquidSwipe.initialPage");
+  var enableSlideIcon$0 = dart.privateName(liquid_swipe, "LiquidSwipe.enableSlideIcon");
+  var slideIconWidget$0 = dart.privateName(liquid_swipe, "LiquidSwipe.slideIconWidget");
+  var positionSlideIcon$ = dart.privateName(liquid_swipe, "LiquidSwipe.positionSlideIcon");
+  var enableLoop$ = dart.privateName(liquid_swipe, "LiquidSwipe.enableLoop");
+  var liquidController$ = dart.privateName(liquid_swipe, "LiquidSwipe.liquidController");
+  var waveType$ = dart.privateName(liquid_swipe, "LiquidSwipe.waveType");
+  var onPageChangeCallback$ = dart.privateName(liquid_swipe, "LiquidSwipe.onPageChangeCallback");
+  var currentUpdateTypeCallback$ = dart.privateName(liquid_swipe, "LiquidSwipe.currentUpdateTypeCallback");
+  var slidePercentCallback$ = dart.privateName(liquid_swipe, "LiquidSwipe.slidePercentCallback");
+  var ignoreUserGestureWhileAnimating$0 = dart.privateName(liquid_swipe, "LiquidSwipe.ignoreUserGestureWhileAnimating");
+  var disableUserGesture$ = dart.privateName(liquid_swipe, "LiquidSwipe.disableUserGesture");
+  var Widget__location = dart.privateName(framework, "Widget._location");
+  var Widget_key = dart.privateName(framework, "Widget.key");
+  var Icon_textDirection = dart.privateName(icon, "Icon.textDirection");
+  var Icon_semanticLabel = dart.privateName(icon, "Icon.semanticLabel");
+  var Icon_color = dart.privateName(icon, "Icon.color");
+  var Icon_size = dart.privateName(icon, "Icon.size");
+  var IconData_matchTextDirection = dart.privateName(icon_data, "IconData.matchTextDirection");
+  var IconData_fontPackage = dart.privateName(icon_data, "IconData.fontPackage");
+  var IconData_fontFamily = dart.privateName(icon_data, "IconData.fontFamily");
+  var IconData_codePoint = dart.privateName(icon_data, "IconData.codePoint");
+  var Icon_icon = dart.privateName(icon, "Icon.icon");
+  var _name = dart.privateName(Helpers, "_name");
+  liquid_swipe.LiquidSwipe = class LiquidSwipe extends framework.StatefulWidget {
+    get pages() {
+      return this[pages$];
+    }
+    set pages(value) {
+      super.pages = value;
+    }
+    get fullTransitionValue() {
+      return this[fullTransitionValue$];
+    }
+    set fullTransitionValue(value) {
+      super.fullTransitionValue = value;
+    }
+    get initialPage() {
+      return this[initialPage$];
+    }
+    set initialPage(value) {
+      super.initialPage = value;
+    }
+    get enableSlideIcon() {
+      return this[enableSlideIcon$0];
+    }
+    set enableSlideIcon(value) {
+      super.enableSlideIcon = value;
+    }
+    get slideIconWidget() {
+      return this[slideIconWidget$0];
+    }
+    set slideIconWidget(value) {
+      super.slideIconWidget = value;
+    }
+    get positionSlideIcon() {
+      return this[positionSlideIcon$];
+    }
+    set positionSlideIcon(value) {
+      super.positionSlideIcon = value;
+    }
+    get enableLoop() {
+      return this[enableLoop$];
+    }
+    set enableLoop(value) {
+      super.enableLoop = value;
+    }
+    get liquidController() {
+      return this[liquidController$];
+    }
+    set liquidController(value) {
+      super.liquidController = value;
+    }
+    get waveType() {
+      return this[waveType$];
+    }
+    set waveType(value) {
+      super.waveType = value;
+    }
+    get onPageChangeCallback() {
+      return this[onPageChangeCallback$];
+    }
+    set onPageChangeCallback(value) {
+      super.onPageChangeCallback = value;
+    }
+    get currentUpdateTypeCallback() {
+      return this[currentUpdateTypeCallback$];
+    }
+    set currentUpdateTypeCallback(value) {
+      super.currentUpdateTypeCallback = value;
+    }
+    get slidePercentCallback() {
+      return this[slidePercentCallback$];
+    }
+    set slidePercentCallback(value) {
+      super.slidePercentCallback = value;
+    }
+    get ignoreUserGestureWhileAnimating() {
+      return this[ignoreUserGestureWhileAnimating$0];
+    }
+    set ignoreUserGestureWhileAnimating(value) {
+      super.ignoreUserGestureWhileAnimating = value;
+    }
+    get disableUserGesture() {
+      return this[disableUserGesture$];
+    }
+    set disableUserGesture(value) {
+      super.disableUserGesture = value;
+    }
+    createState() {
+      return new liquid_swipe._LiquidSwipe.new();
+    }
+  };
+  (liquid_swipe.LiquidSwipe.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let pages = opts && 'pages' in opts ? opts.pages : null;
+    let fullTransitionValue = opts && 'fullTransitionValue' in opts ? opts.fullTransitionValue : 300;
+    let initialPage = opts && 'initialPage' in opts ? opts.initialPage : 0;
+    let enableSlideIcon = opts && 'enableSlideIcon' in opts ? opts.enableSlideIcon : false;
+    let slideIconWidget = opts && 'slideIconWidget' in opts ? opts.slideIconWidget : C[16] || CT.C16;
+    let positionSlideIcon = opts && 'positionSlideIcon' in opts ? opts.positionSlideIcon : 0.54;
+    let enableLoop = opts && 'enableLoop' in opts ? opts.enableLoop : true;
+    let liquidController = opts && 'liquidController' in opts ? opts.liquidController : null;
+    let waveType = opts && 'waveType' in opts ? opts.waveType : C[21] || CT.C21;
+    let onPageChangeCallback = opts && 'onPageChangeCallback' in opts ? opts.onPageChangeCallback : null;
+    let currentUpdateTypeCallback = opts && 'currentUpdateTypeCallback' in opts ? opts.currentUpdateTypeCallback : null;
+    let slidePercentCallback = opts && 'slidePercentCallback' in opts ? opts.slidePercentCallback : null;
+    let ignoreUserGestureWhileAnimating = opts && 'ignoreUserGestureWhileAnimating' in opts ? opts.ignoreUserGestureWhileAnimating : false;
+    let disableUserGesture = opts && 'disableUserGesture' in opts ? opts.disableUserGesture : false;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[pages$] = pages;
+    this[fullTransitionValue$] = fullTransitionValue;
+    this[initialPage$] = initialPage;
+    this[enableSlideIcon$0] = enableSlideIcon;
+    this[slideIconWidget$0] = slideIconWidget;
+    this[positionSlideIcon$] = positionSlideIcon;
+    this[enableLoop$] = enableLoop;
+    this[liquidController$] = liquidController;
+    this[waveType$] = waveType;
+    this[onPageChangeCallback$] = onPageChangeCallback;
+    this[currentUpdateTypeCallback$] = currentUpdateTypeCallback;
+    this[slidePercentCallback$] = slidePercentCallback;
+    this[ignoreUserGestureWhileAnimating$0] = ignoreUserGestureWhileAnimating;
+    this[disableUserGesture$] = disableUserGesture;
+    if (!(pages != null)) dart.assertFailed(null, I[5], 53, 16, "pages != null");
+    if (!(fullTransitionValue != null)) dart.assertFailed(null, I[5], 54, 16, "fullTransitionValue != null");
+    if (!(initialPage != null && dart.notNull(initialPage) >= 0 && dart.notNull(initialPage) < dart.notNull(pages[$length]))) dart.assertFailed(null, I[5], 55, 16, "initialPage != null &&\r\n            initialPage >= 0 &&\r\n            initialPage < pages.length");
+    if (!(dart.notNull(positionSlideIcon) >= -1 && dart.notNull(positionSlideIcon) <= 1)) dart.assertFailed(null, I[5], 58, 16, "positionSlideIcon >= -1 && positionSlideIcon <= 1");
+    liquid_swipe.LiquidSwipe.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = liquid_swipe.LiquidSwipe.prototype;
+  dart.addTypeTests(liquid_swipe.LiquidSwipe);
+  dart.addTypeCaches(liquid_swipe.LiquidSwipe);
+  dart.setMethodSignature(liquid_swipe.LiquidSwipe, () => ({
+    __proto__: dart.getMethods(liquid_swipe.LiquidSwipe.__proto__),
+    createState: dart.fnType(dart.legacy(framework.State$(dart.legacy(framework.StatefulWidget))), [])
+  }));
+  dart.setLibraryUri(liquid_swipe.LiquidSwipe, I[6]);
+  dart.setFieldSignature(liquid_swipe.LiquidSwipe, () => ({
+    __proto__: dart.getFields(liquid_swipe.LiquidSwipe.__proto__),
+    pages: dart.finalFieldType(dart.legacy(core.List$(dart.legacy(framework.Widget)))),
+    fullTransitionValue: dart.finalFieldType(dart.legacy(core.double)),
+    initialPage: dart.finalFieldType(dart.legacy(core.int)),
+    enableSlideIcon: dart.finalFieldType(dart.legacy(core.bool)),
+    slideIconWidget: dart.finalFieldType(dart.legacy(framework.Widget)),
+    positionSlideIcon: dart.finalFieldType(dart.legacy(core.double)),
+    enableLoop: dart.finalFieldType(dart.legacy(core.bool)),
+    liquidController: dart.finalFieldType(dart.legacy(LiquidController.LiquidController)),
+    waveType: dart.finalFieldType(dart.legacy(Helpers.WaveType)),
+    onPageChangeCallback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.int)]))),
+    currentUpdateTypeCallback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(Helpers.UpdateType)]))),
+    slidePercentCallback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, [dart.legacy(core.double), dart.legacy(core.double)]))),
+    ignoreUserGestureWhileAnimating: dart.finalFieldType(dart.legacy(core.bool)),
+    disableUserGesture: dart.finalFieldType(dart.legacy(core.bool))
+  }));
+  const State_TickerProviderStateMixin$36 = class State_TickerProviderStateMixin extends framework.State$(dart.legacy(liquid_swipe.LiquidSwipe)) {};
+  (State_TickerProviderStateMixin$36.new = function() {
+    ticker_provider.TickerProviderStateMixin$(dart.legacy(liquid_swipe.LiquidSwipe))[dart.mixinNew].call(this);
+    State_TickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_TickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_TickerProviderStateMixin$36, ticker_provider.TickerProviderStateMixin$(dart.legacy(liquid_swipe.LiquidSwipe)));
+  liquid_swipe._LiquidSwipe = class _LiquidSwipe extends State_TickerProviderStateMixin$36 {
+    initState() {
+      let t0;
+      this.liquidController = (t0 = this.widget.liquidController, t0 == null ? new LiquidController.LiquidController.new() : t0);
+      super.initState();
+    }
+    build(context) {
+      let pages = this.widget.pages;
+      return new (T.ChangeNotifierProviderOfIAmARiderProviderL()).new({create: dart.fn(context => new iamariderprovider.IAmARiderProvider.new(this.widget.initialPage, this.widget.enableLoop, pages[$length], this, this.widget.positionSlideIcon, this.widget.onPageChangeCallback, this.widget.currentUpdateTypeCallback, this.widget.slidePercentCallback, this.widget.disableUserGesture), T.BuildContextLToIAmARiderProviderL()), child: new (T.ConsumerOfIAmARiderProviderL()).new({builder: dart.fn((context, model, _) => {
+            this.liquidController.setContext(context);
+            return new basic.Stack.new({children: T.JSArrayOfWidgetL().of([model.slideDirection == Helpers.SlideDirection.leftToRight ? pages[$_get](model.activePageIndex) : pages[$_get](model.nextPageIndex), new page_reveal.PageReveal.new({revealPercent: model.slidePercentHor, child: model.slideDirection == Helpers.SlideDirection.leftToRight ? pages[$_get](model.nextPageIndex) : pages[$_get](model.activePageIndex), slideDirection: model.slideDirection, iconPosition: this.widget.positionSlideIcon, waveType: this.widget.waveType, vertReveal: model.slidePercentVer, $creationLocationd_0dea112b090073317d4: C[22] || CT.C22}), new page_dragger.PageDragger.new({fullTransitionPX: this.widget.fullTransitionValue, enableSlideIcon: this.widget.enableSlideIcon, slideIconWidget: this.widget.slideIconWidget, iconPosition: this.widget.positionSlideIcon, ignoreUserGestureWhileAnimating: this.widget.ignoreUserGestureWhileAnimating, $creationLocationd_0dea112b090073317d4: C[30] || CT.C30})]), $creationLocationd_0dea112b090073317d4: C[37] || CT.C37});
+          }, T.BuildContextLAndIAmARiderProviderLAndWidgetLToStackL()), $creationLocationd_0dea112b090073317d4: C[40] || CT.C40}), $creationLocationd_0dea112b090073317d4: C[43] || CT.C43});
+    }
+  };
+  (liquid_swipe._LiquidSwipe.new = function() {
+    this.liquidController = null;
+    liquid_swipe._LiquidSwipe.__proto__.new.call(this);
+    ;
+  }).prototype = liquid_swipe._LiquidSwipe.prototype;
+  dart.addTypeTests(liquid_swipe._LiquidSwipe);
+  dart.addTypeCaches(liquid_swipe._LiquidSwipe);
+  dart.setMethodSignature(liquid_swipe._LiquidSwipe, () => ({
+    __proto__: dart.getMethods(liquid_swipe._LiquidSwipe.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(liquid_swipe._LiquidSwipe, I[6]);
+  dart.setFieldSignature(liquid_swipe._LiquidSwipe, () => ({
+    __proto__: dart.getFields(liquid_swipe._LiquidSwipe.__proto__),
+    liquidController: dart.fieldType(dart.legacy(LiquidController.LiquidController))
+  }));
+  dart.defineLazy(liquid_swipe, {
+    /*liquid_swipe.key*/get key() {
+      return T.GlobalKeyOf_LiquidSwipeL().new();
+    }
+  }, true);
+  dart.trackLibraries("packages/liquid_swipe/PageHelpers/page_dragger.dart", {
+    "package:liquid_swipe/PageHelpers/page_dragger.dart": page_dragger,
+    "package:liquid_swipe/PageHelpers/animated_page_dragger.dart": animated_page_dragger,
+    "package:liquid_swipe/Provider/iamariderprovider.dart": iamariderprovider,
+    "package:liquid_swipe/PageHelpers/LiquidController.dart": LiquidController,
+    "package:liquid_swipe/liquid_swipe.dart": liquid_swipe
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["page_dragger.dart","animated_page_dragger.dart","../Provider/iamariderprovider.dart","LiquidController.dart","../liquid_swipe.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/liquid_swipe/PageHelpers/page_dragger.dart.lib.js"}');
+  // Exports:
+  return {
+    PageHelpers__page_dragger: page_dragger,
+    PageHelpers__animated_page_dragger: animated_page_dragger,
+    Provider__iamariderprovider: iamariderprovider,
+    PageHelpers__LiquidController: LiquidController,
+    liquid_swipe: liquid_swipe
+  };
+}));
+
+//# sourceMappingURL=page_dragger.dart.lib.js.map

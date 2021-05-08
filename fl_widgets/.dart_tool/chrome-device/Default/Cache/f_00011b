@@ -1,0 +1,2125 @@
+define(['dart_sdk', 'packages/flutter/src/painting/gradient.dart', 'packages/flutter/src/painting/alignment.dart', 'packages/flutter/src/widgets/widget_span.dart', 'packages/flutter/src/foundation/key.dart', 'packages/flutter/src/animation/animation_controller.dart', 'packages/flutter/src/animation/listener_helpers.dart', 'packages/flutter/src/animation/curves.dart', 'packages/flutter/src/rendering/layer.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/strut_style.dart', 'packages/flutter/src/rendering/paragraph.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/painting/rounded_rectangle_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/painting/shape_decoration.dart', 'packages/flutter/src/rendering/proxy_box.dart', 'packages/flutter/src/gestures/tap.dart', 'packages/gradient_widgets/src/common.dart', 'packages/flutter/src/painting/circle_border.dart'], (function load__packages__gradient_widgets__src__gradient_progress_indicator_dart(dart_sdk, packages__flutter__src__painting__gradient$46dart, packages__flutter__src__painting__alignment$46dart, packages__flutter__src__widgets__widget_span$46dart, packages__flutter__src__foundation__key$46dart, packages__flutter__src__animation__animation_controller$46dart, packages__flutter__src__animation__listener_helpers$46dart, packages__flutter__src__animation__curves$46dart, packages__flutter__src__rendering__layer$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__strut_style$46dart, packages__flutter__src__rendering__paragraph$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__painting__rounded_rectangle_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__painting__shape_decoration$46dart, packages__flutter__src__rendering__proxy_box$46dart, packages__flutter__src__gestures__tap$46dart, packages__gradient_widgets__src__common$46dart, packages__flutter__src__painting__circle_border$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const gradient = packages__flutter__src__painting__gradient$46dart.src__painting__gradient;
+  const alignment = packages__flutter__src__painting__alignment$46dart.src__painting__alignment;
+  const framework = packages__flutter__src__widgets__widget_span$46dart.src__widgets__framework;
+  const container = packages__flutter__src__widgets__widget_span$46dart.src__widgets__container;
+  const widget_inspector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__widget_inspector;
+  const transitions = packages__flutter__src__widgets__widget_span$46dart.src__widgets__transitions;
+  const ticker_provider = packages__flutter__src__widgets__widget_span$46dart.src__widgets__ticker_provider;
+  const basic = packages__flutter__src__widgets__widget_span$46dart.src__widgets__basic;
+  const text = packages__flutter__src__widgets__widget_span$46dart.src__widgets__text;
+  const gesture_detector = packages__flutter__src__widgets__widget_span$46dart.src__widgets__gesture_detector;
+  const key = packages__flutter__src__foundation__key$46dart.src__foundation__key;
+  const animation_controller = packages__flutter__src__animation__animation_controller$46dart.src__animation__animation_controller;
+  const animations = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animations;
+  const tween = packages__flutter__src__animation__listener_helpers$46dart.src__animation__tween;
+  const animation = packages__flutter__src__animation__listener_helpers$46dart.src__animation__animation;
+  const curves = packages__flutter__src__animation__curves$46dart.src__animation__curves;
+  const box = packages__flutter__src__rendering__layer$46dart.src__rendering__box;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  const paragraph = packages__flutter__src__rendering__paragraph$46dart.src__rendering__paragraph;
+  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
+  const material = packages__flutter__src__material__icon_button$46dart.src__material__material;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const theme$ = packages__flutter__src__material__icon_button$46dart.src__material__theme;
+  const button_theme = packages__flutter__src__material__icon_button$46dart.src__material__button_theme;
+  const button = packages__flutter__src__material__icon_button$46dart.src__material__button;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const rounded_rectangle_border = packages__flutter__src__painting__rounded_rectangle_border$46dart.src__painting__rounded_rectangle_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
+  const shape_decoration = packages__flutter__src__painting__shape_decoration$46dart.src__painting__shape_decoration;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  const tap = packages__flutter__src__gestures__tap$46dart.src__gestures__tap;
+  const common = packages__gradient_widgets__src__common$46dart.src__common;
+  const circle_border = packages__flutter__src__painting__circle_border$46dart.src__painting__circle_border;
+  var gradient_progress_indicator = Object.create(dart.library);
+  var gradient_text = Object.create(dart.library);
+  var gradient_card = Object.create(dart.library);
+  var gradient_widget = Object.create(dart.library);
+  var gradient_button = Object.create(dart.library);
+  var circular_gradient_button = Object.create(dart.library);
+  var gradient_widgets = Object.create(dart.library);
+  var $length = dartx.length;
+  var $clear = dartx.clear;
+  var $addAll = dartx.addAll;
+  var $first = dartx.first;
+  var $add = dartx.add;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    ColorL: () => (T.ColorL = dart.constFn(dart.legacy(ui.Color)))(),
+    JSArrayOfColorL: () => (T.JSArrayOfColorL = dart.constFn(_interceptors.JSArray$(T.ColorL())))(),
+    doubleL: () => (T.doubleL = dart.constFn(dart.legacy(core.double)))(),
+    TweenOfdoubleL: () => (T.TweenOfdoubleL = dart.constFn(tween.Tween$(T.doubleL())))(),
+    AnimationStatusL: () => (T.AnimationStatusL = dart.constFn(dart.legacy(animation.AnimationStatus)))(),
+    AnimationStatusLToNull: () => (T.AnimationStatusLToNull = dart.constFn(dart.fnType(core.Null, [T.AnimationStatusL()])))(),
+    GradientProgressIndicatorL: () => (T.GradientProgressIndicatorL = dart.constFn(dart.legacy(gradient_progress_indicator.GradientProgressIndicator)))(),
+    JSArrayOfdoubleL: () => (T.JSArrayOfdoubleL = dart.constFn(_interceptors.JSArray$(T.doubleL())))(),
+    _LocationL: () => (T._LocationL = dart.constFn(dart.legacy(widget_inspector._Location)))(),
+    WidgetL: () => (T.WidgetL = dart.constFn(dart.legacy(framework.Widget)))(),
+    BuildContextL: () => (T.BuildContextL = dart.constFn(dart.legacy(framework.BuildContext)))(),
+    BuildContextLAndWidgetLToWidgetL: () => (T.BuildContextLAndWidgetLToWidgetL = dart.constFn(dart.fnType(T.WidgetL(), [T.BuildContextL(), T.WidgetL()])))(),
+    ShaderL: () => (T.ShaderL = dart.constFn(dart.legacy(ui.Shader)))(),
+    RectL: () => (T.RectL = dart.constFn(dart.legacy(ui.Rect)))(),
+    RectLToShaderL: () => (T.RectLToShaderL = dart.constFn(dart.fnType(T.ShaderL(), [T.RectL()])))(),
+    VoidToNull: () => (T.VoidToNull = dart.constFn(dart.fnType(core.Null, [])))(),
+    TapDownDetailsL: () => (T.TapDownDetailsL = dart.constFn(dart.legacy(tap.TapDownDetails)))(),
+    TapDownDetailsLTovoid: () => (T.TapDownDetailsLTovoid = dart.constFn(dart.fnType(dart.void, [T.TapDownDetailsL()])))(),
+    TapUpDetailsL: () => (T.TapUpDetailsL = dart.constFn(dart.legacy(tap.TapUpDetails)))(),
+    TapUpDetailsLTovoid: () => (T.TapUpDetailsLTovoid = dart.constFn(dart.fnType(dart.void, [T.TapUpDetailsL()])))(),
+    JSArrayOfWidgetL: () => (T.JSArrayOfWidgetL = dart.constFn(_interceptors.JSArray$(T.WidgetL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294269850.0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294553966.0
+      });
+    },
+    get C1() {
+      return C[1] = dart.constList([C[2] || CT.C2, C[3] || CT.C3], T.ColorL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.TileMode.prototype,
+        [_name]: "TileMode.clamp",
+        index: 0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: 1
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: alignment.Alignment.prototype,
+        [Alignment_y]: 0,
+        [Alignment_x]: -1
+      });
+    },
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: gradient.LinearGradient.prototype,
+        [Gradient_transform]: null,
+        [Gradient_stops]: null,
+        [Gradient_colors]: C[1] || CT.C1,
+        [LinearGradient_tileMode]: C[4] || CT.C4,
+        [LinearGradient_end]: C[5] || CT.C5,
+        [LinearGradient_begin]: C[6] || CT.C6
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 1800000
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: box.BoxConstraints.prototype,
+        [BoxConstraints_maxHeight]: 6,
+        [BoxConstraints_minHeight]: 6,
+        [BoxConstraints_maxWidth]: 1 / 0,
+        [BoxConstraints_minWidth]: 1 / 0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 7,
+        [_Location_line]: 111,
+        [_Location_file]: null
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 7,
+        [_Location_line]: 115,
+        [_Location_file]: null
+      });
+    },
+    get C10() {
+      return C[10] = dart.constList([C[11] || CT.C11, C[12] || CT.C12], T._LocationL());
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[10] || CT.C10,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 110,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_progress_indicator.dart"
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 133,
+        [_Location_file]: null
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "animation",
+        [_Location_column]: 7,
+        [_Location_line]: 134,
+        [_Location_file]: null
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "builder",
+        [_Location_column]: 7,
+        [_Location_line]: 135,
+        [_Location_file]: null
+      });
+    },
+    get C14() {
+      return C[14] = dart.constList([C[15] || CT.C15, C[16] || CT.C16, C[17] || CT.C17], T._LocationL());
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[14] || CT.C14,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 132,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_progress_indicator.dart"
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "data",
+        [_Location_column]: 9,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 9,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "style",
+        [_Location_column]: 9,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textAlign",
+        [_Location_column]: 9,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textDirection",
+        [_Location_column]: 9,
+        [_Location_line]: 52,
+        [_Location_file]: null
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "locale",
+        [_Location_column]: 9,
+        [_Location_line]: 53,
+        [_Location_file]: null
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "softWrap",
+        [_Location_column]: 9,
+        [_Location_line]: 54,
+        [_Location_file]: null
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "overflow",
+        [_Location_column]: 9,
+        [_Location_line]: 55,
+        [_Location_file]: null
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textScaleFactor",
+        [_Location_column]: 9,
+        [_Location_line]: 56,
+        [_Location_file]: null
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "maxLines",
+        [_Location_column]: 9,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C30() {
+      return C[30] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "semanticsLabel",
+        [_Location_column]: 9,
+        [_Location_line]: 58,
+        [_Location_file]: null
+      });
+    },
+    get C19() {
+      return C[19] = dart.constList([C[20] || CT.C20, C[21] || CT.C21, C[22] || CT.C22, C[23] || CT.C23, C[24] || CT.C24, C[25] || CT.C25, C[26] || CT.C26, C[27] || CT.C27, C[28] || CT.C28, C[29] || CT.C29, C[30] || CT.C30], T._LocationL());
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[19] || CT.C19,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 47,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_text.dart"
+      });
+    },
+    get C33() {
+      return C[33] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "blendMode",
+        [_Location_column]: 7,
+        [_Location_line]: 45,
+        [_Location_file]: null
+      });
+    },
+    get C34() {
+      return C[34] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shaderCallback",
+        [_Location_column]: 7,
+        [_Location_line]: 46,
+        [_Location_file]: null
+      });
+    },
+    get C35() {
+      return C[35] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 47,
+        [_Location_file]: null
+      });
+    },
+    get C32() {
+      return C[32] = dart.constList([C[33] || CT.C33, C[34] || CT.C34, C[35] || CT.C35], T._LocationL());
+    },
+    get C31() {
+      return C[31] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[32] || CT.C32,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 41,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_text.dart"
+      });
+    },
+    get C36() {
+      return C[36] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 4,
+        [EdgeInsets_right]: 4,
+        [EdgeInsets_top]: 4,
+        [EdgeInsets_left]: 4
+      });
+    },
+    get C37() {
+      return C[37] = dart.const({
+        __proto__: ui.Clip.prototype,
+        [_name]: "Clip.none",
+        index: 0
+      });
+    },
+    get C40() {
+      return C[40] = dart.const({
+        __proto__: borders.BorderStyle.prototype,
+        [_name$]: "BorderStyle.none",
+        index: 0
+      });
+    },
+    get C41() {
+      return C[41] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C39() {
+      return C[39] = dart.const({
+        __proto__: borders.BorderSide.prototype,
+        [BorderSide_style]: C[40] || CT.C40,
+        [BorderSide_width]: 0,
+        [BorderSide_color]: C[41] || CT.C41
+      });
+    },
+    get C43() {
+      return C[43] = dart.const({
+        __proto__: ui.Radius.prototype,
+        [Radius_y]: 4,
+        [Radius_x]: 4
+      });
+    },
+    get C42() {
+      return C[42] = dart.const({
+        __proto__: border_radius.BorderRadius.prototype,
+        [BorderRadius_bottomRight]: C[43] || CT.C43,
+        [BorderRadius_bottomLeft]: C[43] || CT.C43,
+        [BorderRadius_topRight]: C[43] || CT.C43,
+        [BorderRadius_topLeft]: C[43] || CT.C43
+      });
+    },
+    get C38() {
+      return C[38] = dart.const({
+        __proto__: rounded_rectangle_border.RoundedRectangleBorder.prototype,
+        [OutlinedBorder_side]: C[39] || CT.C39,
+        [RoundedRectangleBorder_borderRadius]: C[42] || CT.C42
+      });
+    },
+    get C46() {
+      return C[46] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "margin",
+        [_Location_column]: 11,
+        [_Location_line]: 50,
+        [_Location_file]: null
+      });
+    },
+    get C47() {
+      return C[47] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 11,
+        [_Location_line]: 51,
+        [_Location_file]: null
+      });
+    },
+    get C48() {
+      return C[48] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 57,
+        [_Location_file]: null
+      });
+    },
+    get C45() {
+      return C[45] = dart.constList([C[46] || CT.C46, C[47] || CT.C47, C[48] || CT.C48], T._LocationL());
+    },
+    get C44() {
+      return C[44] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[45] || CT.C45,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 49,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_card.dart"
+      });
+    },
+    get C51() {
+      return C[51] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "type",
+        [_Location_column]: 9,
+        [_Location_line]: 40,
+        [_Location_file]: null
+      });
+    },
+    get C52() {
+      return C[52] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 9,
+        [_Location_line]: 41,
+        [_Location_file]: null
+      });
+    },
+    get C53() {
+      return C[53] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shadowColor",
+        [_Location_column]: 9,
+        [_Location_line]: 42,
+        [_Location_file]: null
+      });
+    },
+    get C54() {
+      return C[54] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 9,
+        [_Location_line]: 43,
+        [_Location_file]: null
+      });
+    },
+    get C55() {
+      return C[55] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shape",
+        [_Location_column]: 9,
+        [_Location_line]: 44,
+        [_Location_file]: null
+      });
+    },
+    get C56() {
+      return C[56] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 9,
+        [_Location_line]: 48,
+        [_Location_file]: null
+      });
+    },
+    get C57() {
+      return C[57] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 49,
+        [_Location_file]: null
+      });
+    },
+    get C50() {
+      return C[50] = dart.constList([C[51] || CT.C51, C[52] || CT.C52, C[53] || CT.C53, C[54] || CT.C54, C[55] || CT.C55, C[56] || CT.C56, C[57] || CT.C57], T._LocationL());
+    },
+    get C49() {
+      return C[49] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[50] || CT.C50,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 39,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_card.dart"
+      });
+    },
+    get C60() {
+      return C[60] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "container",
+        [_Location_column]: 7,
+        [_Location_line]: 37,
+        [_Location_file]: null
+      });
+    },
+    get C61() {
+      return C[61] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "explicitChildNodes",
+        [_Location_column]: 7,
+        [_Location_line]: 38,
+        [_Location_file]: null
+      });
+    },
+    get C62() {
+      return C[62] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 39,
+        [_Location_file]: null
+      });
+    },
+    get C59() {
+      return C[59] = dart.constList([C[60] || CT.C60, C[61] || CT.C61, C[62] || CT.C62], T._LocationL());
+    },
+    get C58() {
+      return C[58] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[59] || CT.C59,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 36,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_card.dart"
+      });
+    },
+    get C63() {
+      return C[63] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 1929379840
+      });
+    },
+    get C64() {
+      return C[64] = dart.const({
+        __proto__: core.Duration.prototype,
+        [Duration__duration]: 200000
+      });
+    },
+    get C66() {
+      return C[66] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4292532954.0
+      });
+    },
+    get C67() {
+      return C[67] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290428611.0
+      });
+    },
+    get C65() {
+      return C[65] = dart.constList([C[66] || CT.C66, C[67] || CT.C67], T.ColorL());
+    },
+    get C68() {
+      return C[68] = dart.const({
+        __proto__: edge_insets.EdgeInsets.prototype,
+        [EdgeInsets_bottom]: 0,
+        [EdgeInsets_right]: 0,
+        [EdgeInsets_top]: 0,
+        [EdgeInsets_left]: 0
+      });
+    },
+    get C71() {
+      return C[71] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "decoration",
+        [_Location_column]: 25,
+        [_Location_line]: 154,
+        [_Location_file]: null
+      });
+    },
+    get C70() {
+      return C[70] = dart.constList([C[71] || CT.C71], T._LocationL());
+    },
+    get C69() {
+      return C[69] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[70] || CT.C70,
+        [_Location_name]: null,
+        [_Location_column]: 30,
+        [_Location_line]: 153,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C74() {
+      return C[74] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "opacity",
+        [_Location_column]: 23,
+        [_Location_line]: 152,
+        [_Location_file]: null
+      });
+    },
+    get C75() {
+      return C[75] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 23,
+        [_Location_line]: 153,
+        [_Location_file]: null
+      });
+    },
+    get C73() {
+      return C[73] = dart.constList([C[74] || CT.C74, C[75] || CT.C75], T._LocationL());
+    },
+    get C72() {
+      return C[72] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[73] || CT.C73,
+        [_Location_name]: null,
+        [_Location_column]: 19,
+        [_Location_line]: 151,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C78() {
+      return C[78] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "children",
+        [_Location_column]: 17,
+        [_Location_line]: 149,
+        [_Location_file]: null
+      });
+    },
+    get C77() {
+      return C[77] = dart.constList([C[78] || CT.C78], T._LocationL());
+    },
+    get C76() {
+      return C[76] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[77] || CT.C77,
+        [_Location_name]: null,
+        [_Location_column]: 22,
+        [_Location_line]: 148,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C81() {
+      return C[81] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "fillColor",
+        [_Location_column]: 15,
+        [_Location_line]: 137,
+        [_Location_file]: null
+      });
+    },
+    get C82() {
+      return C[82] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "padding",
+        [_Location_column]: 15,
+        [_Location_line]: 138,
+        [_Location_file]: null
+      });
+    },
+    get C83() {
+      return C[83] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shape",
+        [_Location_column]: 15,
+        [_Location_line]: 139,
+        [_Location_file]: null
+      });
+    },
+    get C84() {
+      return C[84] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 15,
+        [_Location_line]: 140,
+        [_Location_file]: null
+      });
+    },
+    get C85() {
+      return C[85] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "textStyle",
+        [_Location_column]: 15,
+        [_Location_line]: 141,
+        [_Location_file]: null
+      });
+    },
+    get C86() {
+      return C[86] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onPressed",
+        [_Location_column]: 15,
+        [_Location_line]: 142,
+        [_Location_file]: null
+      });
+    },
+    get C87() {
+      return C[87] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "constraints",
+        [_Location_column]: 15,
+        [_Location_line]: 143,
+        [_Location_file]: null
+      });
+    },
+    get C88() {
+      return C[88] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "materialTapTargetSize",
+        [_Location_column]: 15,
+        [_Location_line]: 146,
+        [_Location_file]: null
+      });
+    },
+    get C89() {
+      return C[89] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 15,
+        [_Location_line]: 147,
+        [_Location_file]: null
+      });
+    },
+    get C90() {
+      return C[90] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 15,
+        [_Location_line]: 148,
+        [_Location_file]: null
+      });
+    },
+    get C80() {
+      return C[80] = dart.constList([C[81] || CT.C81, C[82] || CT.C82, C[83] || CT.C83, C[84] || CT.C84, C[85] || CT.C85, C[86] || CT.C86, C[87] || CT.C87, C[88] || CT.C88, C[89] || CT.C89, C[90] || CT.C90], T._LocationL());
+    },
+    get C79() {
+      return C[79] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[80] || CT.C80,
+        [_Location_name]: null,
+        [_Location_column]: 18,
+        [_Location_line]: 136,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C93() {
+      return C[93] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "color",
+        [_Location_column]: 11,
+        [_Location_line]: 131,
+        [_Location_file]: null
+      });
+    },
+    get C94() {
+      return C[94] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "shadowColor",
+        [_Location_column]: 11,
+        [_Location_line]: 132,
+        [_Location_file]: null
+      });
+    },
+    get C95() {
+      return C[95] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "elevation",
+        [_Location_column]: 11,
+        [_Location_line]: 133,
+        [_Location_file]: null
+      });
+    },
+    get C96() {
+      return C[96] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipper",
+        [_Location_column]: 11,
+        [_Location_line]: 134,
+        [_Location_file]: null
+      });
+    },
+    get C97() {
+      return C[97] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "clipBehavior",
+        [_Location_column]: 11,
+        [_Location_line]: 135,
+        [_Location_file]: null
+      });
+    },
+    get C98() {
+      return C[98] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 11,
+        [_Location_line]: 136,
+        [_Location_file]: null
+      });
+    },
+    get C92() {
+      return C[92] = dart.constList([C[93] || CT.C93, C[94] || CT.C94, C[95] || CT.C95, C[96] || CT.C96, C[97] || CT.C97, C[98] || CT.C98], T._LocationL());
+    },
+    get C91() {
+      return C[91] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[92] || CT.C92,
+        [_Location_name]: null,
+        [_Location_column]: 16,
+        [_Location_line]: 130,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C101() {
+      return C[101] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 9,
+        [_Location_line]: 130,
+        [_Location_file]: null
+      });
+    },
+    get C100() {
+      return C[100] = dart.constList([C[101] || CT.C101], T._LocationL());
+    },
+    get C99() {
+      return C[99] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[100] || CT.C100,
+        [_Location_name]: null,
+        [_Location_column]: 14,
+        [_Location_line]: 129,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C104() {
+      return C[104] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "key",
+        [_Location_column]: 7,
+        [_Location_line]: 123,
+        [_Location_file]: null
+      });
+    },
+    get C105() {
+      return C[105] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "behavior",
+        [_Location_column]: 7,
+        [_Location_line]: 124,
+        [_Location_file]: null
+      });
+    },
+    get C106() {
+      return C[106] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTap",
+        [_Location_column]: 7,
+        [_Location_line]: 125,
+        [_Location_file]: null
+      });
+    },
+    get C107() {
+      return C[107] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapDown",
+        [_Location_column]: 7,
+        [_Location_line]: 126,
+        [_Location_file]: null
+      });
+    },
+    get C108() {
+      return C[108] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapCancel",
+        [_Location_column]: 7,
+        [_Location_line]: 127,
+        [_Location_file]: null
+      });
+    },
+    get C109() {
+      return C[109] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "onTapUp",
+        [_Location_column]: 7,
+        [_Location_line]: 128,
+        [_Location_file]: null
+      });
+    },
+    get C110() {
+      return C[110] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: null,
+        [_Location_name]: "child",
+        [_Location_column]: 7,
+        [_Location_line]: 129,
+        [_Location_file]: null
+      });
+    },
+    get C103() {
+      return C[103] = dart.constList([C[104] || CT.C104, C[105] || CT.C105, C[106] || CT.C106, C[107] || CT.C107, C[108] || CT.C108, C[109] || CT.C109, C[110] || CT.C110], T._LocationL());
+    },
+    get C102() {
+      return C[102] = dart.const({
+        __proto__: widget_inspector._Location.prototype,
+        [_Location_parameterLocations]: C[103] || CT.C103,
+        [_Location_name]: null,
+        [_Location_column]: 12,
+        [_Location_line]: 122,
+        [_Location_file]: "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_widget.dart"
+      });
+    },
+    get C111() {
+      return C[111] = dart.const({
+        __proto__: circle_border.CircleBorder.prototype,
+        [OutlinedBorder_side]: C[39] || CT.C39
+      });
+    },
+    get C112() {
+      return C[112] = dart.const({
+        __proto__: box.BoxConstraints.prototype,
+        [BoxConstraints_maxHeight]: 56,
+        [BoxConstraints_minHeight]: 56,
+        [BoxConstraints_maxWidth]: 56,
+        [BoxConstraints_minWidth]: 56
+      });
+    }
+  }, false);
+  var C = Array(113).fill(void 0);
+  var I = [
+    "package:gradient_widgets/src/gradient_progress_indicator.dart",
+    "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/gradient_widgets-0.5.2/lib/src/gradient_progress_indicator.dart",
+    "package:gradient_widgets/src/gradient_text.dart",
+    "package:gradient_widgets/src/gradient_card.dart",
+    "package:gradient_widgets/src/gradient_widget.dart",
+    "package:gradient_widgets/src/gradient_button.dart",
+    "package:gradient_widgets/src/circular_gradient_button.dart"
+  ];
+  var key$ = dart.privateName(gradient_progress_indicator, "GradientProgressIndicator.key");
+  var value$ = dart.privateName(gradient_progress_indicator, "GradientProgressIndicator.value");
+  var gradient$ = dart.privateName(gradient_progress_indicator, "GradientProgressIndicator.gradient");
+  var Gradient_transform = dart.privateName(gradient, "Gradient.transform");
+  var Gradient_stops = dart.privateName(gradient, "Gradient.stops");
+  var Color_value = dart.privateName(ui, "Color.value");
+  var Gradient_colors = dart.privateName(gradient, "Gradient.colors");
+  var _name = dart.privateName(ui, "_name");
+  var LinearGradient_tileMode = dart.privateName(gradient, "LinearGradient.tileMode");
+  var Alignment_y = dart.privateName(alignment, "Alignment.y");
+  var Alignment_x = dart.privateName(alignment, "Alignment.x");
+  var LinearGradient_end = dart.privateName(gradient, "LinearGradient.end");
+  var LinearGradient_begin = dart.privateName(gradient, "LinearGradient.begin");
+  gradient_progress_indicator.GradientProgressIndicator = class GradientProgressIndicator extends framework.StatefulWidget {
+    get key() {
+      return this[key$];
+    }
+    set key(value) {
+      super.key = value;
+    }
+    get value() {
+      return this[value$];
+    }
+    set value(value) {
+      super.value = value;
+    }
+    get gradient() {
+      return this[gradient$];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    createState() {
+      return new gradient_progress_indicator._GradientProgressIndicatorState.new();
+    }
+  };
+  (gradient_progress_indicator.GradientProgressIndicator.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let value = opts && 'value' in opts ? opts.value : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[key$] = key;
+    this[value$] = value;
+    this[gradient$] = gradient;
+    gradient_progress_indicator.GradientProgressIndicator.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = gradient_progress_indicator.GradientProgressIndicator.prototype;
+  dart.addTypeTests(gradient_progress_indicator.GradientProgressIndicator);
+  dart.addTypeCaches(gradient_progress_indicator.GradientProgressIndicator);
+  dart.setMethodSignature(gradient_progress_indicator.GradientProgressIndicator, () => ({
+    __proto__: dart.getMethods(gradient_progress_indicator.GradientProgressIndicator.__proto__),
+    createState: dart.fnType(dart.legacy(gradient_progress_indicator._GradientProgressIndicatorState), [])
+  }));
+  dart.setLibraryUri(gradient_progress_indicator.GradientProgressIndicator, I[0]);
+  dart.setFieldSignature(gradient_progress_indicator.GradientProgressIndicator, () => ({
+    __proto__: dart.getFields(gradient_progress_indicator.GradientProgressIndicator.__proto__),
+    key: dart.finalFieldType(dart.legacy(key.Key)),
+    value: dart.finalFieldType(dart.legacy(core.double)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.LinearGradient))
+  }));
+  var _controller = dart.privateName(gradient_progress_indicator, "_controller");
+  var _setColorsArray = dart.privateName(gradient_progress_indicator, "_setColorsArray");
+  var Duration__duration = dart.privateName(core, "Duration._duration");
+  var _setControllerListener = dart.privateName(gradient_progress_indicator, "_setControllerListener");
+  var BoxConstraints_maxHeight = dart.privateName(box, "BoxConstraints.maxHeight");
+  var BoxConstraints_minHeight = dart.privateName(box, "BoxConstraints.minHeight");
+  var BoxConstraints_maxWidth = dart.privateName(box, "BoxConstraints.maxWidth");
+  var BoxConstraints_minWidth = dart.privateName(box, "BoxConstraints.minWidth");
+  var _Location_parameterLocations = dart.privateName(widget_inspector, "_Location.parameterLocations");
+  var _Location_name = dart.privateName(widget_inspector, "_Location.name");
+  var _Location_column = dart.privateName(widget_inspector, "_Location.column");
+  var _Location_line = dart.privateName(widget_inspector, "_Location.line");
+  var _Location_file = dart.privateName(widget_inspector, "_Location.file");
+  var _buildIndicator = dart.privateName(gradient_progress_indicator, "_buildIndicator");
+  const State_SingleTickerProviderStateMixin$36 = class State_SingleTickerProviderStateMixin extends framework.State$(dart.legacy(gradient_progress_indicator.GradientProgressIndicator)) {};
+  (State_SingleTickerProviderStateMixin$36.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(gradient_progress_indicator.GradientProgressIndicator))[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36, ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(gradient_progress_indicator.GradientProgressIndicator)));
+  gradient_progress_indicator._GradientProgressIndicatorState = class _GradientProgressIndicatorState extends State_SingleTickerProviderStateMixin$36 {
+    initState() {
+      let t0, t0$;
+      super.initState();
+      if (!(this.widget.gradient != null)) dart.assertFailed("Please set the gradient!", I[1], 43, 12, "widget.gradient != null");
+      if (!(this.widget.gradient.colors[$length] === 2)) dart.assertFailed("gradient must have two colors only", I[1], 44, 12, "widget.gradient.colors.length == 2");
+      this[_setColorsArray]();
+      this[_controller] = new animation_controller.AnimationController.new({duration: C[7] || CT.C7, vsync: this});
+      this[_setControllerListener]();
+      this.curvedAnimation = new animations.CurvedAnimation.new({parent: this[_controller], curve: curves.Curves.fastOutSlowIn});
+      this.pAnimation = new (T.TweenOfdoubleL()).new({begin: this.prevValue, end: (t0 = this.widget.value, t0 == null ? 1.0 : t0)}).animate(this.curvedAnimation);
+      this.prevValue = (t0$ = this.widget.value, t0$ == null ? 0.0 : t0$);
+      this[_controller].forward();
+    }
+    [_setColorsArray]() {
+      this.colors[$clear]();
+      this.colors[$addAll](this.widget.gradient.colors);
+      this.colors[$add](this.widget.gradient.colors[$first]);
+    }
+    [_setControllerListener]() {
+      if (this.widget.value == null) {
+        this[_controller].addStatusListener(dart.fn(status => {
+          if (status == animation.AnimationStatus.dismissed && this.widget.value == null) {
+            this[_controller].forward();
+          } else if (status == animation.AnimationStatus.completed && this.widget.value == null) {
+            this[_controller].reverse();
+          }
+        }, T.AnimationStatusLToNull()));
+      }
+    }
+    didUpdateWidget(oldWidget) {
+      let t0;
+      T.GradientProgressIndicatorL().as(oldWidget);
+      super.didUpdateWidget(oldWidget);
+      this[_setColorsArray]();
+      this[_setControllerListener]();
+      if (this.widget.value == null && !dart.test(this[_controller].isAnimating)) {
+        this[_controller].reset();
+      } else if (this.widget.value != null) {
+        this.pAnimation = new (T.TweenOfdoubleL()).new({begin: this.prevValue, end: this.widget.value}).animate(this.curvedAnimation);
+        t0 = this[_controller];
+        (() => {
+          t0.reset();
+          t0.forward();
+          return t0;
+        })();
+        this.prevValue = this.widget.value;
+      }
+    }
+    dispose() {
+      this[_controller].dispose();
+      super.dispose();
+    }
+    stopAnimation() {
+      this[_controller].stop();
+    }
+    [_buildIndicator](context, animationValue) {
+      return new container.Container.new({constraints: C[8] || CT.C8, decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: this.widget.gradient.begin, end: this.widget.gradient.end, stops: T.JSArrayOfdoubleL().of([0.0, animationValue, this.widget.value == null ? 1.0 : dart.notNull(animationValue) + 0.01]), colors: this.colors})}), $creationLocationd_0dea112b090073317d4: C[9] || CT.C9});
+    }
+    build(context) {
+      return new transitions.AnimatedBuilder.new({key: this.widget.key, animation: this.pAnimation, builder: dart.fn((context, child) => this[_buildIndicator](context, this.pAnimation.value), T.BuildContextLAndWidgetLToWidgetL()), $creationLocationd_0dea112b090073317d4: C[13] || CT.C13});
+    }
+  };
+  (gradient_progress_indicator._GradientProgressIndicatorState.new = function() {
+    this[_controller] = null;
+    this.pAnimation = null;
+    this.colors = T.JSArrayOfColorL().of([]);
+    this.prevValue = 0.0;
+    this.curvedAnimation = null;
+    gradient_progress_indicator._GradientProgressIndicatorState.__proto__.new.call(this);
+    ;
+  }).prototype = gradient_progress_indicator._GradientProgressIndicatorState.prototype;
+  dart.addTypeTests(gradient_progress_indicator._GradientProgressIndicatorState);
+  dart.addTypeCaches(gradient_progress_indicator._GradientProgressIndicatorState);
+  dart.setMethodSignature(gradient_progress_indicator._GradientProgressIndicatorState, () => ({
+    __proto__: dart.getMethods(gradient_progress_indicator._GradientProgressIndicatorState.__proto__),
+    [_setColorsArray]: dart.fnType(dart.void, []),
+    [_setControllerListener]: dart.fnType(dart.void, []),
+    didUpdateWidget: dart.fnType(dart.void, [dart.legacy(core.Object)]),
+    stopAnimation: dart.fnType(dart.void, []),
+    [_buildIndicator]: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext), dart.legacy(core.double)]),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(gradient_progress_indicator._GradientProgressIndicatorState, I[0]);
+  dart.setFieldSignature(gradient_progress_indicator._GradientProgressIndicatorState, () => ({
+    __proto__: dart.getFields(gradient_progress_indicator._GradientProgressIndicatorState.__proto__),
+    [_controller]: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+    pAnimation: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(core.double)))),
+    colors: dart.fieldType(dart.legacy(core.List$(dart.legacy(ui.Color)))),
+    prevValue: dart.fieldType(dart.legacy(core.double)),
+    curvedAnimation: dart.fieldType(dart.legacy(animations.CurvedAnimation))
+  }));
+  dart.defineLazy(gradient_progress_indicator, {
+    /*gradient_progress_indicator._kLinearProgressIndicatorHeight*/get _kLinearProgressIndicatorHeight() {
+      return 6;
+    },
+    /*gradient_progress_indicator._kIndeterminateLinearDuration*/get _kIndeterminateLinearDuration() {
+      return 1800;
+    }
+  }, true);
+  var key$0 = dart.privateName(gradient_text, "GradientText.key");
+  var data$ = dart.privateName(gradient_text, "GradientText.data");
+  var style$ = dart.privateName(gradient_text, "GradientText.style");
+  var textAlign$ = dart.privateName(gradient_text, "GradientText.textAlign");
+  var textDirection$ = dart.privateName(gradient_text, "GradientText.textDirection");
+  var locale$ = dart.privateName(gradient_text, "GradientText.locale");
+  var softWrap$ = dart.privateName(gradient_text, "GradientText.softWrap");
+  var overflow$ = dart.privateName(gradient_text, "GradientText.overflow");
+  var textScaleFactor$ = dart.privateName(gradient_text, "GradientText.textScaleFactor");
+  var maxLines$ = dart.privateName(gradient_text, "GradientText.maxLines");
+  var semanticsLabel$ = dart.privateName(gradient_text, "GradientText.semanticsLabel");
+  var gradient$0 = dart.privateName(gradient_text, "GradientText.gradient");
+  var shaderRect$ = dart.privateName(gradient_text, "GradientText.shaderRect");
+  gradient_text.GradientText = class GradientText extends framework.StatelessWidget {
+    get key() {
+      return this[key$0];
+    }
+    set key(value) {
+      super.key = value;
+    }
+    get data() {
+      return this[data$];
+    }
+    set data(value) {
+      super.data = value;
+    }
+    get style() {
+      return this[style$];
+    }
+    set style(value) {
+      super.style = value;
+    }
+    get textAlign() {
+      return this[textAlign$];
+    }
+    set textAlign(value) {
+      super.textAlign = value;
+    }
+    get textDirection() {
+      return this[textDirection$];
+    }
+    set textDirection(value) {
+      super.textDirection = value;
+    }
+    get locale() {
+      return this[locale$];
+    }
+    set locale(value) {
+      super.locale = value;
+    }
+    get softWrap() {
+      return this[softWrap$];
+    }
+    set softWrap(value) {
+      super.softWrap = value;
+    }
+    get overflow() {
+      return this[overflow$];
+    }
+    set overflow(value) {
+      super.overflow = value;
+    }
+    get textScaleFactor() {
+      return this[textScaleFactor$];
+    }
+    set textScaleFactor(value) {
+      super.textScaleFactor = value;
+    }
+    get maxLines() {
+      return this[maxLines$];
+    }
+    set maxLines(value) {
+      super.maxLines = value;
+    }
+    get semanticsLabel() {
+      return this[semanticsLabel$];
+    }
+    set semanticsLabel(value) {
+      super.semanticsLabel = value;
+    }
+    get gradient() {
+      return this[gradient$0];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get shaderRect() {
+      return this[shaderRect$];
+    }
+    set shaderRect(value) {
+      super.shaderRect = value;
+    }
+    build(context) {
+      return new basic.ShaderMask.new({blendMode: ui.BlendMode.srcIn, shaderCallback: dart.fn(rect => {
+          let t0;
+          return this.gradient.createShader((t0 = this.shaderRect, t0 == null ? rect : t0));
+        }, T.RectLToShaderL()), child: new text.Text.new(this.data, {key: this.key, style: this.style, textAlign: this.textAlign, textDirection: this.textDirection, locale: this.locale, softWrap: this.softWrap, overflow: this.overflow, textScaleFactor: this.textScaleFactor, maxLines: this.maxLines, semanticsLabel: this.semanticsLabel, $creationLocationd_0dea112b090073317d4: C[18] || CT.C18}), $creationLocationd_0dea112b090073317d4: C[31] || CT.C31});
+    }
+  };
+  (gradient_text.GradientText.new = function(data, opts) {
+    let style = opts && 'style' in opts ? opts.style : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let shaderRect = opts && 'shaderRect' in opts ? opts.shaderRect : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let textAlign = opts && 'textAlign' in opts ? opts.textAlign : null;
+    let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
+    let locale = opts && 'locale' in opts ? opts.locale : null;
+    let softWrap = opts && 'softWrap' in opts ? opts.softWrap : null;
+    let overflow = opts && 'overflow' in opts ? opts.overflow : null;
+    let textScaleFactor = opts && 'textScaleFactor' in opts ? opts.textScaleFactor : null;
+    let maxLines = opts && 'maxLines' in opts ? opts.maxLines : null;
+    let semanticsLabel = opts && 'semanticsLabel' in opts ? opts.semanticsLabel : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[data$] = data;
+    this[style$] = style;
+    this[gradient$0] = gradient;
+    this[shaderRect$] = shaderRect;
+    this[key$0] = key;
+    this[textAlign$] = textAlign;
+    this[textDirection$] = textDirection;
+    this[locale$] = locale;
+    this[softWrap$] = softWrap;
+    this[overflow$] = overflow;
+    this[textScaleFactor$] = textScaleFactor;
+    this[maxLines$] = maxLines;
+    this[semanticsLabel$] = semanticsLabel;
+    gradient_text.GradientText.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = gradient_text.GradientText.prototype;
+  dart.addTypeTests(gradient_text.GradientText);
+  dart.addTypeCaches(gradient_text.GradientText);
+  dart.setMethodSignature(gradient_text.GradientText, () => ({
+    __proto__: dart.getMethods(gradient_text.GradientText.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(gradient_text.GradientText, I[2]);
+  dart.setFieldSignature(gradient_text.GradientText, () => ({
+    __proto__: dart.getFields(gradient_text.GradientText.__proto__),
+    key: dart.finalFieldType(dart.legacy(key.Key)),
+    data: dart.finalFieldType(dart.legacy(core.String)),
+    style: dart.finalFieldType(dart.legacy(text_style.TextStyle)),
+    textAlign: dart.finalFieldType(dart.legacy(ui.TextAlign)),
+    textDirection: dart.finalFieldType(dart.legacy(ui.TextDirection)),
+    locale: dart.finalFieldType(dart.legacy(ui.Locale)),
+    softWrap: dart.finalFieldType(dart.legacy(core.bool)),
+    overflow: dart.finalFieldType(dart.legacy(paragraph.TextOverflow)),
+    textScaleFactor: dart.finalFieldType(dart.legacy(core.double)),
+    maxLines: dart.finalFieldType(dart.legacy(core.int)),
+    semanticsLabel: dart.finalFieldType(dart.legacy(core.String)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    shaderRect: dart.finalFieldType(dart.legacy(ui.Rect))
+  }));
+  var shape$ = dart.privateName(gradient_card, "GradientCard.shape");
+  var clipBehavior$ = dart.privateName(gradient_card, "GradientCard.clipBehavior");
+  var margin$ = dart.privateName(gradient_card, "GradientCard.margin");
+  var semanticContainer$ = dart.privateName(gradient_card, "GradientCard.semanticContainer");
+  var child$ = dart.privateName(gradient_card, "GradientCard.child");
+  var gradient$1 = dart.privateName(gradient_card, "GradientCard.gradient");
+  var elevation$ = dart.privateName(gradient_card, "GradientCard.elevation");
+  var shadowColor$ = dart.privateName(gradient_card, "GradientCard.shadowColor");
+  var EdgeInsets_bottom = dart.privateName(edge_insets, "EdgeInsets.bottom");
+  var EdgeInsets_right = dart.privateName(edge_insets, "EdgeInsets.right");
+  var EdgeInsets_top = dart.privateName(edge_insets, "EdgeInsets.top");
+  var EdgeInsets_left = dart.privateName(edge_insets, "EdgeInsets.left");
+  var _name$ = dart.privateName(borders, "_name");
+  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
+  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
+  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
+  var OutlinedBorder_side = dart.privateName(borders, "OutlinedBorder.side");
+  var Radius_y = dart.privateName(ui, "Radius.y");
+  var Radius_x = dart.privateName(ui, "Radius.x");
+  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
+  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
+  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
+  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
+  var RoundedRectangleBorder_borderRadius = dart.privateName(rounded_rectangle_border, "RoundedRectangleBorder.borderRadius");
+  gradient_card.GradientCard = class GradientCard extends framework.StatelessWidget {
+    get shape() {
+      return this[shape$];
+    }
+    set shape(value) {
+      super.shape = value;
+    }
+    get clipBehavior() {
+      return this[clipBehavior$];
+    }
+    set clipBehavior(value) {
+      super.clipBehavior = value;
+    }
+    get margin() {
+      return this[margin$];
+    }
+    set margin(value) {
+      super.margin = value;
+    }
+    get semanticContainer() {
+      return this[semanticContainer$];
+    }
+    set semanticContainer(value) {
+      super.semanticContainer = value;
+    }
+    get child() {
+      return this[child$];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get gradient() {
+      return this[gradient$1];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get elevation() {
+      return this[elevation$];
+    }
+    set elevation(value) {
+      super.elevation = value;
+    }
+    get shadowColor() {
+      return this[shadowColor$];
+    }
+    set shadowColor(value) {
+      super.shadowColor = value;
+    }
+    build(context) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      return new basic.Semantics.new({container: this.semanticContainer, explicitChildNodes: !dart.test(this.semanticContainer), child: new material.Material.new({type: material.MaterialType.card, color: colors.Colors.transparent, shadowColor: (t0 = this.shadowColor, t0 == null ? colors.Colors.transparent : t0), elevation: (t0$ = this.elevation, t0$ == null ? 0.0 : t0$), shape: (t0$0 = this.shape, t0$0 == null ? C[38] || CT.C38 : t0$0), clipBehavior: this.clipBehavior, child: new container.Container.new({margin: (t0$1 = this.margin, t0$1 == null ? C[36] || CT.C36 : t0$1), decoration: new shape_decoration.ShapeDecoration.new({shape: (t0$2 = this.shape, t0$2 == null ? C[38] || CT.C38 : t0$2), gradient: this.gradient}), child: this.child, $creationLocationd_0dea112b090073317d4: C[44] || CT.C44}), $creationLocationd_0dea112b090073317d4: C[49] || CT.C49}), $creationLocationd_0dea112b090073317d4: C[58] || CT.C58});
+    }
+  };
+  (gradient_card.GradientCard.new = function(opts) {
+    let key = opts && 'key' in opts ? opts.key : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let shape = opts && 'shape' in opts ? opts.shape : null;
+    let margin = opts && 'margin' in opts ? opts.margin : C[36] || CT.C36;
+    let clipBehavior = opts && 'clipBehavior' in opts ? opts.clipBehavior : C[37] || CT.C37;
+    let child = opts && 'child' in opts ? opts.child : null;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : null;
+    let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : null;
+    let semanticContainer = opts && 'semanticContainer' in opts ? opts.semanticContainer : true;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[gradient$1] = gradient;
+    this[shape$] = shape;
+    this[margin$] = margin;
+    this[clipBehavior$] = clipBehavior;
+    this[child$] = child;
+    this[elevation$] = elevation;
+    this[shadowColor$] = shadowColor;
+    this[semanticContainer$] = semanticContainer;
+    gradient_card.GradientCard.__proto__.new.call(this, {key: key, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = gradient_card.GradientCard.prototype;
+  dart.addTypeTests(gradient_card.GradientCard);
+  dart.addTypeCaches(gradient_card.GradientCard);
+  dart.setMethodSignature(gradient_card.GradientCard, () => ({
+    __proto__: dart.getMethods(gradient_card.GradientCard.__proto__),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(gradient_card.GradientCard, I[3]);
+  dart.setFieldSignature(gradient_card.GradientCard, () => ({
+    __proto__: dart.getFields(gradient_card.GradientCard.__proto__),
+    shape: dart.finalFieldType(dart.legacy(borders.ShapeBorder)),
+    clipBehavior: dart.finalFieldType(dart.legacy(ui.Clip)),
+    margin: dart.finalFieldType(dart.legacy(edge_insets.EdgeInsetsGeometry)),
+    semanticContainer: dart.finalFieldType(dart.legacy(core.bool)),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.LinearGradient)),
+    elevation: dart.finalFieldType(dart.legacy(core.double)),
+    shadowColor: dart.finalFieldType(dart.legacy(ui.Color))
+  }));
+  var key$1 = dart.privateName(gradient_widget, "GradientWidget.key");
+  var child$0 = dart.privateName(gradient_widget, "GradientWidget.child");
+  var gradient$2 = dart.privateName(gradient_widget, "GradientWidget.gradient");
+  var shadowColor$0 = dart.privateName(gradient_widget, "GradientWidget.shadowColor");
+  var disabledGradient$ = dart.privateName(gradient_widget, "GradientWidget.disabledGradient");
+  var callback$ = dart.privateName(gradient_widget, "GradientWidget.callback");
+  var shape$0 = dart.privateName(gradient_widget, "GradientWidget.shape");
+  var shapeRadius$ = dart.privateName(gradient_widget, "GradientWidget.shapeRadius");
+  var textStyle$ = dart.privateName(gradient_widget, "GradientWidget.textStyle");
+  var isEnabled$ = dart.privateName(gradient_widget, "GradientWidget.isEnabled");
+  var elevation$0 = dart.privateName(gradient_widget, "GradientWidget.elevation");
+  var increaseHeightBy$ = dart.privateName(gradient_widget, "GradientWidget.increaseHeightBy");
+  var increaseWidthBy$ = dart.privateName(gradient_widget, "GradientWidget.increaseWidthBy");
+  var constraints$ = dart.privateName(gradient_widget, "GradientWidget.constraints");
+  var tooltip$ = dart.privateName(gradient_widget, "GradientWidget.tooltip");
+  var heroTag$ = dart.privateName(gradient_widget, "GradientWidget.heroTag");
+  var materialTapTargetSize$ = dart.privateName(gradient_widget, "GradientWidget.materialTapTargetSize");
+  gradient_widget.GradientWidget = class GradientWidget extends framework.StatefulWidget {
+    get key() {
+      return this[key$1];
+    }
+    set key(value) {
+      super.key = value;
+    }
+    get child() {
+      return this[child$0];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get gradient() {
+      return this[gradient$2];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get shadowColor() {
+      return this[shadowColor$0];
+    }
+    set shadowColor(value) {
+      super.shadowColor = value;
+    }
+    get disabledGradient() {
+      return this[disabledGradient$];
+    }
+    set disabledGradient(value) {
+      super.disabledGradient = value;
+    }
+    get callback() {
+      return this[callback$];
+    }
+    set callback(value) {
+      super.callback = value;
+    }
+    get shape() {
+      return this[shape$0];
+    }
+    set shape(value) {
+      super.shape = value;
+    }
+    get shapeRadius() {
+      return this[shapeRadius$];
+    }
+    set shapeRadius(value) {
+      super.shapeRadius = value;
+    }
+    get textStyle() {
+      return this[textStyle$];
+    }
+    set textStyle(value) {
+      super.textStyle = value;
+    }
+    get isEnabled() {
+      return this[isEnabled$];
+    }
+    set isEnabled(value) {
+      super.isEnabled = value;
+    }
+    get elevation() {
+      return this[elevation$0];
+    }
+    set elevation(value) {
+      super.elevation = value;
+    }
+    get increaseHeightBy() {
+      return this[increaseHeightBy$];
+    }
+    set increaseHeightBy(value) {
+      super.increaseHeightBy = value;
+    }
+    get increaseWidthBy() {
+      return this[increaseWidthBy$];
+    }
+    set increaseWidthBy(value) {
+      super.increaseWidthBy = value;
+    }
+    get constraints() {
+      return this[constraints$];
+    }
+    set constraints(value) {
+      super.constraints = value;
+    }
+    get tooltip() {
+      return this[tooltip$];
+    }
+    set tooltip(value) {
+      super.tooltip = value;
+    }
+    get heroTag() {
+      return this[heroTag$];
+    }
+    set heroTag(value) {
+      super.heroTag = value;
+    }
+    get materialTapTargetSize() {
+      return this[materialTapTargetSize$];
+    }
+    set materialTapTargetSize(value) {
+      super.materialTapTargetSize = value;
+    }
+    createState() {
+      return new gradient_widget.GradientButtonState.new();
+    }
+  };
+  (gradient_widget.GradientWidget.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let callback = opts && 'callback' in opts ? opts.callback : null;
+    let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : C[63] || CT.C63;
+    let shape = opts && 'shape' in opts ? opts.shape : null;
+    let shapeRadius = opts && 'shapeRadius' in opts ? opts.shapeRadius : null;
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : 5;
+    let isEnabled = opts && 'isEnabled' in opts ? opts.isEnabled : true;
+    let disabledGradient = opts && 'disabledGradient' in opts ? opts.disabledGradient : null;
+    let increaseHeightBy = opts && 'increaseHeightBy' in opts ? opts.increaseHeightBy : 0;
+    let increaseWidthBy = opts && 'increaseWidthBy' in opts ? opts.increaseWidthBy : 0;
+    let constraints = opts && 'constraints' in opts ? opts.constraints : null;
+    let heroTag = opts && 'heroTag' in opts ? opts.heroTag : null;
+    let tooltip = opts && 'tooltip' in opts ? opts.tooltip : null;
+    let materialTapTargetSize = opts && 'materialTapTargetSize' in opts ? opts.materialTapTargetSize : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$0] = child;
+    this[key$1] = key;
+    this[gradient$2] = gradient;
+    this[callback$] = callback;
+    this[shadowColor$0] = shadowColor;
+    this[shape$0] = shape;
+    this[shapeRadius$] = shapeRadius;
+    this[textStyle$] = textStyle;
+    this[elevation$0] = elevation;
+    this[isEnabled$] = isEnabled;
+    this[disabledGradient$] = disabledGradient;
+    this[increaseHeightBy$] = increaseHeightBy;
+    this[increaseWidthBy$] = increaseWidthBy;
+    this[constraints$] = constraints;
+    this[heroTag$] = heroTag;
+    this[tooltip$] = tooltip;
+    this[materialTapTargetSize$] = materialTapTargetSize;
+    gradient_widget.GradientWidget.__proto__.new.call(this, {$creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = gradient_widget.GradientWidget.prototype;
+  dart.addTypeTests(gradient_widget.GradientWidget);
+  dart.addTypeCaches(gradient_widget.GradientWidget);
+  dart.setMethodSignature(gradient_widget.GradientWidget, () => ({
+    __proto__: dart.getMethods(gradient_widget.GradientWidget.__proto__),
+    createState: dart.fnType(dart.legacy(gradient_widget.GradientButtonState), [])
+  }));
+  dart.setLibraryUri(gradient_widget.GradientWidget, I[4]);
+  dart.setFieldSignature(gradient_widget.GradientWidget, () => ({
+    __proto__: dart.getFields(gradient_widget.GradientWidget.__proto__),
+    key: dart.finalFieldType(dart.legacy(key.Key)),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    shadowColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    disabledGradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    callback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    shape: dart.finalFieldType(dart.legacy(borders.ShapeBorder)),
+    shapeRadius: dart.finalFieldType(dart.legacy(border_radius.BorderRadius)),
+    textStyle: dart.finalFieldType(dart.legacy(text_style.TextStyle)),
+    isEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    elevation: dart.finalFieldType(dart.legacy(core.double)),
+    increaseHeightBy: dart.finalFieldType(dart.legacy(core.double)),
+    increaseWidthBy: dart.finalFieldType(dart.legacy(core.double)),
+    constraints: dart.finalFieldType(dart.legacy(box.BoxConstraints)),
+    tooltip: dart.finalFieldType(dart.legacy(core.String)),
+    heroTag: dart.finalFieldType(dart.legacy(core.Object)),
+    materialTapTargetSize: dart.finalFieldType(dart.legacy(theme_data.MaterialTapTargetSize))
+  }));
+  var animationController = dart.privateName(gradient_widget, "GradientButtonState.animationController");
+  var isTappedUp = dart.privateName(gradient_widget, "GradientButtonState.isTappedUp");
+  var elevation = dart.privateName(gradient_widget, "GradientButtonState.elevation");
+  var gradient$3 = dart.privateName(gradient_widget, "GradientButtonState.gradient");
+  var callback = dart.privateName(gradient_widget, "GradientButtonState.callback");
+  var _opacity = dart.privateName(gradient_widget, "_opacity");
+  var child$1 = dart.privateName(gradient_button, "GradientButton.child");
+  var gradient$4 = dart.privateName(gradient_button, "GradientButton.gradient");
+  var shadowColor$1 = dart.privateName(gradient_button, "GradientButton.shadowColor");
+  var disabledGradient$0 = dart.privateName(gradient_button, "GradientButton.disabledGradient");
+  var callback$0 = dart.privateName(gradient_button, "GradientButton.callback");
+  var shape$1 = dart.privateName(gradient_button, "GradientButton.shape");
+  var shapeRadius$0 = dart.privateName(gradient_button, "GradientButton.shapeRadius");
+  var textStyle$0 = dart.privateName(gradient_button, "GradientButton.textStyle");
+  var isEnabled$0 = dart.privateName(gradient_button, "GradientButton.isEnabled");
+  var elevation$1 = dart.privateName(gradient_button, "GradientButton.elevation");
+  var increaseHeightBy$0 = dart.privateName(gradient_button, "GradientButton.increaseHeightBy");
+  var increaseWidthBy$0 = dart.privateName(gradient_button, "GradientButton.increaseWidthBy");
+  var constraints$0 = dart.privateName(gradient_button, "GradientButton.constraints");
+  var tooltip$0 = dart.privateName(gradient_button, "GradientButton.tooltip");
+  var heroTag$0 = dart.privateName(gradient_button, "GradientButton.heroTag");
+  var materialTapTargetSize$0 = dart.privateName(gradient_button, "GradientButton.materialTapTargetSize");
+  gradient_button.GradientButton = class GradientButton extends gradient_widget.GradientWidget {
+    get child() {
+      return this[child$1];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get gradient() {
+      return this[gradient$4];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get shadowColor() {
+      return this[shadowColor$1];
+    }
+    set shadowColor(value) {
+      super.shadowColor = value;
+    }
+    get disabledGradient() {
+      return this[disabledGradient$0];
+    }
+    set disabledGradient(value) {
+      super.disabledGradient = value;
+    }
+    get callback() {
+      return this[callback$0];
+    }
+    set callback(value) {
+      super.callback = value;
+    }
+    get shape() {
+      return this[shape$1];
+    }
+    set shape(value) {
+      super.shape = value;
+    }
+    get shapeRadius() {
+      return this[shapeRadius$0];
+    }
+    set shapeRadius(value) {
+      super.shapeRadius = value;
+    }
+    get textStyle() {
+      return this[textStyle$0];
+    }
+    set textStyle(value) {
+      super.textStyle = value;
+    }
+    get isEnabled() {
+      return this[isEnabled$0];
+    }
+    set isEnabled(value) {
+      super.isEnabled = value;
+    }
+    get elevation() {
+      return this[elevation$1];
+    }
+    set elevation(value) {
+      super.elevation = value;
+    }
+    get increaseHeightBy() {
+      return this[increaseHeightBy$0];
+    }
+    set increaseHeightBy(value) {
+      super.increaseHeightBy = value;
+    }
+    get increaseWidthBy() {
+      return this[increaseWidthBy$0];
+    }
+    set increaseWidthBy(value) {
+      super.increaseWidthBy = value;
+    }
+    get constraints() {
+      return this[constraints$0];
+    }
+    set constraints(value) {
+      super.constraints = value;
+    }
+    get tooltip() {
+      return this[tooltip$0];
+    }
+    set tooltip(value) {
+      super.tooltip = value;
+    }
+    get heroTag() {
+      return this[heroTag$0];
+    }
+    set heroTag(value) {
+      super.heroTag = value;
+    }
+    get materialTapTargetSize() {
+      return this[materialTapTargetSize$0];
+    }
+    set materialTapTargetSize(value) {
+      super.materialTapTargetSize = value;
+    }
+  };
+  (gradient_button.GradientButton.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let callback = opts && 'callback' in opts ? opts.callback : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : C[63] || CT.C63;
+    let shape = opts && 'shape' in opts ? opts.shape : null;
+    let shapeRadius = opts && 'shapeRadius' in opts ? opts.shapeRadius : null;
+    let textStyle = opts && 'textStyle' in opts ? opts.textStyle : null;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : 5;
+    let isEnabled = opts && 'isEnabled' in opts ? opts.isEnabled : true;
+    let disabledGradient = opts && 'disabledGradient' in opts ? opts.disabledGradient : null;
+    let increaseHeightBy = opts && 'increaseHeightBy' in opts ? opts.increaseHeightBy : 0;
+    let increaseWidthBy = opts && 'increaseWidthBy' in opts ? opts.increaseWidthBy : 0;
+    let constraints = opts && 'constraints' in opts ? opts.constraints : null;
+    let heroTag = opts && 'heroTag' in opts ? opts.heroTag : null;
+    let tooltip = opts && 'tooltip' in opts ? opts.tooltip : null;
+    let materialTapTargetSize = opts && 'materialTapTargetSize' in opts ? opts.materialTapTargetSize : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$1] = child;
+    this[callback$0] = callback;
+    this[gradient$4] = gradient;
+    this[shadowColor$1] = shadowColor;
+    this[shape$1] = shape;
+    this[shapeRadius$0] = shapeRadius;
+    this[textStyle$0] = textStyle;
+    this[elevation$1] = elevation;
+    this[isEnabled$0] = isEnabled;
+    this[disabledGradient$0] = disabledGradient;
+    this[increaseHeightBy$0] = increaseHeightBy;
+    this[increaseWidthBy$0] = increaseWidthBy;
+    this[constraints$0] = constraints;
+    this[heroTag$0] = heroTag;
+    this[tooltip$0] = tooltip;
+    this[materialTapTargetSize$0] = materialTapTargetSize;
+    gradient_button.GradientButton.__proto__.new.call(this, {key: key, child: child, callback: callback, shadowColor: shadowColor, shape: shape, shapeRadius: shapeRadius, textStyle: textStyle, elevation: elevation, isEnabled: isEnabled, disabledGradient: disabledGradient, increaseHeightBy: increaseHeightBy, increaseWidthBy: increaseWidthBy, constraints: constraints, heroTag: heroTag, tooltip: tooltip, materialTapTargetSize: materialTapTargetSize, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = gradient_button.GradientButton.prototype;
+  dart.addTypeTests(gradient_button.GradientButton);
+  dart.addTypeCaches(gradient_button.GradientButton);
+  dart.setLibraryUri(gradient_button.GradientButton, I[5]);
+  dart.setFieldSignature(gradient_button.GradientButton, () => ({
+    __proto__: dart.getFields(gradient_button.GradientButton.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    shadowColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    disabledGradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    callback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    shape: dart.finalFieldType(dart.legacy(borders.ShapeBorder)),
+    shapeRadius: dart.finalFieldType(dart.legacy(border_radius.BorderRadius)),
+    textStyle: dart.finalFieldType(dart.legacy(text_style.TextStyle)),
+    isEnabled: dart.finalFieldType(dart.legacy(core.bool)),
+    elevation: dart.finalFieldType(dart.legacy(core.double)),
+    increaseHeightBy: dart.finalFieldType(dart.legacy(core.double)),
+    increaseWidthBy: dart.finalFieldType(dart.legacy(core.double)),
+    constraints: dart.finalFieldType(dart.legacy(box.BoxConstraints)),
+    tooltip: dart.finalFieldType(dart.legacy(core.String)),
+    heroTag: dart.finalFieldType(dart.legacy(core.Object)),
+    materialTapTargetSize: dart.finalFieldType(dart.legacy(theme_data.MaterialTapTargetSize))
+  }));
+  const State_SingleTickerProviderStateMixin$36$ = class State_SingleTickerProviderStateMixin extends framework.State$(dart.legacy(gradient_button.GradientButton)) {};
+  (State_SingleTickerProviderStateMixin$36$.new = function() {
+    ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(gradient_button.GradientButton))[dart.mixinNew].call(this);
+    State_SingleTickerProviderStateMixin$36$.__proto__.new.call(this);
+  }).prototype = State_SingleTickerProviderStateMixin$36$.prototype;
+  dart.applyMixin(State_SingleTickerProviderStateMixin$36$, ticker_provider.SingleTickerProviderStateMixin$(dart.legacy(gradient_button.GradientButton)));
+  gradient_widget.GradientButtonState = class GradientButtonState extends State_SingleTickerProviderStateMixin$36$ {
+    get animationController() {
+      return this[animationController];
+    }
+    set animationController(value) {
+      this[animationController] = value;
+    }
+    get isTappedUp() {
+      return this[isTappedUp];
+    }
+    set isTappedUp(value) {
+      this[isTappedUp] = value;
+    }
+    get elevation() {
+      return this[elevation];
+    }
+    set elevation(value) {
+      this[elevation] = value;
+    }
+    get gradient() {
+      return this[gradient$3];
+    }
+    set gradient(value) {
+      this[gradient$3] = value;
+    }
+    get callback() {
+      return this[callback];
+    }
+    set callback(value) {
+      this[callback] = value;
+    }
+    initState() {
+      this.animationController = new animation_controller.AnimationController.new({duration: C[64] || CT.C64, vsync: this});
+      this[_opacity] = new animations.CurvedAnimation.new({parent: this.animationController, curve: curves.Curves.fastOutSlowIn});
+      this.elevation = this.widget.elevation;
+      this.animationController.addStatusListener(dart.fn(status => {
+        if (dart.test(this.animationController.isCompleted) && dart.test(this.isTappedUp)) {
+          this.animationController.reverse();
+        }
+      }, T.AnimationStatusLToNull()));
+      super.initState();
+    }
+    tapDown() {
+      this.animationController.forward();
+      this.isTappedUp = false;
+      this.setState(dart.fn(() => {
+      }, T.VoidToNull()));
+    }
+    tapUp() {
+      if (!dart.test(this.animationController.isAnimating)) {
+        this.animationController.reverse();
+      }
+      this.isTappedUp = true;
+      this.setState(dart.fn(() => {
+      }, T.VoidToNull()));
+    }
+    dispose() {
+      this.animationController.dispose();
+      super.dispose();
+    }
+    build(context) {
+      let t0, t0$, t0$0, t0$1, t0$2;
+      let theme = theme$.Theme.of(context);
+      let borderRadiusCopy = (t0 = this.widget.shapeRadius, t0 == null ? new border_radius.BorderRadius.circular(40.0) : t0);
+      let shapeCopy = (t0$ = this.widget.shape, t0$ == null ? new rounded_rectangle_border.RoundedRectangleBorder.new({borderRadius: borderRadiusCopy}) : t0$);
+      let textStyleCopy = (t0$0 = this.widget.textStyle, t0$0 == null ? theme.textTheme.button.copyWith({color: colors.Colors.white}) : t0$0);
+      if (dart.test(this.widget.isEnabled)) {
+        this.gradient = this.widget.gradient;
+        this.callback = this.widget.callback;
+      } else {
+        this.callback = null;
+        this.gradient = (t0$1 = this.widget.disabledGradient, t0$1 == null ? new gradient.LinearGradient.new({stops: this.widget.gradient.stops, colors: C[65] || CT.C65}) : t0$1);
+      }
+      let buttonTheme = button_theme.ButtonTheme.of(context).copyWith({padding: C[68] || CT.C68});
+      return new gesture_detector.GestureDetector.new({key: this.widget.key, behavior: proxy_box.HitTestBehavior.opaque, onTap: this.callback == null ? null : this.widget.callback, onTapDown: this.callback == null ? null : dart.fn(details => this.tapDown(), T.TapDownDetailsLTovoid()), onTapCancel: this.callback == null ? null : dart.bind(this, 'tapUp'), onTapUp: this.callback == null ? null : dart.fn(details => this.tapUp(), T.TapUpDetailsLTovoid()), child: new basic.Center.new({child: new basic.PhysicalShape.new({color: colors.Colors.transparent, shadowColor: this.widget.shadowColor, elevation: this.elevation, clipper: new proxy_box.ShapeBorderClipper.new({shape: shapeCopy}), clipBehavior: ui.Clip.antiAliasWithSaveLayer, child: new button.RawMaterialButton.new({fillColor: colors.Colors.transparent, padding: C[68] || CT.C68, shape: shapeCopy, elevation: 0.0, textStyle: textStyleCopy, onPressed: null, constraints: (t0$2 = this.widget.constraints, t0$2 == null ? new box.BoxConstraints.loose(new ui.Size.new(dart.notNull(buttonTheme.minWidth) + dart.notNull(this.widget.increaseWidthBy), dart.notNull(buttonTheme.height) + dart.notNull(this.widget.increaseHeightBy))) : t0$2), materialTapTargetSize: theme_data.MaterialTapTargetSize.padded, clipBehavior: ui.Clip.antiAliasWithSaveLayer, child: new basic.Stack.new({children: T.JSArrayOfWidgetL().of([common.gradientContainer(context, this.gradient, this.widget.increaseHeightBy, this.widget.increaseWidthBy, this.widget.child), new transitions.FadeTransition.new({opacity: this[_opacity], child: new container.Container.new({decoration: new box_decoration.BoxDecoration.new({gradient: new gradient.LinearGradient.new({begin: alignment.Alignment.topCenter, end: alignment.Alignment.bottomCenter, colors: T.JSArrayOfColorL().of([colors.Colors.transparent, colors.Colors.black12])})}), $creationLocationd_0dea112b090073317d4: C[69] || CT.C69}), $creationLocationd_0dea112b090073317d4: C[72] || CT.C72})]), $creationLocationd_0dea112b090073317d4: C[76] || CT.C76}), $creationLocationd_0dea112b090073317d4: C[79] || CT.C79}), $creationLocationd_0dea112b090073317d4: C[91] || CT.C91}), $creationLocationd_0dea112b090073317d4: C[99] || CT.C99}), $creationLocationd_0dea112b090073317d4: C[102] || CT.C102});
+    }
+  };
+  (gradient_widget.GradientButtonState.new = function() {
+    this[_opacity] = null;
+    this[animationController] = null;
+    this[isTappedUp] = false;
+    this[elevation] = null;
+    this[gradient$3] = null;
+    this[callback] = null;
+    gradient_widget.GradientButtonState.__proto__.new.call(this);
+    ;
+  }).prototype = gradient_widget.GradientButtonState.prototype;
+  dart.addTypeTests(gradient_widget.GradientButtonState);
+  dart.addTypeCaches(gradient_widget.GradientButtonState);
+  dart.setMethodSignature(gradient_widget.GradientButtonState, () => ({
+    __proto__: dart.getMethods(gradient_widget.GradientButtonState.__proto__),
+    tapDown: dart.fnType(dart.void, []),
+    tapUp: dart.fnType(dart.void, []),
+    build: dart.fnType(dart.legacy(framework.Widget), [dart.legacy(framework.BuildContext)])
+  }));
+  dart.setLibraryUri(gradient_widget.GradientButtonState, I[4]);
+  dart.setFieldSignature(gradient_widget.GradientButtonState, () => ({
+    __proto__: dart.getFields(gradient_widget.GradientButtonState.__proto__),
+    [_opacity]: dart.fieldType(dart.legacy(animation.Animation$(dart.legacy(core.double)))),
+    animationController: dart.fieldType(dart.legacy(animation_controller.AnimationController)),
+    isTappedUp: dart.fieldType(dart.legacy(core.bool)),
+    elevation: dart.fieldType(dart.legacy(core.double)),
+    gradient: dart.fieldType(dart.legacy(gradient.Gradient)),
+    callback: dart.fieldType(dart.legacy(dart.fnType(dart.void, [])))
+  }));
+  var child$2 = dart.privateName(circular_gradient_button, "CircularGradientButton.child");
+  var gradient$5 = dart.privateName(circular_gradient_button, "CircularGradientButton.gradient");
+  var shadowColor$2 = dart.privateName(circular_gradient_button, "CircularGradientButton.shadowColor");
+  var callback$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.callback");
+  var elevation$2 = dart.privateName(circular_gradient_button, "CircularGradientButton.elevation");
+  var increaseHeightBy$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.increaseHeightBy");
+  var increaseWidthBy$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.increaseWidthBy");
+  var tooltip$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.tooltip");
+  var heroTag$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.heroTag");
+  var materialTapTargetSize$1 = dart.privateName(circular_gradient_button, "CircularGradientButton.materialTapTargetSize");
+  circular_gradient_button.CircularGradientButton = class CircularGradientButton extends gradient_button.GradientButton {
+    get child() {
+      return this[child$2];
+    }
+    set child(value) {
+      super.child = value;
+    }
+    get gradient() {
+      return this[gradient$5];
+    }
+    set gradient(value) {
+      super.gradient = value;
+    }
+    get shadowColor() {
+      return this[shadowColor$2];
+    }
+    set shadowColor(value) {
+      super.shadowColor = value;
+    }
+    get callback() {
+      return this[callback$1];
+    }
+    set callback(value) {
+      super.callback = value;
+    }
+    get elevation() {
+      return this[elevation$2];
+    }
+    set elevation(value) {
+      super.elevation = value;
+    }
+    get increaseHeightBy() {
+      return this[increaseHeightBy$1];
+    }
+    set increaseHeightBy(value) {
+      super.increaseHeightBy = value;
+    }
+    get increaseWidthBy() {
+      return this[increaseWidthBy$1];
+    }
+    set increaseWidthBy(value) {
+      super.increaseWidthBy = value;
+    }
+    get tooltip() {
+      return this[tooltip$1];
+    }
+    set tooltip(value) {
+      super.tooltip = value;
+    }
+    get heroTag() {
+      return this[heroTag$1];
+    }
+    set heroTag(value) {
+      super.heroTag = value;
+    }
+    get materialTapTargetSize() {
+      return this[materialTapTargetSize$1];
+    }
+    set materialTapTargetSize(value) {
+      super.materialTapTargetSize = value;
+    }
+  };
+  (circular_gradient_button.CircularGradientButton.new = function(opts) {
+    let child = opts && 'child' in opts ? opts.child : null;
+    let callback = opts && 'callback' in opts ? opts.callback : null;
+    let key = opts && 'key' in opts ? opts.key : null;
+    let gradient = opts && 'gradient' in opts ? opts.gradient : C[0] || CT.C0;
+    let shadowColor = opts && 'shadowColor' in opts ? opts.shadowColor : C[63] || CT.C63;
+    let increaseHeightBy = opts && 'increaseHeightBy' in opts ? opts.increaseHeightBy : 56;
+    let increaseWidthBy = opts && 'increaseWidthBy' in opts ? opts.increaseWidthBy : 0;
+    let elevation = opts && 'elevation' in opts ? opts.elevation : 5;
+    let materialTapTargetSize = opts && 'materialTapTargetSize' in opts ? opts.materialTapTargetSize : null;
+    let heroTag = opts && 'heroTag' in opts ? opts.heroTag : null;
+    let tooltip = opts && 'tooltip' in opts ? opts.tooltip : null;
+    let $36creationLocationd_0dea112b090073317d4 = opts && '$creationLocationd_0dea112b090073317d4' in opts ? opts.$creationLocationd_0dea112b090073317d4 : null;
+    this[child$2] = child;
+    this[callback$1] = callback;
+    this[gradient$5] = gradient;
+    this[shadowColor$2] = shadowColor;
+    this[increaseHeightBy$1] = increaseHeightBy;
+    this[increaseWidthBy$1] = increaseWidthBy;
+    this[elevation$2] = elevation;
+    this[materialTapTargetSize$1] = materialTapTargetSize;
+    this[heroTag$1] = heroTag;
+    this[tooltip$1] = tooltip;
+    circular_gradient_button.CircularGradientButton.__proto__.new.call(this, {key: key, callback: callback, child: child, shadowColor: shadowColor, gradient: gradient, elevation: elevation, increaseHeightBy: increaseHeightBy, increaseWidthBy: increaseWidthBy, heroTag: heroTag, tooltip: tooltip, materialTapTargetSize: materialTapTargetSize, shape: C[111] || CT.C111, constraints: C[112] || CT.C112, $creationLocationd_0dea112b090073317d4: $36creationLocationd_0dea112b090073317d4});
+    ;
+  }).prototype = circular_gradient_button.CircularGradientButton.prototype;
+  dart.addTypeTests(circular_gradient_button.CircularGradientButton);
+  dart.addTypeCaches(circular_gradient_button.CircularGradientButton);
+  dart.setLibraryUri(circular_gradient_button.CircularGradientButton, I[6]);
+  dart.setFieldSignature(circular_gradient_button.CircularGradientButton, () => ({
+    __proto__: dart.getFields(circular_gradient_button.CircularGradientButton.__proto__),
+    child: dart.finalFieldType(dart.legacy(framework.Widget)),
+    gradient: dart.finalFieldType(dart.legacy(gradient.Gradient)),
+    shadowColor: dart.finalFieldType(dart.legacy(ui.Color)),
+    callback: dart.finalFieldType(dart.legacy(dart.fnType(dart.void, []))),
+    elevation: dart.finalFieldType(dart.legacy(core.double)),
+    increaseHeightBy: dart.finalFieldType(dart.legacy(core.double)),
+    increaseWidthBy: dart.finalFieldType(dart.legacy(core.double)),
+    tooltip: dart.finalFieldType(dart.legacy(core.String)),
+    heroTag: dart.finalFieldType(dart.legacy(core.Object)),
+    materialTapTargetSize: dart.finalFieldType(dart.legacy(theme_data.MaterialTapTargetSize))
+  }));
+  dart.trackLibraries("packages/gradient_widgets/src/gradient_progress_indicator.dart", {
+    "package:gradient_widgets/src/gradient_progress_indicator.dart": gradient_progress_indicator,
+    "package:gradient_widgets/src/gradient_text.dart": gradient_text,
+    "package:gradient_widgets/src/gradient_card.dart": gradient_card,
+    "package:gradient_widgets/src/gradient_widget.dart": gradient_widget,
+    "package:gradient_widgets/src/gradient_button.dart": gradient_button,
+    "package:gradient_widgets/src/circular_gradient_button.dart": circular_gradient_button,
+    "package:gradient_widgets/gradient_widgets.dart": gradient_widgets
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["gradient_progress_indicator.dart","gradient_text.dart","gradient_card.dart","gradient_widget.dart","gradient_button.dart","circular_gradient_button.dart"],"names":[],"mappings":"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IACG;;;;;;IACA;;;;;;IACI;;;;;;IACP;;;;;;IACF;;;;;;IACQ;;;;;;IACN;;;;;;IACH;;;;;;IACG;;;;;;IACE;;;;;;IACJ;;;;;;UAGe;AACxB,YAAO,sCAIgB,oCACL,QAAC;;AAAS,gBAAA,AAAS,6BAAwB,sBAAX,aAAc,IAAI;uCAC3D,kBACL,iBACK,iBACE,uBACI,+BACI,4BACP,uBACE,yBACA,gCACO,gCACP,+BACM;IAGtB;;6CAtDO;QACU;QACV;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAZA;IACU;IACV;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AAbD;;EAcJ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ICIgB;;;;;;IACP;;;;;;IACc;;;;;;IACd;;;;;;IACE;;;;;;IACQ;;;;;;IACR;;;;;;IACD;;;;;;UAGc;;AAExB,YAAO,qCACM,4CACS,WAAC,gCACd,iCACc,mCACL,yCACW,uBAAZ,aAAsB,6CACd,sBAAV,cAAa,oBACX,mBAAN,sDAIO,0BACP,sCACU,oBAAP,oDACI,kDACK,mBAAN,kDAIG,wBACP;IAIf;;;QAhDM;QACC;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAPA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AACF,8DAAW,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ICIV;;;;;;IACG;;;;;;IACE;;;;;;IACH;;;;;;IACG;;;;;;IACI;;;;;;IACD;;;;;;IACC;;;;;;IACH;;;;;;IACL;;;;;;IACE;;;;;;IACA;;;;;;IACA;;;;;;IACQ;;;;;;IACR;;;;;;IAEA;;;;;;IACe;;;;;;;AAI1B,YAAO;IACT;;;QAxCoB;QACX;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAhBW;IACX;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AAjBH;;EAiB0B;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ICoBnB;;;;;;IAGE;;;;;;IAGH;;;;;;IAGG;;;;;;IAGI;;;;;;IAGD;;;;;;IAGC;;;;;;IAGH;;;;;;IAGL;;;;;;IAGE;;;;;;IAGA;;;;;;IAGA;;;;;;IAGQ;;;;;;IAGR;;;;;;IAGA;;;;;;IAGe;;;;;;;;QAjFR;QACD;QACX;QACC;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAhBW;IACD;IAEV;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AACH,kEACS,GAAG,SACD,KAAK,YACF,QAAQ,eACL,WAAW,SACjB,KAAK,eACC,WAAW,aACb,SAAS,aACT,SAAS,aACT,SAAS,oBACF,gBAAgB,oBAChB,gBAAgB,mBACjB,eAAe,eACnB,WAAW,WACf,OAAO,WACP,OAAO,yBACO,qBAAqB;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IDYnC;;;;;;IACf;;;;;;IACE;;;;;;IAEE;;;;;;IACI;;;;;;;AAIwF,MAAnG,2BAAsB,oFAAwE;AAEV,MAApF,iBAAW,4CAAwB,iCAAmC;AAE1C,MAA5B,iBAAY,AAAO;AAKjB,MAJF,AAAoB,2CAAkB,QAAC;AACrC,sBAAI,AAAoB,mDAAe;AACR,UAA7B,AAAoB;;;AAIP,MAAX;IACR;;AAG+B,MAA7B,AAAoB;AACF,MAAlB,kBAAa;AACE,MAAf,cAAS;;IACX;;AAGE,qBAAK,AAAoB;AACM,QAA7B,AAAoB;;AAEL,MAAjB,kBAAa;AACE,MAAf,cAAS;;IACX;;AAI+B,MAA7B,AAAoB;AACL,MAAT;IACR;UAG0B;;AACR,kBAAc,gBAAG,OAAO;AAErB,8BAAsC,KAAnB,AAAO,yBAAA,aAA4B,wCAAS;AAEhE,uBAAyB,MAAb,AAAO,mBAAA,cAAS,uEAAqC,gBAAgB;AACnF,2BAAiC,OAAjB,AAAO,uBAAA,eAAa,AAAM,AAAU,AAAO,KAAlB,mCAAyC;AAElG,oBAAI,AAAO;AACiB,QAA1B,gBAAW,AAAO;AACQ,QAA1B,gBAAW,AAAO;;AAEH,QAAf,gBAAW;AAQN,QAPL,iBAAmC,OAAxB,AAAO,8BAAA,eACd,wCACS,AAAO,AAAS;;AAQT,wBAA0B,AAAY,4BAAT,OAAO;AAE1D,YAAO,gDACA,AAAO,2BACc,yCACnB,AAAS,wBAAU,OAAO,AAAO,iCAC7B,AAAS,wBAAU,OAAO,QAAgB,WAAY,yDACpD,AAAS,wBAAU,iBAAO,yBAC9B,AAAS,wBAAU,OAAO,QAAc,WAAY,+CACtD,6BACE,oCACS,wCACD,AAAO,oCACT,yBACF,6CAA0B,SAAS,kBACzB,uCACZ,6CACe,4DAEX,SAAS,aACL,gBACA,aAAa,aACb,oBACqB,OAAnB,AAAO,yBAAA,eACD,6BAAM,gBACI,aAArB,AAAY,WAAD,0BAAY,AAAO,8BAAoC,aAAnB,AAAY,WAAD,wBAAU,AAAO,gEACtC,uDAC1B,uCACZ,+BACa,yBAChB,yBAAkB,OAAO,EAAE,eAAU,AAAO,8BAAkB,AAAO,6BAAiB,AAAO,oBAC7F,6CACa,uBACF,yCACO,gDACE,wCACW,oCACF,0CACP,wBAAQ,2BAAoB;IAOlE;;;IAjHkB;IACE;IACf,mBAAa;IACX;IAEE;IACI;;;EA4Gf;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IE/He;;;;;;IAGE;;;;;;IAGH;;;;;;IAGO;;;;;;IAGN;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGA;;;;;;IAGe;;;;;;;;QA1DR;QACD;QACX;QACC;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;IAVW;IACD;IAEV;IACA;IACA;IACA;IACA;IACA;IACA;IACA;AACH,mFACS,GAAG,YACE,QAAQ,SACX,KAAK,eACC,WAAW,YACd,QAAQ,aACP,SAAS,oBACF,gBAAgB,mBACjB,eAAe,WACvB,OAAO,WACP,OAAO,yBACO,qBAAqB;;EAM1C","file":"../../../../../../../packages/gradient_widgets/src/gradient_progress_indicator.dart.lib.js"}');
+  // Exports:
+  return {
+    src__gradient_progress_indicator: gradient_progress_indicator,
+    src__gradient_text: gradient_text,
+    src__gradient_card: gradient_card,
+    src__gradient_widget: gradient_widget,
+    src__gradient_button: gradient_button,
+    src__circular_gradient_button: circular_gradient_button,
+    gradient_widgets: gradient_widgets
+  };
+}));
+
+//# sourceMappingURL=gradient_progress_indicator.dart.lib.js.map

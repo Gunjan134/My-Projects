@@ -1,0 +1,230 @@
+define(['dart_sdk', 'packages/liquid_swipe/Helpers/Helpers.dart', 'packages/flutter/src/rendering/proxy_box.dart'], (function load__packages__liquid_swipe__Clippers__WaveLayer_dart(dart_sdk, packages__liquid_swipe__Helpers__Helpers$46dart, packages__flutter__src__rendering__proxy_box$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const math = dart_sdk.math;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const Helpers = packages__liquid_swipe__Helpers__Helpers$46dart.Helpers__Helpers;
+  const proxy_box = packages__flutter__src__rendering__proxy_box$46dart.src__rendering__proxy_box;
+  var WaveLayer = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    CustomClipperL: () => (T.CustomClipperL = dart.constFn(dart.legacy(proxy_box.CustomClipper)))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  var C = [];
+  var I = ["package:liquid_swipe/Clippers/WaveLayer.dart"];
+  var revealPercent$ = dart.privateName(WaveLayer, "WaveLayer.revealPercent");
+  var verReveal$ = dart.privateName(WaveLayer, "WaveLayer.verReveal");
+  var waveCenterY = dart.privateName(WaveLayer, "WaveLayer.waveCenterY");
+  var waveHorRadius = dart.privateName(WaveLayer, "WaveLayer.waveHorRadius");
+  var waveVertRadius = dart.privateName(WaveLayer, "WaveLayer.waveVertRadius");
+  var sideWidth = dart.privateName(WaveLayer, "WaveLayer.sideWidth");
+  var iconPosition$ = dart.privateName(WaveLayer, "WaveLayer.iconPosition");
+  var slideDirection$ = dart.privateName(WaveLayer, "WaveLayer.slideDirection");
+  WaveLayer.WaveLayer = class WaveLayer extends proxy_box.CustomClipper$(dart.legacy(ui.Path)) {
+    get revealPercent() {
+      return this[revealPercent$];
+    }
+    set revealPercent(value) {
+      this[revealPercent$] = value;
+    }
+    get verReveal() {
+      return this[verReveal$];
+    }
+    set verReveal(value) {
+      this[verReveal$] = value;
+    }
+    get waveCenterY() {
+      return this[waveCenterY];
+    }
+    set waveCenterY(value) {
+      this[waveCenterY] = value;
+    }
+    get waveHorRadius() {
+      return this[waveHorRadius];
+    }
+    set waveHorRadius(value) {
+      this[waveHorRadius] = value;
+    }
+    get waveVertRadius() {
+      return this[waveVertRadius];
+    }
+    set waveVertRadius(value) {
+      this[waveVertRadius] = value;
+    }
+    get sideWidth() {
+      return this[sideWidth];
+    }
+    set sideWidth(value) {
+      this[sideWidth] = value;
+    }
+    get iconPosition() {
+      return this[iconPosition$];
+    }
+    set iconPosition(value) {
+      this[iconPosition$] = value;
+    }
+    get slideDirection() {
+      return this[slideDirection$];
+    }
+    set slideDirection(value) {
+      this[slideDirection$] = value;
+    }
+    getClip(size) {
+      let path = ui.Path.new();
+      this.sideWidth = this.sidewidth(size);
+      this.waveVertRadius = this.waveVertRadiusF(size);
+      this.waveCenterY = dart.notNull(size.height) * (2 * dart.notNull(this.verReveal) / 3);
+      this.waveHorRadius = this.slideDirection == Helpers.SlideDirection.leftToRight ? this.waveHorRadiusFBack(size) : this.waveHorRadiusF(size);
+      let maskWidth = dart.notNull(size.width) - dart.notNull(this.sideWidth);
+      path.moveTo(maskWidth - dart.notNull(this.sideWidth), 0.0);
+      path.lineTo(0.0, 0.0);
+      path.lineTo(0.0, size.height);
+      path.lineTo(maskWidth, size.height);
+      let curveStartY = dart.notNull(this.waveCenterY) + dart.notNull(this.waveVertRadius);
+      path.lineTo(maskWidth, curveStartY);
+      path.cubicTo(maskWidth, curveStartY - dart.notNull(this.waveVertRadius) * 0.1346194756, maskWidth - dart.notNull(this.waveHorRadius) * 0.05341339583, curveStartY - dart.notNull(this.waveVertRadius) * 0.2412779634, maskWidth - dart.notNull(this.waveHorRadius) * 0.1561501458, curveStartY - dart.notNull(this.waveVertRadius) * 0.3322374268);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.2361659167, curveStartY - dart.notNull(this.waveVertRadius) * 0.4030805244, maskWidth - dart.notNull(this.waveHorRadius) * 0.3305285625, curveStartY - dart.notNull(this.waveVertRadius) * 0.4561193293, maskWidth - dart.notNull(this.waveHorRadius) * 0.5012484792, curveStartY - dart.notNull(this.waveVertRadius) * 0.5350576951);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.515878125, curveStartY - dart.notNull(this.waveVertRadius) * 0.5418222317, maskWidth - dart.notNull(this.waveHorRadius) * 0.5664134792, curveStartY - dart.notNull(this.waveVertRadius) * 0.5650349878, maskWidth - dart.notNull(this.waveHorRadius) * 0.574934875, curveStartY - dart.notNull(this.waveVertRadius) * 0.5689655122);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.7283715208, curveStartY - dart.notNull(this.waveVertRadius) * 0.6397387195, maskWidth - dart.notNull(this.waveHorRadius) * 0.8086618958, curveStartY - dart.notNull(this.waveVertRadius) * 0.6833456585, maskWidth - dart.notNull(this.waveHorRadius) * 0.8774032292, curveStartY - dart.notNull(this.waveVertRadius) * 0.7399037439);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.9653464583, curveStartY - dart.notNull(this.waveVertRadius) * 0.8122605122, maskWidth - dart.notNull(this.waveHorRadius), curveStartY - dart.notNull(this.waveVertRadius) * 0.8936183659, maskWidth - dart.notNull(this.waveHorRadius), curveStartY - dart.notNull(this.waveVertRadius));
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius), curveStartY - dart.notNull(this.waveVertRadius) * 1.100142878, maskWidth - dart.notNull(this.waveHorRadius) * 0.9595746667, curveStartY - dart.notNull(this.waveVertRadius) * 1.1887991951, maskWidth - dart.notNull(this.waveHorRadius) * 0.8608411667, curveStartY - dart.notNull(this.waveVertRadius) * 1.270484439);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.7852123333, curveStartY - dart.notNull(this.waveVertRadius) * 1.3330544756, maskWidth - dart.notNull(this.waveHorRadius) * 0.703382125, curveStartY - dart.notNull(this.waveVertRadius) * 1.3795848049, maskWidth - dart.notNull(this.waveHorRadius) * 0.5291125625, curveStartY - dart.notNull(this.waveVertRadius) * 1.4665102805);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.5241858333, curveStartY - dart.notNull(this.waveVertRadius) * 1.4689677195, maskWidth - dart.notNull(this.waveHorRadius) * 0.505739125, curveStartY - dart.notNull(this.waveVertRadius) * 1.4781625854, maskWidth - dart.notNull(this.waveHorRadius) * 0.5015305417, curveStartY - dart.notNull(this.waveVertRadius) * 1.4802616098);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.3187486042, curveStartY - dart.notNull(this.waveVertRadius) * 1.5714239024, maskWidth - dart.notNull(this.waveHorRadius) * 0.2332057083, curveStartY - dart.notNull(this.waveVertRadius) * 1.6204116463, maskWidth - dart.notNull(this.waveHorRadius) * 0.1541165417, curveStartY - dart.notNull(this.waveVertRadius) * 1.687403);
+      path.cubicTo(maskWidth - dart.notNull(this.waveHorRadius) * 0.0509933125, curveStartY - dart.notNull(this.waveVertRadius) * 1.774752061, maskWidth, curveStartY - dart.notNull(this.waveVertRadius) * 1.8709256829, maskWidth, curveStartY - dart.notNull(this.waveVertRadius) * 2);
+      path.lineTo(maskWidth, 0.0);
+      path.close();
+      return path;
+    }
+    sidewidth(size) {
+      let p1 = 0.2;
+      let p2 = 0.8;
+      if (dart.notNull(this.revealPercent) <= p1) {
+        return 0.0;
+      }
+      if (dart.notNull(this.revealPercent) >= p2) {
+        return size.width;
+      }
+      return (dart.notNull(size.width) - 15.0) * (dart.notNull(this.revealPercent) - p1) / (p2 - p1);
+    }
+    shouldReclip(oldClipper) {
+      T.CustomClipperL().as(oldClipper);
+      return true;
+    }
+    waveVertRadiusF(size) {
+      let p1 = 0.4;
+      if (dart.notNull(this.revealPercent) <= 0) {
+        return 82.0;
+      }
+      if (dart.notNull(this.revealPercent) >= p1) {
+        return dart.notNull(size.height) * 0.9;
+      }
+      return 82.0 + (dart.notNull(size.height) * 0.9 - 82.0) * dart.notNull(this.revealPercent) / p1;
+    }
+    waveHorRadiusF(size) {
+      if (dart.notNull(this.revealPercent) <= 0) {
+        return 0.0;
+      }
+      if (dart.notNull(this.revealPercent) >= 1) {
+        return 0.0;
+      }
+      let p1 = 0.4;
+      if (dart.notNull(this.revealPercent) <= p1) {
+        return 48.0 + dart.notNull(this.revealPercent) / p1 * (dart.notNull(size.width) * 0.8 - 48.0);
+      }
+      let t = (dart.notNull(this.revealPercent) - p1) / (1.0 - p1);
+      let A = dart.notNull(size.width) * 0.8;
+      let r = 40;
+      let m = 9.8;
+      let beta = r / (2 * m);
+      let k = 50;
+      let omega0 = k / m;
+      let omega = math.pow(-math.pow(beta, 2) + math.pow(omega0, 2), 0.5);
+      return A * math.exp(-beta * t) * math.cos(omega * t);
+    }
+    waveHorRadiusFBack(size) {
+      if (dart.notNull(this.revealPercent) <= 0) {
+        return 48.0;
+      }
+      if (dart.notNull(this.revealPercent) >= 1) {
+        return 0.0;
+      }
+      let p1 = 0.4;
+      if (dart.notNull(this.revealPercent) <= p1) {
+        return 48.0 + dart.notNull(this.revealPercent) / p1 * 48.0;
+      }
+      let t = (dart.notNull(this.revealPercent) - p1) / (1.0 - p1);
+      let A = 96;
+      let r = 40;
+      let m = 9.8;
+      let beta = r / (2 * m);
+      let k = 50;
+      let omega0 = k / m;
+      let omega = math.pow(-math.pow(beta, 2) + math.pow(omega0, 2), 0.5);
+      return A * math.exp(-beta * t) * math.cos(omega * t);
+    }
+  };
+  (WaveLayer.WaveLayer.new = function(opts) {
+    let revealPercent = opts && 'revealPercent' in opts ? opts.revealPercent : null;
+    let slideDirection = opts && 'slideDirection' in opts ? opts.slideDirection : null;
+    let iconPosition = opts && 'iconPosition' in opts ? opts.iconPosition : null;
+    let verReveal = opts && 'verReveal' in opts ? opts.verReveal : null;
+    this[waveCenterY] = null;
+    this[waveHorRadius] = null;
+    this[waveVertRadius] = null;
+    this[sideWidth] = null;
+    this[revealPercent$] = revealPercent;
+    this[slideDirection$] = slideDirection;
+    this[iconPosition$] = iconPosition;
+    this[verReveal$] = verReveal;
+    WaveLayer.WaveLayer.__proto__.new.call(this);
+    ;
+  }).prototype = WaveLayer.WaveLayer.prototype;
+  dart.addTypeTests(WaveLayer.WaveLayer);
+  dart.addTypeCaches(WaveLayer.WaveLayer);
+  dart.setMethodSignature(WaveLayer.WaveLayer, () => ({
+    __proto__: dart.getMethods(WaveLayer.WaveLayer.__proto__),
+    getClip: dart.fnType(dart.legacy(ui.Path), [dart.legacy(ui.Size)]),
+    sidewidth: dart.fnType(dart.legacy(core.double), [dart.legacy(ui.Size)]),
+    shouldReclip: dart.fnType(dart.legacy(core.bool), [dart.legacy(core.Object)]),
+    waveVertRadiusF: dart.fnType(dart.legacy(core.double), [dart.legacy(ui.Size)]),
+    waveHorRadiusF: dart.fnType(dart.legacy(core.double), [dart.legacy(ui.Size)]),
+    waveHorRadiusFBack: dart.fnType(dart.legacy(core.double), [dart.legacy(ui.Size)])
+  }));
+  dart.setLibraryUri(WaveLayer.WaveLayer, I[0]);
+  dart.setFieldSignature(WaveLayer.WaveLayer, () => ({
+    __proto__: dart.getFields(WaveLayer.WaveLayer.__proto__),
+    revealPercent: dart.fieldType(dart.legacy(core.double)),
+    verReveal: dart.fieldType(dart.legacy(core.double)),
+    waveCenterY: dart.fieldType(dart.legacy(core.double)),
+    waveHorRadius: dart.fieldType(dart.legacy(core.double)),
+    waveVertRadius: dart.fieldType(dart.legacy(core.double)),
+    sideWidth: dart.fieldType(dart.legacy(core.double)),
+    iconPosition: dart.fieldType(dart.legacy(core.double)),
+    slideDirection: dart.fieldType(dart.legacy(Helpers.SlideDirection))
+  }));
+  dart.trackLibraries("packages/liquid_swipe/Clippers/WaveLayer.dart", {
+    "package:liquid_swipe/Clippers/WaveLayer.dart": WaveLayer
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["WaveLayer.dart"],"names":[],"mappings":"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","file":"../../../../../../../packages/liquid_swipe/Clippers/WaveLayer.dart.lib.js"}');
+  // Exports:
+  return {
+    Clippers__WaveLayer: WaveLayer
+  };
+}));
+
+//# sourceMappingURL=WaveLayer.dart.lib.js.map

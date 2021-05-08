@@ -1,0 +1,603 @@
+define(['dart_sdk', 'packages/flutter/src/material/icon_button.dart', 'packages/flutter/src/widgets/icon_theme_data.dart', 'packages/flutter/src/material/colors.dart', 'packages/flutter/src/material/typography.dart', 'packages/flutter/src/painting/box_decoration.dart', 'packages/flutter/src/painting/box_border.dart', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/box_shadow.dart', 'packages/flutter/src/painting/strut_style.dart'], (function load__packages__fl_widgets__themes__app_theme_data_dart(dart_sdk, packages__flutter__src__material__icon_button$46dart, packages__flutter__src__widgets__icon_theme_data$46dart, packages__flutter__src__material__colors$46dart, packages__flutter__src__material__typography$46dart, packages__flutter__src__painting__box_decoration$46dart, packages__flutter__src__painting__box_border$46dart, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__box_shadow$46dart, packages__flutter__src__painting__strut_style$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const ui = dart_sdk.ui;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const theme_data = packages__flutter__src__material__icon_button$46dart.src__material__theme_data;
+  const app_bar_theme = packages__flutter__src__material__icon_button$46dart.src__material__app_bar_theme;
+  const snack_bar_theme = packages__flutter__src__material__icon_button$46dart.src__material__snack_bar_theme;
+  const color_scheme = packages__flutter__src__material__icon_button$46dart.src__material__color_scheme;
+  const icon_theme_data = packages__flutter__src__widgets__icon_theme_data$46dart.src__widgets__icon_theme_data;
+  const colors = packages__flutter__src__material__colors$46dart.src__material__colors;
+  const text_theme = packages__flutter__src__material__typography$46dart.src__material__text_theme;
+  const box_decoration = packages__flutter__src__painting__box_decoration$46dart.src__painting__box_decoration;
+  const box_border = packages__flutter__src__painting__box_border$46dart.src__painting__box_border;
+  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
+  const box_shadow = packages__flutter__src__painting__box_shadow$46dart.src__painting__box_shadow;
+  const text_style = packages__flutter__src__painting__strut_style$46dart.src__painting__text_style;
+  var app_theme_data = Object.create(dart.library);
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    BoxShadowL: () => (T.BoxShadowL = dart.constFn(dart.legacy(box_shadow.BoxShadow)))(),
+    JSArrayOfBoxShadowL: () => (T.JSArrayOfBoxShadowL = dart.constFn(_interceptors.JSArray$(T.BoxShadowL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4278190080.0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294967295.0
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294440951.0
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 2146957303
+      });
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4290329693.0
+      });
+    },
+    get C5() {
+      return C[5] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4279333752.0
+      });
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293915635.0
+      });
+    },
+    get C7() {
+      return C[7] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294638587.0
+      });
+    },
+    get C8() {
+      return C[8] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4293323755.0
+      });
+    },
+    get C9() {
+      return C[9] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4281477442.0
+      });
+    },
+    get C10() {
+      return C[10] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280557104.0
+      });
+    },
+    get C11() {
+      return C[11] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4294935427.0
+      });
+    },
+    get C12() {
+      return C[12] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280082121.0
+      });
+    },
+    get C13() {
+      return C[13] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4283244412.0
+      });
+    },
+    get C14() {
+      return C[14] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4282719087.0
+      });
+    },
+    get C15() {
+      return C[15] = dart.const({
+        __proto__: ui.Color.prototype,
+        [Color_value]: 4280228137.0
+      });
+    },
+    get C16() {
+      return C[16] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 3
+      });
+    },
+    get C17() {
+      return C[17] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 4
+      });
+    },
+    get C18() {
+      return C[18] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 5
+      });
+    },
+    get C19() {
+      return C[19] = dart.const({
+        __proto__: ui.FontWeight.prototype,
+        [FontWeight_index]: 6
+      });
+    },
+    get C20() {
+      return C[20] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[19] || CT.C19,
+        [TextStyle_fontSize]: 20,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C21() {
+      return C[21] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[18] || CT.C18,
+        [TextStyle_fontSize]: 16,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Oswald",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C22() {
+      return C[22] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[17] || CT.C17,
+        [TextStyle_fontSize]: 16,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Oswald",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C23() {
+      return C[23] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[17] || CT.C17,
+        [TextStyle_fontSize]: 16,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C24() {
+      return C[24] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[17] || CT.C17,
+        [TextStyle_fontSize]: 12,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C25() {
+      return C[25] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[16] || CT.C16,
+        [TextStyle_fontSize]: 14,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C26() {
+      return C[26] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[17] || CT.C17,
+        [TextStyle_fontSize]: 14,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C27() {
+      return C[27] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[16] || CT.C16,
+        [TextStyle_fontSize]: 16,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C28() {
+      return C[28] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[19] || CT.C19,
+        [TextStyle_fontSize]: 16,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    },
+    get C29() {
+      return C[29] = dart.const({
+        __proto__: text_style.TextStyle.prototype,
+        [TextStyle_fontFeatures]: null,
+        [TextStyle_shadows]: null,
+        [TextStyle_debugLabel]: null,
+        [TextStyle_decorationThickness]: null,
+        [TextStyle_decorationStyle]: null,
+        [TextStyle_decorationColor]: null,
+        [TextStyle_decoration]: null,
+        [TextStyle_background]: null,
+        [TextStyle_foreground]: null,
+        [TextStyle_locale]: null,
+        [TextStyle_height]: null,
+        [TextStyle_textBaseline]: null,
+        [TextStyle_wordSpacing]: null,
+        [TextStyle_letterSpacing]: null,
+        [TextStyle_fontStyle]: null,
+        [TextStyle_fontWeight]: C[18] || CT.C18,
+        [TextStyle_fontSize]: 14,
+        [TextStyle__package]: null,
+        [TextStyle__fontFamilyFallback]: null,
+        [TextStyle_fontFamily]: "Montserrat",
+        [TextStyle_backgroundColor]: null,
+        [TextStyle_color]: null,
+        [TextStyle_inherit]: true
+      });
+    }
+  }, false);
+  var C = Array(30).fill(void 0);
+  var I = ["package:fl_widgets/themes/app_theme_data.dart"];
+  var Color_value = dart.privateName(ui, "Color.value");
+  app_theme_data.AppThemeData = class AppThemeData extends core.Object {
+    static themeData(colorScheme, focusColor) {
+      return theme_data.ThemeData.new({colorScheme: colorScheme, textTheme: app_theme_data.AppThemeData._textTheme, appBarTheme: new app_bar_theme.AppBarTheme.new({textTheme: app_theme_data.AppThemeData._textTheme.apply({bodyColor: colorScheme.onPrimary}), color: colorScheme.background, elevation: 0.0, iconTheme: new icon_theme_data.IconThemeData.new({color: colorScheme.primary}), brightness: colorScheme.brightness}), iconTheme: new icon_theme_data.IconThemeData.new({color: colorScheme.onPrimary}), canvasColor: colorScheme.background, scaffoldBackgroundColor: colorScheme.background, highlightColor: colors.Colors.transparent, accentColor: colorScheme.primary, focusColor: focusColor, snackBarTheme: new snack_bar_theme.SnackBarThemeData.new({behavior: snack_bar_theme.SnackBarBehavior.floating, backgroundColor: ui.Color.alphaBlend(app_theme_data.AppThemeData._lightFillColor.withOpacity(0.8), app_theme_data.AppThemeData._darkFillColor), contentTextStyle: app_theme_data.AppThemeData._textTheme.subhead.apply({color: app_theme_data.AppThemeData._darkFillColor})})});
+    }
+  };
+  (app_theme_data.AppThemeData.new = function() {
+    ;
+  }).prototype = app_theme_data.AppThemeData.prototype;
+  dart.addTypeTests(app_theme_data.AppThemeData);
+  dart.addTypeCaches(app_theme_data.AppThemeData);
+  dart.setLibraryUri(app_theme_data.AppThemeData, I[0]);
+  dart.defineLazy(app_theme_data.AppThemeData, {
+    /*app_theme_data.AppThemeData._lightFillColor*/get _lightFillColor() {
+      return C[0] || CT.C0;
+    },
+    /*app_theme_data.AppThemeData._darkFillColor*/get _darkFillColor() {
+      return C[1] || CT.C1;
+    },
+    /*app_theme_data.AppThemeData._lightFocusColor*/get _lightFocusColor() {
+      return colors.Colors.black.withOpacity(0.12);
+    },
+    set _lightFocusColor(_) {},
+    /*app_theme_data.AppThemeData._darkFocusColor*/get _darkFocusColor() {
+      return colors.Colors.white.withOpacity(0.12);
+    },
+    set _darkFocusColor(_) {},
+    /*app_theme_data.AppThemeData.lightgrey*/get lightgrey() {
+      return C[2] || CT.C2;
+    },
+    /*app_theme_data.AppThemeData.darkgrey*/get darkgrey() {
+      return C[3] || CT.C3;
+    },
+    /*app_theme_data.AppThemeData.lightThemeData*/get lightThemeData() {
+      return app_theme_data.AppThemeData.themeData(app_theme_data.AppThemeData._lightColorScheme, app_theme_data.AppThemeData._lightFocusColor);
+    },
+    set lightThemeData(_) {},
+    /*app_theme_data.AppThemeData.darkThemeData*/get darkThemeData() {
+      return app_theme_data.AppThemeData.themeData(app_theme_data.AppThemeData._darkColorScheme, app_theme_data.AppThemeData._darkFocusColor);
+    },
+    set darkThemeData(_) {},
+    /*app_theme_data.AppThemeData._lightColorScheme*/get _lightColorScheme() {
+      return new color_scheme.ColorScheme.new({primary: C[4] || CT.C4, primaryVariant: C[5] || CT.C5, secondary: C[6] || CT.C6, secondaryVariant: C[7] || CT.C7, background: C[8] || CT.C8, surface: C[7] || CT.C7, onBackground: colors.Colors.white, error: app_theme_data.AppThemeData._lightFillColor, onError: app_theme_data.AppThemeData._lightFillColor, onPrimary: app_theme_data.AppThemeData._lightFillColor, onSecondary: C[9] || CT.C9, onSurface: C[10] || CT.C10, brightness: ui.Brightness.light});
+    },
+    set _lightColorScheme(_) {},
+    /*app_theme_data.AppThemeData._darkColorScheme*/get _darkColorScheme() {
+      return new color_scheme.ColorScheme.new({primary: C[11] || CT.C11, primaryVariant: C[12] || CT.C12, secondary: C[13] || CT.C13, secondaryVariant: C[14] || CT.C14, background: C[10] || CT.C10, surface: C[15] || CT.C15, onBackground: colors.Colors.white.withOpacity(0.05), error: app_theme_data.AppThemeData._darkFillColor, onError: app_theme_data.AppThemeData._darkFillColor, onPrimary: app_theme_data.AppThemeData._darkFillColor, onSecondary: app_theme_data.AppThemeData._darkFillColor, onSurface: app_theme_data.AppThemeData._darkFillColor, brightness: ui.Brightness.dark});
+    },
+    set _darkColorScheme(_) {},
+    /*app_theme_data.AppThemeData._textTheme*/get _textTheme() {
+      return new text_theme.TextTheme.new({display1: app_theme_data._AppTextStyles.heading, caption: app_theme_data._AppTextStyles.studyTitle, headline: app_theme_data._AppTextStyles.categoryTitle, subhead: app_theme_data._AppTextStyles.listTitle, overline: app_theme_data._AppTextStyles.listDescription, body2: app_theme_data._AppTextStyles.sliderTitle, subtitle: app_theme_data._AppTextStyles.settingsFooter, body1: app_theme_data._AppTextStyles.options, title: app_theme_data._AppTextStyles.title, button: app_theme_data._AppTextStyles.button});
+    },
+    set _textTheme(_) {},
+    /*app_theme_data.AppThemeData.defaultBorder*/get defaultBorder() {
+      return new box_decoration.BoxDecoration.new({border: box_border.Border.all()});
+    },
+    set defaultBorder(_) {},
+    /*app_theme_data.AppThemeData.bottomBorder*/get bottomBorder() {
+      return new box_decoration.BoxDecoration.new({border: new box_border.Border.new({bottom: new borders.BorderSide.new({color: colors.Colors.grey.shade300, width: 1.0})})});
+    },
+    set bottomBorder(_) {},
+    /*app_theme_data.AppThemeData.defaultShadow*/get defaultShadow() {
+      return new box_decoration.BoxDecoration.new({boxShadow: T.JSArrayOfBoxShadowL().of([new box_shadow.BoxShadow.new({blurRadius: 5.0})])});
+    },
+    set defaultShadow(_) {},
+    /*app_theme_data.AppThemeData.defaultBorderAndShadow*/get defaultBorderAndShadow() {
+      return new box_decoration.BoxDecoration.new({border: box_border.Border.all(), boxShadow: T.JSArrayOfBoxShadowL().of([new box_shadow.BoxShadow.new({blurRadius: 5.0})])});
+    },
+    set defaultBorderAndShadow(_) {}
+  }, true);
+  var FontWeight_index = dart.privateName(ui, "FontWeight.index");
+  var TextStyle_fontFeatures = dart.privateName(text_style, "TextStyle.fontFeatures");
+  var TextStyle_shadows = dart.privateName(text_style, "TextStyle.shadows");
+  var TextStyle_debugLabel = dart.privateName(text_style, "TextStyle.debugLabel");
+  var TextStyle_decorationThickness = dart.privateName(text_style, "TextStyle.decorationThickness");
+  var TextStyle_decorationStyle = dart.privateName(text_style, "TextStyle.decorationStyle");
+  var TextStyle_decorationColor = dart.privateName(text_style, "TextStyle.decorationColor");
+  var TextStyle_decoration = dart.privateName(text_style, "TextStyle.decoration");
+  var TextStyle_background = dart.privateName(text_style, "TextStyle.background");
+  var TextStyle_foreground = dart.privateName(text_style, "TextStyle.foreground");
+  var TextStyle_locale = dart.privateName(text_style, "TextStyle.locale");
+  var TextStyle_height = dart.privateName(text_style, "TextStyle.height");
+  var TextStyle_textBaseline = dart.privateName(text_style, "TextStyle.textBaseline");
+  var TextStyle_wordSpacing = dart.privateName(text_style, "TextStyle.wordSpacing");
+  var TextStyle_letterSpacing = dart.privateName(text_style, "TextStyle.letterSpacing");
+  var TextStyle_fontStyle = dart.privateName(text_style, "TextStyle.fontStyle");
+  var TextStyle_fontWeight = dart.privateName(text_style, "TextStyle.fontWeight");
+  var TextStyle_fontSize = dart.privateName(text_style, "TextStyle.fontSize");
+  var TextStyle__package = dart.privateName(text_style, "TextStyle._package");
+  var TextStyle__fontFamilyFallback = dart.privateName(text_style, "TextStyle._fontFamilyFallback");
+  var TextStyle_fontFamily = dart.privateName(text_style, "TextStyle.fontFamily");
+  var TextStyle_backgroundColor = dart.privateName(text_style, "TextStyle.backgroundColor");
+  var TextStyle_color = dart.privateName(text_style, "TextStyle.color");
+  var TextStyle_inherit = dart.privateName(text_style, "TextStyle.inherit");
+  app_theme_data._AppTextStyles = class _AppTextStyles extends core.Object {};
+  (app_theme_data._AppTextStyles.new = function() {
+    ;
+  }).prototype = app_theme_data._AppTextStyles.prototype;
+  dart.addTypeTests(app_theme_data._AppTextStyles);
+  dart.addTypeCaches(app_theme_data._AppTextStyles);
+  dart.setLibraryUri(app_theme_data._AppTextStyles, I[0]);
+  dart.defineLazy(app_theme_data._AppTextStyles, {
+    /*app_theme_data._AppTextStyles._regular*/get _regular() {
+      return C[16] || CT.C16;
+    },
+    /*app_theme_data._AppTextStyles._medium*/get _medium() {
+      return C[17] || CT.C17;
+    },
+    /*app_theme_data._AppTextStyles._semiBold*/get _semiBold() {
+      return C[18] || CT.C18;
+    },
+    /*app_theme_data._AppTextStyles._bold*/get _bold() {
+      return C[19] || CT.C19;
+    },
+    /*app_theme_data._AppTextStyles._montserrat*/get _montserrat() {
+      return "Montserrat";
+    },
+    /*app_theme_data._AppTextStyles._oswald*/get _oswald() {
+      return "Oswald";
+    },
+    /*app_theme_data._AppTextStyles.heading*/get heading() {
+      return C[20] || CT.C20;
+    },
+    /*app_theme_data._AppTextStyles.studyTitle*/get studyTitle() {
+      return C[21] || CT.C21;
+    },
+    /*app_theme_data._AppTextStyles.categoryTitle*/get categoryTitle() {
+      return C[22] || CT.C22;
+    },
+    /*app_theme_data._AppTextStyles.listTitle*/get listTitle() {
+      return C[23] || CT.C23;
+    },
+    /*app_theme_data._AppTextStyles.listDescription*/get listDescription() {
+      return C[24] || CT.C24;
+    },
+    /*app_theme_data._AppTextStyles.sliderTitle*/get sliderTitle() {
+      return C[25] || CT.C25;
+    },
+    /*app_theme_data._AppTextStyles.settingsFooter*/get settingsFooter() {
+      return C[26] || CT.C26;
+    },
+    /*app_theme_data._AppTextStyles.options*/get options() {
+      return C[27] || CT.C27;
+    },
+    /*app_theme_data._AppTextStyles.title*/get title() {
+      return C[28] || CT.C28;
+    },
+    /*app_theme_data._AppTextStyles.button*/get button() {
+      return C[29] || CT.C29;
+    }
+  }, true);
+  dart.trackLibraries("packages/fl_widgets/themes/app_theme_data.dart", {
+    "package:fl_widgets/themes/app_theme_data.dart": app_theme_data
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["app_theme_data.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;qBAoByC,aAAmB;AACxD,YAAO,wCACQ,WAAW,aACb,qDACE,8CACA,AAAW,yDAAiB,AAAY,WAAD,qBAC3C,AAAY,WAAD,wBACP,gBACA,8CAAqB,AAAY,WAAD,wBAC/B,AAAY,WAAD,0BAEd,8CAAqB,AAAY,WAAD,2BAC9B,AAAY,WAAD,sCACC,AAAY,WAAD,6BACb,wCACV,AAAY,WAAD,sBACZ,UAAU,iBACP,qDACc,4DACJ,oBACrB,AAAgB,wDAAY,MAC5B,+DAEgB,AAAW,AAAQ,6DAAa;IAGxD;;;;EA+DF;;;;;MAtGe,2CAAe;;;MACf,0CAAc;;;MAEd,4CAAgB;YAAU,AAAM,iCAAY;;;MAC5C,2CAAe;YAAU,AAAM,iCAAY;;;MAE3C,qCAAS;;;MACT,oCAAQ;;;MAEJ,0CAAc;YAC3B,uCAAU,+CAAmB;;;MAChB,yCAAa;YAAG,uCAAU,8CAAkB;;;MA8B1C,6CAAiB;YAAG,sNAOhB,4BACd,sDACE,wDACE,iHAGY;;;MAGN,4CAAgB;YAAG,kOAOf,AAAM,gCAAY,cAChC,qDACE,uDACE,yDACE,uDACF,wDACY;;;MAGR,sCAAU;YAAG,yCACH,gDACD,oDACC,sDACD,mDACC,sDACH,qDACG,qDACH,8CACA,6CACC;;;MAGJ,yCAAa;YAAG,+CACpB;;;MAGI,wCAAY;YAAO,+CAC9B,mCACI,mCACI,AAAK,oCACZ;;;MAIU,yCAAa;YAC9B,kDAAyB,4BAAC,0CAAsB;;;MAC/B,kDAAsB;YAAG,+CAC3B,oCAAkB,4BAAC,0CAAsB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;EAuE9D;;;;;MAnEe,sCAAQ;;;MACR,qCAAO;;;MACP,uCAAS;;;MACT,mCAAK;;;MAEL,yCAAW;;;MACX,qCAAO;;;MAEP,qCAAO;;;MAMP,wCAAU;;;MAMV,2CAAa;;;MAMb,uCAAS;;;MAMT,6CAAe;;;MAMf,yCAAW;;;MAMX,4CAAc;;;MAMd,qCAAO;;;MAMP,mCAAK;;;MAML,oCAAM","file":"../../../../packages/fl_widgets/themes/app_theme_data.dart.lib.js"}');
+  // Exports:
+  return {
+    themes__app_theme_data: app_theme_data
+  };
+}));
+
+//# sourceMappingURL=app_theme_data.dart.lib.js.map

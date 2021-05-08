@@ -1,0 +1,232 @@
+define(['dart_sdk', 'packages/charts_common/src/chart/cartesian/axis/simple_ordinal_scale.dart', 'packages/charts_common/src/chart/cartesian/axis/tick.dart', 'packages/charts_common/src/chart/common/canvas_shapes.dart', 'packages/charts_common/src/common/line_style.dart'], (function load__packages__charts_common__src__chart__cartesian__axis__draw_strategy__gridline_draw_strategy_dart(dart_sdk, packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart, packages__charts_common__src__chart__cartesian__axis__tick$46dart, packages__charts_common__src__chart__common__canvas_shapes$46dart, packages__charts_common__src__common__line_style$46dart) {
+  'use strict';
+  const core = dart_sdk.core;
+  const math = dart_sdk.math;
+  const _interceptors = dart_sdk._interceptors;
+  const dart = dart_sdk.dart;
+  const dartx = dart_sdk.dartx;
+  const small_tick_draw_strategy = packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart.src__chart__cartesian__axis__draw_strategy__small_tick_draw_strategy;
+  const style_factory = packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart.src__common__style__style_factory;
+  const axis = packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart.src__chart__cartesian__axis__axis;
+  const axis_spec = packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart.src__chart__cartesian__axis__spec__axis_spec;
+  const base_tick_draw_strategy = packages__charts_common__src__chart__cartesian__axis__simple_ordinal_scale$46dart.src__chart__cartesian__axis__draw_strategy__base_tick_draw_strategy;
+  const tick = packages__charts_common__src__chart__cartesian__axis__tick$46dart.src__chart__cartesian__axis__tick;
+  const chart_canvas = packages__charts_common__src__chart__common__canvas_shapes$46dart.src__chart__common__chart_canvas;
+  const line_style = packages__charts_common__src__common__line_style$46dart.src__common__line_style;
+  var gridline_draw_strategy = Object.create(dart.library);
+  var $bottom = dartx.bottom;
+  var $top = dartx.top;
+  var $right = dartx.right;
+  var $left = dartx.left;
+  var $toDouble = dartx.toDouble;
+  dart._checkModuleNullSafetyMode(false);
+  var T = {
+    GridlineRendererSpecL: () => (T.GridlineRendererSpecL = dart.constFn(dart.legacy(gridline_draw_strategy.GridlineRendererSpec)))(),
+    numL: () => (T.numL = dart.constFn(dart.legacy(core.num)))(),
+    PointOfnumL: () => (T.PointOfnumL = dart.constFn(math.Point$(T.numL())))(),
+    PointLOfnumL: () => (T.PointLOfnumL = dart.constFn(dart.legacy(T.PointOfnumL())))(),
+    JSArrayOfPointLOfnumL: () => (T.JSArrayOfPointLOfnumL = dart.constFn(_interceptors.JSArray$(T.PointLOfnumL())))()
+  };
+  var T$Eval = Object.assign({
+    _: () => T$Eval
+  }, T);
+  var S = {
+    _: () => S
+  };
+  var S$Eval = Object.assign({
+    _: () => S$Eval
+  }, S);
+  const CT = Object.create({
+    _: () => (C, CT)
+  });
+  dart.defineLazy(CT, {
+    get C0() {
+      return C[0] = dart.const({
+        __proto__: axis.AxisOrientation.prototype,
+        [_name]: "AxisOrientation.top",
+        index: 0
+      });
+    },
+    get C1() {
+      return C[1] = dart.const({
+        __proto__: axis.AxisOrientation.prototype,
+        [_name]: "AxisOrientation.bottom",
+        index: 2
+      });
+    },
+    get C2() {
+      return C[2] = dart.const({
+        __proto__: axis.AxisOrientation.prototype,
+        [_name]: "AxisOrientation.right",
+        index: 1
+      });
+    },
+    get C3() {
+      return C[3] = dart.const({
+        __proto__: axis.AxisOrientation.prototype,
+        [_name]: "AxisOrientation.left",
+        index: 3
+      });
+    }
+  }, false);
+  var C = Array(4).fill(void 0);
+  var I = ["package:charts_common/src/chart/cartesian/axis/draw_strategy/gridline_draw_strategy.dart"];
+  const _is_GridlineRendererSpec_default = Symbol('_is_GridlineRendererSpec_default');
+  gridline_draw_strategy.GridlineRendererSpec$ = dart.generic(D => {
+    var DL = () => (DL = dart.constFn(dart.legacy(D)))();
+    var GridlineTickDrawStrategyOfDL = () => (GridlineTickDrawStrategyOfDL = dart.constFn(gridline_draw_strategy.GridlineTickDrawStrategy$(DL())))();
+    class GridlineRendererSpec extends small_tick_draw_strategy.SmallTickRendererSpec$(dart.legacy(D)) {
+      createDrawStrategy(context, graphicsFactory) {
+        return new (GridlineTickDrawStrategyOfDL()).new(context, graphicsFactory, {tickLengthPx: this.tickLengthPx, lineStyleSpec: this.lineStyle, labelStyleSpec: this.labelStyle, axisLineStyleSpec: this.axisLineStyle, labelAnchor: this.labelAnchor, labelJustification: this.labelJustification, labelOffsetFromAxisPx: this.labelOffsetFromAxisPx, labelOffsetFromTickPx: this.labelOffsetFromTickPx, minimumPaddingBetweenLabelsPx: this.minimumPaddingBetweenLabelsPx, labelRotation: this.labelRotation});
+      }
+      _equals(other) {
+        if (other == null) return false;
+        return this === other || T.GridlineRendererSpecL().is(other) && super._equals(other);
+      }
+      get hashCode() {
+        let hashcode = super.hashCode;
+        return hashcode;
+      }
+    }
+    (GridlineRendererSpec.new = function(opts) {
+      let labelStyle = opts && 'labelStyle' in opts ? opts.labelStyle : null;
+      let lineStyle = opts && 'lineStyle' in opts ? opts.lineStyle : null;
+      let axisLineStyle = opts && 'axisLineStyle' in opts ? opts.axisLineStyle : null;
+      let labelAnchor = opts && 'labelAnchor' in opts ? opts.labelAnchor : null;
+      let labelJustification = opts && 'labelJustification' in opts ? opts.labelJustification : null;
+      let tickLengthPx = opts && 'tickLengthPx' in opts ? opts.tickLengthPx : null;
+      let labelOffsetFromAxisPx = opts && 'labelOffsetFromAxisPx' in opts ? opts.labelOffsetFromAxisPx : null;
+      let labelOffsetFromTickPx = opts && 'labelOffsetFromTickPx' in opts ? opts.labelOffsetFromTickPx : null;
+      let minimumPaddingBetweenLabelsPx = opts && 'minimumPaddingBetweenLabelsPx' in opts ? opts.minimumPaddingBetweenLabelsPx : null;
+      let labelRotation = opts && 'labelRotation' in opts ? opts.labelRotation : null;
+      GridlineRendererSpec.__proto__.new.call(this, {labelStyle: labelStyle, lineStyle: lineStyle, labelAnchor: labelAnchor, labelJustification: labelJustification, labelOffsetFromAxisPx: labelOffsetFromAxisPx, labelOffsetFromTickPx: labelOffsetFromTickPx, minimumPaddingBetweenLabelsPx: minimumPaddingBetweenLabelsPx, labelRotation: labelRotation, tickLengthPx: tickLengthPx, axisLineStyle: axisLineStyle});
+      ;
+    }).prototype = GridlineRendererSpec.prototype;
+    dart.addTypeTests(GridlineRendererSpec);
+    GridlineRendererSpec.prototype[_is_GridlineRendererSpec_default] = true;
+    dart.addTypeCaches(GridlineRendererSpec);
+    dart.setLibraryUri(GridlineRendererSpec, I[0]);
+    dart.defineExtensionMethods(GridlineRendererSpec, ['_equals']);
+    dart.defineExtensionAccessors(GridlineRendererSpec, ['hashCode']);
+    return GridlineRendererSpec;
+  });
+  gridline_draw_strategy.GridlineRendererSpec = gridline_draw_strategy.GridlineRendererSpec$();
+  dart.addTypeTests(gridline_draw_strategy.GridlineRendererSpec, _is_GridlineRendererSpec_default);
+  var tickLength = dart.privateName(gridline_draw_strategy, "GridlineTickDrawStrategy.tickLength");
+  var lineStyle = dart.privateName(gridline_draw_strategy, "GridlineTickDrawStrategy.lineStyle");
+  var _name = dart.privateName(axis, "_name");
+  const _is_GridlineTickDrawStrategy_default = Symbol('_is_GridlineTickDrawStrategy_default');
+  gridline_draw_strategy.GridlineTickDrawStrategy$ = dart.generic(D => {
+    var DL = () => (DL = dart.constFn(dart.legacy(D)))();
+    var TickOfDL = () => (TickOfDL = dart.constFn(tick.Tick$(DL())))();
+    var TickLOfDL = () => (TickLOfDL = dart.constFn(dart.legacy(TickOfDL())))();
+    class GridlineTickDrawStrategy extends base_tick_draw_strategy.BaseTickDrawStrategy$(dart.legacy(D)) {
+      get tickLength() {
+        return this[tickLength];
+      }
+      set tickLength(value) {
+        this[tickLength] = value;
+      }
+      get lineStyle() {
+        return this[lineStyle];
+      }
+      set lineStyle(value) {
+        this[lineStyle] = value;
+      }
+      draw(canvas, tick, opts) {
+        TickLOfDL().as(tick);
+        let orientation = opts && 'orientation' in opts ? opts.orientation : null;
+        let axisBounds = opts && 'axisBounds' in opts ? opts.axisBounds : null;
+        let drawAreaBounds = opts && 'drawAreaBounds' in opts ? opts.drawAreaBounds : null;
+        let isFirst = opts && 'isFirst' in opts ? opts.isFirst : null;
+        let isLast = opts && 'isLast' in opts ? opts.isLast : null;
+        let lineStart = null;
+        let lineEnd = null;
+        switch (orientation) {
+          case C[0] || CT.C0:
+          {
+            let x = tick.locationPx;
+            lineStart = new (T.PointOfnumL()).new(x, dart.notNull(axisBounds[$bottom]) - dart.notNull(this.tickLength));
+            lineEnd = new (T.PointOfnumL()).new(x, drawAreaBounds[$bottom]);
+            break;
+          }
+          case C[1] || CT.C1:
+          {
+            let x = tick.locationPx;
+            lineStart = new (T.PointOfnumL()).new(x, dart.notNull(drawAreaBounds[$top]) + dart.notNull(this.tickLength));
+            lineEnd = new (T.PointOfnumL()).new(x, axisBounds[$top]);
+            break;
+          }
+          case C[2] || CT.C2:
+          {
+            let y = tick.locationPx;
+            if (this.tickLabelAnchor == axis_spec.TickLabelAnchor.after || this.tickLabelAnchor == axis_spec.TickLabelAnchor.before) {
+              lineStart = new (T.PointOfnumL()).new(axisBounds[$right], y);
+            } else {
+              lineStart = new (T.PointOfnumL()).new(dart.notNull(axisBounds[$left]) + dart.notNull(this.tickLength), y);
+            }
+            lineEnd = new (T.PointOfnumL()).new(drawAreaBounds[$left], y);
+            break;
+          }
+          case C[3] || CT.C3:
+          {
+            let y = tick.locationPx;
+            if (this.tickLabelAnchor == axis_spec.TickLabelAnchor.after || this.tickLabelAnchor == axis_spec.TickLabelAnchor.before) {
+              lineStart = new (T.PointOfnumL()).new(axisBounds[$left], y);
+            } else {
+              lineStart = new (T.PointOfnumL()).new(dart.notNull(axisBounds[$right]) - dart.notNull(this.tickLength), y);
+            }
+            lineEnd = new (T.PointOfnumL()).new(drawAreaBounds[$right], y);
+            break;
+          }
+        }
+        canvas.drawLine({points: T.JSArrayOfPointLOfnumL().of([lineStart, lineEnd]), dashPattern: this.lineStyle.dashPattern, fill: this.lineStyle.color, stroke: this.lineStyle.color, strokeWidthPx: this.lineStyle.strokeWidth[$toDouble]()});
+        this.drawLabel(canvas, tick, {orientation: orientation, axisBounds: axisBounds, drawAreaBounds: drawAreaBounds, isFirst: isFirst, isLast: isLast});
+      }
+    }
+    (GridlineTickDrawStrategy.new = function(chartContext, graphicsFactory, opts) {
+      let t0, t0$;
+      let tickLengthPx = opts && 'tickLengthPx' in opts ? opts.tickLengthPx : null;
+      let lineStyleSpec = opts && 'lineStyleSpec' in opts ? opts.lineStyleSpec : null;
+      let labelStyleSpec = opts && 'labelStyleSpec' in opts ? opts.labelStyleSpec : null;
+      let axisLineStyleSpec = opts && 'axisLineStyleSpec' in opts ? opts.axisLineStyleSpec : null;
+      let labelAnchor = opts && 'labelAnchor' in opts ? opts.labelAnchor : null;
+      let labelJustification = opts && 'labelJustification' in opts ? opts.labelJustification : null;
+      let labelOffsetFromAxisPx = opts && 'labelOffsetFromAxisPx' in opts ? opts.labelOffsetFromAxisPx : null;
+      let labelOffsetFromTickPx = opts && 'labelOffsetFromTickPx' in opts ? opts.labelOffsetFromTickPx : null;
+      let minimumPaddingBetweenLabelsPx = opts && 'minimumPaddingBetweenLabelsPx' in opts ? opts.minimumPaddingBetweenLabelsPx : null;
+      let labelRotation = opts && 'labelRotation' in opts ? opts.labelRotation : null;
+      this[tickLength] = null;
+      this[lineStyle] = null;
+      GridlineTickDrawStrategy.__proto__.new.call(this, chartContext, graphicsFactory, {labelStyleSpec: labelStyleSpec, axisLineStyleSpec: (t0 = axisLineStyleSpec, t0 == null ? lineStyleSpec : t0), labelAnchor: labelAnchor, labelJustification: labelJustification, labelOffsetFromAxisPx: labelOffsetFromAxisPx, labelOffsetFromTickPx: labelOffsetFromTickPx, minimumPaddingBetweenLabelsPx: minimumPaddingBetweenLabelsPx, labelRotation: labelRotation});
+      this.lineStyle = style_factory.StyleFactory.style.createGridlineStyle(graphicsFactory, lineStyleSpec);
+      this.tickLength = (t0$ = tickLengthPx, t0$ == null ? 0 : t0$);
+    }).prototype = GridlineTickDrawStrategy.prototype;
+    dart.addTypeTests(GridlineTickDrawStrategy);
+    GridlineTickDrawStrategy.prototype[_is_GridlineTickDrawStrategy_default] = true;
+    dart.addTypeCaches(GridlineTickDrawStrategy);
+    dart.setMethodSignature(GridlineTickDrawStrategy, () => ({
+      __proto__: dart.getMethods(GridlineTickDrawStrategy.__proto__),
+      draw: dart.fnType(dart.void, [dart.legacy(chart_canvas.ChartCanvas), dart.legacy(core.Object)], {axisBounds: dart.legacy(math.Rectangle$(dart.legacy(core.int))), drawAreaBounds: dart.legacy(math.Rectangle$(dart.legacy(core.int))), isFirst: dart.legacy(core.bool), isLast: dart.legacy(core.bool), orientation: dart.legacy(axis.AxisOrientation)}, {})
+    }));
+    dart.setLibraryUri(GridlineTickDrawStrategy, I[0]);
+    dart.setFieldSignature(GridlineTickDrawStrategy, () => ({
+      __proto__: dart.getFields(GridlineTickDrawStrategy.__proto__),
+      tickLength: dart.fieldType(dart.legacy(core.int)),
+      lineStyle: dart.fieldType(dart.legacy(line_style.LineStyle))
+    }));
+    return GridlineTickDrawStrategy;
+  });
+  gridline_draw_strategy.GridlineTickDrawStrategy = gridline_draw_strategy.GridlineTickDrawStrategy$();
+  dart.addTypeTests(gridline_draw_strategy.GridlineTickDrawStrategy, _is_GridlineTickDrawStrategy_default);
+  dart.trackLibraries("packages/charts_common/src/chart/cartesian/axis/draw_strategy/gridline_draw_strategy.dart", {
+    "package:charts_common/src/chart/cartesian/axis/draw_strategy/gridline_draw_strategy.dart": gridline_draw_strategy
+  }, {
+  }, '{"version":3,"sourceRoot":"","sources":["gridline_draw_strategy.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;yBA2DuB,SAAyB;AAC1C,wDAA4B,OAAO,EAAE,eAAe,iBAClC,kCACC,gCACC,oCACG,iCACN,sCACO,gDACG,mDACA,2DACQ,mDAChB;MAAc;;YAGb;AACtB,cAAO,AAAU,AAAa,UAAP,KAAK,IACjB,6BAAN,KAAK,KAAkC,cAAI,KAAK;MACvD;;AAIM,uBAAiB;AACrB,cAAO,SAAQ;MACjB;;;UA/CgB;UACA;UACA;UACE;UACO;UACnB;UACA;UACA;UACA;UACA;AACD,iEACiB,UAAU,aACX,SAAS,eACP,WAAW,sBACJ,kBAAkB,yBACf,qBAAqB,yBACrB,qBAAqB,iCACb,6BAA6B,iBAC7C,aAAa,gBACd,YAAY,iBACX,aAAa;;IAAC;;;;;;;;;;;;;;;;;;;;MAkCnC;;;;;;MACM;;;;;;WA+BY;uBAAgB;YACP;YACF;YACA;YACV;YACA;AACN;AACA;AACX,gBAAQ,WAAW;;;AAET,oBAAI,AAAK,IAAD;AACsC,YAApD,YAAY,0BAAM,CAAC,EAAoB,aAAlB,AAAW,UAAD,0BAAU;AACA,YAAzC,UAAU,0BAAM,CAAC,EAAE,AAAe,cAAD;AACjC;;;;AAEM,oBAAI,AAAK,IAAD;AACuC,YAArD,YAAY,0BAAM,CAAC,EAAqB,aAAnB,AAAe,cAAD,uBAAO;AACR,YAAlC,UAAU,0BAAM,CAAC,EAAE,AAAW,UAAD;AAC7B;;;;AAEM,oBAAI,AAAK,IAAD;AACd,gBAAI,AAAgB,wBAAmB,mCACnC,AAAgB,wBAAmB;AACC,cAAtC,YAAY,0BAAM,AAAW,UAAD,UAAQ,CAAC;;AAEa,cAAlD,YAAY,0BAAsB,aAAhB,AAAW,UAAD,wBAAQ,kBAAY,CAAC;;AAEZ,YAAvC,UAAU,0BAAM,AAAe,cAAD,SAAO,CAAC;AACtC;;;;AAEM,oBAAI,AAAK,IAAD;AAEd,gBAAI,AAAgB,wBAAmB,mCACnC,AAAgB,wBAAmB;AACA,cAArC,YAAY,0BAAM,AAAW,UAAD,SAAO,CAAC;;AAEe,cAAnD,YAAY,0BAAuB,aAAjB,AAAW,UAAD,yBAAS,kBAAY,CAAC;;AAEZ,YAAxC,UAAU,0BAAM,AAAe,cAAD,UAAQ,CAAC;AACvC;;;AASH,QAND,AAAO,MAAD,mBACI,8BAAC,SAAS,EAAE,OAAO,iBACd,AAAU,kCACjB,AAAU,8BACR,AAAU,qCACH,AAAU,AAAY;AAQpB,QALnB,eAAU,MAAM,EAAE,IAAI,gBACL,WAAW,cACZ,UAAU,kBACN,cAAc,WACrB,OAAO,UACR,MAAM;MACpB;;6CApFe,cACG;;UACZ;UACU;UACA;UACA;UACE;UACO;UACnB;UACA;UACA;UACA;MAfF;MACM;AAeL,wDAAM,YAAY,EAAE,eAAe,mBACd,cAAc,sBACO,KAAlB,iBAAiB,EAAjB,aAAqB,aAAa,qBACxC,WAAW,sBACJ,kBAAkB,yBACf,qBAAqB,yBACrB,qBAAqB,iCACb,6BAA6B,iBAC7C,aAAa;AAEsC,MAD1E,iBACiB,AAAM,qDAAoB,eAAe,EAAE,aAAa;AAE3C,MAA9B,mBAA0B,MAAb,YAAY,EAAZ,cAAgB;IAC/B","file":"../../../../../../../../../../../packages/charts_common/src/chart/cartesian/axis/draw_strategy/gridline_draw_strategy.dart.lib.js"}');
+  // Exports:
+  return {
+    src__chart__cartesian__axis__draw_strategy__gridline_draw_strategy: gridline_draw_strategy
+  };
+}));
+
+//# sourceMappingURL=gridline_draw_strategy.dart.lib.js.map
