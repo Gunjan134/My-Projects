@@ -1,0 +1,10 @@
+{
+  "img1Path": "assets/images/ff4.jpeg",
+  "img2Path": "assets/images/14.jpeg",
+  "img3Path": "assets/images/ff6.jpeg",
+  "img4Path": "assets/images/7.jpeg",
+  "textOnHover1": "I'm first image",
+  "textOnHover2": "I'm second image",
+  "textOnHover3": "I'm third image",
+  "textOnHover4": "I'm fourth image"
+}

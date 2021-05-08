@@ -1,0 +1,12 @@
+<div class="video-player">
+    <video id="my_video" class="video-style" controls preload="none" poster='{{poster}}'>
+        <source src="{{videoPath}}" type='video/mp4' />
+        <p>Your browser doesn't support HTML5 video.</p>
+    </video>
+    <div class="video-block">
+        <button class="play-pause" (click)="playPause()">
+            <i class="fa fa-play" *ngIf="!isPlaying()"></i>
+            <i class="fa fa-pause" *ngIf="isPlaying()"></i>
+        </button>
+    </div>
+</div>

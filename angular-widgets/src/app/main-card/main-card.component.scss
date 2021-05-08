@@ -1,0 +1,75 @@
+@import "../../utilities/styles";
+
+.main-card {
+  height: 30em;
+  border-radius: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: $font;
+  .bg-img {
+    min-width: 100%;
+    object-fit: cover;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+  .card-panel {
+    position: absolute;
+    background: rgba(0, 0, 1, 0.5);
+    color: white;
+    width: 100%;
+    bottom: 6em;
+    max-height: 7em;
+    .card-content {
+      padding: 0.5em;
+      .title {
+        font-size: 20px;
+      }
+      .line {
+        margin: 5px 0;
+        border-top: 1px solid white;
+      }
+      .sub-title {
+        font-size: 15px;
+      }
+      .description {
+        font-size: 11px;
+        padding: 2px 0;
+      }
+      .title,
+      .sub-title,
+      .description {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .button-block {
+    position: absolute;
+    background-color: rgba(0, 0, 1, 0.5);
+    bottom: 3em;
+    border-radius: 1em;
+    max-width: 7em;
+    .card-btn {
+      color: white;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      box-shadow: none;
+      max-width: 10em;
+      .video-icon {
+        font-size: 1.5em;
+      }
+      .btn-text {
+        padding-left: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .button-block:focus {
+    border: none;
+    outline: 0;
+  }
+}

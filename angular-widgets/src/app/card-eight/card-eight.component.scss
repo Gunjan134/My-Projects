@@ -1,0 +1,80 @@
+@import "../../utilities/styles";
+
+.card-8 {
+  height: 14.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: $font;
+  .img-container {
+    height: 9em;
+    .top-img {
+      object-fit: cover;
+      max-width: 100%;
+      max-height: 100%;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .inner-card {
+    position: absolute;
+    height: 5em;
+    width: 70%;
+    bottom: 3em;
+    text-align: center;
+    align-self: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    .heading {
+      color: $primary;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      font-size: 11px;
+    }
+  }
+  .lower-text-block {
+    position: absolute;
+    bottom: 0;
+    font-size: 10px;
+    width: 100%;
+    padding: 6px;
+    text-align: center;
+    .sub-desc-1,
+    .sub-desc-2 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .sub-desc-2 {
+      color: grey;
+    }
+  }
+  .circle {
+    height: 2.3em;
+    width: 2.3em;
+    z-index: 1000;
+    position: absolute;
+    bottom: 2.2em;
+    left: 6%;
+    background-color: black;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    .text {
+      color: white;
+      text-align: center;
+      font-size: 10px;
+      padding: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+}

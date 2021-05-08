@@ -1,0 +1,23 @@
+@import '../../utilities/styles';
+
+.gallery {
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  .image {
+    border-radius: 2px;
+    border: 0;
+    display: inline-block;
+    position: relative;
+    // background: #fff;
+    background: $primary;
+    padding: 1rem;
+    img {
+      width: 100%;
+    }
+  }
+}
