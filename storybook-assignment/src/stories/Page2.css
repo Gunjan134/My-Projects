@@ -1,0 +1,21 @@
+.page-layout {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.body {
+  padding: 0 1rem;
+}
+
+.search-results {
+  padding: 1.25rem 0;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
